@@ -8,7 +8,44 @@ const CHROMIUM =
   `${process.env.HOME}/Library/Caches/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-mac-arm64/chrome-headless-shell`;
 const BASE = process.env.BASE ?? "http://localhost:3100";
 const OUT = "/tmp/verify";
-const ROUTES = ["/", "/consult-ledger", "/decision-atlas"];
+/**
+ * Every route that ships, read from the captured-copy map at author time so
+ * this list cannot quietly fall behind the site. /decision-atlas is checked
+ * too — it is still in the tree until Direction A ships, and a review surface
+ * that has broken in the meantime is still a broken page.
+ */
+const ROUTES = [
+  "/",
+  "/about",
+  "/about/team",
+  "/consultation",
+  "/contact",
+  "/insights",
+  "/meet-michael-epps",
+  "/our-process",
+  "/physician-tax-retirement-guide",
+  "/physicians",
+  "/physicians/established",
+  "/physicians/practice-owners",
+  "/physicians/residents-fellows",
+  "/physicians/retirement",
+  "/privacy-disclosures",
+  "/resources",
+  "/schedule",
+  "/services",
+  "/services/legacy-estate-planning",
+  "/services/practice-owner-planning",
+  "/services/retirement-planning",
+  "/services/tax-planning",
+  "/services/wealth-management",
+  "/who-we-serve",
+  "/who-we-serve/crnas-nps-pas",
+  "/who-we-serve/dentists-dental-specialists",
+  "/who-we-serve/healthcare-executives",
+  "/who-we-serve/physicians-specialists",
+  "/who-we-serve/surgeons",
+  "/decision-atlas",
+];
 const VIEWPORTS = [
   { name: "1536", width: 1536, height: 864 },
   { name: "1440", width: 1440, height: 900 },

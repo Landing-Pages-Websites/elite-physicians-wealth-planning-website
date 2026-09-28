@@ -54,7 +54,7 @@ function validate(values: Fields): Partial<Record<keyof Fields, string>> {
 }
 
 /** Falls back to the practice's inbox so a message is never silently lost. */
-function mailtoHandoff(values: Fields): string {
+function mailtoHandoff(values: Fields, intent: string): string {
   const body = [
     `Name: ${values.fullName}`,
     `Email: ${values.email}`,
@@ -62,14 +62,23 @@ function mailtoHandoff(values: Fields): string {
     values.notes.trim() ? `\n${values.notes.trim()}` : "",
   ].join("\n");
   return `mailto:${BRAND.email}?subject=${encodeURIComponent(
-    "Strategy call request",
+    intent,
   )}&body=${encodeURIComponent(body)}`;
 }
 
 export function StrategyCallForm({
   tone,
+  intent = "Strategy call request",
 }: {
   tone: FormTone;
+  /**
+   * What this submission is for. Four pages now share this form — the strategy
+   * call, the contact page, the consultation request and the gated guide — and
+   * an enquiry that reaches the practice's inbox subject-lined "Strategy call
+   * request" when it was a guide request is a lead misrouted at the first step.
+   * Carried into the mailto subject and the dataLayer event.
+   */
+  intent?: string;
 }): React.JSX.Element {
   const isLedger = tone === "ledger";
   const formRef = useRef<HTMLFormElement>(null);
@@ -110,7 +119,7 @@ export function StrategyCallForm({
     if (!ENDPOINT) {
       // No endpoint wired yet. Hand off to email rather than report a success
       // that never happened.
-      window.location.href = mailtoHandoff(values);
+      window.location.href = mailtoHandoff(values, intent);
       setStatus("failed");
       return;
     }
@@ -123,7 +132,7 @@ export function StrategyCallForm({
       });
       if (!response.ok) throw new Error(`Lead endpoint returned ${response.status}`);
       window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({ event: "form_submission" });
+      window.dataLayer.push({ event: "form_submission", formIntent: intent });
       setStatus("sent");
       setValues(EMPTY);
     } catch {

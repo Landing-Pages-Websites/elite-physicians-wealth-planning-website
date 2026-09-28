@@ -200,3 +200,98 @@ Replaced by `planning-conversation.jpg` (1600x2400), generated to the same brief
 discipline as the Direction A plates and accepted on the same probes: no legible
 text anywhere, no diagnostic imagery, complete undamaged faces, anatomically
 coherent hands with wrists and cuffs, no composite seam at 2.2x brightness.
+
+---
+
+# Stage 2 — full-site build (2026-09-28)
+
+The interior site is built from the client's own published copy, captured from
+`elitephysicianwealthplanning.com` and held in `build/source-capture/`. What
+follows is everything that capture could **not** resolve. Nothing below has been
+filled with plausible substitute content.
+
+## 11. Routes held back — 13 of the source site's 42
+
+### 11.1 The twelve `/insights/*` articles — unwritten at source
+Every one of the twelve article URLs on the live site is a stub. Each renders
+`Published: [Pending]` and `Reviewer: [Pending]` in its own markup, and **all
+twelve share one identical body paragraph**: *"This article will walk through the
+framework, the questions it prompts, and how a physician might work through it
+with their CPA, attorney, TPA, insurance professional, or financial planner."*
+
+They are not shipped, for three reasons that compound:
+- Twelve near-duplicate thin pages on a brand-new domain is the doorway pattern
+  that cost a previous build most of its index.
+- `[Pending]` is a build-stage marker rendering as visible body copy — the same
+  defect class this build already removed elsewhere.
+- Writing them here would mean authoring regulated financial content whose own
+  source marks the review as outstanding. That is not an agency call.
+
+`/insights` **does** ship, as a contents page: the twelve titles and their real
+summaries are the client's, so they are presented as "in preparation" and nothing
+links to a route that would 404. Supply the copy, or a reviewer, and each article
+becomes a route with no further design work.
+
+### 11.2 `/checkup` — an assessment with no result
+The source page is a seven-question self-assessment ("Question 1 of 7 · Cash
+Flow"). Only question one exists in the served HTML; the rest and the scoring are
+client-side and were not recoverable. The repo's own floor is explicit that
+anything styled as a control must produce a complete useful outcome — *"never
+ship decorative radios, filters, quizzes, calculators, or forms that accept input
+and then do nothing."* Supply the seven questions and what the result should say,
+and note that "identifies discussion areas" is a compliance-sensitive phrasing.
+
+## 12. Compliance documents the source site advertises but does not have
+
+The live footer links eight documents. **All eight return 404 today**, verified
+individually:
+
+| Advertised | Status |
+|---|---|
+| Terms of Use | 404 |
+| Accessibility Statement | 404 |
+| Cookie Notice | 404 |
+| Form CRS | 404 |
+| Form ADV | 404 |
+| BrokerCheck / IAPD | 404 |
+| Insurance & Licensing | 404 |
+| Disclosures | 404 |
+
+They are **not** reproduced in this build. Advertising a Form ADV or a BrokerCheck
+link that does not resolve is worse on a regulated site than not listing it, and
+drafting those documents is not an agency call. Only `/privacy-disclosures` is
+linked, because the client actually publishes that text.
+
+## 13. Claims removed from the source copy, pending a ruling
+
+| # | What the source says | Why it is not carried |
+|---|---|---|
+| 13.1 | Michael billed as **"2026 5-Star Wealth Manager"** | `hard_rules`: he "may be identified only with the verified ChFC® and RICP® designations", and inventing *awards* or *ratings* is banned. This one is not invented — it is on the client's own site — but a third-party rating in this vertical carries its own disclosure requirements. Confirm the award, its selection criteria and the required disclosure, or it stays off |
+| 13.2 | `info@elitephysicianwealthplanning.com` on all 42 pages | `hard_rules` name the reference-site email as incorrect and mandate `info@fiscalvisionfinancial.com` |
+| 13.3 | `10665 Stanhaven Pl, Suite 3132, White Plains, MD 20695` | Still gated. The White Plains versus Waldorf discrepancy is unresolved, so no address appears anywhere and `LocalBusiness` JSON-LD is not emitted |
+| 13.4 | Three personal staff email addresses | On the legacy domain, which is reference-only. Not republished |
+
+## 14. Team bios — five of six people
+`/about/team` names Michael A. Epps, Lisa Alexander, Michael Epps Jr., Joshua
+Epps, La-Deidra Blake and Aliaya Epps. Only Michael has a bio. `customer_asks`
+says to add bios *"when the customer supplies them"* and `hard_rules` ban invented
+team biographies, so names and titles ship verbatim and nothing else. Send bios
+and they drop straight in.
+
+## 15. Still open from the homepage stage
+1.1 portrait provenance · 1.2 real logo (still blocks favicon, app icons,
+`themeColor` and OG images) · 1.3 Google Calendar embed · 1.4 guide file and
+delivery workflow · 1.5 form endpoint (`NEXT_PUBLIC_LEAD_ENDPOINT`) · 1.6
+analytics container.
+
+On 1.3 and 1.5, one thing is now settled rather than assumed: **the source site
+does not have them either.** All 42 captured pages were grepped for an `iframe`,
+`calendar.google`, `calendly`, `acuity`, `hubspot` and a form `action` — zero
+hits. There is nothing to lift, so both are genuine client deliverables.
+
+## 16. Production cutover — not executed
+`next.config.ts` redirects the source site's old paths to their new homes, but a
+redirect only fires for traffic that reaches **this** app. Moving
+`elitephysicianwealthplanning.com` (singular) to
+`elitephysicianswealthplanning.com` (plural) is a **DNS cutover**, not a config
+edit. Flagged for the operator; not executed here.

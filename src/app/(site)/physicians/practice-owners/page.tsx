@@ -1,0 +1,15 @@
+import type { Metadata } from "next";
+import { PageShell } from "@/components/pages/page-shell";
+import { getPage } from "@/lib/pages";
+
+const ROUTE = "/physicians/practice-owners";
+
+export const metadata: Metadata = {
+  title: "Practice Owners & Partners — Elite Physicians Wealth Planning™",
+  description: "Connect the financial decisions inside your practice with the future you are building outside it.",
+  alternates: { canonical: ROUTE },
+};
+
+export default function Page(): React.JSX.Element {
+  return <PageShell page={getPage(ROUTE)} trail={[{ href: "/", label: "Home" }, { href: "/physicians", label: "Physicians" }, { href: "/physicians/practice-owners", label: "Practice owners" }]} />;
+}

@@ -224,3 +224,132 @@ builders (now `telHref()` in `content.ts`), the orphaned `.va-notch` rule, and a
 | `npm run lint` | pass, 0 problems |
 | `npm run check:palette` | pass |
 | `npm run verify` 1536/1440/390 | pass on `/` and `/variant-b`: 0 overflow, 0 broken images, 1 `h1`, 10 anchors |
+
+---
+
+## Stage 2 — productionize intake (2026-09-28)
+
+Branch `build/productionize-full-site`, cut from `main` at `8a3b128` **before any edit**.
+A push from `main` publishes on this git-linked Vercel project; there is no merge step to
+catch it.
+
+### Source of record captured — closes the open question in CLIENT-GAPS 2.3
+
+`customer_asks` promises to *"preserve accurate, compliance-reviewed source information
+while improving structure and expanding thin pages."* That is an instruction to reuse the
+client's existing approved copy, not to author fresh copy in its voice. The ledger has
+carried "**the source has not been captured**" as an open item since the homepage stage.
+
+It is captured now. `elitephysicianwealthplanning.com` (the legacy singular domain the
+manifest marks reference-only) publishes a **42-page sitemap**, fetched in full to
+`build/source-capture/` as raw HTML plus extracted text, with `_index.json` recording
+every URL, byte count and character count.
+
+That capture also settles the sitemap question: **the route map is derived, not invented.**
+Every contracted destination in `section_manifest.functional_elements` already exists on
+the source site at the exact contracted path — `/our-process`, `/who-we-serve`,
+`/meet-michael-epps`, `/schedule` — and the five `who-we-serve` children match the five
+approved `WHITE_COAT_PATHS` audiences one-for-one.
+
+### Hard-rule conflicts found in the source copy — rulings needed, not fixes
+
+Precedence is `hard_rules > client-supplied facts`, so in every row below the hard rule
+wins unless the operator rules otherwise. None of these is a defect I introduced; all are
+live on the client's own site today.
+
+| # | Source site says | `hard_rules` says | Default action |
+|---|---|---|---|
+| A | `info@elitephysicianwealthplanning.com`, on all 42 pages | *"Use info@fiscalvisionfinancial.com … Do not reproduce the incorrect reference-site email."* | Use the manifest email. Rule is explicit about this exact trap |
+| B | `10665 Stanhaven Pl, Suite 3132, White Plains, MD 20695` | *"Do not show a public street address until the White Plains versus Waldorf discrepancy is authoritatively resolved."* | Keep the address gated; no NAP block, no `LocalBusiness` JSON-LD |
+| C | Michael billed as **"2026 5-Star Wealth Manager"** | *"may be identified only with the verified ChFC® and RICP® designations"* + no invented *awards* or *ratings* | Omit the award pending a compliance ruling. A third-party rating in a regulated vertical carries its own disclosure requirements |
+| D | Team page names six people, five with title only and no bio | `customer_asks`: add bios *"when the customer supplies them"*; `hard_rules` ban invented *team biographies* | Carry names + titles verbatim. Write no bios |
+| E | Three personal staff emails published on the legacy domain | The singular domain is reference-only | Do not republish staff emails on the new domain |
+
+### Blockers confirmed against the source, not assumed
+
+Grepped all 42 captured pages for `iframe`, `calendar.google`, `calendly`, `acuity`,
+`hubspot`, form `action=` and the usual form backends: **zero hits.** So CLIENT-GAPS 1.3
+(Google Calendar embed) and 1.5 (form destination) are genuinely unsupplied — the source
+site does not have them either, and there is nothing to lift.
+
+### One blocker the capture clears
+
+**CLIENT-GAPS 1.8 (legal pages).** `/privacy-disclosures` on the source site is
+client-published, compliance-reviewed text covering educational use, no advisory
+relationship, tax/legal coordination boundaries, no guarantees, and email/text/phone
+consent. That is exactly the copy the skill forbids an agency from drafting — and it does
+not need drafting, because the client already publishes it. Reuse verbatim, subject to
+rows A, B and E above.
+
+### Decisions taken at the Stage-2 checkpoint (2026-09-28)
+
+| Decision | Value | Who |
+|---|---|---|
+| Approved direction | **Direction A — The Consult Ledger** | **Operator.** Not inferred. The two `section_manifest.json` files are byte-identical and both palette contracts self-report `APPROVED`, so the repo contains no evidence either way; the approval record lives in the client conversation |
+| Sitemap | **Full parity — all 42 source routes** | Operator |
+| Missing client deliverables | **Build around them; hand back the gap ledger** | Operator |
+
+Direction B is **retained in full** — `src/components/variant-b/`, `/decision-atlas`,
+`public/design/b/**`, `public/images/design/b/**`. It is not deleted until the winner has
+shipped, because a deletion is unrecoverable politics and keeping it costs nothing.
+
+### What shipped
+
+**29 routes**, all built from captured client copy. Not one line of page copy was
+authored here.
+
+| Family | Routes |
+|---|---|
+| Homepage | `/` — Direction A, promoted from `/consult-ledger` |
+| Contracted destinations | `/our-process`, `/who-we-serve`, `/meet-michael-epps`, `/schedule` |
+| Services | `/services` + 5 disciplines |
+| Audiences | `/who-we-serve` + 5 profiles |
+| Career stage | `/physicians` + 4 stages |
+| About | `/about`, `/about/team` |
+| Conversion | `/contact`, `/consultation`, `/physician-tax-retirement-guide` |
+| Reference | `/resources`, `/insights`, `/privacy-disclosures` |
+
+### New unapproved surfaces — flagged, per Step 6
+
+The approved mockup is one scrolling page with no chrome and no interior pages.
+Everything here is therefore new and was derived from Direction A's own language
+rather than a template: `PageHero`, `PageSection`, `PageCta`, `ChildIndex`,
+`Breadcrumbs`, `FormBand`, and the header's real nav. The header and footer
+existed already and were repointed from on-page anchors to the contracted routes.
+
+The interior grid is a two-column editorial split — label rail left, prose right,
+the coordination line down the gutter — chosen because `hard_rules` ban "a
+generic card grid, rounded-card collection, or centered text stack", and a
+five-card row is the most recognisable generated-site tell there is.
+
+### Deviations from the source site, logged
+
+| Deviation | Class | Why |
+|---|---|---|
+| Company renamed to the plural "Elite Physicians Wealth Planning"; the product "Elite Physician Wealth Blueprint™" left singular | compliance | The manifest uses both deliberately — 8 plural for the company, 3 singular for the Blueprint |
+| `[Pending]`, `[X business days — pending]` scrubbed | spec-text-as-ui | Build-stage markers rendering as visible body copy |
+| Eight 404ing compliance links not reproduced | compliance | Advertising a Form ADV that does not resolve is worse than omitting it |
+| `/who-we-serve`'s six profiles became the linked index instead of an unlinked list plus a second linked list | ai-tell | The first build said everything twice. The client's own enumeration now carries the links; page height fell 3845px → 2619px |
+| Interior hero/CTA motif descends at x=1300, not x=214 | legibility | At x=214 the gold line and its node ran straight through the breadcrumb — caught by the contrast gate at **1.9:1** on `/services/wealth-management`, and visibly wrong in the screenshot |
+| Both `strategy-call` components routed through `telHref()` | craft | They hardcoded `tel:` without the `+1`, so the site shipped two different phone-link formats |
+
+### Verification
+
+| Gate | Result |
+|---|---|
+| `next build` | pass — 35 static pages |
+| `npm run lint` | pass, 0 problems |
+| `npm run check:palette` | pass — 0 bare literals |
+| `npm run verify` (30 routes × 3 viewports) | **90 checks, 0 problems**; review bridge present on every route |
+| `npm run check:contrast` (30 routes × 2 viewports) | **1808 regions, 0 below AA** |
+| Internal link crawl | **26/26 targets resolve**; no legacy-domain links remain |
+
+`scripts/verify-pages.mjs`, `check-text-contrast.mjs` and `serve-verify.sh` were
+**extended, not rewritten** — routes widened to the real set and the readiness
+probe repointed from `/consult-ledger` (now a redirect) to `/`.
+
+One false alarm worth recording: the first `verify` run reported five broken
+images on `/`. All five returned HTTP 200 with real bytes when fetched directly —
+it was Next's image optimizer still working on a cold cache, not a defect. The
+run was repeated warm and came back clean. Confirm a failing check before
+believing it.

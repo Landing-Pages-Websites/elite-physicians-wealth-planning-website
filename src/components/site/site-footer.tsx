@@ -11,17 +11,22 @@ import { BRAND, HERO, SEPARATE_ROOMS, telHref } from "@/lib/content";
  * per-page compliance lines that have to appear on every route, not just the
  * homepage.
  *
- * Legal routes are intentionally absent. /privacy, /terms and /disclosures are
- * client- or compliance-supplied on a regulated financial-services site; they
- * are listed in build/CLIENT-GAPS.md and get linked when the copy arrives.
- * Linking to routes that do not exist is worse than omitting them.
+ * /privacy-disclosures is linked because the client publishes that text
+ * themselves and it was captured with the rest of the source. The other seven
+ * documents their own footer advertises — Terms of Use, Accessibility
+ * Statement, Cookie Notice, Form CRS, Form ADV, BrokerCheck/IAPD, Insurance &
+ * Licensing — all 404 on the live site today. They are not reproduced here:
+ * advertising a Form ADV that does not resolve is worse on a regulated site
+ * than not listing it, and drafting those documents is not an agency call.
+ * They are named in build/CLIENT-GAPS.md.
  */
 const SECTIONS = [
-  { href: "/consult-ledger#separate-rooms", label: "The coordination gap" },
-  { href: "/consult-ledger#blueprint-rounds", label: "The Wealth Blueprint" },
-  { href: "/consult-ledger#five-decisions", label: "Five planning disciplines" },
-  { href: "/consult-ledger#white-coat-paths", label: "Who we serve" },
-  { href: "/consult-ledger#accountable-planner", label: "Meet the planner" },
+  { href: "/who-we-serve", label: "Who we serve" },
+  { href: "/services", label: "Services" },
+  { href: "/our-process", label: "Our process" },
+  { href: "/resources", label: "Resource center" },
+  { href: "/insights", label: "Insights" },
+  { href: "/meet-michael-epps", label: "Michael A. Epps" },
 ] as const;
 
 export function SiteFooter(): React.JSX.Element {
@@ -85,7 +90,7 @@ export function SiteFooter(): React.JSX.Element {
             <li className="text-charcoal/80">{BRAND.hours}</li>
           </ul>
           <Link
-            href="/consult-ledger#form"
+            href="/schedule"
             className="mt-6 inline-flex min-h-11 items-center rounded-sm bg-ink px-5 font-body text-[13px] font-semibold text-ivory transition-colors duration-200 hover:bg-ink/90"
           >
             Schedule a strategy call
@@ -98,6 +103,14 @@ export function SiteFooter(): React.JSX.Element {
           {/* Compliance lines belong on every route, not only the homepage. */}
           <p>{HERO.disclaimer}</p>
           <p>{BRAND.wordmark}</p>
+          <p>
+            <Link
+              href="/privacy-disclosures"
+              className="underline-offset-4 transition-colors duration-200 hover:text-ink hover:underline"
+            >
+              Privacy &amp; website disclosures
+            </Link>
+          </p>
         </div>
       </div>
     </footer>

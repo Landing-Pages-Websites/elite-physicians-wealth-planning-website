@@ -14,16 +14,18 @@ import { BRAND } from "@/lib/content";
  * breaking the composition_map fold requirement that brand, headline, actions,
  * portrait card and proof row stay visible together within 1536x864.
  *
- * Nav targets are on-page anchors because those are the destinations that exist
- * today. They become /our-process, /who-we-serve and /meet-michael-epps — the
- * paths contracted in section_manifest functional_elements — when those pages
- * ship. Never point navigation at a route that 404s.
+ * Nav targets were on-page anchors while the interior pages did not exist.
+ * They are now the real routes, and the grouping is the client's own
+ * information architecture as published on their live site — Who We Serve,
+ * Services, Our Process, Resources, About — rather than an IA invented here.
+ * Never point navigation at a route that 404s.
  */
 const NAV = [
-  { href: "/consult-ledger#separate-rooms", label: "The coordination gap" },
-  { href: "/consult-ledger#blueprint-rounds", label: "The Blueprint" },
-  { href: "/consult-ledger#white-coat-paths", label: "Who we serve" },
-  { href: "/consult-ledger#accountable-planner", label: "Meet Michael" },
+  { href: "/who-we-serve", label: "Who we serve" },
+  { href: "/services", label: "Services" },
+  { href: "/our-process", label: "Our process" },
+  { href: "/resources", label: "Resources" },
+  { href: "/about", label: "About" },
 ] as const;
 
 function Wordmark(): React.JSX.Element {
@@ -75,7 +77,7 @@ export function SiteHeader(): React.JSX.Element {
 
         <div className="flex items-center gap-3">
           <Link
-            href="/consult-ledger#form"
+            href="/schedule"
             className="hidden min-h-11 items-center rounded-sm bg-gold px-5 font-body text-[13px] font-semibold text-ink transition-colors duration-200 hover:bg-gold/90 sm:inline-flex"
           >
             Schedule a strategy call
@@ -112,7 +114,7 @@ export function SiteHeader(): React.JSX.Element {
               </Link>
             ))}
             <Link
-              href="/consult-ledger#form"
+              href="/schedule"
               className="mt-1 rounded-sm bg-gold px-3 py-3 text-center font-body text-sm font-semibold text-ink"
             >
               Schedule a strategy call

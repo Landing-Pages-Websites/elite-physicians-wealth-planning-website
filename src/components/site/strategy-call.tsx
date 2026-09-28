@@ -1,5 +1,5 @@
 import { StrategyCallForm } from "@/components/shared/strategy-call-form";
-import { BRAND } from "@/lib/content";
+import { BRAND, telHref } from "@/lib/content";
 
 /**
  * Where the closing fork lands. The two paths above merge on the gold route;
@@ -38,7 +38,7 @@ export function StrategyCall(): React.JSX.Element {
               <dd>
                 <a
                   className="-my-2 inline-flex min-h-11 items-center underline underline-offset-4 transition-colors hover:text-gold focus-visible:text-gold"
-                  href={`tel:${BRAND.phone.replace(/\D/g, "")}`}
+                  href={telHref()}
                 >
                   {BRAND.phone}
                 </a>

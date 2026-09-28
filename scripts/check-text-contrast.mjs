@@ -25,7 +25,9 @@ const CHROMIUM =
 const BASE = process.env.BASE ?? "http://localhost:3100";
 // Both directions. B was never covered until it was brought up to the same
 // standard, so its failures were invisible.
-const ROUTES = (process.env.ROUTES ?? "/,/consult-ledger,/decision-atlas").split(",");
+// Default is every shipping route; /consult-ledger is gone (it redirects to /).
+const DEFAULT_ROUTES = "/,/about,/about/team,/consultation,/contact,/insights,/meet-michael-epps,/our-process,/physician-tax-retirement-guide,/physicians,/physicians/established,/physicians/practice-owners,/physicians/residents-fellows,/physicians/retirement,/privacy-disclosures,/resources,/schedule,/services,/services/legacy-estate-planning,/services/practice-owner-planning,/services/retirement-planning,/services/tax-planning,/services/wealth-management,/who-we-serve,/who-we-serve/crnas-nps-pas,/who-we-serve/dentists-dental-specialists,/who-we-serve/healthcare-executives,/who-we-serve/physicians-specialists,/who-we-serve/surgeons,/decision-atlas";
+const ROUTES = (process.env.ROUTES ?? DEFAULT_ROUTES).split(",");
 const OUT = "/tmp/contrast";
 const VIEWPORTS = [
   { name: "1440", width: 1440, height: 900 },

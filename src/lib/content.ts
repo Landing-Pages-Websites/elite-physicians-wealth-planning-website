@@ -14,44 +14,47 @@ export const BRAND = {
 } as const;
 
 /**
- * Homepage-only stage: interior pages do not exist yet, so CTAs point at
- * the currently available experiences on the live site, and the guide is
- * requested by email because the final guide file is not yet supplied.
+ * Every in-content destination, now that the interior pages exist.
  *
- * Domain note (intentional split, do not "fix"): the LIVE site today is
- * elitephysicianwealthplanning.com (singular), which these stage links
- * target; the intended LAUNCH domain used for metadata/sitemap is
- * elitephysicianswealthplanning.com (plural) per the manifest hard rules.
+ * These used to be on-page anchors standing in for routes that had not been
+ * built, and before that they pointed at the LEGACY SINGULAR domain — which
+ * sent the visitor off the site, past the strategy-call form, onto the old
+ * build. Both stages are over: each link below is the path
+ * `section_manifest.functional_elements` actually contracts.
+ *
+ * Domain note (intentional split, do not "fix"): the live source site is
+ * elitephysicianwealthplanning.com (singular); the LAUNCH domain used for
+ * metadata and the sitemap is elitephysicianswealthplanning.com (plural), per
+ * the manifest hard rules. Nothing here should ever point at the singular one.
  */
 export const LINKS = {
-  schedule: "https://elitephysicianwealthplanning.com/schedule",
-  process: "https://elitephysicianwealthplanning.com/our-process",
-  planningPath: "https://elitephysicianwealthplanning.com/",
-  meetMichael: "https://elitephysicianwealthplanning.com/",
-  guideRequest:
-    "mailto:info@fiscalvisionfinancial.com?subject=Physician%20Tax%20%26%20Retirement%20Planning%20Guide%20request",
-
   /**
-   * On-site destinations, used by every in-content CTA.
-   *
-   * The five links above point at the LEGACY SINGULAR domain, which the
-   * manifest marks reference-only and which sitemap.ts refuses to emit. Every
-   * in-content CTA therefore used to send the visitor off the site, past the
-   * strategy-call form, onto the old build. These anchors keep them here.
-   *
-   * They are stand-ins for the paths section_manifest functional_elements
-   * actually contracts — /our-process, /who-we-serve, /meet-michael-epps, and
-   * the Google Calendar scheduling experience. Swap each one to its contracted
-   * route as that page ships; the scheduling link needs the client's Calendar
-   * embed first (build/CLIENT-GAPS.md 1.3).
+   * Contracted: "Navigate to the Google Calendar scheduling experience."
+   * The embed is a client-supplied asset and has not been supplied — confirmed
+   * by grepping all 42 captured source pages for an iframe or booking host and
+   * finding none. /schedule takes the request honestly instead of pretending to
+   * hold a slot; wire the embed there when it lands (build/CLIENT-GAPS.md 1.3).
    */
-  scheduleOnsite: "/#form",
-  processOnsite: "/#blueprint-rounds",
+  schedule: "/schedule",
+  process: "/our-process",
+  planningPath: "/who-we-serve",
+  meetMichael: "/meet-michael-epps",
+  /**
+   * Contracted: "Navigate to the gated lead-capture experience; do not imply
+   * delivery before the final customer file exists." A route, not a mailto —
+   * and the page it lands on states that the guide is sent by the practice.
+   */
+  guideRequest: "/physician-tax-retirement-guide",
+
+  /** Aliases kept so the two directions read the same names. */
+  scheduleOnsite: "/schedule",
+  processOnsite: "/our-process",
+  planningPathOnsite: "/who-we-serve",
+  meetMichaelOnsite: "/meet-michael-epps",
+
   /** Frame annotation: what the primary action does. Rendered in the OUTCOME
       chip the approved frame draws under the strategy-call card. */
   scheduleOutcome: "Navigate to the Google Calendar scheduling experience.",
-  planningPathOnsite: "/#white-coat-paths",
-  meetMichaelOnsite: "/#accountable-planner",
 } as const;
 
 /** One phone href for the whole site. Strips every non-digit, so it survives
