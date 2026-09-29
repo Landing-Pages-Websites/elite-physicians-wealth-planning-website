@@ -7,43 +7,37 @@ import { bodySections, ctaSection, getPage } from "@/lib/pages";
  * The three family indexes: /who-we-serve, /services, /physicians.
  *
  * These pages already enumerate their own children in the source copy — the
- * client's `/who-we-serve` lists all six profiles with a sentence each. Adding
- * a link list under that enumeration made the page say everything twice, once
- * unlinked and once linked, which is what the first build did.
+ * client's /who-we-serve lists all six profiles with a sentence each, and each
+ * one is wrapped in a link. Adding a second link list underneath made the page
+ * say everything twice, once unlinked and once linked.
  *
- * So the source's own enumeration IS the index: each body section supplies the
- * label and the sentence, and `hrefs` supplies the destination. Nothing is
- * duplicated, nothing is rewritten, and no section is a dead end.
- *
- * A heading with no mapped route is dropped rather than rendered unlinked —
- * with one deliberate exception handled by the caller: /who-we-serve lists
- * "Practice Owners", whose page lives in the /physicians family, so it maps
- * across rather than disappearing.
+ * So the source's own enumeration IS the index, and its own anchors supply the
+ * destinations. This used to carry a hand-written heading-to-route map per
+ * page; the map was redundant once the parser stopped discarding the anchors,
+ * and it was also WRONG — it sent "Practice Owners" to /physicians/practice-owners
+ * when the client links it to /services/practice-owner-planning. A map
+ * maintained by hand beside a source that already states the answer is a
+ * standing invitation to drift.
  */
 export function FamilyIndexPage({
   route,
   label,
   eyebrow,
-  hrefs,
 }: {
   route: string;
   label: string;
   eyebrow: string;
-  /** Source heading (lowercased) → destination route. */
-  hrefs: Readonly<Record<string, string>>;
 }): React.JSX.Element {
   const page = getPage(route);
   const cta = ctaSection(page);
 
   const links: ChildLink[] = bodySections(page)
-    .map((section) => {
-      const heading = section.heading?.trim();
-      if (!heading) return null;
-      const href = hrefs[heading.toLowerCase()];
-      if (!href) return null;
-      return { href, label: heading, note: section.paras[0] ?? "" };
-    })
-    .filter((link): link is ChildLink => link !== null);
+    .filter((section) => section.href && section.heading)
+    .map((section) => ({
+      href: section.href as string,
+      label: section.heading as string,
+      note: section.paras[0] ?? "",
+    }));
 
   return (
     <main id="main">

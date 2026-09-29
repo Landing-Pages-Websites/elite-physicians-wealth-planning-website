@@ -10,6 +10,8 @@
       {
         "eyebrow": null,
         "heading": null,
+        "level": 2,
+        "href": null,
         "paras": [
           "Coordinated strategy • Physician-focused • Ongoing review"
         ],
@@ -18,6 +20,8 @@
       {
         "eyebrow": "The Coordination Gap",
         "heading": "Your financial life is too important to be managed in separate pieces.",
+        "level": 2,
+        "href": null,
         "paras": [
           "Many physicians make decisions about taxes, retirement plans, investments, insurance, estate planning, student loans, and practice ownership in separate conversations with separate professionals. Our role is to help bring the strategy together."
         ],
@@ -26,6 +30,8 @@
       {
         "eyebrow": "Our Process",
         "heading": "The Elite Physician Wealth Blueprint™",
+        "level": 2,
+        "href": null,
         "paras": [
           "A structured process designed to help busy medical professionals identify planning gaps, prioritize action steps, coordinate advisors, and update the plan as career, family, income, and tax laws change.",
           "01"
@@ -35,6 +41,8 @@
       {
         "eyebrow": null,
         "heading": "Discover",
+        "level": 3,
+        "href": null,
         "paras": [
           "02"
         ],
@@ -43,6 +51,8 @@
       {
         "eyebrow": null,
         "heading": "Assess",
+        "level": 3,
+        "href": null,
         "paras": [
           "03"
         ],
@@ -51,6 +61,8 @@
       {
         "eyebrow": null,
         "heading": "Strategize",
+        "level": 3,
+        "href": null,
         "paras": [
           "04"
         ],
@@ -59,6 +71,8 @@
       {
         "eyebrow": null,
         "heading": "Implement",
+        "level": 3,
+        "href": null,
         "paras": [
           "05"
         ],
@@ -67,6 +81,8 @@
       {
         "eyebrow": null,
         "heading": "Optimize",
+        "level": 3,
+        "href": null,
         "paras": [
           "06"
         ],
@@ -75,12 +91,16 @@
       {
         "eyebrow": null,
         "heading": "Review",
+        "level": 3,
+        "href": null,
         "paras": [],
         "items": []
       },
       {
         "eyebrow": "Five Planning Pillars",
         "heading": "Every recommendation is organized around five planning pillars.",
+        "level": 2,
+        "href": null,
         "paras": [
           "Tax strategy, wealth management, retirement strategy, practice and business planning, and legacy planning."
         ],
@@ -89,6 +109,8 @@
       {
         "eyebrow": null,
         "heading": "Tax Strategy",
+        "level": 3,
+        "href": "/services/tax-planning",
         "paras": [
           "Forward-looking, multi-year tax planning coordinated with your CPA."
         ],
@@ -97,6 +119,8 @@
       {
         "eyebrow": null,
         "heading": "Wealth Management",
+        "level": 3,
+        "href": "/services/wealth-management",
         "paras": [
           "Investment decisions structured to support your income strategy."
         ],
@@ -105,6 +129,8 @@
       {
         "eyebrow": null,
         "heading": "Retirement Strategy",
+        "level": 3,
+        "href": "/services/retirement-planning",
         "paras": [
           "Retirement readiness and income design for physician households."
         ],
@@ -113,6 +139,8 @@
       {
         "eyebrow": null,
         "heading": "Practice & Business Planning",
+        "level": 3,
+        "href": "/services/practice-owner-planning",
         "paras": [
           "Ownership, benefit, and retirement-plan decisions for practice owners."
         ],
@@ -121,6 +149,8 @@
       {
         "eyebrow": null,
         "heading": "Legacy Planning",
+        "level": 3,
+        "href": "/services/legacy-estate-planning",
         "paras": [
           "Estate coordination organized around family and long-term goals."
         ],
@@ -129,6 +159,8 @@
       {
         "eyebrow": "Who We Serve",
         "heading": "Built for physicians and medical professionals with complex financial lives.",
+        "level": 2,
+        "href": null,
         "paras": [
           "Including specialists, surgeons, practice owners, dentists, CRNAs, NPs, PAs, and high-income healthcare executives."
         ],
@@ -137,6 +169,8 @@
       {
         "eyebrow": null,
         "heading": "Residents & Fellows",
+        "level": 3,
+        "href": null,
         "paras": [
           "Build the right foundation before income, benefits, and debt decisions accelerate."
         ],
@@ -145,6 +179,8 @@
       {
         "eyebrow": null,
         "heading": "Established Physicians",
+        "level": 3,
+        "href": null,
         "paras": [
           "Coordinate taxes, investments, protection, and family goals around a demanding career."
         ],
@@ -153,6 +189,8 @@
       {
         "eyebrow": null,
         "heading": "Practice Owners & Partners",
+        "level": 3,
+        "href": null,
         "paras": [
           "Align business cash flow, retirement benefits, succession, and personal wealth."
         ],
@@ -161,6 +199,8 @@
       {
         "eyebrow": null,
         "heading": "Physicians Approaching Retirement",
+        "level": 3,
+        "href": null,
         "paras": [
           "Convert accumulated assets into a durable income, tax, healthcare, and legacy strategy."
         ],
@@ -169,48 +209,64 @@
       {
         "eyebrow": "Frequently Asked",
         "heading": "Common questions from physicians.",
+        "level": 2,
+        "href": null,
         "paras": [],
         "items": []
       },
       {
         "eyebrow": null,
         "heading": "Do I need a certain income or asset level to work with Elite Physicians Wealth Planning™?",
+        "level": 3,
+        "href": null,
         "paras": [],
         "items": []
       },
       {
         "eyebrow": null,
         "heading": "Can you coordinate with my CPA, attorney, TPA, or practice consultant?",
+        "level": 3,
+        "href": null,
         "paras": [],
         "items": []
       },
       {
         "eyebrow": null,
         "heading": "Is tax planning the same as tax preparation?",
+        "level": 3,
+        "href": null,
         "paras": [],
         "items": []
       },
       {
         "eyebrow": null,
         "heading": "How do you work with employed physicians versus practice owners?",
+        "level": 3,
+        "href": null,
         "paras": [],
         "items": []
       },
       {
         "eyebrow": null,
         "heading": "What happens during the first consultation?",
+        "level": 3,
+        "href": null,
         "paras": [],
         "items": []
       },
       {
         "eyebrow": null,
         "heading": "How are planning, investment, and insurance services compensated?",
+        "level": 3,
+        "href": null,
         "paras": [],
         "items": []
       },
       {
         "eyebrow": null,
         "heading": "Ready to build your Elite Physician Wealth Blueprint™?",
+        "level": 2,
+        "href": null,
         "paras": [
           "Schedule a confidential introductory call to discuss your goals, current planning concerns, and whether Elite Physicians Wealth Planning™ may be a fit for your needs."
         ],
@@ -231,6 +287,8 @@
       {
         "eyebrow": null,
         "heading": "Residents & Fellows",
+        "level": 2,
+        "href": "/physicians/residents-fellows",
         "paras": [
           "Build the right foundation before income, benefits, and debt decisions accelerate."
         ],
@@ -239,6 +297,8 @@
       {
         "eyebrow": null,
         "heading": "Established Physicians",
+        "level": 2,
+        "href": "/physicians/established",
         "paras": [
           "Coordinate taxes, investments, protection, and family goals around a demanding career."
         ],
@@ -247,6 +307,8 @@
       {
         "eyebrow": null,
         "heading": "Practice Owners & Partners",
+        "level": 2,
+        "href": "/physicians/practice-owners",
         "paras": [
           "Align business cash flow, retirement benefits, succession, and personal wealth."
         ],
@@ -255,6 +317,8 @@
       {
         "eyebrow": null,
         "heading": "Physicians Approaching Retirement",
+        "level": 2,
+        "href": "/physicians/retirement",
         "paras": [
           "Convert accumulated assets into a durable income, tax, healthcare, and legacy strategy."
         ],
@@ -263,6 +327,8 @@
       {
         "eyebrow": null,
         "heading": "Ready to build your Elite Physician Wealth Blueprint™?",
+        "level": 2,
+        "href": null,
         "paras": [
           "Schedule a confidential introductory call to discuss your goals, current planning concerns, and whether Elite Physicians Wealth Planning™ may be a fit for your needs."
         ],
@@ -274,7 +340,7 @@
   },
   "/physicians/residents-fellows": {
     "slug": "/physicians/residents-fellows",
-    "title": "Residents & Fellows — Elite Physicians Wealth Planning™",
+    "title": "Residents &amp; Fellows — Elite Physicians Wealth Planning™",
     "description": "Build a strong financial foundation before your career and income accelerate.",
     "eyebrow": "Who We Help",
     "headline": "Build a strong financial foundation before your career and income accelerate.",
@@ -283,6 +349,8 @@
       {
         "eyebrow": "Top Financial Questions",
         "heading": "Planning priorities at this stage",
+        "level": 2,
+        "href": null,
         "paras": [
           "Resources"
         ],
@@ -301,6 +369,8 @@
       {
         "eyebrow": "Hypothetical Example",
         "heading": "A scenario at this stage",
+        "level": 2,
+        "href": null,
         "paras": [
           "A resident finishing a three-year program is offered two positions — one employed hospital role and one small-group partnership track. Before signing either contract, a coordinated review of income structure, disability coverage, student loan repayment, and early retirement contributions clarifies the tradeoffs.",
           "Hypothetical example only. Not a description of a specific client or a projection of results."
@@ -310,12 +380,16 @@
       {
         "eyebrow": "Relevant Services",
         "heading": "How the plan connects",
+        "level": 2,
+        "href": null,
         "paras": [],
         "items": []
       },
       {
         "eyebrow": null,
         "heading": "Tax Strategy",
+        "level": 3,
+        "href": "/services/tax-planning",
         "paras": [
           "We review opportunities to improve tax efficiency through retirement-plan design, income timing, charitable strategies, tax-aware investments, business-owner planning, and CPA coordination."
         ],
@@ -324,6 +398,8 @@
       {
         "eyebrow": null,
         "heading": "Retirement Strategy",
+        "level": 3,
+        "href": "/services/retirement-planning",
         "paras": [
           "We help physicians understand how much retirement income they may need, how to build it, how to withdraw it, and how taxes, healthcare costs, Medicare, and legacy goals affect the plan."
         ],
@@ -332,6 +408,8 @@
       {
         "eyebrow": null,
         "heading": "Wealth Management",
+        "level": 3,
+        "href": "/services/wealth-management",
         "paras": [
           "We design and monitor investment strategies that support your long-term objectives, risk tolerance, cash-flow needs, and tax situation."
         ],
@@ -340,6 +418,8 @@
       {
         "eyebrow": null,
         "heading": "Practice & Business Planning",
+        "level": 3,
+        "href": "/services/practice-owner-planning",
         "paras": [
           "For practice owners and future owners, we evaluate retirement plans, employee benefits, succession issues, compensation structure, business cash flow, and exit planning considerations."
         ],
@@ -348,6 +428,8 @@
       {
         "eyebrow": null,
         "heading": "Legacy Planning",
+        "level": 3,
+        "href": "/services/legacy-estate-planning",
         "paras": [
           "We coordinate estate planning conversations with qualified legal advisors and help review beneficiary designations, trust funding considerations, family wealth transfer goals, charitable giving, and risk management."
         ],
@@ -356,30 +438,40 @@
       {
         "eyebrow": "FAQ",
         "heading": "Questions at this stage",
+        "level": 2,
+        "href": null,
         "paras": [],
         "items": []
       },
       {
         "eyebrow": null,
         "heading": "How is planning at this stage different from general financial advice?",
+        "level": 3,
+        "href": null,
         "paras": [],
         "items": []
       },
       {
         "eyebrow": null,
         "heading": "Do you work only with physicians?",
+        "level": 3,
+        "href": null,
         "paras": [],
         "items": []
       },
       {
         "eyebrow": null,
         "heading": "How is the first conversation structured?",
+        "level": 3,
+        "href": null,
         "paras": [],
         "items": []
       },
       {
         "eyebrow": null,
         "heading": "Ready to build your Elite Physician Wealth Blueprint™?",
+        "level": 2,
+        "href": null,
         "paras": [
           "Schedule a confidential introductory call to discuss your goals, current planning concerns, and whether Elite Physicians Wealth Planning™ may be a fit for your needs."
         ],
@@ -400,6 +492,8 @@
       {
         "eyebrow": "Top Financial Questions",
         "heading": "Planning priorities at this stage",
+        "level": 2,
+        "href": null,
         "paras": [
           "Resources"
         ],
@@ -418,6 +512,8 @@
       {
         "eyebrow": "Hypothetical Example",
         "heading": "A scenario at this stage",
+        "level": 2,
+        "href": null,
         "paras": [
           "A mid-career physician with W-2 income, 1099 consulting, and a spouse's small business had been maxing a 401(k) but never revisited beneficiaries, tax withholding, or long-term care. A coordinated plan sequences the highest-leverage changes over 12 months.",
           "Hypothetical example only. Not a description of a specific client or a projection of results."
@@ -427,12 +523,16 @@
       {
         "eyebrow": "Relevant Services",
         "heading": "How the plan connects",
+        "level": 2,
+        "href": null,
         "paras": [],
         "items": []
       },
       {
         "eyebrow": null,
         "heading": "Tax Strategy",
+        "level": 3,
+        "href": "/services/tax-planning",
         "paras": [
           "We review opportunities to improve tax efficiency through retirement-plan design, income timing, charitable strategies, tax-aware investments, business-owner planning, and CPA coordination."
         ],
@@ -441,6 +541,8 @@
       {
         "eyebrow": null,
         "heading": "Retirement Strategy",
+        "level": 3,
+        "href": "/services/retirement-planning",
         "paras": [
           "We help physicians understand how much retirement income they may need, how to build it, how to withdraw it, and how taxes, healthcare costs, Medicare, and legacy goals affect the plan."
         ],
@@ -449,6 +551,8 @@
       {
         "eyebrow": null,
         "heading": "Wealth Management",
+        "level": 3,
+        "href": "/services/wealth-management",
         "paras": [
           "We design and monitor investment strategies that support your long-term objectives, risk tolerance, cash-flow needs, and tax situation."
         ],
@@ -457,6 +561,8 @@
       {
         "eyebrow": null,
         "heading": "Practice & Business Planning",
+        "level": 3,
+        "href": "/services/practice-owner-planning",
         "paras": [
           "For practice owners and future owners, we evaluate retirement plans, employee benefits, succession issues, compensation structure, business cash flow, and exit planning considerations."
         ],
@@ -465,6 +571,8 @@
       {
         "eyebrow": null,
         "heading": "Legacy Planning",
+        "level": 3,
+        "href": "/services/legacy-estate-planning",
         "paras": [
           "We coordinate estate planning conversations with qualified legal advisors and help review beneficiary designations, trust funding considerations, family wealth transfer goals, charitable giving, and risk management."
         ],
@@ -473,30 +581,40 @@
       {
         "eyebrow": "FAQ",
         "heading": "Questions at this stage",
+        "level": 2,
+        "href": null,
         "paras": [],
         "items": []
       },
       {
         "eyebrow": null,
         "heading": "How is planning at this stage different from general financial advice?",
+        "level": 3,
+        "href": null,
         "paras": [],
         "items": []
       },
       {
         "eyebrow": null,
         "heading": "Do you work only with physicians?",
+        "level": 3,
+        "href": null,
         "paras": [],
         "items": []
       },
       {
         "eyebrow": null,
         "heading": "How is the first conversation structured?",
+        "level": 3,
+        "href": null,
         "paras": [],
         "items": []
       },
       {
         "eyebrow": null,
         "heading": "Ready to build your Elite Physician Wealth Blueprint™?",
+        "level": 2,
+        "href": null,
         "paras": [
           "Schedule a confidential introductory call to discuss your goals, current planning concerns, and whether Elite Physicians Wealth Planning™ may be a fit for your needs."
         ],
@@ -508,7 +626,7 @@
   },
   "/physicians/practice-owners": {
     "slug": "/physicians/practice-owners",
-    "title": "Practice Owners & Partners — Elite Physicians Wealth Planning™",
+    "title": "Practice Owners &amp; Partners — Elite Physicians Wealth Planning™",
     "description": "Connect the financial decisions inside your practice with the future you are building outside it.",
     "eyebrow": "Who We Help",
     "headline": "Connect the financial decisions inside your practice with the future you are building outside it.",
@@ -517,6 +635,8 @@
       {
         "eyebrow": "Top Financial Questions",
         "heading": "Planning priorities at this stage",
+        "level": 2,
+        "href": null,
         "paras": [
           "Resources"
         ],
@@ -535,6 +655,8 @@
       {
         "eyebrow": "Hypothetical Example",
         "heading": "A scenario at this stage",
+        "level": 2,
+        "href": null,
         "paras": [
           "A three-partner practice weighs adding a cash balance plan to their existing 401(k). The decision requires input from the TPA, CPA, and each partner's personal financial situation — all considered together, not in isolation.",
           "Hypothetical example only. Not a description of a specific client or a projection of results."
@@ -544,12 +666,16 @@
       {
         "eyebrow": "Relevant Services",
         "heading": "How the plan connects",
+        "level": 2,
+        "href": null,
         "paras": [],
         "items": []
       },
       {
         "eyebrow": null,
         "heading": "Tax Strategy",
+        "level": 3,
+        "href": "/services/tax-planning",
         "paras": [
           "We review opportunities to improve tax efficiency through retirement-plan design, income timing, charitable strategies, tax-aware investments, business-owner planning, and CPA coordination."
         ],
@@ -558,6 +684,8 @@
       {
         "eyebrow": null,
         "heading": "Retirement Strategy",
+        "level": 3,
+        "href": "/services/retirement-planning",
         "paras": [
           "We help physicians understand how much retirement income they may need, how to build it, how to withdraw it, and how taxes, healthcare costs, Medicare, and legacy goals affect the plan."
         ],
@@ -566,6 +694,8 @@
       {
         "eyebrow": null,
         "heading": "Wealth Management",
+        "level": 3,
+        "href": "/services/wealth-management",
         "paras": [
           "We design and monitor investment strategies that support your long-term objectives, risk tolerance, cash-flow needs, and tax situation."
         ],
@@ -574,6 +704,8 @@
       {
         "eyebrow": null,
         "heading": "Practice & Business Planning",
+        "level": 3,
+        "href": "/services/practice-owner-planning",
         "paras": [
           "For practice owners and future owners, we evaluate retirement plans, employee benefits, succession issues, compensation structure, business cash flow, and exit planning considerations."
         ],
@@ -582,6 +714,8 @@
       {
         "eyebrow": null,
         "heading": "Legacy Planning",
+        "level": 3,
+        "href": "/services/legacy-estate-planning",
         "paras": [
           "We coordinate estate planning conversations with qualified legal advisors and help review beneficiary designations, trust funding considerations, family wealth transfer goals, charitable giving, and risk management."
         ],
@@ -590,30 +724,40 @@
       {
         "eyebrow": "FAQ",
         "heading": "Questions at this stage",
+        "level": 2,
+        "href": null,
         "paras": [],
         "items": []
       },
       {
         "eyebrow": null,
         "heading": "How is planning at this stage different from general financial advice?",
+        "level": 3,
+        "href": null,
         "paras": [],
         "items": []
       },
       {
         "eyebrow": null,
         "heading": "Do you work only with physicians?",
+        "level": 3,
+        "href": null,
         "paras": [],
         "items": []
       },
       {
         "eyebrow": null,
         "heading": "How is the first conversation structured?",
+        "level": 3,
+        "href": null,
         "paras": [],
         "items": []
       },
       {
         "eyebrow": null,
         "heading": "Ready to build your Elite Physician Wealth Blueprint™?",
+        "level": 2,
+        "href": null,
         "paras": [
           "Schedule a confidential introductory call to discuss your goals, current planning concerns, and whether Elite Physicians Wealth Planning™ may be a fit for your needs."
         ],
@@ -634,6 +778,8 @@
       {
         "eyebrow": "Top Financial Questions",
         "heading": "Planning priorities at this stage",
+        "level": 2,
+        "href": null,
         "paras": [
           "Resources"
         ],
@@ -652,6 +798,8 @@
       {
         "eyebrow": "Hypothetical Example",
         "heading": "A scenario at this stage",
+        "level": 2,
+        "href": null,
         "paras": [
           "A physician five years from retirement holds a mix of pension, brokerage, retirement accounts, and a small ownership interest in a group. Coordinated projections identify tax-bracket windows, Medicare timing, and legacy conversations to hold now — not later.",
           "Hypothetical example only. Not a description of a specific client or a projection of results."
@@ -661,12 +809,16 @@
       {
         "eyebrow": "Relevant Services",
         "heading": "How the plan connects",
+        "level": 2,
+        "href": null,
         "paras": [],
         "items": []
       },
       {
         "eyebrow": null,
         "heading": "Tax Strategy",
+        "level": 3,
+        "href": "/services/tax-planning",
         "paras": [
           "We review opportunities to improve tax efficiency through retirement-plan design, income timing, charitable strategies, tax-aware investments, business-owner planning, and CPA coordination."
         ],
@@ -675,6 +827,8 @@
       {
         "eyebrow": null,
         "heading": "Retirement Strategy",
+        "level": 3,
+        "href": "/services/retirement-planning",
         "paras": [
           "We help physicians understand how much retirement income they may need, how to build it, how to withdraw it, and how taxes, healthcare costs, Medicare, and legacy goals affect the plan."
         ],
@@ -683,6 +837,8 @@
       {
         "eyebrow": null,
         "heading": "Wealth Management",
+        "level": 3,
+        "href": "/services/wealth-management",
         "paras": [
           "We design and monitor investment strategies that support your long-term objectives, risk tolerance, cash-flow needs, and tax situation."
         ],
@@ -691,6 +847,8 @@
       {
         "eyebrow": null,
         "heading": "Practice & Business Planning",
+        "level": 3,
+        "href": "/services/practice-owner-planning",
         "paras": [
           "For practice owners and future owners, we evaluate retirement plans, employee benefits, succession issues, compensation structure, business cash flow, and exit planning considerations."
         ],
@@ -699,6 +857,8 @@
       {
         "eyebrow": null,
         "heading": "Legacy Planning",
+        "level": 3,
+        "href": "/services/legacy-estate-planning",
         "paras": [
           "We coordinate estate planning conversations with qualified legal advisors and help review beneficiary designations, trust funding considerations, family wealth transfer goals, charitable giving, and risk management."
         ],
@@ -707,30 +867,40 @@
       {
         "eyebrow": "FAQ",
         "heading": "Questions at this stage",
+        "level": 2,
+        "href": null,
         "paras": [],
         "items": []
       },
       {
         "eyebrow": null,
         "heading": "How is planning at this stage different from general financial advice?",
+        "level": 3,
+        "href": null,
         "paras": [],
         "items": []
       },
       {
         "eyebrow": null,
         "heading": "Do you work only with physicians?",
+        "level": 3,
+        "href": null,
         "paras": [],
         "items": []
       },
       {
         "eyebrow": null,
         "heading": "How is the first conversation structured?",
+        "level": 3,
+        "href": null,
         "paras": [],
         "items": []
       },
       {
         "eyebrow": null,
         "heading": "Ready to build your Elite Physician Wealth Blueprint™?",
+        "level": 2,
+        "href": null,
         "paras": [
           "Schedule a confidential introductory call to discuss your goals, current planning concerns, and whether Elite Physicians Wealth Planning™ may be a fit for your needs."
         ],
@@ -751,6 +921,8 @@
       {
         "eyebrow": "Five Planning Pillars",
         "heading": "Tax Strategy",
+        "level": 2,
+        "href": "/services/tax-planning",
         "paras": [
           "We review opportunities to improve tax efficiency through retirement-plan design, income timing, charitable strategies, tax-aware investments, business-owner planning, and CPA coordination."
         ],
@@ -759,6 +931,8 @@
       {
         "eyebrow": null,
         "heading": "Retirement Strategy",
+        "level": 2,
+        "href": "/services/retirement-planning",
         "paras": [
           "We help physicians understand how much retirement income they may need, how to build it, how to withdraw it, and how taxes, healthcare costs, Medicare, and legacy goals affect the plan."
         ],
@@ -767,6 +941,8 @@
       {
         "eyebrow": null,
         "heading": "Wealth Management",
+        "level": 2,
+        "href": "/services/wealth-management",
         "paras": [
           "We design and monitor investment strategies that support your long-term objectives, risk tolerance, cash-flow needs, and tax situation."
         ],
@@ -775,6 +951,8 @@
       {
         "eyebrow": null,
         "heading": "Practice & Business Planning",
+        "level": 2,
+        "href": "/services/practice-owner-planning",
         "paras": [
           "For practice owners and future owners, we evaluate retirement plans, employee benefits, succession issues, compensation structure, business cash flow, and exit planning considerations."
         ],
@@ -783,6 +961,8 @@
       {
         "eyebrow": null,
         "heading": "Legacy Planning",
+        "level": 2,
+        "href": "/services/legacy-estate-planning",
         "paras": [
           "We coordinate estate planning conversations with qualified legal advisors and help review beneficiary designations, trust funding considerations, family wealth transfer goals, charitable giving, and risk management."
         ],
@@ -791,6 +971,8 @@
       {
         "eyebrow": null,
         "heading": "Not sure where to begin?",
+        "level": 2,
+        "href": null,
         "paras": [
           "Start with the Elite Financial Health Score™ and identify your highest-priority planning areas."
         ],
@@ -811,6 +993,8 @@
       {
         "eyebrow": "What We Review",
         "heading": "Where tax planning intersects with wealth planning",
+        "level": 2,
+        "href": null,
         "paras": [
           "We review the areas where tax planning often intersects with wealth planning, including retirement contributions, defined benefit and cash balance plan opportunities, Roth conversion analysis, tax-aware investments, charitable giving, business-owner compensation, entity structure questions, and retirement-income planning."
         ],
@@ -819,6 +1003,8 @@
       {
         "eyebrow": "CPA Coordination",
         "heading": "We do not replace your CPA",
+        "level": 2,
+        "href": null,
         "paras": [
           "We work to help coordinate planning conversations so your investment, retirement, business, and tax decisions are evaluated together."
         ],
@@ -827,6 +1013,8 @@
       {
         "eyebrow": "Elite Tax Opportunity Report™",
         "heading": "A planning roadmap, not a tax return",
+        "level": 2,
+        "href": null,
         "paras": [
           "The Elite Tax Opportunity Report™ is designed to help identify areas where further analysis may be warranted. It is not a tax return and it is not a substitute for professional tax advice. It is a planning roadmap for discussion with your advisory team."
         ],
@@ -835,6 +1023,8 @@
       {
         "eyebrow": "Common Questions",
         "heading": "Questions worth reviewing before year-end",
+        "level": 2,
+        "href": null,
         "paras": [],
         "items": [
           "Are you using the right retirement-plan structure?",
@@ -847,12 +1037,16 @@
       {
         "eyebrow": "Other Planning Pillars",
         "heading": "Each pillar connects to the others",
+        "level": 2,
+        "href": null,
         "paras": [],
         "items": []
       },
       {
         "eyebrow": null,
         "heading": "Retirement Strategy",
+        "level": 3,
+        "href": "/services/retirement-planning",
         "paras": [
           "We help physicians understand how much retirement income they may need, how to build it, how to withdraw it, and how taxes, healthcare costs, Medicare, and legacy goals affect the plan."
         ],
@@ -861,6 +1055,8 @@
       {
         "eyebrow": null,
         "heading": "Wealth Management",
+        "level": 3,
+        "href": "/services/wealth-management",
         "paras": [
           "We design and monitor investment strategies that support your long-term objectives, risk tolerance, cash-flow needs, and tax situation."
         ],
@@ -869,6 +1065,8 @@
       {
         "eyebrow": null,
         "heading": "Practice & Business Planning",
+        "level": 3,
+        "href": "/services/practice-owner-planning",
         "paras": [
           "For practice owners and future owners, we evaluate retirement plans, employee benefits, succession issues, compensation structure, business cash flow, and exit planning considerations."
         ],
@@ -877,6 +1075,8 @@
       {
         "eyebrow": null,
         "heading": "Legacy Planning",
+        "level": 3,
+        "href": "/services/legacy-estate-planning",
         "paras": [
           "We coordinate estate planning conversations with qualified legal advisors and help review beneficiary designations, trust funding considerations, family wealth transfer goals, charitable giving, and risk management."
         ],
@@ -885,6 +1085,8 @@
       {
         "eyebrow": null,
         "heading": "Ready to coordinate this into one strategy?",
+        "level": 2,
+        "href": null,
         "paras": [
           "If taxes are one of your biggest concerns, request an Elite Tax Opportunity Review and begin with a structured assessment."
         ],
@@ -905,6 +1107,8 @@
       {
         "eyebrow": "Elite Retirement Readiness Review",
         "heading": "A structured look at what retirement will require",
+        "level": 2,
+        "href": null,
         "paras": [
           "The Elite Retirement Readiness Review evaluates income goals, projected expenses, portfolio structure, savings rate, withdrawal strategy, tax exposure, Social Security timing, Medicare and IRMAA considerations, and estate-planning coordination needs."
         ],
@@ -913,6 +1117,8 @@
       {
         "eyebrow": "Tax-Aware Withdrawals",
         "heading": "Withdrawal sequencing matters",
+        "level": 2,
+        "href": null,
         "paras": [
           "The order in which assets are used can affect taxes, Medicare premiums, portfolio longevity, and the amount ultimately transferred to family or charity."
         ],
@@ -921,6 +1127,8 @@
       {
         "eyebrow": "Practice Exit",
         "heading": "Retirement planning for practice owners",
+        "level": 2,
+        "href": null,
         "paras": [
           "For practice owners, retirement planning may also involve business valuation, practice sale, buy-sell agreements, succession timing, employee benefits, and the transition from earned income to investment and retirement-plan income."
         ],
@@ -929,6 +1137,8 @@
       {
         "eyebrow": "Life After Medicine",
         "heading": "Lifestyle and purpose questions",
+        "level": 2,
+        "href": null,
         "paras": [
           "The process also addresses lifestyle and purpose questions: where you want to live, whether you want to continue part-time work, how much flexibility you want, and what kind of legacy you want to leave."
         ],
@@ -937,12 +1147,16 @@
       {
         "eyebrow": "Other Planning Pillars",
         "heading": "Each pillar connects to the others",
+        "level": 2,
+        "href": null,
         "paras": [],
         "items": []
       },
       {
         "eyebrow": null,
         "heading": "Tax Strategy",
+        "level": 3,
+        "href": "/services/tax-planning",
         "paras": [
           "We review opportunities to improve tax efficiency through retirement-plan design, income timing, charitable strategies, tax-aware investments, business-owner planning, and CPA coordination."
         ],
@@ -951,6 +1165,8 @@
       {
         "eyebrow": null,
         "heading": "Wealth Management",
+        "level": 3,
+        "href": "/services/wealth-management",
         "paras": [
           "We design and monitor investment strategies that support your long-term objectives, risk tolerance, cash-flow needs, and tax situation."
         ],
@@ -959,6 +1175,8 @@
       {
         "eyebrow": null,
         "heading": "Practice & Business Planning",
+        "level": 3,
+        "href": "/services/practice-owner-planning",
         "paras": [
           "For practice owners and future owners, we evaluate retirement plans, employee benefits, succession issues, compensation structure, business cash flow, and exit planning considerations."
         ],
@@ -967,6 +1185,8 @@
       {
         "eyebrow": null,
         "heading": "Legacy Planning",
+        "level": 3,
+        "href": "/services/legacy-estate-planning",
         "paras": [
           "We coordinate estate planning conversations with qualified legal advisors and help review beneficiary designations, trust funding considerations, family wealth transfer goals, charitable giving, and risk management."
         ],
@@ -975,6 +1195,8 @@
       {
         "eyebrow": null,
         "heading": "Ready to coordinate this into one strategy?",
+        "level": 2,
+        "href": null,
         "paras": [
           "Start with an Elite Retirement Readiness Review to evaluate the income, tax, investment, and planning issues that matter most before retirement."
         ],
@@ -995,6 +1217,8 @@
       {
         "eyebrow": "Our Investment Planning Lens",
         "heading": "What we evaluate",
+        "level": 2,
+        "href": null,
         "paras": [
           "We evaluate allocation, diversification, tax location, liquidity needs, rebalancing discipline, taxable versus retirement account placement, concentrated positions, and the relationship between portfolio risk and retirement goals."
         ],
@@ -1003,6 +1227,8 @@
       {
         "eyebrow": "Tax-Aware Portfolio Design",
         "heading": "Understanding after-tax results",
+        "level": 2,
+        "href": null,
         "paras": [
           "Tax-aware investing does not mean avoiding taxes at all costs. It means making investment decisions with a clear understanding of how taxes affect after-tax results, income planning, and long-term flexibility."
         ],
@@ -1011,6 +1237,8 @@
       {
         "eyebrow": "Behavioral Discipline",
         "heading": "A process built for demanding schedules",
+        "level": 2,
+        "href": null,
         "paras": [
           "Busy medical professionals often do not have time to monitor every market cycle. A disciplined investment process can help reduce reactive decisions during periods of uncertainty."
         ],
@@ -1019,6 +1247,8 @@
       {
         "eyebrow": "Integration",
         "heading": "Connected to the broader blueprint",
+        "level": 2,
+        "href": null,
         "paras": [
           "Investment recommendations should integrate with the broader Elite Physician Wealth Blueprint™, including retirement income planning, charitable giving, estate planning, and risk management."
         ],
@@ -1027,12 +1257,16 @@
       {
         "eyebrow": "Other Planning Pillars",
         "heading": "Each pillar connects to the others",
+        "level": 2,
+        "href": null,
         "paras": [],
         "items": []
       },
       {
         "eyebrow": null,
         "heading": "Tax Strategy",
+        "level": 3,
+        "href": "/services/tax-planning",
         "paras": [
           "We review opportunities to improve tax efficiency through retirement-plan design, income timing, charitable strategies, tax-aware investments, business-owner planning, and CPA coordination."
         ],
@@ -1041,6 +1275,8 @@
       {
         "eyebrow": null,
         "heading": "Retirement Strategy",
+        "level": 3,
+        "href": "/services/retirement-planning",
         "paras": [
           "We help physicians understand how much retirement income they may need, how to build it, how to withdraw it, and how taxes, healthcare costs, Medicare, and legacy goals affect the plan."
         ],
@@ -1049,6 +1285,8 @@
       {
         "eyebrow": null,
         "heading": "Practice & Business Planning",
+        "level": 3,
+        "href": "/services/practice-owner-planning",
         "paras": [
           "For practice owners and future owners, we evaluate retirement plans, employee benefits, succession issues, compensation structure, business cash flow, and exit planning considerations."
         ],
@@ -1057,6 +1295,8 @@
       {
         "eyebrow": null,
         "heading": "Legacy Planning",
+        "level": 3,
+        "href": "/services/legacy-estate-planning",
         "paras": [
           "We coordinate estate planning conversations with qualified legal advisors and help review beneficiary designations, trust funding considerations, family wealth transfer goals, charitable giving, and risk management."
         ],
@@ -1065,6 +1305,8 @@
       {
         "eyebrow": null,
         "heading": "Ready to coordinate this into one strategy?",
+        "level": 2,
+        "href": null,
         "paras": [
           "Request an investment strategy review as part of your broader financial health assessment."
         ],
@@ -1085,6 +1327,8 @@
       {
         "eyebrow": "What We Review",
         "heading": "Owner-level planning areas",
+        "level": 2,
+        "href": null,
         "paras": [
           "We review owner compensation, retirement-plan design, cash balance and defined benefit plan opportunities, profit-sharing structure, employee benefit strategy, business insurance, key-person protection, buy-sell coordination, practice succession, and exit planning."
         ],
@@ -1093,6 +1337,8 @@
       {
         "eyebrow": "Retirement-Plan Design",
         "heading": "One of the most important owner decisions",
+        "level": 2,
+        "href": null,
         "paras": [
           "The right retirement-plan design can be one of the most important planning decisions for a successful practice owner. It should be reviewed with attention to owner goals, employee demographics, cash flow, tax objectives, and administrative obligations."
         ],
@@ -1101,6 +1347,8 @@
       {
         "eyebrow": "Coordination Team",
         "heading": "Planning rarely happens in isolation",
+        "level": 2,
+        "href": null,
         "paras": [
           "Practice-owner planning often requires coordination among the CPA, attorney, TPA, payroll provider, benefits consultant, insurance professionals, and investment advisor."
         ],
@@ -1109,6 +1357,8 @@
       {
         "eyebrow": "Exit & Succession",
         "heading": "Plan before the decision is urgent",
+        "level": 2,
+        "href": null,
         "paras": [
           "Whether the plan is internal succession, associate buy-in, sale to another practice, or gradual transition, the financial plan should be built before the exit decision is urgent."
         ],
@@ -1117,12 +1367,16 @@
       {
         "eyebrow": "Other Planning Pillars",
         "heading": "Each pillar connects to the others",
+        "level": 2,
+        "href": null,
         "paras": [],
         "items": []
       },
       {
         "eyebrow": null,
         "heading": "Tax Strategy",
+        "level": 3,
+        "href": "/services/tax-planning",
         "paras": [
           "We review opportunities to improve tax efficiency through retirement-plan design, income timing, charitable strategies, tax-aware investments, business-owner planning, and CPA coordination."
         ],
@@ -1131,6 +1385,8 @@
       {
         "eyebrow": null,
         "heading": "Retirement Strategy",
+        "level": 3,
+        "href": "/services/retirement-planning",
         "paras": [
           "We help physicians understand how much retirement income they may need, how to build it, how to withdraw it, and how taxes, healthcare costs, Medicare, and legacy goals affect the plan."
         ],
@@ -1139,6 +1395,8 @@
       {
         "eyebrow": null,
         "heading": "Wealth Management",
+        "level": 3,
+        "href": "/services/wealth-management",
         "paras": [
           "We design and monitor investment strategies that support your long-term objectives, risk tolerance, cash-flow needs, and tax situation."
         ],
@@ -1147,6 +1405,8 @@
       {
         "eyebrow": null,
         "heading": "Legacy Planning",
+        "level": 3,
+        "href": "/services/legacy-estate-planning",
         "paras": [
           "We coordinate estate planning conversations with qualified legal advisors and help review beneficiary designations, trust funding considerations, family wealth transfer goals, charitable giving, and risk management."
         ],
@@ -1155,6 +1415,8 @@
       {
         "eyebrow": null,
         "heading": "Ready to coordinate this into one strategy?",
+        "level": 2,
+        "href": null,
         "paras": [
           "If your practice is central to your financial future, schedule a Practice Wealth Strategy Call."
         ],
@@ -1166,7 +1428,7 @@
   },
   "/services/legacy-estate-planning": {
     "slug": "/services/legacy-estate-planning",
-    "title": "Legacy & Estate Planning Coordination — Elite Physicians Wealth Planning™",
+    "title": "Legacy &amp; Estate Planning Coordination — Elite Physicians Wealth Planning™",
     "description": "Coordinating estate documents, beneficiary designations, asset titling, insurance, charitable giving, and family wealth transfer with qualified estate planning attorneys.",
     "eyebrow": "Legacy Planning",
     "headline": "Legacy planning helps connect your wealth to the people and causes that matter most.",
@@ -1175,6 +1437,8 @@
       {
         "eyebrow": "Attorney Coordination",
         "heading": "We do not draft legal documents",
+        "level": 2,
+        "href": null,
         "paras": [
           "We help identify planning questions, organize financial information, and coordinate with qualified estate planning attorneys so the legal documents align with the broader financial strategy."
         ],
@@ -1183,6 +1447,8 @@
       {
         "eyebrow": "What We Review",
         "heading": "Where financial and estate plans connect",
+        "level": 2,
+        "href": null,
         "paras": [
           "We review beneficiary designations, account titling, insurance coverage, trust funding considerations, charitable planning goals, tax exposure, family communication priorities, and the relationship between retirement income and legacy goals."
         ],
@@ -1191,6 +1457,8 @@
       {
         "eyebrow": "Physician-Specific Concerns",
         "heading": "Added considerations for medical households",
+        "level": 2,
+        "href": null,
         "paras": [
           "Physicians may have added concerns around asset protection, practice interests, professional risk, blended-family issues, charitable intent, and the transfer of a practice or real estate."
         ],
@@ -1199,12 +1467,16 @@
       {
         "eyebrow": "Other Planning Pillars",
         "heading": "Each pillar connects to the others",
+        "level": 2,
+        "href": null,
         "paras": [],
         "items": []
       },
       {
         "eyebrow": null,
         "heading": "Tax Strategy",
+        "level": 3,
+        "href": "/services/tax-planning",
         "paras": [
           "We review opportunities to improve tax efficiency through retirement-plan design, income timing, charitable strategies, tax-aware investments, business-owner planning, and CPA coordination."
         ],
@@ -1213,6 +1485,8 @@
       {
         "eyebrow": null,
         "heading": "Retirement Strategy",
+        "level": 3,
+        "href": "/services/retirement-planning",
         "paras": [
           "We help physicians understand how much retirement income they may need, how to build it, how to withdraw it, and how taxes, healthcare costs, Medicare, and legacy goals affect the plan."
         ],
@@ -1221,6 +1495,8 @@
       {
         "eyebrow": null,
         "heading": "Wealth Management",
+        "level": 3,
+        "href": "/services/wealth-management",
         "paras": [
           "We design and monitor investment strategies that support your long-term objectives, risk tolerance, cash-flow needs, and tax situation."
         ],
@@ -1229,6 +1505,8 @@
       {
         "eyebrow": null,
         "heading": "Practice & Business Planning",
+        "level": 3,
+        "href": "/services/practice-owner-planning",
         "paras": [
           "For practice owners and future owners, we evaluate retirement plans, employee benefits, succession issues, compensation structure, business cash flow, and exit planning considerations."
         ],
@@ -1237,6 +1515,8 @@
       {
         "eyebrow": null,
         "heading": "Ready to coordinate this into one strategy?",
+        "level": 2,
+        "href": null,
         "paras": [
           "If your estate plan has not been reviewed recently, begin with a legacy planning priorities review."
         ],
@@ -1257,6 +1537,8 @@
       {
         "eyebrow": null,
         "heading": "Discover",
+        "level": 2,
+        "href": null,
         "paras": [
           "01",
           "We begin by learning your goals, family priorities, income structure, benefits, tax situation, retirement accounts, investments, insurance, estate documents, debt, and practice ownership details if applicable.",
@@ -1274,6 +1556,8 @@
       {
         "eyebrow": null,
         "heading": "Assess",
+        "level": 2,
+        "href": null,
         "paras": [
           "We evaluate tax efficiency, retirement readiness, investment alignment, risk management, asset protection, estate planning, practice planning, and cash-flow priorities.",
           "03"
@@ -1283,6 +1567,8 @@
       {
         "eyebrow": null,
         "heading": "Strategize",
+        "level": 2,
+        "href": null,
         "paras": [
           "We develop a personalized plan that connects tax planning, retirement planning, wealth management, practice decisions, and legacy objectives.",
           "04"
@@ -1292,6 +1578,8 @@
       {
         "eyebrow": null,
         "heading": "Implement",
+        "level": 2,
+        "href": null,
         "paras": [
           "We help organize the action steps and coordinate with your CPA, attorney, TPA, payroll provider, insurance professionals, and other advisors.",
           "05"
@@ -1301,6 +1589,8 @@
       {
         "eyebrow": null,
         "heading": "Optimize",
+        "level": 2,
+        "href": null,
         "paras": [
           "We monitor changes in income, family priorities, practice status, tax rules, markets, and retirement projections.",
           "06"
@@ -1310,6 +1600,8 @@
       {
         "eyebrow": null,
         "heading": "Review",
+        "level": 2,
+        "href": null,
         "paras": [
           "Each year, we conduct an Annual Elite Wealth Review™ to keep the plan aligned, updated, and actionable."
         ],
@@ -1318,6 +1610,8 @@
       {
         "eyebrow": "The Goal",
         "heading": "Start Your Elite Physician Wealth Blueprint™",
+        "level": 2,
+        "href": null,
         "paras": [
           "The goal is not to produce a binder that sits on a shelf. The goal is to create a planning system that helps you make better financial decisions over time.",
           "Schedule a confidential introductory call to discuss your goals, current planning concerns, and next steps."
@@ -1338,6 +1632,8 @@
       {
         "eyebrow": null,
         "heading": "The Physician Financial Checkup: Seven Areas That Should Work Together",
+        "level": 2,
+        "href": null,
         "paras": [
           "Career-Stage Planning",
           "A framework for looking at cash flow, taxes, retirement, investments, protection, estate, and practice planning as one system.",
@@ -1349,6 +1645,8 @@
       {
         "eyebrow": null,
         "heading": "Seven Financial Moves to Consider in the First Five Years of Practice",
+        "level": 2,
+        "href": null,
         "paras": [
           "Foundational decisions to consider between residency and mid-career.",
           "Coming soon",
@@ -1359,6 +1657,8 @@
       {
         "eyebrow": null,
         "heading": "W-2, 1099, and Practice Income: Questions Physicians Should Ask Before Year-End",
+        "level": 2,
+        "href": null,
         "paras": [
           "Compensation-source questions that shape tax and retirement planning.",
           "Coming soon",
@@ -1369,6 +1669,8 @@
       {
         "eyebrow": null,
         "heading": "Cash Balance and Defined Benefit Plans: A Decision Guide for Medical Practice Owners",
+        "level": 2,
+        "href": null,
         "paras": [
           "How advanced qualified plans fit into a practice owner's larger picture.",
           "Coming soon",
@@ -1379,6 +1681,8 @@
       {
         "eyebrow": null,
         "heading": "How Physicians Can Coordinate a CPA, Attorney, TPA, and Financial Advisor",
+        "level": 2,
+        "href": null,
         "paras": [
           "A practical model for keeping outside professionals aligned around one plan.",
           "Coming soon",
@@ -1389,6 +1693,8 @@
       {
         "eyebrow": null,
         "heading": "Five Years From Retirement: A Physician's Planning Checklist",
+        "level": 2,
+        "href": null,
         "paras": [
           "The conversations to have before the transition begins.",
           "Coming soon",
@@ -1399,6 +1705,8 @@
       {
         "eyebrow": null,
         "heading": "Disability Insurance Review: Questions Physicians Often Overlook",
+        "level": 2,
+        "href": null,
         "paras": [
           "Own-occupation, portability, and definition questions worth revisiting.",
           "Coming soon",
@@ -1409,6 +1717,8 @@
       {
         "eyebrow": null,
         "heading": "Roth Conversion Timing Before and After Retirement",
+        "level": 2,
+        "href": null,
         "paras": [
           "Scenarios where conversion windows may open — and close.",
           "Coming soon",
@@ -1419,6 +1729,8 @@
       {
         "eyebrow": null,
         "heading": "Preparing Financially for the Sale or Transition of a Medical Practice",
+        "level": 2,
+        "href": null,
         "paras": [
           "Personal-plan questions to bring alongside a valuation and legal team.",
           "Coming soon",
@@ -1429,6 +1741,8 @@
       {
         "eyebrow": null,
         "heading": "Beneficiaries, Trusts, and Account Ownership: A Physician Estate-Plan Coordination Checklist",
+        "level": 2,
+        "href": null,
         "paras": [
           "Where estate documents and account titling most often disconnect.",
           "Coming soon",
@@ -1439,6 +1753,8 @@
       {
         "eyebrow": null,
         "heading": "Charitable Giving Strategies for High-Income Medical Professionals",
+        "level": 2,
+        "href": null,
         "paras": [
           "Vehicles and timing decisions worth reviewing with a tax professional.",
           "Coming soon",
@@ -1449,6 +1765,8 @@
       {
         "eyebrow": null,
         "heading": "Long-Term Care and Survivor Planning for Physician Families",
+        "level": 2,
+        "href": null,
         "paras": [
           "Preparing the household for scenarios wealth alone may not solve.",
           "Coming soon"
@@ -1458,6 +1776,8 @@
       {
         "eyebrow": null,
         "heading": "Ready to build your Elite Physician Wealth Blueprint™?",
+        "level": 2,
+        "href": null,
         "paras": [
           "Schedule a confidential introductory call to discuss your goals, current planning concerns, and whether Elite Physicians Wealth Planning™ may be a fit for your needs."
         ],
@@ -1478,6 +1798,8 @@
       {
         "eyebrow": "Our View",
         "heading": "Strong outcomes come from connected decisions.",
+        "level": 2,
+        "href": null,
         "paras": [
           "We believe the strongest financial outcomes are rarely created by isolated decisions. Tax planning should connect to retirement planning. Investment decisions should support income strategy. Practice decisions should be reviewed in light of family, estate, and long-term wealth goals."
         ],
@@ -1486,6 +1808,8 @@
       {
         "eyebrow": "What We Coordinate",
         "heading": "The major areas of a physician's financial life.",
+        "level": 2,
+        "href": null,
         "paras": [
           "We coordinate the major areas of your financial life: tax strategy, retirement strategy, wealth management, practice and business planning, insurance review, estate planning coordination, and annual review."
         ],
@@ -1494,6 +1818,8 @@
       {
         "eyebrow": "What Makes Us Different",
         "heading": "We begin with the full financial picture, not a product.",
+        "level": 2,
+        "href": null,
         "paras": [
           "Most financial conversations begin with investments. Our process begins with your full financial picture. We identify the areas where planning is disconnected, prioritize the highest-impact opportunities, and help coordinate implementation with your other professional advisors."
         ],
@@ -1502,6 +1828,8 @@
       {
         "eyebrow": null,
         "heading": "Coordinated",
+        "level": 3,
+        "href": null,
         "paras": [
           "We connect tax, retirement, investment, practice, and estate decisions instead of treating them as separate conversations."
         ],
@@ -1510,6 +1838,8 @@
       {
         "eyebrow": null,
         "heading": "Strategic",
+        "level": 3,
+        "href": null,
         "paras": [
           "We identify where planning is disconnected, then prioritize the highest-impact opportunities first."
         ],
@@ -1518,6 +1848,8 @@
       {
         "eyebrow": null,
         "heading": "Physician-focused",
+        "level": 3,
+        "href": null,
         "paras": [
           "High income, complex compensation, practice ownership, and limited time shape how the process is designed."
         ],
@@ -1526,6 +1858,8 @@
       {
         "eyebrow": "Founder",
         "heading": "Led by Michael A. Epps, ChFC®, RICP®",
+        "level": 2,
+        "href": null,
         "paras": [
           "Elite Physicians Wealth Planning™ is powered by Fiscal Vision Financial and led by Michael A. Epps, ChFC®, RICP®, Founder & Chief Wealth Strategist."
         ],
@@ -1534,6 +1868,8 @@
       {
         "eyebrow": null,
         "heading": "Evaluate your strategy through a physician-focused lens.",
+        "level": 2,
+        "href": null,
         "paras": [
           "If you are ready to evaluate your financial strategy through a physician-focused lens, schedule a confidential introductory call."
         ],
@@ -1554,6 +1890,8 @@
       {
         "eyebrow": null,
         "heading": null,
+        "level": 2,
+        "href": null,
         "paras": [
           "Michael A. Epps founded Elite Physicians Wealth Planning™ to give physicians and medical professionals a more coordinated way to approach taxes, retirement, investments, practice decisions, and long-term wealth planning."
         ],
@@ -1562,6 +1900,8 @@
       {
         "eyebrow": "Professional Philosophy",
         "heading": "A shared strategy across your professional team",
+        "level": 2,
+        "href": null,
         "paras": [
           "Michael's work is built around a simple belief: medical professionals should not have to manage complex financial decisions in fragments. The advisor, CPA, attorney, TPA, insurance professional, and other specialists should be working from a shared strategy."
         ],
@@ -1570,6 +1910,8 @@
       {
         "eyebrow": "Planning Focus",
         "heading": "Tax-aware retirement and wealth strategy",
+        "level": 2,
+        "href": null,
         "paras": [
           "His planning focus includes tax-aware retirement strategies, retirement income design, wealth management, business-owner planning, and coordination with a client's existing professional team."
         ],
@@ -1578,6 +1920,8 @@
       {
         "eyebrow": "Why Physicians",
         "heading": "Why the focus is on medical professionals",
+        "level": 2,
+        "href": null,
         "paras": [
           "Physicians often spend their careers caring for others while postponing their own planning. Michael's objective is to help them develop a disciplined, structured, and coordinated approach to building and preserving wealth."
         ],
@@ -1586,12 +1930,16 @@
       {
         "eyebrow": "Credentials, in plain language",
         "heading": "Credentials, in plain language",
+        "level": 2,
+        "href": null,
         "paras": [],
         "items": []
       },
       {
         "eyebrow": null,
         "heading": "ChFC® — Chartered Financial Consultant",
+        "level": 3,
+        "href": null,
         "paras": [
           "Advanced financial-planning credential covering comprehensive planning across taxes, investments, insurance, retirement, and estate planning."
         ],
@@ -1600,6 +1948,8 @@
       {
         "eyebrow": null,
         "heading": "RICP® — Retirement Income Certified Professional",
+        "level": 3,
+        "href": null,
         "paras": [
           "Specialized designation focused on retirement income planning — sequencing Social Security, retirement accounts, pensions, and other resources into a durable income strategy."
         ],
@@ -1608,6 +1958,8 @@
       {
         "eyebrow": "Your First Conversation",
         "heading": "What your first conversation looks like",
+        "level": 2,
+        "href": null,
         "paras": [
           "The first conversation is not a product pitch. It is a strategy conversation designed to understand your goals, current planning concerns, and whether the Elite Physician Wealth Blueprint™ process is appropriate for your situation."
         ],
@@ -1616,6 +1968,8 @@
       {
         "eyebrow": null,
         "heading": "Start with a strategy conversation.",
+        "level": 2,
+        "href": null,
         "paras": [
           "A confidential introductory call to discuss your goals, current planning concerns, and next steps."
         ],
@@ -1636,6 +1990,8 @@
       {
         "eyebrow": null,
         "heading": "Michael A. Epps",
+        "level": 3,
+        "href": null,
         "paras": [
           "Founder & Chief Wealth Strategist, ChFC®, RICP®",
           "Leads the firm's overall planning philosophy and founded Elite Physicians Wealth Planning™ to bring coordinated strategy to physician households."
@@ -1645,6 +2001,8 @@
       {
         "eyebrow": null,
         "heading": "Lisa Alexander",
+        "level": 3,
+        "href": null,
         "paras": [
           "Financial Strategist"
         ],
@@ -1653,6 +2011,8 @@
       {
         "eyebrow": null,
         "heading": "Michael Epps Jr.",
+        "level": 3,
+        "href": null,
         "paras": [
           "Financial Strategist"
         ],
@@ -1661,6 +2021,8 @@
       {
         "eyebrow": null,
         "heading": "Joshua Epps",
+        "level": 3,
+        "href": null,
         "paras": [
           "Intern"
         ],
@@ -1669,6 +2031,8 @@
       {
         "eyebrow": null,
         "heading": "La-Deidra Blake",
+        "level": 3,
+        "href": null,
         "paras": [
           "Office Manager"
         ],
@@ -1677,6 +2041,8 @@
       {
         "eyebrow": null,
         "heading": "Aliaya Epps",
+        "level": 3,
+        "href": null,
         "paras": [
           "Business Contact Specialist"
         ],
@@ -1685,6 +2051,8 @@
       {
         "eyebrow": null,
         "heading": "Gabriela Gomez-Sanchez",
+        "level": 3,
+        "href": null,
         "paras": [
           "Customer Care Specialist"
         ],
@@ -1693,6 +2061,8 @@
       {
         "eyebrow": "How our team works together",
         "heading": "One point of contact. A coordinated team behind it.",
+        "level": 2,
+        "href": null,
         "paras": [
           "Each client works with a primary strategist who knows their situation in depth, while drawing on the wider team's specialties as planning questions arise. The result is continuity of relationship with the depth of a coordinated practice — consistent with our focus on coordination, not products."
         ],
@@ -1701,6 +2071,8 @@
       {
         "eyebrow": null,
         "heading": "Ready to build your Elite Physician Wealth Blueprint™?",
+        "level": 2,
+        "href": null,
         "paras": [
           "Schedule a confidential introductory call to discuss your goals, current planning concerns, and whether Elite Physicians Wealth Planning™ may be a fit for your needs."
         ],
@@ -1721,6 +2093,8 @@
       {
         "eyebrow": "Planning Profiles",
         "heading": "Physicians & Specialists",
+        "level": 2,
+        "href": "/who-we-serve/physicians-specialists",
         "paras": [
           "For physicians and specialists balancing high income, complex benefits, taxes, retirement savings, insurance, and long-term wealth."
         ],
@@ -1729,6 +2103,8 @@
       {
         "eyebrow": null,
         "heading": "Surgeons",
+        "level": 2,
+        "href": "/who-we-serve/surgeons",
         "paras": [
           "For surgeons with high earning potential, demanding schedules, tax exposure, malpractice and risk considerations, and retirement-planning complexity."
         ],
@@ -1737,6 +2113,8 @@
       {
         "eyebrow": null,
         "heading": "Dentists & Dental Specialists",
+        "level": 2,
+        "href": "/who-we-serve/dentists-dental-specialists",
         "paras": [
           "For dentists and dental specialists managing practice ownership, equipment debt, cash flow, retirement plans, staff benefits, and eventual practice exit."
         ],
@@ -1745,6 +2123,8 @@
       {
         "eyebrow": null,
         "heading": "Practice Owners",
+        "level": 2,
+        "href": "/services/practice-owner-planning",
         "paras": [
           "For medical and dental practice owners who need planning that connects personal wealth with business decisions."
         ],
@@ -1753,6 +2133,8 @@
       {
         "eyebrow": null,
         "heading": "CRNAs, NPs & PAs",
+        "level": 2,
+        "href": "/who-we-serve/crnas-nps-pas",
         "paras": [
           "For advanced practice providers with rising income, benefits decisions, retirement-plan choices, and wealth-building goals."
         ],
@@ -1761,6 +2143,8 @@
       {
         "eyebrow": null,
         "heading": "Healthcare Executives",
+        "level": 2,
+        "href": "/who-we-serve/healthcare-executives",
         "paras": [
           "For high-income healthcare executives navigating equity compensation, deferred compensation, benefits, retirement, and tax planning."
         ],
@@ -1769,6 +2153,8 @@
       {
         "eyebrow": null,
         "heading": "Choose the profile that fits you best.",
+        "level": 2,
+        "href": null,
         "paras": [
           "Choose the profile that fits you best or start with a strategy call if your situation spans multiple categories."
         ],
@@ -1780,7 +2166,7 @@
   },
   "/who-we-serve/physicians-specialists": {
     "slug": "/who-we-serve/physicians-specialists",
-    "title": "Financial Planning for Physicians & Specialists — Elite Physicians Wealth Planning™",
+    "title": "Financial Planning for Physicians &amp; Specialists — Elite Physicians Wealth Planning™",
     "description": "Financial strategy for physicians and specialists with complex income, limited time, and coordinated tax, retirement, investment, and protection needs.",
     "eyebrow": "Physicians & Specialists",
     "headline": "Financial strategy for physicians and specialists with complex income and limited time.",
@@ -1789,6 +2175,8 @@
       {
         "eyebrow": "Planning Priorities",
         "heading": "Where physician planning usually needs coordination",
+        "level": 2,
+        "href": null,
         "paras": [],
         "items": [
           "Multi-year tax planning and retirement-plan contributions",
@@ -1802,6 +2190,8 @@
       {
         "eyebrow": "What We Help Organize",
         "heading": "One coordinated view of the household",
+        "level": 2,
+        "href": null,
         "paras": [
           "We help organize accounts, benefits, insurance coverage, retirement projections, tax considerations, and family goals into one plan, then coordinate with your CPA and attorney so decisions in one area do not undermine another."
         ],
@@ -1810,6 +2200,8 @@
       {
         "eyebrow": "Why It Matters",
         "heading": "Uncoordinated decisions cost time and flexibility",
+        "level": 2,
+        "href": null,
         "paras": [
           "When tax, retirement, investment, and protection decisions are made separately, physicians can end up with overlapping coverage, inefficient savings, and avoidable tax exposure. Coordination is the value — not any single product.",
           "Prefer to start with reading? Download the Physician Tax & Retirement Planning Guide or explore the Physician Resource Center."
@@ -1819,6 +2211,8 @@
       {
         "eyebrow": null,
         "heading": "Your career is demanding. Your financial strategy should be coordinated.",
+        "level": 2,
+        "href": null,
         "paras": [
           "Schedule a confidential conversation to review your priorities and the decisions currently in motion."
         ],
@@ -1839,6 +2233,8 @@
       {
         "eyebrow": "Planning Priorities",
         "heading": "Decisions that deserve structured review",
+        "level": 2,
+        "href": null,
         "paras": [],
         "items": [
           "Tax planning across salary, call pay, bonus, and 1099 income",
@@ -1852,6 +2248,8 @@
       {
         "eyebrow": "How We Help",
         "heading": "Planning that fits an unpredictable schedule",
+        "level": 2,
+        "href": null,
         "paras": [
           "We build a written plan, prioritize the decisions that matter most this year, and coordinate with your CPA, attorney, and benefits professionals so progress continues without requiring your constant attention."
         ],
@@ -1860,6 +2258,8 @@
       {
         "eyebrow": "Risk & Career Longevity",
         "heading": "Protecting income and optionality",
+        "level": 2,
+        "href": null,
         "paras": [
           "Because surgical careers can be physically demanding, protection planning and flexible retirement funding deserve early and repeated review rather than a one-time decision.",
           "Prefer to start with reading? Download the Physician Tax & Retirement Planning Guide or explore the Physician Resource Center."
@@ -1869,6 +2269,8 @@
       {
         "eyebrow": null,
         "heading": "High earnings deserve a coordinated strategy.",
+        "level": 2,
+        "href": null,
         "paras": [
           "Schedule a confidential conversation to review tax, retirement, protection, and investment priorities together."
         ],
@@ -1889,6 +2291,8 @@
       {
         "eyebrow": "For Associates",
         "heading": "Building the foundation before ownership",
+        "level": 2,
+        "href": null,
         "paras": [],
         "items": [
           "Cash flow, debt strategy, and savings rate",
@@ -1901,6 +2305,8 @@
       {
         "eyebrow": "For Owners",
         "heading": "Connecting the practice to personal wealth",
+        "level": 2,
+        "href": null,
         "paras": [],
         "items": [
           "Owner compensation and business cash flow",
@@ -1913,6 +2319,8 @@
       {
         "eyebrow": "Coordination",
         "heading": "One plan across the CPA, attorney, and TPA",
+        "level": 2,
+        "href": null,
         "paras": [
           "We coordinate with your existing professionals so tax, retirement-plan, entity, and transition decisions are reviewed together rather than in isolation.",
           "Prefer to start with reading? Download the Physician Tax & Retirement Planning Guide or explore the Physician Resource Center."
@@ -1922,6 +2330,8 @@
       {
         "eyebrow": null,
         "heading": "Your practice and your personal plan should move together.",
+        "level": 2,
+        "href": null,
         "paras": [
           "Schedule a confidential conversation to review ownership, retirement-plan, tax, and transition priorities."
         ],
@@ -1933,7 +2343,7 @@
   },
   "/who-we-serve/crnas-nps-pas": {
     "slug": "/who-we-serve/crnas-nps-pas",
-    "title": "Financial Planning for CRNAs, NPs & PAs — Elite Physicians Wealth Planning™",
+    "title": "Financial Planning for CRNAs, NPs &amp; PAs — Elite Physicians Wealth Planning™",
     "description": "Financial planning for CRNAs, nurse practitioners, and physician assistants building long-term wealth with rising income and benefits decisions.",
     "eyebrow": "CRNAs, NPs & PAs",
     "headline": "Financial planning for advanced practice professionals building long-term wealth.",
@@ -1942,6 +2352,8 @@
       {
         "eyebrow": "Planning Priorities",
         "heading": "Where planning usually begins",
+        "level": 2,
+        "href": null,
         "paras": [],
         "items": [
           "Cash flow, reserves, and student-loan strategy",
@@ -1955,6 +2367,8 @@
       {
         "eyebrow": "Career Growth",
         "heading": "Planning that scales with your income",
+        "level": 2,
+        "href": null,
         "paras": [
           "As income grows through additional certifications, leadership roles, independent contracting, or ownership opportunities, the plan should be revisited so savings, tax strategy, and protection keep pace."
         ],
@@ -1963,6 +2377,8 @@
       {
         "eyebrow": "Coordination",
         "heading": "A structured process, not a product pitch",
+        "level": 2,
+        "href": null,
         "paras": [
           "We start with an assessment of your current picture, prioritize the highest-impact decisions, and coordinate with your tax professional where appropriate.",
           "Prefer to start with reading? Download the Physician Tax & Retirement Planning Guide or explore the Physician Resource Center."
@@ -1972,6 +2388,8 @@
       {
         "eyebrow": null,
         "heading": "Start with a clear picture of where you stand.",
+        "level": 2,
+        "href": null,
         "paras": [
           "Begin with a structured review of your cash flow, savings, tax, retirement, and protection planning."
         ],
@@ -1992,6 +2410,8 @@
       {
         "eyebrow": "Planning Priorities",
         "heading": "What we review",
+        "level": 2,
+        "href": null,
         "paras": [],
         "items": [
           "Equity and incentive compensation planning",
@@ -2005,6 +2425,8 @@
       {
         "eyebrow": "Decision Timing",
         "heading": "Many executive decisions have deadlines",
+        "level": 2,
+        "href": null,
         "paras": [
           "Deferral elections, equity exercises, and benefit enrollments are often time-bound and difficult to reverse. Reviewing them on a planning calendar — before the window opens — is usually more valuable than reacting afterward."
         ],
@@ -2013,6 +2435,8 @@
       {
         "eyebrow": "Coordination",
         "heading": "One strategy across compensation and personal wealth",
+        "level": 2,
+        "href": null,
         "paras": [
           "We coordinate compensation planning with your investment strategy, retirement income projections, protection needs, and estate plan so each decision is evaluated in context.",
           "Prefer to start with reading? Download the Physician Tax & Retirement Planning Guide or explore the Physician Resource Center."
@@ -2022,6 +2446,8 @@
       {
         "eyebrow": null,
         "heading": "Complex compensation deserves coordinated planning.",
+        "level": 2,
+        "href": null,
         "paras": [
           "Schedule a confidential conversation to review compensation, tax, retirement, and legacy priorities together."
         ],
@@ -2042,6 +2468,8 @@
       {
         "eyebrow": "Featured Guide",
         "heading": "The Physician Tax & Retirement Planning Guide",
+        "level": 2,
+        "href": null,
         "paras": [
           "A structured overview of the tax, retirement, investment, and practice-planning questions physicians most often need to review — written for busy medical professionals who want a framework, not a product pitch."
         ],
@@ -2050,6 +2478,8 @@
       {
         "eyebrow": "Topics",
         "heading": "Browse by planning topic",
+        "level": 2,
+        "href": null,
         "paras": [
           "[Topic library expanding — additional guides, checklists, and webinar recordings pending firm review.]"
         ],
@@ -2058,6 +2488,8 @@
       {
         "eyebrow": "Latest Articles",
         "heading": "The Physician Financial Checkup: Seven Areas That Should Work Together",
+        "level": 3,
+        "href": null,
         "paras": [
           "Career-Stage Planning",
           "A framework for looking at cash flow, taxes, retirement, investments, protection, estate, and practice planning as one system.",
@@ -2068,6 +2500,8 @@
       {
         "eyebrow": null,
         "heading": "Seven Financial Moves to Consider in the First Five Years of Practice",
+        "level": 3,
+        "href": null,
         "paras": [
           "Foundational decisions to consider between residency and mid-career.",
           "Physician Tax Strategy"
@@ -2077,6 +2511,8 @@
       {
         "eyebrow": null,
         "heading": "W-2, 1099, and Practice Income: Questions Physicians Should Ask Before Year-End",
+        "level": 3,
+        "href": null,
         "paras": [
           "Compensation-source questions that shape tax and retirement planning.",
           "Practice Owner Strategy"
@@ -2086,6 +2522,8 @@
       {
         "eyebrow": null,
         "heading": "Cash Balance and Defined Benefit Plans: A Decision Guide for Medical Practice Owners",
+        "level": 3,
+        "href": null,
         "paras": [
           "How advanced qualified plans fit into a practice owner's larger picture.",
           "Career-Stage Planning"
@@ -2095,6 +2533,8 @@
       {
         "eyebrow": null,
         "heading": "How Physicians Can Coordinate a CPA, Attorney, TPA, and Financial Advisor",
+        "level": 3,
+        "href": null,
         "paras": [
           "A practical model for keeping outside professionals aligned around one plan.",
           "Retirement & Income"
@@ -2104,6 +2544,8 @@
       {
         "eyebrow": null,
         "heading": "Five Years From Retirement: A Physician's Planning Checklist",
+        "level": 3,
+        "href": null,
         "paras": [
           "The conversations to have before the transition begins."
         ],
@@ -2112,6 +2554,8 @@
       {
         "eyebrow": "Educational Updates",
         "heading": "Receive periodic educational updates for medical professionals.",
+        "level": 2,
+        "href": null,
         "paras": [
           "Join the Elite Physicians Wealth Planning™ email list for planning frameworks, year-end checklists, and webinar announcements. You may unsubscribe at any time. Educational content only — no individualized advice, and never any request for sensitive personal, medical, tax, or account information."
         ],
@@ -2120,6 +2564,8 @@
       {
         "eyebrow": null,
         "heading": "Your career is demanding. Your financial strategy should be coordinated.",
+        "level": 2,
+        "href": null,
         "paras": [
           "When you are ready for a personalized conversation, schedule a confidential strategy call."
         ],
@@ -2131,7 +2577,7 @@
   },
   "/physician-tax-retirement-guide": {
     "slug": "/physician-tax-retirement-guide",
-    "title": "Physician Tax & Retirement Planning Guide — Elite Physicians Wealth Planning™",
+    "title": "Physician Tax &amp; Retirement Planning Guide — Elite Physicians Wealth Planning™",
     "description": "Download the Physician Tax &amp; Retirement Planning Guide — a structured framework for coordinating tax, retirement, investment, and practice decisions.",
     "eyebrow": "Educational Guide",
     "headline": "Download the Physician Tax & Retirement Planning Guide.",
@@ -2140,6 +2586,8 @@
       {
         "eyebrow": null,
         "heading": "What you will learn",
+        "level": 2,
+        "href": null,
         "paras": [],
         "items": [
           "How retirement-plan design and contribution decisions affect long-term tax exposure",
@@ -2153,6 +2601,8 @@
       {
         "eyebrow": null,
         "heading": "Who it is for",
+        "level": 2,
+        "href": null,
         "paras": [
           "Physicians, surgeons, dentists, advanced practice providers, practice owners, and healthcare executives who want an organized framework rather than a product recommendation. The guide is educational and is not individualized tax, legal, or investment advice."
         ],
@@ -2161,6 +2611,8 @@
       {
         "eyebrow": null,
         "heading": "Request the guide",
+        "level": 2,
+        "href": null,
         "paras": [
           "Enter your details and we will email you the guide.",
           "Please do not include sensitive personal, medical, tax, legal, or account information (Social Security numbers, account numbers, or health details) in this form.",
@@ -2183,6 +2635,8 @@
       {
         "eyebrow": null,
         "heading": "Request your call",
+        "level": 2,
+        "href": null,
         "paras": [
           "Please do not include sensitive personal, medical, tax, legal, or account information (Social Security numbers, account numbers, or health details) in this form.",
           "By submitting this form, you agree that Fiscal Vision Financial may contact you about your inquiry. Consent is not a condition of purchasing services. Messaging and data rates may apply if text messaging is enabled. Please do not submit sensitive personal, medical, tax, legal, or account information through this form."
@@ -2192,6 +2646,8 @@
       {
         "eyebrow": "What to expect",
         "heading": null,
+        "level": 2,
+        "href": null,
         "paras": [],
         "items": [
           "A confidential conversation about your goals and current planning concerns.",
@@ -2202,6 +2658,8 @@
       {
         "eyebrow": "What this call is not",
         "heading": null,
+        "level": 2,
+        "href": null,
         "paras": [],
         "items": [
           "It is not a product presentation or a sales pitch.",
@@ -2212,6 +2670,8 @@
       {
         "eyebrow": "Recommended preparation",
         "heading": null,
+        "level": 2,
+        "href": null,
         "paras": [
           "Please do not send statements, tax returns, or account numbers before the call."
         ],
@@ -2236,6 +2696,8 @@
       {
         "eyebrow": null,
         "heading": "Send a message",
+        "level": 2,
+        "href": null,
         "paras": [
           "Please do not include sensitive personal, medical, tax, legal, or account information (Social Security numbers, account numbers, or health details) in this form.",
           "By submitting this form, you agree that Fiscal Vision Financial may contact you about your inquiry and provide educational communications. You may unsubscribe from email communications at any time. Submitting this form does not create an advisory relationship. Please do not submit sensitive personal, medical, tax, legal, or account information through this form."
@@ -2245,6 +2707,8 @@
       {
         "eyebrow": "Office",
         "heading": null,
+        "level": 2,
+        "href": null,
         "paras": [
           "Fiscal Vision Financial",
           "Office: 301-242-3929",
@@ -2255,6 +2719,8 @@
       {
         "eyebrow": "Referral partners",
         "heading": null,
+        "level": 2,
+        "href": null,
         "paras": [
           "We work alongside CPAs, attorneys, TPAs, practice consultants, and medical associations whose clients need coordinated planning. If you would like to discuss a referral relationship, select \"Referral partnership\" in the form.",
           "Discuss a Referral Partnership"
@@ -2266,7 +2732,7 @@
   },
   "/privacy-disclosures": {
     "slug": "/privacy-disclosures",
-    "title": "Privacy & Website Disclosures — Elite Physicians Wealth Planning™",
+    "title": "Privacy &amp; Website Disclosures — Elite Physicians Wealth Planning™",
     "description": "Privacy and website disclosures for Elite Physicians Wealth Planning™, powered by Fiscal Vision Financial.",
     "eyebrow": "Disclosures",
     "headline": "Privacy & Website Disclosures.",
@@ -2275,6 +2741,8 @@
       {
         "eyebrow": null,
         "heading": "Educational use",
+        "level": 2,
+        "href": null,
         "paras": [
           "Website content is provided for educational and informational purposes only. It is general in nature, may not reflect current tax law or market conditions, and should not be treated as individualized tax, legal, investment, insurance, or financial advice."
         ],
@@ -2283,6 +2751,8 @@
       {
         "eyebrow": null,
         "heading": "No advisory relationship",
+        "level": 2,
+        "href": null,
         "paras": [
           "Visiting this website, downloading a resource, submitting a form, or attending a webinar does not create an advisory, brokerage, or fiduciary relationship. Any relationship is established only through written agreements and required disclosures."
         ],
@@ -2291,6 +2761,8 @@
       {
         "eyebrow": null,
         "heading": "Tax and legal coordination",
+        "level": 2,
+        "href": null,
         "paras": [
           "Elite Physicians Wealth Planning™ does not prepare tax returns or draft legal documents. Tax planning discussions are intended for coordination with your qualified tax professional, and estate planning discussions are intended for coordination with a qualified estate planning attorney."
         ],
@@ -2299,6 +2771,8 @@
       {
         "eyebrow": null,
         "heading": "No guarantees",
+        "level": 2,
+        "href": null,
         "paras": [
           "No content on this website should be interpreted as a guarantee of tax savings, investment results, retirement outcomes, or financial performance. All strategies involve risk, including the possible loss of principal, and may not be appropriate for every individual."
         ],
@@ -2307,6 +2781,8 @@
       {
         "eyebrow": null,
         "heading": "Email communications",
+        "level": 2,
+        "href": null,
         "paras": [
           "If you provide your email address, you may receive educational communications from Elite Physicians Wealth Planning™ and Fiscal Vision Financial. You may unsubscribe at any time using the link in any email. Email is not a secure channel; please do not send sensitive personal, medical, tax, legal, or account information by email or through website forms."
         ],
@@ -2315,6 +2791,8 @@
       {
         "eyebrow": null,
         "heading": "Text and phone communications",
+        "level": 2,
+        "href": null,
         "paras": [
           "If you provide a phone number, Fiscal Vision Financial may contact you about your inquiry. Consent is not a condition of purchasing services. Messaging and data rates may apply if text messaging is enabled. You may request that we stop contacting you at any time."
         ],
@@ -2334,6 +2812,8 @@
       {
         "eyebrow": null,
         "heading": null,
+        "level": 2,
+        "href": null,
         "paras": [
           "Please do not include Social Security numbers, account numbers, health information, tax documents, or other sensitive data.",
           "Disclosure: Submitting this form does not create an advisory relationship. All engagements are governed by written disclosures and agreements.",

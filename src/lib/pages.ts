@@ -34,10 +34,30 @@ import raw from "./page-content.json";
 export type PageSection = {
   readonly eyebrow: string | null;
   readonly heading: string | null;
+  /**
+   * The source's own heading level. An h3 is a SUBSECTION of the h2 above it —
+   * the "Each pillar connects to the others" blocks are h3s — and flattening
+   * them to h2 both broke the document outline and turned one grouped idea into
+   * five more full-width bands.
+   */
+  readonly level: 2 | 3;
+  /**
+   * Where the source linked this block. The source wraps whole cross-sell
+   * blocks in an anchor; the first parser dropped it, which cost the site 60
+   * in-content links. Null when the target is a route we do not ship, or when
+   * it would link a page to itself.
+   */
+  readonly href: string | null;
   readonly paras: readonly string[];
   readonly items: readonly string[];
   /** The source closes nearly every page with a persuasive block; rendered as a CTA band. */
   readonly isCta?: boolean;
+};
+
+/** An h2 section together with the h3 subsections that belong under it. */
+export type SectionGroup = {
+  readonly lead: PageSection;
+  readonly subsections: readonly PageSection[];
 };
 
 export type PageContent = {
@@ -76,4 +96,24 @@ export function bodySections(page: PageContent): readonly PageSection[] {
 
 export function ctaSection(page: PageContent): PageSection | null {
   return page.sections.find((s) => s.isCta) ?? null;
+}
+
+/**
+ * Body sections with each run of h3s folded under the h2 that introduces them,
+ * so the page renders one band per idea instead of one band per heading.
+ */
+export function groupedBody(page: PageContent): readonly SectionGroup[] {
+  const groups: SectionGroup[] = [];
+  for (const section of bodySections(page)) {
+    const previous = groups[groups.length - 1];
+    if (section.level === 3 && previous) {
+      groups[groups.length - 1] = {
+        lead: previous.lead,
+        subsections: [...previous.subsections, section],
+      };
+    } else {
+      groups.push({ lead: section, subsections: [] });
+    }
+  }
+  return groups;
 }

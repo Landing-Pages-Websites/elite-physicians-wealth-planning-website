@@ -105,7 +105,11 @@ async function auditPage(route, vp) {
         openPopovers,
       };
     });
-    const slug = route === "/" ? "home" : route.slice(1);
+    // Nested routes slug with their slash intact — "about/team-1440.png" —
+    // which writes into a directory that does not exist. The screenshot is
+    // wrapped in try/catch, so that failure was silent and 15 of the 29
+    // routes had never actually been captured. Flatten the separator.
+    const slug = route === "/" ? "home" : route.slice(1).replace(/\//g, "-");
     // The screenshot is a convenience for review, not an assertion. A very tall
     // mobile page exceeds Chrome's capture limit and used to abort the whole
     // audit, taking the real checks down with it.

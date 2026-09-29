@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { bodySections, ctaSection, type PageContent } from "@/lib/pages";
+import { ctaSection, groupedBody, type PageContent } from "@/lib/pages";
 import { PageCta } from "./page-cta";
 import { PageHero } from "./page-hero";
 import { PageSection } from "./page-section";
@@ -22,14 +22,18 @@ export function PageShell({
   trail?: readonly { href: string; label: string }[];
   children?: ReactNode;
 }): React.JSX.Element {
-  const body = bodySections(page);
+  const body = groupedBody(page);
   const cta = ctaSection(page);
 
   return (
     <main id="main">
       <PageHero page={page} trail={trail} />
-      {body.map((section, i) => (
-        <PageSection key={`${section.heading ?? section.eyebrow ?? "s"}-${i}`} section={section} index={i} />
+      {body.map((group, i) => (
+        <PageSection
+          key={`${group.lead.heading ?? group.lead.eyebrow ?? "s"}-${i}`}
+          group={group}
+          index={i}
+        />
       ))}
       {children}
       {cta ? <PageCta section={cta} /> : null}
