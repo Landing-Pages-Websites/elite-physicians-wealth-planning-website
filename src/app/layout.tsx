@@ -10,6 +10,20 @@ export const metadata: Metadata = {
   },
   description:
     "Elite Physicians Wealth Planning helps physicians and medical professionals coordinate tax planning, retirement planning, wealth management, practice planning, and legacy planning into one clear financial strategy.",
+  /**
+   * Next derives og:title, og:description and og:url per route from each page's
+   * own title, description and canonical. No og:image is asserted: the real
+   * logo is an unsupplied client asset (build/CLIENT-GAPS.md 1.2) and inventing
+   * a share image would invent an identity. `summary` rather than
+   * `summary_large_image` for the same reason — the large card needs an image.
+   */
+  openGraph: {
+    type: "website",
+    siteName: "Elite Physicians Wealth Planning",
+    locale: "en_US",
+    url: "/",
+  },
+  twitter: { card: "summary" },
 };
 
 /**

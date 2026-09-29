@@ -19,12 +19,12 @@ import type { PageSection } from "@/lib/pages";
  */
 export function PageCta({ section }: { section: PageSection }): React.JSX.Element {
   return (
-    <section className="relative overflow-hidden bg-ink">
+    <section data-dark-band className="relative overflow-hidden bg-ink">
       <svg
         viewBox="0 0 1440 300"
         preserveAspectRatio="none"
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 h-full w-full"
+        className="pointer-events-none absolute inset-0 hidden h-full w-full sm:block"
         fill="none"
       >
         {/* Resumes the hero's line where it left off — down the right margin,

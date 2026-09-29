@@ -105,8 +105,14 @@ export function ctaSection(page: PageContent): PageSection | null {
 export function groupedBody(page: PageContent): readonly SectionGroup[] {
   const groups: SectionGroup[] = [];
   for (const section of bodySections(page)) {
+    // A subsection with no body and nowhere to go is an empty promise. The
+    // source's FAQ blocks are questions whose answers were never written, and
+    // rendering them gave four routes a band headed "Common questions" holding
+    // three questions and no answers.
+    const empty = !section.paras.length && !section.items.length && !section.href;
     const previous = groups[groups.length - 1];
     if (section.level === 3 && previous) {
+      if (empty) continue;
       groups[groups.length - 1] = {
         lead: previous.lead,
         subsections: [...previous.subsections, section],
@@ -115,5 +121,12 @@ export function groupedBody(page: PageContent): readonly SectionGroup[] {
       groups.push({ lead: section, subsections: [] });
     }
   }
-  return groups;
+  // A lead that introduced only empty subsections now introduces nothing.
+  return groups.filter(
+    (g) =>
+      g.subsections.length > 0 ||
+      g.lead.paras.length > 0 ||
+      g.lead.items.length > 0 ||
+      Boolean(g.lead.href),
+  );
 }

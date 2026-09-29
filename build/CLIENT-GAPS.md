@@ -271,12 +271,16 @@ linked, because the client actually publishes that text.
 | 13.3 | `10665 Stanhaven Pl, Suite 3132, White Plains, MD 20695` | Still gated. The White Plains versus Waldorf discrepancy is unresolved, so no address appears anywhere and `LocalBusiness` JSON-LD is not emitted |
 | 13.4 | Three personal staff email addresses | On the legacy domain, which is reference-only. Not republished |
 
-## 14. Team bios — five of six people
-`/about/team` names Michael A. Epps, Lisa Alexander, Michael Epps Jr., Joshua
-Epps, La-Deidra Blake and Aliaya Epps. Only Michael has a bio. `customer_asks`
-says to add bios *"when the customer supplies them"* and `hard_rules` ban invented
-team biographies, so names and titles ship verbatim and nothing else. Send bios
-and they drop straight in.
+## 14. Team bios — six of seven people
+`/about/team` names **seven** people: Michael A. Epps, Lisa Alexander, Michael
+Epps Jr., Joshua Epps, La-Deidra Blake, Aliaya Epps and Gabriela Gomez-Sanchez.
+Only Michael has a bio. (An earlier revision of this register said six and
+omitted Gabriela — corrected on audit.)
+
+`customer_asks` says to add bios *"when the customer supplies them"* and
+`hard_rules` ban invented team biographies, so names and titles ship verbatim and
+nothing else. No bio text was invented for anyone — that was swept and is clean.
+Send bios and they drop straight in.
 
 ## 15. Still open from the homepage stage
 1.1 portrait provenance · 1.2 real logo (still blocks favicon, app icons,

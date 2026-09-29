@@ -33,8 +33,7 @@
         "level": 2,
         "href": null,
         "paras": [
-          "A structured process designed to help busy medical professionals identify planning gaps, prioritize action steps, coordinate advisors, and update the plan as career, family, income, and tax laws change.",
-          "01"
+          "A structured process designed to help busy medical professionals identify planning gaps, prioritize action steps, coordinate advisors, and update the plan as career, family, income, and tax laws change."
         ],
         "items": []
       },
@@ -43,9 +42,7 @@
         "heading": "Discover",
         "level": 3,
         "href": null,
-        "paras": [
-          "02"
-        ],
+        "paras": [],
         "items": []
       },
       {
@@ -53,9 +50,7 @@
         "heading": "Assess",
         "level": 3,
         "href": null,
-        "paras": [
-          "03"
-        ],
+        "paras": [],
         "items": []
       },
       {
@@ -63,9 +58,7 @@
         "heading": "Strategize",
         "level": 3,
         "href": null,
-        "paras": [
-          "04"
-        ],
+        "paras": [],
         "items": []
       },
       {
@@ -73,9 +66,7 @@
         "heading": "Implement",
         "level": 3,
         "href": null,
-        "paras": [
-          "05"
-        ],
+        "paras": [],
         "items": []
       },
       {
@@ -83,9 +74,7 @@
         "heading": "Optimize",
         "level": 3,
         "href": null,
-        "paras": [
-          "06"
-        ],
+        "paras": [],
         "items": []
       },
       {
@@ -340,7 +329,7 @@
   },
   "/physicians/residents-fellows": {
     "slug": "/physicians/residents-fellows",
-    "title": "Residents &amp; Fellows — Elite Physicians Wealth Planning™",
+    "title": "Residents & Fellows — Elite Physicians Wealth Planning™",
     "description": "Build a strong financial foundation before your career and income accelerate.",
     "eyebrow": "Who We Help",
     "headline": "Build a strong financial foundation before your career and income accelerate.",
@@ -361,9 +350,9 @@
           "Disability and life insurance needs",
           "Retirement plan enrollment and early investing",
           "Tax questions related to moonlighting or 1099 income",
-          "First Five Years in Practice Checklist[coming soon]",
-          "Benefits Enrollment Guide for New Physicians[coming soon]",
-          "Physician Financial Checkup[coming soon]"
+          "First Five Years in Practice Checklist [coming soon]",
+          "Benefits Enrollment Guide for New Physicians [coming soon]",
+          "Physician Financial Checkup [coming soon]"
         ]
       },
       {
@@ -504,9 +493,9 @@
           "Education and family goals",
           "Asset protection and insurance review",
           "Estate and beneficiary alignment",
-          "Mid-Career Physician Planning Checklist[coming soon]",
-          "Year-End Tax Planning Questions[coming soon]",
-          "Retirement Readiness Scorecard[coming soon]"
+          "Mid-Career Physician Planning Checklist [coming soon]",
+          "Year-End Tax Planning Questions [coming soon]",
+          "Retirement Readiness Scorecard [coming soon]"
         ]
       },
       {
@@ -626,7 +615,7 @@
   },
   "/physicians/practice-owners": {
     "slug": "/physicians/practice-owners",
-    "title": "Practice Owners &amp; Partners — Elite Physicians Wealth Planning™",
+    "title": "Practice Owners & Partners — Elite Physicians Wealth Planning™",
     "description": "Connect the financial decisions inside your practice with the future you are building outside it.",
     "eyebrow": "Who We Help",
     "headline": "Connect the financial decisions inside your practice with the future you are building outside it.",
@@ -647,9 +636,9 @@
           "Partner transitions and succession",
           "Practice sale or exit preparation",
           "Personal retirement and estate strategy",
-          "Practice Owner Planning Checklist[coming soon]",
-          "Retirement Plan Design Questions[coming soon]",
-          "Succession Readiness Guide[coming soon]"
+          "Practice Owner Planning Checklist [coming soon]",
+          "Retirement Plan Design Questions [coming soon]",
+          "Succession Readiness Guide [coming soon]"
         ]
       },
       {
@@ -790,9 +779,9 @@
           "Medicare and healthcare-cost planning",
           "Long-term care and survivor planning",
           "Practice transition, charitable goals, and estate coordination",
-          "Physician Retirement Readiness Scorecard[coming soon]",
-          "Five Years to Retirement Checklist[coming soon]",
-          "Legacy Conversation Guide[coming soon]"
+          "Physician Retirement Readiness Scorecard [coming soon]",
+          "Five Years to Retirement Checklist [coming soon]",
+          "Legacy Conversation Guide [coming soon]"
         ]
       },
       {
@@ -1428,7 +1417,7 @@
   },
   "/services/legacy-estate-planning": {
     "slug": "/services/legacy-estate-planning",
-    "title": "Legacy &amp; Estate Planning Coordination — Elite Physicians Wealth Planning™",
+    "title": "Legacy & Estate Planning Coordination — Elite Physicians Wealth Planning™",
     "description": "Coordinating estate documents, beneficiary designations, asset titling, insurance, charitable giving, and family wealth transfer with qualified estate planning attorneys.",
     "eyebrow": "Legacy Planning",
     "headline": "Legacy planning helps connect your wealth to the people and causes that matter most.",
@@ -1540,17 +1529,15 @@
         "level": 2,
         "href": null,
         "paras": [
-          "01",
-          "We begin by learning your goals, family priorities, income structure, benefits, tax situation, retirement accounts, investments, insurance, estate documents, debt, and practice ownership details if applicable.",
-          "02"
+          "We begin by learning your goals, family priorities, income structure, benefits, tax situation, retirement accounts, investments, insurance, estate documents, debt, and practice ownership details if applicable."
         ],
         "items": [
-          "01Discover",
-          "02Assess",
-          "03Strategize",
-          "04Implement",
-          "05Optimize",
-          "06Review"
+          "01 Discover",
+          "02 Assess",
+          "03 Strategize",
+          "04 Implement",
+          "05 Optimize",
+          "06 Review"
         ]
       },
       {
@@ -1559,8 +1546,7 @@
         "level": 2,
         "href": null,
         "paras": [
-          "We evaluate tax efficiency, retirement readiness, investment alignment, risk management, asset protection, estate planning, practice planning, and cash-flow priorities.",
-          "03"
+          "We evaluate tax efficiency, retirement readiness, investment alignment, risk management, asset protection, estate planning, practice planning, and cash-flow priorities."
         ],
         "items": []
       },
@@ -1570,8 +1556,7 @@
         "level": 2,
         "href": null,
         "paras": [
-          "We develop a personalized plan that connects tax planning, retirement planning, wealth management, practice decisions, and legacy objectives.",
-          "04"
+          "We develop a personalized plan that connects tax planning, retirement planning, wealth management, practice decisions, and legacy objectives."
         ],
         "items": []
       },
@@ -1581,8 +1566,7 @@
         "level": 2,
         "href": null,
         "paras": [
-          "We help organize the action steps and coordinate with your CPA, attorney, TPA, payroll provider, insurance professionals, and other advisors.",
-          "05"
+          "We help organize the action steps and coordinate with your CPA, attorney, TPA, payroll provider, insurance professionals, and other advisors."
         ],
         "items": []
       },
@@ -1592,8 +1576,7 @@
         "level": 2,
         "href": null,
         "paras": [
-          "We monitor changes in income, family priorities, practice status, tax rules, markets, and retirement projections.",
-          "06"
+          "We monitor changes in income, family priorities, practice status, tax rules, markets, and retirement projections."
         ],
         "items": []
       },
@@ -1882,7 +1865,7 @@
   "/meet-michael-epps": {
     "slug": "/meet-michael-epps",
     "title": "Meet Michael A. Epps, ChFC®, RICP®",
-    "description": "Michael A. Epps, ChFC®, RICP®, Founder &amp; Chief Wealth Strategist of Fiscal Vision Financial, founded Elite Physicians Wealth Planning™ for physicians and medical professionals.",
+    "description": "Michael A. Epps, ChFC®, RICP®, Founder & Chief Wealth Strategist of Fiscal Vision Financial, founded Elite Physicians Wealth Planning™ for physicians and medical professionals.",
     "eyebrow": "Founder",
     "headline": "Meet Michael A. Epps, ChFC®, RICP®",
     "lede": "Founder & Chief Wealth Strategist, Fiscal Vision Financial",
@@ -1928,7 +1911,7 @@
         "items": []
       },
       {
-        "eyebrow": "Credentials, in plain language",
+        "eyebrow": null,
         "heading": "Credentials, in plain language",
         "level": 2,
         "href": null,
@@ -2166,7 +2149,7 @@
   },
   "/who-we-serve/physicians-specialists": {
     "slug": "/who-we-serve/physicians-specialists",
-    "title": "Financial Planning for Physicians &amp; Specialists — Elite Physicians Wealth Planning™",
+    "title": "Financial Planning for Physicians & Specialists — Elite Physicians Wealth Planning™",
     "description": "Financial strategy for physicians and specialists with complex income, limited time, and coordinated tax, retirement, investment, and protection needs.",
     "eyebrow": "Physicians & Specialists",
     "headline": "Financial strategy for physicians and specialists with complex income and limited time.",
@@ -2204,7 +2187,7 @@
         "href": null,
         "paras": [
           "When tax, retirement, investment, and protection decisions are made separately, physicians can end up with overlapping coverage, inefficient savings, and avoidable tax exposure. Coordination is the value — not any single product.",
-          "Prefer to start with reading? Download the Physician Tax & Retirement Planning Guide or explore the Physician Resource Center."
+          "Prefer to start with reading? Request the Physician Tax & Retirement Planning Guide or explore the Physician Resource Center."
         ],
         "items": []
       },
@@ -2262,7 +2245,7 @@
         "href": null,
         "paras": [
           "Because surgical careers can be physically demanding, protection planning and flexible retirement funding deserve early and repeated review rather than a one-time decision.",
-          "Prefer to start with reading? Download the Physician Tax & Retirement Planning Guide or explore the Physician Resource Center."
+          "Prefer to start with reading? Request the Physician Tax & Retirement Planning Guide or explore the Physician Resource Center."
         ],
         "items": []
       },
@@ -2323,7 +2306,7 @@
         "href": null,
         "paras": [
           "We coordinate with your existing professionals so tax, retirement-plan, entity, and transition decisions are reviewed together rather than in isolation.",
-          "Prefer to start with reading? Download the Physician Tax & Retirement Planning Guide or explore the Physician Resource Center."
+          "Prefer to start with reading? Request the Physician Tax & Retirement Planning Guide or explore the Physician Resource Center."
         ],
         "items": []
       },
@@ -2343,7 +2326,7 @@
   },
   "/who-we-serve/crnas-nps-pas": {
     "slug": "/who-we-serve/crnas-nps-pas",
-    "title": "Financial Planning for CRNAs, NPs &amp; PAs — Elite Physicians Wealth Planning™",
+    "title": "Financial Planning for CRNAs, NPs & PAs — Elite Physicians Wealth Planning™",
     "description": "Financial planning for CRNAs, nurse practitioners, and physician assistants building long-term wealth with rising income and benefits decisions.",
     "eyebrow": "CRNAs, NPs & PAs",
     "headline": "Financial planning for advanced practice professionals building long-term wealth.",
@@ -2381,7 +2364,7 @@
         "href": null,
         "paras": [
           "We start with an assessment of your current picture, prioritize the highest-impact decisions, and coordinate with your tax professional where appropriate.",
-          "Prefer to start with reading? Download the Physician Tax & Retirement Planning Guide or explore the Physician Resource Center."
+          "Prefer to start with reading? Request the Physician Tax & Retirement Planning Guide or explore the Physician Resource Center."
         ],
         "items": []
       },
@@ -2439,7 +2422,7 @@
         "href": null,
         "paras": [
           "We coordinate compensation planning with your investment strategy, retirement income projections, protection needs, and estate plan so each decision is evaluated in context.",
-          "Prefer to start with reading? Download the Physician Tax & Retirement Planning Guide or explore the Physician Resource Center."
+          "Prefer to start with reading? Request the Physician Tax & Retirement Planning Guide or explore the Physician Resource Center."
         ],
         "items": []
       },
@@ -2480,9 +2463,7 @@
         "heading": "Browse by planning topic",
         "level": 2,
         "href": null,
-        "paras": [
-          "[Topic library expanding — additional guides, checklists, and webinar recordings pending firm review.]"
-        ],
+        "paras": [],
         "items": []
       },
       {
@@ -2577,10 +2558,10 @@
   },
   "/physician-tax-retirement-guide": {
     "slug": "/physician-tax-retirement-guide",
-    "title": "Physician Tax &amp; Retirement Planning Guide — Elite Physicians Wealth Planning™",
-    "description": "Download the Physician Tax &amp; Retirement Planning Guide — a structured framework for coordinating tax, retirement, investment, and practice decisions.",
+    "title": "Physician Tax & Retirement Planning Guide — Elite Physicians Wealth Planning™",
+    "description": "Request the Physician Tax & Retirement Planning Guide — a structured framework for coordinating tax, retirement, investment, and practice decisions.",
     "eyebrow": "Educational Guide",
-    "headline": "Download the Physician Tax & Retirement Planning Guide.",
+    "headline": "Request the Physician Tax & Retirement Planning Guide.",
     "lede": "A structured framework for physicians who want to understand how tax, retirement, investment, practice, and legacy decisions connect — before the next deadline forces a decision.",
     "sections": [
       {
@@ -2618,8 +2599,7 @@
           "Please do not include sensitive personal, medical, tax, legal, or account information (Social Security numbers, account numbers, or health details) in this form.",
           "By submitting this form, you agree to receive educational communications from Elite Physicians Wealth Planning™ and Fiscal Vision Financial. You may unsubscribe from email communications at any time. Submitting this form does not create an advisory relationship."
         ],
-        "items": [],
-        "isCta": true
+        "items": []
       }
     ],
     "sourceUrl": "https://elitephysicianwealthplanning.com/physician-tax-retirement-guide"
@@ -2732,7 +2712,7 @@
   },
   "/privacy-disclosures": {
     "slug": "/privacy-disclosures",
-    "title": "Privacy &amp; Website Disclosures — Elite Physicians Wealth Planning™",
+    "title": "Privacy & Website Disclosures — Elite Physicians Wealth Planning™",
     "description": "Privacy and website disclosures for Elite Physicians Wealth Planning™, powered by Fiscal Vision Financial.",
     "eyebrow": "Disclosures",
     "headline": "Privacy & Website Disclosures.",
@@ -2821,7 +2801,7 @@
           "Please do not send sensitive information (SSN, account numbers, health data) through this form."
         ],
         "items": [
-          "Step 1. We reply within to schedule.",
+          "Step 1. We reply to schedule.",
           "Step 2. A private discovery conversation, in person or virtually.",
           "Step 3. A written summary of scope and next steps — no obligation."
         ]

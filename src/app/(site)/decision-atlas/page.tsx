@@ -12,6 +12,8 @@ import StrategyCall from "@/components/variant-b/strategy-call";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/decision-atlas" },
+  // A review surface, not part of the site. Crawlable so the noindex is read.
+  robots: { index: false, follow: false },
   title: "The Decision Atlas",
   description:
     "Direction B homepage for Elite Physicians Wealth Planning: a bright clinical decision atlas with Inter-led declarations, navy calibration rails, and small gold decision points.",
@@ -19,7 +21,7 @@ export const metadata: Metadata = {
 
 export default function VariantBPage(): React.JSX.Element {
   return (
-    <main className="bg-white">
+    <main id="main" className="bg-white">
       <OnePlanHero />
       <CareerSignal />
       <SeparateRooms />

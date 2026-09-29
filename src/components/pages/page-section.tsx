@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowRightIcon } from "@/components/site/icons";
 import type { SectionGroup } from "@/lib/pages";
 
 /**
@@ -38,10 +39,11 @@ export function PageSection({
         <div className="lg:grid lg:grid-cols-[minmax(0,0.42fr)_minmax(0,1fr)] lg:gap-x-14">
           {hasRail ? (
             <div className="relative lg:pr-8">
+              {/* When a band's only label is its eyebrow, the eyebrow IS the
+                  heading — same words, same styling, correct outline level.
+                  Rendering it as a <p> left five bands headingless. */}
               {lead.eyebrow ? (
-                <p className="font-body text-[11px] font-semibold tracking-[0.24em] text-gold-text uppercase">
-                  {lead.eyebrow}
-                </p>
+                <EyebrowOrHeading asHeading={!lead.heading}>{lead.eyebrow}</EyebrowOrHeading>
               ) : null}
               {lead.heading ? (
                 <h2
@@ -54,12 +56,12 @@ export function PageSection({
               ) : null}
               <span
                 aria-hidden="true"
-                className="absolute top-1.5 -right-[calc(1.75rem+1px)] hidden h-2 w-2 -translate-x-1/2 rounded-full bg-gold lg:block"
+                className="absolute top-1.5 -right-[calc(1.75rem+4px)] hidden h-2 w-2 rounded-full bg-gold lg:block"
               />
             </div>
           ) : null}
 
-          <div className={hasRail ? "mt-6 lg:mt-1.5" : ""}>
+          <div className={hasRail ? "mt-6 lg:mt-1.5" : "lg:col-start-2"}>
             {lead.paras.map((para) => (
               <p
                 key={para}
@@ -105,6 +107,27 @@ export function PageSection({
   );
 }
 
+/**
+ * The band's small gold label. It is the heading when the band has no other —
+ * `gap-x-14` is a 3.5rem gutter, so the node sits at 1.75rem plus half its own
+ * 8px width to land on the gutter's centre line rather than 8px left of it.
+ */
+function EyebrowOrHeading({
+  asHeading,
+  children,
+}: {
+  asHeading: boolean;
+  children: React.ReactNode;
+}): React.JSX.Element {
+  const className =
+    "font-body text-[11px] font-semibold tracking-[0.24em] text-gold-text uppercase";
+  return asHeading ? (
+    <h2 className={className}>{children}</h2>
+  ) : (
+    <p className={className}>{children}</p>
+  );
+}
+
 /** One h3 block. Linked where the source linked it, static where it did not. */
 function Subsection({ section }: { section: SectionGroup["lead"] }): React.JSX.Element {
   const body = (
@@ -131,12 +154,7 @@ function Subsection({ section }: { section: SectionGroup["lead"] }): React.JSX.E
       className="group flex items-start gap-6 py-5 transition-colors duration-200 hover:bg-white focus-visible:ring-2 focus-visible:ring-gold focus-visible:outline-none"
     >
       <span className="min-w-0 flex-1">{body}</span>
-      <span
-        aria-hidden="true"
-        className="mt-1.5 shrink-0 font-body text-[17px] leading-none text-gold transition-transform duration-200 group-hover:translate-x-1"
-      >
-        &rarr;
-      </span>
+      <ArrowRightIcon aria-hidden="true" className="mt-1.5 h-4 w-4 shrink-0 text-gold transition-transform duration-200 group-hover:translate-x-1" />
     </Link>
   );
 }

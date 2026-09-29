@@ -16,13 +16,27 @@ import { PageSection } from "./page-section";
 export function PageShell({
   page,
   trail,
+  omitHeadings,
   children,
 }: {
   page: PageContent;
   trail?: readonly { href: string; label: string }[];
+  /**
+   * Source headings this page renders somewhere else. The four form pages each
+   * carry a section that IS the form's intro and fine print — the parser could
+   * not capture the form itself, so that copy was left stranded in a band above
+   * the real form, on the guide page telling the visitor to "enter your details"
+   * in a band with no fields. Named here, hoisted into the FormBand instead.
+   */
+  omitHeadings?: readonly string[];
   children?: ReactNode;
 }): React.JSX.Element {
-  const body = groupedBody(page);
+  const omit = new Set((omitHeadings ?? []).map((h) => h.toLowerCase()));
+  const body = groupedBody(page).filter(
+    (g) =>
+      !omit.has((g.lead.heading ?? "").toLowerCase()) &&
+      !omit.has((g.lead.eyebrow ?? "").toLowerCase()),
+  );
   const cta = ctaSection(page);
 
   return (

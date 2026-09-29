@@ -51,16 +51,37 @@ SRC_PATH["/"] = "/"
 
 # Routes deliberately not shipped — see build/CLIENT-GAPS.md sections 11-12.
 BLOCKED = {"/checkup"} | {f"/insights/{s.split('__', 1)[1]}" for s in ROUTE if s.startswith("insights__")}
-NO_CTA = {"/privacy-disclosures"}
+# Routes whose final section is real content, not a closing CTA. The guide's
+# last section is the source's request FORM ("Request the guide"), and treating
+# it as a CTA shipped that heading twice on one continuous navy slab.
+NO_CTA = {"/privacy-disclosures", "/physician-tax-retirement-guide"}
 
 
 def text(fragment):
+    """
+    Flatten a fragment to its text. Tags become a SPACE, not nothing — the source
+    sets a step's folio and its label as two sibling elements, and joining with
+    "" produced "01Discover". The punctuation pass undoes the space that
+    introduces before a comma or a full stop.
+    """
     fragment = re.sub(r"(?is)<(script|style|svg)[^>]*>.*?</\1>", " ", fragment)
-    return re.sub(r"\s+", " ", html.unescape(re.sub(r"(?s)<[^>]+>", "", fragment))).strip()
+    flat = html.unescape(re.sub(r"(?s)<[^>]+>", " ", fragment))
+    flat = re.sub(r"\s+", " ", flat)
+    flat = re.sub(r"\s+([,.;:!?%)\]])", r"\1", flat)
+    flat = re.sub(r"([(\[])\s+", r"\1", flat)
+    return flat.strip()
+
+
+# The source prints each process step's folio as its own element. It is
+# decoration; hard_rules allow functional numbers only in the blueprint section.
+FOLIO = re.compile(r"^\s*0[1-9]\s*$")
+
+# Whole-paragraph editorial notes the source leaves in square brackets.
+BRACKET_NOTE = re.compile(r"^\s*\[[^\]]*\]\s*$")
 
 
 def clean(value):
-    """The four substitutions hard_rules force, plus build-stage markers."""
+    """The five substitutions hard_rules force, plus build-stage markers."""
     if not value:
         return value
     # The COMPANY is plural in the manifest; the Blueprint PRODUCT stays singular.
@@ -71,7 +92,18 @@ def clean(value):
     value = re.sub(r"\s*10665 Stanhaven Pl,?\s*(Suite\s*\d+)?\s*", " ", value)
     value = re.sub(r"\s*White Plains, MD 20695\s*", " ", value)
     value = re.sub(r",?\s*2026 5-Star Wealth Manager", "", value)
+    # A marker that is the OBJECT of a sentence cannot just be deleted: dropping
+    # it from "We reply within [X business days — pending] to schedule." left
+    # "We reply within to schedule." shipping as body copy. Rewrite the clause,
+    # without inventing the turnaround the client has not supplied.
+    value = re.sub(r"\bwithin\s*\[X business days\s*—\s*pending\]\s*", "", value)
     value = re.sub(r"\s*\[(X business days\s*—\s*pending|Pending)\]\s*", " ", value)
+    # hard_rules: the guide "remains gated … never show it as immediately
+    # downloadable". The source's own h1 and meta open with "Download the".
+    value = re.sub(r"\bDownload the (Physician Tax)", r"Request the \1", value)
+    # The source stores some copy pre-escaped; React escapes it again, so a
+    # stored "&amp;" reaches the SERP as a literal "&amp;".
+    value = value.replace("&amp;", "&").replace("&#38;", "&")
     return re.sub(r"\s+", " ", value).strip()
 
 
@@ -168,10 +200,19 @@ def main():
                 href = target if target and target not in BLOCKED else None
                 if href == route:
                     href = None  # never link a page to itself
+            paras = [clean(p) for p in s["paras"]]
+            # Bare folio numerals and whole-paragraph editorial notes are the
+            # source's furniture, not its copy.
+            paras = [p for p in paras if p and not FOLIO.match(p) and not BRACKET_NOTE.match(p)]
+            eyebrow, heading = clean(s["eyebrow"]), clean(s["heading"])
+            # The source sometimes sets a band's label and its heading to the
+            # same sentence, which renders the words twice at two sizes.
+            if eyebrow and heading and eyebrow.strip().lower() == heading.strip().lower():
+                eyebrow = None
             section = {
-                "eyebrow": clean(s["eyebrow"]), "heading": clean(s["heading"]),
+                "eyebrow": eyebrow, "heading": heading,
                 "level": s["level"], "href": href,
-                "paras": [clean(p) for p in s["paras"] if clean(p)],
+                "paras": paras,
                 "items": [clean(x) for x in s["items"] if clean(x)],
             }
             if s["href"] and not href:
