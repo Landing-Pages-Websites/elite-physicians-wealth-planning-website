@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { bodySections, ctaSection, type PageContent } from "@/lib/pages";
+import { ctaSection, groupedBody, type PageContent } from "@/lib/pages";
 import { PageCta } from "./page-cta";
 import { PageHero } from "./page-hero";
 import { PageSection } from "./page-section";
@@ -16,20 +16,38 @@ import { PageSection } from "./page-section";
 export function PageShell({
   page,
   trail,
+  omitHeadings,
   children,
 }: {
   page: PageContent;
   trail?: readonly { href: string; label: string }[];
+  /**
+   * Source headings this page renders somewhere else. The four form pages each
+   * carry a section that IS the form's intro and fine print — the parser could
+   * not capture the form itself, so that copy was left stranded in a band above
+   * the real form, on the guide page telling the visitor to "enter your details"
+   * in a band with no fields. Named here, hoisted into the FormBand instead.
+   */
+  omitHeadings?: readonly string[];
   children?: ReactNode;
 }): React.JSX.Element {
-  const body = bodySections(page);
+  const omit = new Set((omitHeadings ?? []).map((h) => h.toLowerCase()));
+  const body = groupedBody(page).filter(
+    (g) =>
+      !omit.has((g.lead.heading ?? "").toLowerCase()) &&
+      !omit.has((g.lead.eyebrow ?? "").toLowerCase()),
+  );
   const cta = ctaSection(page);
 
   return (
     <main id="main">
       <PageHero page={page} trail={trail} />
-      {body.map((section, i) => (
-        <PageSection key={`${section.heading ?? section.eyebrow ?? "s"}-${i}`} section={section} index={i} />
+      {body.map((group, i) => (
+        <PageSection
+          key={`${group.lead.heading ?? group.lead.eyebrow ?? "s"}-${i}`}
+          group={group}
+          index={i}
+        />
       ))}
       {children}
       {cta ? <PageCta section={cta} /> : null}

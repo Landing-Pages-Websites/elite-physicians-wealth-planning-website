@@ -69,8 +69,11 @@ function mailtoHandoff(values: Fields, intent: string): string {
 export function StrategyCallForm({
   tone,
   intent = "Strategy call request",
+  submitLabel = "Request a strategy call",
 }: {
   tone: FormTone;
+  /** The button's own words. Defaults to the homepage's. */
+  submitLabel?: string;
   /**
    * What this submission is for. Four pages now share this form — the strategy
    * call, the contact page, the consultation request and the gated guide — and
@@ -273,7 +276,7 @@ export function StrategyCallForm({
               : "bg-ink text-ivory hover:bg-ink-hover focus-visible:ring-ink focus-visible:ring-offset-white"
           }`}
         >
-          {status === "sending" ? "Sending…" : "Request a strategy call"}
+          {status === "sending" ? "Sending…" : submitLabel}
         </button>
         <p
           className={`font-body text-[12px] leading-relaxed ${

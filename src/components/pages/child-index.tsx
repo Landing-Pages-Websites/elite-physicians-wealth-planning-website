@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowRightIcon } from "@/components/site/icons";
 
 export type ChildLink = {
   readonly href: string;
@@ -48,12 +49,7 @@ export function ChildIndex({
                     {child.note}
                   </span>
                 </span>
-                <span
-                  aria-hidden="true"
-                  className="mt-2 shrink-0 font-body text-[18px] leading-none text-gold transition-transform duration-200 group-hover:translate-x-1"
-                >
-                  &rarr;
-                </span>
+                <ArrowRightIcon aria-hidden="true" className="mt-2 h-4 w-4 shrink-0 text-gold transition-transform duration-200 group-hover:translate-x-1" />
               </Link>
             </li>
           ))}

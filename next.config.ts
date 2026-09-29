@@ -29,6 +29,12 @@ const nextConfig: NextConfig = {
       { source: "/financial-planning-for-dentists", destination: "/who-we-serve/dentists-dental-specialists", permanent: true },
       { source: "/financial-planning-for-crnas-nps-pas", destination: "/who-we-serve/crnas-nps-pas", permanent: true },
       { source: "/financial-planning-for-healthcare-executives", destination: "/who-we-serve/healthcare-executives", permanent: true },
+      // The twelve source articles and the assessment are held pending client
+      // copy (build/CLIENT-GAPS.md 11.1, 11.2) and are intended to ship at
+      // these same URLs. 307, not 301 — a permanent redirect would be cached
+      // against the route we mean to restore.
+      { source: "/insights/:slug", destination: "/insights", permanent: false },
+      { source: "/checkup", destination: "/resources", permanent: false },
     ];
   },
 };

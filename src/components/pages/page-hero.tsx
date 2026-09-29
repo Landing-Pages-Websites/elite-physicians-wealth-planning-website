@@ -25,7 +25,7 @@ export function PageHero({
   trail?: readonly { href: string; label: string }[];
 }): React.JSX.Element {
   return (
-    <section className="relative overflow-hidden bg-ink pt-[calc(var(--header-h)+1px)]">
+    <section data-dark-band className="relative overflow-hidden bg-ink pt-[calc(var(--header-h)+1px)]">
       {/* The coordination line: in at the left edge above the copy, across the
           band, and down its right margin to be picked up by the next section.
           It runs ABOVE and to the RIGHT of every text block on purpose — the
@@ -39,7 +39,7 @@ export function PageHero({
         viewBox="0 0 1440 460"
         preserveAspectRatio="none"
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 h-full w-full"
+        className="pointer-events-none absolute inset-0 hidden h-full w-full sm:block"
         fill="none"
       >
         <g stroke="var(--color-gold)" strokeWidth="1.5" strokeLinecap="round">

@@ -21,6 +21,7 @@ export default function Page(): React.JSX.Element {
         id="consultation-form"
         heading="Request a private conversation."
         note="A discovery discussion about your career stage, priorities, and the decisions in front of you. Submitting this form does not create an advisory relationship."
+        submitLabel="Request a conversation"
         intent="Private consultation request"
       />
     </PageShell>

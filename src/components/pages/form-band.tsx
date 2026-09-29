@@ -22,14 +22,21 @@ export function FormBand({
   heading,
   note,
   intent,
+  submitLabel,
+  fineprint,
 }: {
   id: string;
   heading: string;
   note: string;
   intent: string;
+  /** What this form's button does. Four pages share the form; three of them
+      are not requesting a strategy call. */
+  submitLabel?: string;
+  /** The source's own fine print for this form, hoisted from the body. */
+  fineprint?: readonly string[];
 }): React.JSX.Element {
   return (
-    <section id={id} className="bg-ink">
+    <section data-dark-band id={id} className="bg-ink">
       <div className="va-shell py-14 lg:py-20">
         <div className="lg:grid lg:grid-cols-[minmax(0,0.78fr)_minmax(0,1fr)] lg:gap-x-16">
           <div>
@@ -41,11 +48,11 @@ export function FormBand({
             </p>
 
             <dl className="mt-9 border-t border-ivory/15">
-              <div className="flex gap-6 border-b border-ivory/15 py-3.5">
-                <dt className="w-24 shrink-0 font-body text-[12px] tracking-[0.14em] text-mist/50 uppercase">
+              <div className="border-b border-ivory/15 py-3.5 sm:flex sm:gap-6">
+                <dt className="font-body text-[12px] tracking-[0.14em] text-mist/50 uppercase sm:w-24 sm:shrink-0">
                   Office
                 </dt>
-                <dd className="font-body text-body-m text-mist/85">
+                <dd className="mt-1 font-body text-body-m text-mist/85 sm:mt-0">
                   <a
                     href={telHref(BRAND.phone)}
                     className="underline-offset-4 transition-colors duration-200 hover:text-gold hover:underline"
@@ -54,11 +61,11 @@ export function FormBand({
                   </a>
                 </dd>
               </div>
-              <div className="flex gap-6 border-b border-ivory/15 py-3.5">
-                <dt className="w-24 shrink-0 font-body text-[12px] tracking-[0.14em] text-mist/50 uppercase">
+              <div className="border-b border-ivory/15 py-3.5 sm:flex sm:gap-6">
+                <dt className="font-body text-[12px] tracking-[0.14em] text-mist/50 uppercase sm:w-24 sm:shrink-0">
                   Email
                 </dt>
-                <dd className="font-body text-body-m break-all text-mist/85">
+                <dd className="mt-1 font-body text-body-m break-all text-mist/85 sm:mt-0">
                   <a
                     href={`mailto:${BRAND.email}`}
                     className="underline-offset-4 transition-colors duration-200 hover:text-gold hover:underline"
@@ -67,17 +74,29 @@ export function FormBand({
                   </a>
                 </dd>
               </div>
-              <div className="flex gap-6 border-b border-ivory/15 py-3.5">
-                <dt className="w-24 shrink-0 font-body text-[12px] tracking-[0.14em] text-mist/50 uppercase">
+              <div className="border-b border-ivory/15 py-3.5 sm:flex sm:gap-6">
+                <dt className="font-body text-[12px] tracking-[0.14em] text-mist/50 uppercase sm:w-24 sm:shrink-0">
                   Hours
                 </dt>
-                <dd className="font-body text-body-m text-mist/85">{BRAND.hours}</dd>
+                <dd className="mt-1 font-body text-body-m text-mist/85 sm:mt-0">{BRAND.hours}</dd>
               </div>
             </dl>
           </div>
 
           <div className="mt-10 lg:mt-0">
-            <StrategyCallForm tone="ledger" intent={intent} />
+            <StrategyCallForm tone="ledger" intent={intent} submitLabel={submitLabel} />
+            {fineprint?.length ? (
+              <div className="mt-6 border-t border-ivory/15 pt-5">
+                {fineprint.map((line) => (
+                  <p
+                    key={line}
+                    className="font-body text-[12px] leading-[1.6] text-mist/55 not-first:mt-2"
+                  >
+                    {line}
+                  </p>
+                ))}
+              </div>
+            ) : null}
           </div>
         </div>
       </div>

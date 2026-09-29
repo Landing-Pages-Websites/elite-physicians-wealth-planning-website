@@ -24,9 +24,15 @@ const SECTIONS = [
   { href: "/who-we-serve", label: "Who we serve" },
   { href: "/services", label: "Services" },
   { href: "/our-process", label: "Our process" },
+  { href: "/physicians", label: "Who we help" },
   { href: "/resources", label: "Resource center" },
   { href: "/insights", label: "Insights" },
   { href: "/meet-michael-epps", label: "Michael A. Epps" },
+  // Without these three, /about/team, /contact and /consultation had no inbound
+  // link from anywhere on the site while still being emitted in sitemap.xml.
+  { href: "/about/team", label: "Meet the team" },
+  { href: "/contact", label: "Contact" },
+  { href: "/consultation", label: "Request a consultation" },
 ] as const;
 
 export function SiteFooter(): React.JSX.Element {

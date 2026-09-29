@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { BRAND } from "@/lib/content";
+import { SiteMenu } from "./site-menu";
 
 /**
  * NEW UNAPPROVED SURFACE. The approved mockup has no navigation — its scroll
@@ -95,31 +96,7 @@ export function SiteHeader(): React.JSX.Element {
           >
             Menu
           </button>
-          {/* `flex` must NOT be unconditional here: display:flex overrides the
-              UA rule [popover]:not(:popover-open){display:none}, which left this
-              panel permanently open over the page at every viewport. Hidden by
-              default; flex only while the popover is genuinely open. */}
-          <div
-            id="site-menu"
-            popover="auto"
-            className="hidden w-64 flex-col gap-1 rounded-sm border border-mist/15 bg-ink p-3 text-mist shadow-xl backdrop:bg-ink/40 [inset-block-start:var(--header-h)] [inset-inline-end:1rem] [inset-inline-start:auto] [margin:0] [position:fixed] [&:popover-open]:flex"
-          >
-            {NAV.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="rounded-sm px-3 py-3 font-body text-sm text-mist/85 transition-colors duration-200 hover:bg-white/5 hover:text-gold"
-              >
-                {item.label}
-              </Link>
-            ))}
-            <Link
-              href="/schedule"
-              className="mt-1 rounded-sm bg-gold px-3 py-3 text-center font-body text-sm font-semibold text-ink"
-            >
-              Schedule a strategy call
-            </Link>
-          </div>
+          <SiteMenu items={NAV} />
         </div>
       </div>
     </header>
