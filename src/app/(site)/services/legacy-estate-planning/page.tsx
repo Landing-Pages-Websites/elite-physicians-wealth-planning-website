@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import { PageShell } from "@/components/pages/page-shell";
-import { getPage } from "@/lib/pages";
+import { getPage, metaTitle } from "@/lib/pages";
 
 const ROUTE = "/services/legacy-estate-planning";
 
+const PAGE = getPage(ROUTE);
+
 export const metadata: Metadata = {
-  title: "Legacy & Estate Planning Coordination — Elite Physicians Wealth Planning™",
-  description: "Coordinating estate documents, beneficiary designations, asset titling, insurance, charitable giving, and family wealth transfer with qualified estate planning attorneys.",
+  title: metaTitle(PAGE),
+  description: PAGE.description,
   alternates: { canonical: ROUTE },
 };
 

@@ -44,6 +44,16 @@ ROUTE = {
     "consultation": "/consultation", "checkup": "/checkup",
 }
 
+# The twelve article routes, read from the capture rather than typed out. They
+# belong in ROUTE even though they do not ship: SRC_PATH needs them to recognise
+# an in-content link that points at one, and BLOCKED needs them to know the
+# destination is held rather than simply unknown. Absent from ROUTE they were
+# neither, so every link to an unwritten article silently became a dead heading.
+for _entry in json.load(open(f"{CAPTURE}/_index.json")):
+    _slug = _entry["slug"]
+    if _slug.startswith("insights__"):
+        ROUTE[_slug] = "/insights/" + _slug.split("__", 1)[1]
+
 # Source PATH -> production route, for rewriting in-content links. Built from
 # ROUTE, since a source slug is its path with "/" written as "__".
 SRC_PATH = {"/" + slug.replace("__", "/"): route for slug, route in ROUTE.items()}
@@ -80,6 +90,39 @@ FOLIO = re.compile(r"^\s*0[1-9]\s*$")
 BRACKET_NOTE = re.compile(r"^\s*\[[^\]]*\]\s*$")
 
 
+BRAND_SUFFIX = re.compile(
+    r"\s*[—–|-]\s*Elite Physicians? Wealth Planning(?:™)?\s*$", re.I
+)
+
+
+def title_of(raw):
+    """
+    The page's own name, without the brand.
+
+    The source suffixes almost every <title> with the brand, and the root
+    layout's metadata template appends it again — so 27 of 29 routes rendered
+    "Tax Planning for Physicians — Elite Physicians Wealth Planning™ | Elite
+    Physicians Wealth Planning". The template owns the brand; the page owns its
+    name.
+    """
+    return BRAND_SUFFIX.sub("", raw.split("|")[0]).strip()
+
+
+def trim_description(value, limit=158):
+    """
+    Meta descriptions are cut off around 160 characters, and six of these ran to
+    176 — truncated mid-sentence in the SERP. Trim at the last sentence that
+    fits, or the last whole word. Nothing is reworded and nothing is invented.
+    """
+    if len(value) <= limit:
+        return value
+    cut = value[:limit]
+    stop = max(cut.rfind(". "), cut.rfind("? "), cut.rfind("! "))
+    if stop > limit * 0.6:
+        return cut[: stop + 1].strip()
+    return cut[: cut.rfind(" ")].rstrip(" ,;:—–-") + "…"
+
+
 def clean(value):
     """The five substitutions hard_rules force, plus build-stage markers."""
     if not value:
@@ -98,6 +141,10 @@ def clean(value):
     # without inventing the turnaround the client has not supplied.
     value = re.sub(r"\bwithin\s*\[X business days\s*—\s*pending\]\s*", "", value)
     value = re.sub(r"\s*\[(X business days\s*—\s*pending|Pending)\]\s*", " ", value)
+    # The client marks unreleased resources "[coming soon]", jammed against the
+    # title with no space. The meaning is theirs and stays; the bracket is
+    # build-marker typography and goes.
+    value = re.sub(r"\s*\[\s*coming soon\s*\]", " — coming soon", value, flags=re.I)
     # hard_rules: the guide "remains gated … never show it as immediately
     # downloadable". The source's own h1 and meta open with "Download the".
     value = re.sub(r"\bDownload the (Physician Tax)", r"Request the \1", value)
@@ -124,13 +171,21 @@ def parse(path):
         if m.group(1):
             tag, attrs, inner, start = m.group(1).lower(), m.group(2), m.group(3), m.start()
             enclosing = re.search(r'(?is)<a\b[^>]*href="([^"]+)"[^>]*>(?:(?!</a>).)*$', body[:start])
-            blocks.append({"t": tag, "text": text(inner), "href": enclosing.group(1) if enclosing else None})
+            blocks.append({"t": tag, "text": text(inner), "href": enclosing.group(1) if enclosing else None, "_at": start})
         elif m.group(4):
-            kind = "eyebrow" if "eyebrow" in (m.group(5) or "") else "p"
-            blocks.append({"t": kind, "text": text(m.group(6)), "href": None})
+            attrs = m.group(5) or ""
+            label = "eyebrow" in attrs or ("uppercase" in attrs and "tracking" in attrs)
+            kind = "eyebrow" if label else "p"
+            blocks.append({"t": kind, "text": text(m.group(6)), "href": None, "_at": m.start()})
         else:
             items = [text(li.group(1)) for li in re.finditer(r"(?is)<li\b[^>]*>(.*?)</li>", m.group(8))]
-            blocks.append({"t": "list", "items": [i for i in items if i]})
+            blocks.append({"t": "list", "items": [i for i in items if i], "_at": m.start()})
+    for m in re.finditer(r'(?is)<div[^>]*class="[^"]*flex-wrap[^"]*"[^>]*>(.*?)</div>', body):
+        chips = [text(c.group(1)) for c in re.finditer(r'(?is)<span[^>]*class="[^"]*border[^"]*"[^>]*>(.*?)</span>', m.group(1))]
+        chips = [c for c in chips if c]
+        if len(chips) >= 3:
+            blocks.append({"t": "list", "items": chips, "_at": m.start()})
+    blocks.sort(key=lambda b: b.get("_at", 0))
     blocks = [b for b in blocks if b.get("items") or b.get("text")]
 
     hero = {"eyebrow": None, "h1": None, "lede": None}
@@ -175,7 +230,7 @@ def parse(path):
     if cur:
         sections.append(cur)
     return {
-        "title": (title.group(1) if title else "").split("|")[0].strip(),
+        "title": title_of(title.group(1) if title else ""),
         "description": desc.group(1) if desc else (hero["lede"] or ""),
         "hero": hero, "sections": sections,
     }
@@ -194,9 +249,10 @@ def main():
             continue
         sections = []
         for s in parsed["sections"]:
-            href = s["href"]
+            href, pending = s["href"], False
             if href:
                 target = SRC_PATH.get(href.split("#")[0].rstrip("/") or "/")
+                pending = bool(target) and target in BLOCKED
                 href = target if target and target not in BLOCKED else None
                 if href == route:
                     href = None  # never link a page to itself
@@ -211,7 +267,7 @@ def main():
                 eyebrow = None
             section = {
                 "eyebrow": eyebrow, "heading": heading,
-                "level": s["level"], "href": href,
+                "level": s["level"], "href": href, "pending": pending,
                 "paras": paras,
                 "items": [clean(x) for x in s["items"] if clean(x)],
             }
@@ -225,7 +281,7 @@ def main():
                 last["isCta"] = True
         pages[route] = {
             "slug": route, "title": clean(parsed["title"]),
-            "description": clean(parsed["description"]),
+            "description": trim_description(clean(parsed["description"])),
             "eyebrow": clean(parsed["hero"]["eyebrow"]),
             "headline": clean(parsed["hero"]["h1"] or ""),
             "lede": clean(parsed["hero"]["lede"]),

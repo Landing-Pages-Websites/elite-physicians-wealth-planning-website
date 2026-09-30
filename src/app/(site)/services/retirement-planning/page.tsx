@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import { PageShell } from "@/components/pages/page-shell";
-import { getPage } from "@/lib/pages";
+import { getPage, metaTitle } from "@/lib/pages";
 
 const ROUTE = "/services/retirement-planning";
 
+const PAGE = getPage(ROUTE);
+
 export const metadata: Metadata = {
-  title: "Retirement Planning for Physicians — Elite Physicians Wealth Planning™",
-  description: "Turning employer plans, IRAs, brokerage accounts, practice interests, and pensions into a retirement income strategy that accounts for taxes, healthcare, and legacy goals.",
+  title: metaTitle(PAGE),
+  description: PAGE.description,
   alternates: { canonical: ROUTE },
 };
 

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArrowRightIcon } from "@/components/site/icons";
-import type { SectionGroup } from "@/lib/pages";
+import type { PageSection as Section, SectionGroup } from "@/lib/pages";
 
 /**
  * NEW UNAPPROVED SURFACE — the interior band.
@@ -31,13 +31,13 @@ export function PageSection({
 }): React.JSX.Element {
   const { lead, subsections } = group;
   const ground = index % 2 === 0 ? "bg-ivory" : "bg-white";
-  const hasRail = Boolean(lead.eyebrow || lead.heading);
+  const hasRail = Boolean(lead && (lead.eyebrow || lead.heading));
 
   return (
     <section className={`relative ${ground}`}>
       <div className="va-shell relative py-12 lg:py-16">
         <div className="lg:grid lg:grid-cols-[minmax(0,0.42fr)_minmax(0,1fr)] lg:gap-x-14">
-          {hasRail ? (
+          {hasRail && lead ? (
             <div className="relative lg:pr-8">
               {/* When a band's only label is its eyebrow, the eyebrow IS the
                   heading — same words, same styling, correct outline level.
@@ -47,7 +47,7 @@ export function PageSection({
               ) : null}
               {lead.heading ? (
                 <h2
-                  className={`max-w-[22ch] font-display text-display-m leading-[1.12] font-medium tracking-[-0.01em] text-ink ${
+                  className={`va-reveal max-w-[22ch] font-display text-display-m leading-[1.12] font-medium tracking-[-0.01em] text-ink ${
                     lead.eyebrow ? "mt-3" : ""
                   }`}
                 >
@@ -62,7 +62,7 @@ export function PageSection({
           ) : null}
 
           <div className={hasRail ? "mt-6 lg:mt-1.5" : "lg:col-start-2"}>
-            {lead.paras.map((para) => (
+            {(lead?.paras ?? []).map((para) => (
               <p
                 key={para}
                 className="max-w-[68ch] font-body text-body-l leading-[1.68] text-charcoal not-first:mt-4"
@@ -71,7 +71,7 @@ export function PageSection({
               </p>
             ))}
 
-            {lead.items.length ? (
+            {lead?.items.length ? (
               <ul className={`max-w-[68ch] ${lead.paras.length ? "mt-7" : ""}`}>
                 {lead.items.map((item) => (
                   <li
@@ -89,8 +89,8 @@ export function PageSection({
 
             {subsections.length ? (
               <ul
-                className={`max-w-[68ch] border-t border-ink/12 ${
-                  lead.paras.length || lead.items.length ? "mt-8" : ""
+                className={`va-stagger max-w-[68ch] border-t border-ink/12 ${
+                  lead && (lead.paras.length || lead.items.length) ? "mt-8" : ""
                 }`}
               >
                 {subsections.map((sub) => (
@@ -129,9 +129,14 @@ function EyebrowOrHeading({
 }
 
 /** One h3 block. Linked where the source linked it, static where it did not. */
-function Subsection({ section }: { section: SectionGroup["lead"] }): React.JSX.Element {
+function Subsection({ section }: { section: Section }): React.JSX.Element {
   const body = (
     <>
+      {section.eyebrow ? (
+        <p className="mb-1.5 font-body text-[11px] font-semibold tracking-[0.18em] text-gold-text uppercase">
+          {section.eyebrow}
+        </p>
+      ) : null}
       <h3 className="font-display text-display-s leading-[1.22] font-medium text-ink transition-colors duration-200 group-hover:text-gold-text">
         {section.heading}
       </h3>
@@ -146,12 +151,23 @@ function Subsection({ section }: { section: SectionGroup["lead"] }): React.JSX.E
     </>
   );
 
-  if (!section.href) return <div className="py-5">{body}</div>;
+  if (!section.href) {
+    return (
+      <div className="py-5">
+        {body}
+        {section.pending ? (
+          <p className="mt-2.5 font-body text-[11px] tracking-[0.18em] text-charcoal/55 uppercase">
+            In preparation
+          </p>
+        ) : null}
+      </div>
+    );
+  }
 
   return (
     <Link
       href={section.href}
-      className="group flex items-start gap-6 py-5 transition-colors duration-200 hover:bg-white focus-visible:ring-2 focus-visible:ring-gold focus-visible:outline-none"
+      className="va-row group flex items-start gap-6 py-5 pl-4 hover:bg-white focus-visible:ring-2 focus-visible:ring-gold focus-visible:outline-none"
     >
       <span className="min-w-0 flex-1">{body}</span>
       <ArrowRightIcon aria-hidden="true" className="mt-1.5 h-4 w-4 shrink-0 text-gold transition-transform duration-200 group-hover:translate-x-1" />

@@ -237,7 +237,11 @@ function BoundaryNote({ className }: { className?: string }): React.JSX.Element 
   );
 }
 
-function CopyBlock({ compact }: { compact?: true }): React.JSX.Element {
+/* The id lives on the DESKTOP render only. This component is called twice —
+   once for the canvas and once for the lg:hidden stack — so an id written
+   inside it appeared twice in the document and every aria-labelledby
+   pointing at it resolved to nothing. */
+function CopyBlock({ compact, headingId }: { compact?: true; headingId?: string }): React.JSX.Element {
   return (
     <>
       <p
@@ -249,7 +253,7 @@ function CopyBlock({ compact }: { compact?: true }): React.JSX.Element {
         <span className="text-ink">{SEPARATE_ROOMS.orientation}</span>
       </p>
       <h2
-        id="separate-rooms-heading"
+        id={headingId}
         className={`va-reveal font-display leading-[1.14] font-medium tracking-[-0.01em] text-ink ${
           compact ? "mt-5 text-display-m text-balance" : "mt-[1.5cqw] text-[3.9cqw]"
         }`}
@@ -294,7 +298,7 @@ export function SeparateRooms(): React.JSX.Element {
           {SEPARATE_ROOMS.centerLabel}
         </p>
         <div className="absolute top-[18%] left-[3.6%] w-[30%]">
-          <CopyBlock />
+          <CopyBlock headingId="separate-rooms-heading" />
         </div>
         <BoundaryNote className="absolute right-[4%] bottom-[11%] w-[21%]" />
       </div>

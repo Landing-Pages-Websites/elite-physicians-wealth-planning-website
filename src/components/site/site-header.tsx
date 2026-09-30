@@ -33,7 +33,11 @@ function Wordmark(): React.JSX.Element {
   return (
     <Link
       href="/"
-      className="flex shrink-0 flex-col gap-0.5 rounded-sm transition-opacity duration-200 hover:opacity-90"
+      // The "powered by" line is positioned, not stacked. In a flex-col the
+      // two-line lockup centres on the gap BETWEEN its lines, so the wordmark
+      // sat 6.5px above the nav and the CTA on every page. Taking the second
+      // line out of the flow leaves only the wordmark participating.
+      className="relative flex shrink-0 flex-col rounded-sm transition-opacity duration-200 hover:opacity-90"
     >
       {/* 22px here pushed the Menu button off the right edge of a 390 viewport:
           the wordmark cannot wrap or shrink, so 24px padding + 32 characters +
@@ -45,7 +49,7 @@ function Wordmark(): React.JSX.Element {
         {BRAND.name}
         <span className="align-[0.42em] text-[0.45em]">™</span>
       </span>
-      <span className="hidden font-body text-[11px] font-semibold tracking-[0.24em] whitespace-nowrap text-gold uppercase sm:block">
+      <span className="absolute top-full left-0 mt-0.5 hidden font-body text-[11px] font-semibold tracking-[0.24em] whitespace-nowrap text-gold uppercase sm:block">
         {BRAND.poweredBy}
       </span>
     </Link>
@@ -55,7 +59,7 @@ function Wordmark(): React.JSX.Element {
 export function SiteHeader(): React.JSX.Element {
   return (
     <header
-      className="fixed inset-x-0 top-0 z-50 flex items-center bg-ink/95 backdrop-blur-sm"
+      className="va-header-shift fixed inset-x-0 top-0 z-50 flex items-center bg-ink/95"
       style={{ minHeight: "var(--header-h)" }}
     >
       <a href="#main" className="skip-link font-body text-sm">
@@ -69,7 +73,7 @@ export function SiteHeader(): React.JSX.Element {
             <Link
               key={item.href}
               href={item.href}
-              className="font-body text-[13px] text-mist/80 underline-offset-8 transition-colors duration-200 hover:text-gold hover:underline"
+              className="va-underline font-body text-[13px] text-mist/80 transition-colors duration-200 hover:text-gold"
             >
               {item.label}
             </Link>
@@ -79,7 +83,7 @@ export function SiteHeader(): React.JSX.Element {
         <div className="flex items-center gap-3">
           <Link
             href="/schedule"
-            className="hidden min-h-11 items-center rounded-sm bg-gold px-5 font-body text-[13px] font-semibold text-ink transition-colors duration-200 hover:bg-gold/90 sm:inline-flex"
+            className="hidden min-h-11 items-center rounded-sm bg-gold px-5 font-body text-[13px] font-semibold text-ink transition-[background-color,transform] duration-200 hover:-translate-y-px hover:bg-gold-hover active:translate-y-0 sm:inline-flex"
           >
             Schedule a strategy call
           </Link>

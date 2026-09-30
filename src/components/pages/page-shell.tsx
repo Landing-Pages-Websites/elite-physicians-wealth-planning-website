@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { heroImageFor } from "@/lib/hero-images";
 import { ctaSection, groupedBody, type PageContent } from "@/lib/pages";
 import { PageCta } from "./page-cta";
 import { PageHero } from "./page-hero";
@@ -34,17 +35,17 @@ export function PageShell({
   const omit = new Set((omitHeadings ?? []).map((h) => h.toLowerCase()));
   const body = groupedBody(page).filter(
     (g) =>
-      !omit.has((g.lead.heading ?? "").toLowerCase()) &&
-      !omit.has((g.lead.eyebrow ?? "").toLowerCase()),
+      !omit.has((g.lead?.heading ?? "").toLowerCase()) &&
+      !omit.has((g.lead?.eyebrow ?? "").toLowerCase()),
   );
   const cta = ctaSection(page);
 
   return (
     <main id="main">
-      <PageHero page={page} trail={trail} />
+      <PageHero page={page} trail={trail} image={heroImageFor(page.slug)} />
       {body.map((group, i) => (
         <PageSection
-          key={`${group.lead.heading ?? group.lead.eyebrow ?? "s"}-${i}`}
+          key={`${group.lead?.heading ?? group.lead?.eyebrow ?? "peers"}-${i}`}
           group={group}
           index={i}
         />

@@ -49,7 +49,7 @@ export function Breadcrumbs({
               ) : (
                 <Link
                   href={crumb.href}
-                  className="-my-2 inline-flex min-h-11 items-center py-2 underline-offset-4 transition-colors duration-200 hover:text-gold hover:underline focus-visible:ring-2 focus-visible:ring-gold focus-visible:outline-none"
+                  className="va-underline -my-2 inline-flex min-h-11 items-center py-2 transition-colors duration-200 hover:text-gold focus-visible:ring-2 focus-visible:ring-gold focus-visible:outline-none"
                 >
                   {crumb.label}
                 </Link>

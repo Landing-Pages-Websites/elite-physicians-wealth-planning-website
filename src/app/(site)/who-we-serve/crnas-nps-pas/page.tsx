@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import { PageShell } from "@/components/pages/page-shell";
-import { getPage } from "@/lib/pages";
+import { getPage, metaTitle } from "@/lib/pages";
 
 const ROUTE = "/who-we-serve/crnas-nps-pas";
 
+const PAGE = getPage(ROUTE);
+
 export const metadata: Metadata = {
-  title: "Financial Planning for CRNAs, NPs & PAs — Elite Physicians Wealth Planning™",
-  description: "Financial planning for CRNAs, nurse practitioners, and physician assistants building long-term wealth with rising income and benefits decisions.",
+  title: metaTitle(PAGE),
+  description: PAGE.description,
   alternates: { canonical: ROUTE },
 };
 

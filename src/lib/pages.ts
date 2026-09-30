@@ -48,15 +48,29 @@ export type PageSection = {
    * it would link a page to itself.
    */
   readonly href: string | null;
+  /**
+   * The source linked this block at a route we deliberately do not ship (the
+   * twelve unwritten articles, the assessment). The heading is real, the
+   * destination is not — so the page says "In preparation" rather than
+   * presenting a headline that goes nowhere, which is what /insights already
+   * does and what /resources was not doing.
+   */
+  readonly pending?: boolean;
   readonly paras: readonly string[];
   readonly items: readonly string[];
   /** The source closes nearly every page with a persuasive block; rendered as a CTA band. */
   readonly isCta?: boolean;
 };
 
-/** An h2 section together with the h3 subsections that belong under it. */
+/**
+ * An h2 section together with the h3 subsections that belong under it.
+ *
+ * `lead` is null for a run of h3s that has no h2 above it — /about/team opens
+ * with seven people and no section heading, and promoting the first of them to
+ * lead made the whole firm render as sub-items of its founder.
+ */
 export type SectionGroup = {
-  readonly lead: PageSection;
+  readonly lead: PageSection | null;
   readonly subsections: readonly PageSection[];
 };
 
@@ -89,6 +103,20 @@ export function allRoutes(): readonly string[] {
   return Object.keys(PAGES).sort();
 }
 
+/**
+ * The title as Next should render it.
+ *
+ * The root layout appends " | Elite Physicians Wealth Planning" to every page
+ * title. A page whose own name already contains the brand — /about is called
+ * "About Elite Physicians Wealth Planning" — would otherwise render it twice,
+ * so that one opts out of the template rather than being renamed.
+ */
+export function metaTitle(page: PageContent): string | { absolute: string } {
+  return page.title.includes("Elite Physicians Wealth Planning")
+    ? { absolute: page.title }
+    : page.title;
+}
+
 /** Sections minus the closing CTA, which the page kit renders separately. */
 export function bodySections(page: PageContent): readonly PageSection[] {
   return page.sections.filter((s) => !s.isCta);
@@ -111,6 +139,11 @@ export function groupedBody(page: PageContent): readonly SectionGroup[] {
     // three questions and no answers.
     const empty = !section.paras.length && !section.items.length && !section.href;
     const previous = groups[groups.length - 1];
+    if (section.level === 3 && !previous) {
+      // A run of h3s with nothing above it: peers, not children of the first.
+      if (!empty) groups.push({ lead: null, subsections: [section] });
+      continue;
+    }
     if (section.level === 3 && previous) {
       if (empty) continue;
       groups[groups.length - 1] = {
@@ -125,8 +158,7 @@ export function groupedBody(page: PageContent): readonly SectionGroup[] {
   return groups.filter(
     (g) =>
       g.subsections.length > 0 ||
-      g.lead.paras.length > 0 ||
-      g.lead.items.length > 0 ||
-      Boolean(g.lead.href),
+      (g.lead !== null &&
+        (g.lead.paras.length > 0 || g.lead.items.length > 0 || Boolean(g.lead.href))),
   );
 }

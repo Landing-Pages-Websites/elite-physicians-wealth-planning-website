@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import { PageShell } from "@/components/pages/page-shell";
-import { getPage } from "@/lib/pages";
+import { getPage, metaTitle } from "@/lib/pages";
 
 const ROUTE = "/meet-michael-epps";
 
+const PAGE = getPage(ROUTE);
+
 export const metadata: Metadata = {
-  title: "Meet Michael A. Epps, ChFC®, RICP®",
-  description: "Michael A. Epps, ChFC®, RICP®, Founder &amp; Chief Wealth Strategist of Fiscal Vision Financial, founded Elite Physicians Wealth Planning™ for physicians and medical professionals.",
+  title: metaTitle(PAGE),
+  description: PAGE.description,
   alternates: { canonical: ROUTE },
 };
 

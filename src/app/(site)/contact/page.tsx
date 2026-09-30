@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { FormBand } from "@/components/pages/form-band";
 import { PageShell } from "@/components/pages/page-shell";
-import { getPage } from "@/lib/pages";
+import { getPage, metaTitle } from "@/lib/pages";
 
 const ROUTE = "/contact";
 
@@ -16,9 +16,11 @@ const FINE_PRINT: readonly string[] = [
   "By submitting this form, you agree that Fiscal Vision Financial may contact you about your inquiry and provide educational communications. You may unsubscribe from email communications at any time. Submitting this form does not create an advisory relationship. Please do not submit sensitive personal, medical, tax, legal, or account information through this form."
 ];
 
+const PAGE = getPage(ROUTE);
+
 export const metadata: Metadata = {
-  title: "Contact \u2014 Elite Physicians Wealth Planning\u2122",
-  description: "Contact Elite Physicians Wealth Planning\u2122, powered by Fiscal Vision Financial, with planning questions, referral partnerships, or speaking requests.",
+  title: metaTitle(PAGE),
+  description: PAGE.description,
   alternates: { canonical: ROUTE },
 };
 

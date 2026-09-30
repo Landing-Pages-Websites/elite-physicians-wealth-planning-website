@@ -1,6 +1,7 @@
 import { PageCta } from "./page-cta";
 import { PageHero } from "./page-hero";
 import { ChildIndex, type ChildLink } from "./child-index";
+import { heroImageFor } from "@/lib/hero-images";
 import { bodySections, ctaSection, getPage } from "@/lib/pages";
 
 /**
@@ -43,6 +44,7 @@ export function FamilyIndexPage({
     <main id="main">
       <PageHero
         page={page}
+        image={heroImageFor(route)}
         trail={[
           { href: "/", label: "Home" },
           { href: route, label },
