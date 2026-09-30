@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { CalendarEmbed } from "@/components/pages/calendar-embed";
 import { FormBand } from "@/components/pages/form-band";
 import { PageShell } from "@/components/pages/page-shell";
 import { getPage, metaTitle } from "@/lib/pages";
@@ -31,12 +32,14 @@ export default function Page(): React.JSX.Element {
       omitHeadings={["Request your call"]}
       trail={[{ href: "/", label: "Home" }, { href: ROUTE, label: "Schedule a strategy call" }]}
     >
-      {/* The Calendar embed is an unsupplied client asset (build/CLIENT-GAPS.md
-// 1.3). That is OUR problem, not the visitor's. */}
+      <CalendarEmbed
+        heading="Book a strategy call."
+        note="Pick a time that works. The call is a confidential conversation about your goals, current planning concerns and next steps — not a product presentation."
+      />
       <FormBand
         id="schedule-form"
-        heading="Request a strategy call."
-        note="Send this and the practice will reply to arrange a time. Direct calendar booking is not available on this page yet."
+        heading="Or send a message instead."
+        note="If you would rather describe your situation first, send this and the practice will reply to arrange a time."
         submitLabel="Request a strategy call"
         intent="Strategy call request"
         fineprint={FINE_PRINT}

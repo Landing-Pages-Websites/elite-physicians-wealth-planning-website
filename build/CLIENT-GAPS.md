@@ -299,3 +299,88 @@ redirect only fires for traffic that reaches **this** app. Moving
 `elitephysicianwealthplanning.com` (singular) to
 `elitephysicianswealthplanning.com` (plural) is a **DNS cutover**, not a config
 edit. Flagged for the operator; not executed here.
+
+---
+
+# Kickoff brief reconciliation (2026-09-30)
+
+The kickoff brief and meeting notes arrived after the build. They close one
+contracted blocker outright, reclassify several, and add one instruction that
+applies to work already shipped.
+
+## CLOSED
+
+**1.3 Google Calendar embed — SUPPLIED AND WIRED.** `customer_asks` contracts
+this ("Include direct Google Calendar scheduling using the supplied embed") and
+every CTA on the site routes at `/schedule`. That page now books directly
+through the client's own appointment schedule, with the request form kept below
+it as a second route for anyone the widget fails or does not suit. The schedule
+id lives in one place (`src/components/pages/calendar-embed.tsx`) so a reissued
+link is a one-line change.
+
+**Contact email.** `info@fiscalvisionfinancial.com` confirmed as correct and
+already applied site-wide; the reference site's address is confirmed incorrect.
+
+**AI imagery.** Explicitly permitted ("AI Imagery Allowed: Yes"), which sanctions
+the generated photography already in the build and the remaining routes.
+
+## RECLASSIFIED — outstanding, but NOT completion blockers
+
+Peter's direction of 2026-08-29 is explicit that the build proceeds without
+these. Aliaya was asked on 8/27 (thread 1a04448785c19586, no reply as of 8/29)
+and the Drive folder was re-verified empty. They are tracked on customer-follow-up
+child `879d7a8b-cbbe-47bf-a6d8-2087a129cdc6` and swap in on arrival:
+
+- Team bios for everyone, plus the new employee's photo and bio (§14 above)
+- The final tax-planning guide file (§15, gate is built and waiting)
+- Original images, documents and wording sources
+- A logo file. Direction is now given — **gold, blue and white, clean and
+  refined** — and Peter can generate concepts. Until a file exists this still
+  blocks favicon, app icons, `themeColor` and `og:image`.
+
+## STILL GENUINELY BLOCKING
+
+- **Form endpoint.** `NEXT_PUBLIC_LEAD_ENDPOINT` unset; verified on the live
+  deployment that submitting produces zero POSTs and falls back to mailto.
+- **Analytics container.** No GTM/GA4 on the live page, so the mandatory
+  `dataLayer.push({ event: 'form_submission' })` fires into nothing.
+- **Portrait provenance** (§1.1). Unchanged.
+
+## NEW INSTRUCTION THAT APPLIES TO SHIPPED WORK
+
+*"Improve website imagery to reflect a more professional and refined look,
+reducing overly AI-generated appearance."*
+
+Taken seriously and applied to our own output, not just the reference site's.
+Every hero photograph was re-inspected at the size it now ships — ~46% of a
+1440 fold, far larger than the card crops they were first judged at. Verdict by
+asset rather than in the aggregate:
+
+| Asset | At hero scale |
+|---|---|
+| physicians-specialists-consultation | Holds. Asymmetric face, real skin texture, credible room. |
+| dental-office-planning | Holds. Clinician from behind, no hands, real equipment. |
+| surgeons-operating-room | Holds. |
+| healthcare-executive-hallway | Holds. |
+| **practice-owner-meeting** | **Failed and was regenerated.** The pen barrel passed through the fingers and the grip did not close. |
+
+The cause was our own brief: it made a pen grip the focal point, which the
+imagery rules name as a known failure ("never make a complex grip the focal
+point — pointing, pinching a page and gripping a board edge all fail often").
+The replacement designs the risk out — hands clasped, nothing held — and was
+checked at 3x before shipping: eight fingers interlaced correctly, two thumbs,
+no fusion. Lesson recorded: an image that passes at card size has not been
+tested for a hero.
+
+## CONTEXT WORTH KEEPING
+
+- **The current site is removed after launch.** `build/source-capture/` is then
+  the only surviving record of the copy this build preserves. Do not delete it.
+- **Positioning:** financial planning for physicians, Fiscal Vision Financial as
+  parent, **Elite Physicians Planning** as the DBA.
+- **Domain:** GoDaddy access confirmed and previously provided to Benji. The
+  plural domain is correct and intentional. It currently serves a GoDaddy-built
+  site; the cutover remains a DNS action, not a config change.
+- **Still asked for and not yet done:** rebuild the service infographics to
+  emphasise holistic planning and coordinated internal resources, and expand the
+  thin physician/surgeon/dentist pages further for ads and presentations.
