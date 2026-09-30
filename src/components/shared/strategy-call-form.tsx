@@ -91,7 +91,7 @@ export function StrategyCallForm({
 
   const field = isLedger
     ? "w-full rounded-sm border border-ivory/25 bg-ink/40 px-4 py-3 font-body text-[15px] text-ivory placeholder:text-ivory/40 transition-colors duration-150 hover:border-ivory/40 focus:border-gold focus:outline-none focus-visible:ring-2 focus-visible:ring-gold/60"
-    : "w-full rounded-sm border border-ink/20 bg-white px-4 py-3 font-body text-[15px] text-ink placeholder:text-charcoal/50 transition-colors duration-150 hover:border-ink/40 focus:border-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-gold";
+    : "w-full rounded-sm border border-ink/20 bg-white px-4 py-3 font-body text-[15px] text-ink placeholder:text-charcoal/50 transition-colors duration-150 hover:border-ink/40 focus:border-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-ink";
   const label = `mb-1.5 block font-body text-[13px] font-medium ${
     isLedger ? "text-ivory/80" : "text-charcoal"
   }`;
@@ -111,7 +111,12 @@ export function StrategyCallForm({
     if (Object.keys(found).length > 0) {
       setStatus("invalid");
       const firstKey = Object.keys(found)[0] as keyof Fields;
-      formRef.current?.querySelector<HTMLElement>(`[name="${firstKey}"]`)?.focus();
+      // After React commits, not during the click: focusing synchronously lands
+      // the reader on a field whose aria-invalid and aria-describedby have not
+      // rendered yet, so the error is never announced.
+      requestAnimationFrame(() => {
+        formRef.current?.querySelector<HTMLElement>(`[name="${firstKey}"]`)?.focus();
+      });
       return;
     }
     formRef.current?.requestSubmit();

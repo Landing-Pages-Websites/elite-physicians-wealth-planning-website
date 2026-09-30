@@ -188,7 +188,10 @@ main[id] {
 body {
   font-family: var(--font-body);
   color: var(--color-charcoal);
-  background: #ffffff;
+  /* The page surface is a tinted neutral, not #FFF. Bands cover it, but
+     overscroll and any seam between them showed pure white behind a site whose
+     whole ground is warm ivory. */
+  background-color: var(--color-ivory);
   -webkit-font-smoothing: antialiased;
 }
 
@@ -275,4 +278,149 @@ header :focus-visible,
 }
 .va-link:hover {
   opacity: 1;
+}
+
+/* ── Motion ─────────────────────────────────────────────────────────────────
+   CSS-only, driven by scroll-progress timelines. There is no IntersectionObserver
+   and no client component anywhere in this layer, on purpose.
+
+   A scroll-reveal mounted in a persistent layout is a known way to ship a blank
+   site: it collects its targets once, React keeps the layout mounted across
+   client-side navigation, and every internally-navigated page then has its
+   elements registered nowhere and left at opacity 0. Every fresh page load looks
+   fine, so screenshots, Lighthouse and an audit all miss it — only clicking a
+   nav link finds it. `animation-timeline` has no registration step and no
+   teardown, so that failure cannot occur here.
+
+   Support: Chromium and Safari 26+. Firefox does not implement it yet, and the
+   @supports guard means it simply does not animate there — content is never
+   hidden waiting for an animation that will not run. That is the whole reason
+   the hidden state lives INSIDE the @supports block.
+
+   Durations sit in the 150–700ms band the repo's own design bar sets. The
+   global prefers-reduced-motion block above already reduces every duration to
+   0.01ms, so nothing here needs its own opt-out. */
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    /* Entry: content rises as its band comes into view. */
+    .va-reveal {
+      animation: va-rise 0.7s var(--ease-out) both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 38%;
+    }
+
+    /* Rows arrive in sequence rather than as one block. The delay is expressed
+       as a shifted range, not animation-delay: a time delay against a scroll
+       timeline stalls the whole sequence if the reader scrolls fast. */
+    .va-stagger > * {
+      animation: va-rise 0.55s var(--ease-out) both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 30%;
+    }
+    .va-stagger > *:nth-child(2) { animation-range: entry 3% entry 33%; }
+    .va-stagger > *:nth-child(3) { animation-range: entry 6% entry 36%; }
+    .va-stagger > *:nth-child(4) { animation-range: entry 9% entry 39%; }
+    .va-stagger > *:nth-child(5) { animation-range: entry 12% entry 42%; }
+    .va-stagger > *:nth-child(n + 6) { animation-range: entry 15% entry 45%; }
+
+    /* The coordination line draws itself as its band arrives. This is the one
+       motif the manifest names as the brand's own metaphor — "a single precise
+       coordination line connects decisions that are usually handled in separate
+       rooms" — so it is the one thing on the page that earns being animated.
+       pathLength="1" on the path makes the dash arithmetic independent of the
+       path's real length, so every route uses the same two numbers. */
+    .va-draw path {
+      stroke-dasharray: 1;
+      stroke-dashoffset: 1;
+      animation: va-draw 1s var(--ease-out) both;
+      animation-timeline: view();
+      animation-range: entry 10% cover 30%;
+    }
+    .va-draw circle {
+      animation: va-pop 0.4s var(--ease-out) both;
+      animation-timeline: view();
+      animation-range: entry 45% cover 22%;
+    }
+
+    /* The header gains a ground and a hairline once the page has moved, so it
+       reads as fixed chrome rather than part of the hero. scroll(root) needs no
+       listener and no state. */
+    .va-header-shift {
+      animation: va-header linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0 120px;
+    }
+  }
+}
+
+@keyframes va-rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes va-draw {
+  to { stroke-dashoffset: 0; }
+}
+@keyframes va-pop {
+  from { opacity: 0; transform: scale(0.4); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes va-header {
+  to {
+    background-color: color-mix(in srgb, var(--color-ink) 98%, transparent);
+    box-shadow: 0 1px 0 color-mix(in srgb, var(--color-gold) 26%, transparent);
+  }
+}
+
+/* ── Micro-interactions ─────────────────────────────────────────────────────
+   Every interactive element answers the pointer and the keyboard in the same
+   vocabulary: a gold edge grows, or the surface warms. Nothing moves more than
+   2px, because these sit beside a 46px serif and a large movement next to
+   display type reads as a glitch rather than a response. */
+
+/* A row in a contents list: the gold rule grows from the leading edge. */
+.va-row {
+  position: relative;
+  transition: background-color 0.2s var(--ease-out);
+}
+.va-row::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: 0;
+  inset-block: 0;
+  width: 2px;
+  background: var(--color-gold);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.24s var(--ease-out);
+}
+.va-row:hover::before,
+.va-row:focus-visible::before,
+.va-row:has(:focus-visible)::before {
+  transform: scaleY(1);
+}
+
+/* A text link whose underline sweeps in from the leading edge instead of
+   appearing all at once.
+
+   A transform, not an animated background-size. Both look identical; only one
+   is composited. background-size repaints the element every frame, and there
+   are twenty of these in the header and footer of every route. */
+.va-underline {
+  position: relative;
+}
+.va-underline::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0.15em;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.26s var(--ease-out);
+}
+.va-underline:hover::after,
+.va-underline:focus-visible::after {
+  transform: scaleX(1);
 }

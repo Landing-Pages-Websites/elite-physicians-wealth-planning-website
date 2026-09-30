@@ -55,7 +55,7 @@ function Wordmark(): React.JSX.Element {
 export function SiteHeader(): React.JSX.Element {
   return (
     <header
-      className="fixed inset-x-0 top-0 z-50 flex items-center bg-ink/95 backdrop-blur-sm"
+      className="va-header-shift fixed inset-x-0 top-0 z-50 flex items-center bg-ink/95"
       style={{ minHeight: "var(--header-h)" }}
     >
       <a href="#main" className="skip-link font-body text-sm">
@@ -69,7 +69,7 @@ export function SiteHeader(): React.JSX.Element {
             <Link
               key={item.href}
               href={item.href}
-              className="font-body text-[13px] text-mist/80 underline-offset-8 transition-colors duration-200 hover:text-gold hover:underline"
+              className="va-underline font-body text-[13px] text-mist/80 transition-colors duration-200 hover:text-gold"
             >
               {item.label}
             </Link>
@@ -79,7 +79,7 @@ export function SiteHeader(): React.JSX.Element {
         <div className="flex items-center gap-3">
           <Link
             href="/schedule"
-            className="hidden min-h-11 items-center rounded-sm bg-gold px-5 font-body text-[13px] font-semibold text-ink transition-colors duration-200 hover:bg-gold/90 sm:inline-flex"
+            className="hidden min-h-11 items-center rounded-sm bg-gold px-5 font-body text-[13px] font-semibold text-ink transition-[background-color,transform] duration-200 hover:-translate-y-px hover:bg-gold-hover active:translate-y-0 sm:inline-flex"
           >
             Schedule a strategy call
           </Link>

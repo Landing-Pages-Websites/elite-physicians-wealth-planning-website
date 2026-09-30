@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { FormBand } from "@/components/pages/form-band";
 import { PageShell } from "@/components/pages/page-shell";
-import { getPage } from "@/lib/pages";
+import { getPage, metaTitle } from "@/lib/pages";
 
 const ROUTE = "/schedule";
 
@@ -16,9 +16,11 @@ const FINE_PRINT: readonly string[] = [
   "By submitting this form, you agree that Fiscal Vision Financial may contact you about your inquiry. Consent is not a condition of purchasing services. Messaging and data rates may apply if text messaging is enabled. Please do not submit sensitive personal, medical, tax, legal, or account information through this form."
 ];
 
+const PAGE = getPage(ROUTE);
+
 export const metadata: Metadata = {
-  title: "Schedule a Strategy Call \u2014 Elite Physicians Wealth Planning\u2122",
-  description: "Schedule your Elite Physician Strategy Call \u2014 a confidential conversation about your planning priorities, with no product presentation.",
+  title: metaTitle(PAGE),
+  description: PAGE.description,
   alternates: { canonical: ROUTE },
 };
 

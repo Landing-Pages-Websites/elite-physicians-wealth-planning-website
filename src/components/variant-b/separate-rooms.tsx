@@ -108,13 +108,17 @@ function BoundaryNote({ className = "" }: { className?: string }): React.JSX.Ele
   );
 }
 
-function CopyBlock(): React.JSX.Element {
+/* The id lives on the DESKTOP render only. This component is called twice —
+   once for the canvas and once for the lg:hidden stack — so an id written
+   inside it appeared twice in the document and every aria-labelledby
+   pointing at it resolved to nothing. */
+function CopyBlock({ headingId }: { headingId?: string }): React.JSX.Element {
   return (
     <>
       <SectionEyebrow mark="rosette">{SEPARATE_ROOMS.orientation}</SectionEyebrow>
       <NodeRule className="mt-3 w-[88%] max-w-[22rem]" />
       <h2
-        id="separate-rooms-heading"
+        id={headingId}
         className="mt-6 max-w-[14ch] text-[clamp(2rem,3.05vw,3rem)] leading-[1.1] font-bold tracking-[-0.02em] text-ink"
       >
         {SEPARATE_ROOMS.headline}
@@ -154,7 +158,7 @@ export default function SeparateRooms(): React.JSX.Element {
         ))}
 
         <div className="absolute top-[13%] left-[3.5%] w-[27%]">
-          <CopyBlock />
+          <CopyBlock headingId="separate-rooms-heading" />
         </div>
 
         <TargetRosette className="absolute bottom-[9%] left-[2.4%] h-9 w-9" />

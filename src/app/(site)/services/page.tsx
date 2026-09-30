@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
+import { getPage, metaTitle } from "@/lib/pages";
 import { FamilyIndexPage } from "@/components/pages/family-index-page";
 
 const ROUTE = "/services";
 
+const PAGE = getPage(ROUTE);
+
 export const metadata: Metadata = {
-  title: "Services for Physicians — Elite Physicians Wealth Planning™",
-  description: "Elite Physicians Wealth Planning™ is built around five planning pillars: tax strategy, retirement strategy, wealth management, practice planning, and legacy planning.",
+  title: metaTitle(PAGE),
+  description: PAGE.description,
   alternates: { canonical: ROUTE },
 };
 

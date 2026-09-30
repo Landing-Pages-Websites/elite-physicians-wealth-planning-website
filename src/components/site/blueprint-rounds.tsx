@@ -116,7 +116,11 @@ function ProcessCta({ className }: { className?: string }): React.JSX.Element {
   );
 }
 
-function Intro({ compact }: { compact?: true }): React.JSX.Element {
+/* The id lives on the DESKTOP render only. This component is called twice —
+   once for the canvas and once for the lg:hidden stack — so an id written
+   inside it appeared twice in the document and every aria-labelledby
+   pointing at it resolved to nothing. */
+function Intro({ compact, headingId }: { compact?: true; headingId?: string }): React.JSX.Element {
   return (
     <>
       <p
@@ -127,7 +131,7 @@ function Intro({ compact }: { compact?: true }): React.JSX.Element {
         {BLUEPRINT.orientation}
       </p>
       <h2
-        id="blueprint-rounds-heading"
+        id={headingId}
         className={`va-reveal font-display leading-[1.14] font-medium tracking-[-0.01em] text-ink ${
           compact ? "mt-5 text-display-m text-balance" : "mt-[1.3cqw] max-w-[34ch] text-[3.9cqw]"
         }`}
@@ -174,7 +178,7 @@ export function BlueprintRounds(): React.JSX.Element {
         <ProcessRoute />
 
         <div className="absolute top-[16%] left-[4.9%] w-[46%]">
-          <Intro />
+          <Intro headingId="blueprint-rounds-heading" />
         </div>
 
         <ol>

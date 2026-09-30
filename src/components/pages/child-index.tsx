@@ -34,12 +34,12 @@ export function ChildIndex({
         </p>
         {/* Capped so the arrow stays related to its own row: at full shell width
             the affordance sat ~700px from the text it belonged to. */}
-        <ul className="mt-7 max-w-[62rem] border-t border-ink/12">
+        <ul className="va-stagger mt-7 max-w-[62rem] border-t border-ink/12">
           {links.map((child) => (
             <li key={child.href} className="border-b border-ink/12">
               <Link
                 href={child.href}
-                className="group flex items-start gap-6 py-6 transition-colors duration-200 hover:bg-ivory focus-visible:ring-2 focus-visible:ring-gold focus-visible:outline-none lg:gap-10"
+                className="va-row group flex items-start gap-6 py-6 pl-4 hover:bg-ivory focus-visible:ring-2 focus-visible:ring-gold focus-visible:outline-none lg:gap-10"
               >
                 <span className="min-w-0 flex-1">
                   <span className="block font-display text-display-s leading-[1.2] font-medium text-ink transition-colors duration-200 group-hover:text-gold-text">

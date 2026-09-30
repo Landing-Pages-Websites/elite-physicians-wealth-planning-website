@@ -1,5 +1,8 @@
+import Image from "next/image";
 import type { PageContent } from "@/lib/pages";
 import { Breadcrumbs } from "./breadcrumbs";
+
+export type HeroImage = { readonly src: string; readonly alt: string };
 
 /**
  * NEW UNAPPROVED SURFACE — interior pages have no approved frame.
@@ -20,9 +23,20 @@ import { Breadcrumbs } from "./breadcrumbs";
 export function PageHero({
   page,
   trail,
+  image,
 }: {
   page: PageContent;
   trail?: readonly { href: string; label: string }[];
+  /**
+   * The photograph for this page, where one legitimately exists.
+   *
+   * Assigned only where the subject IS the page's own subject — the five
+   * audience photographs were generated for these five audiences. Nothing is
+   * reused across an unrelated role and nothing is assigned to make a page look
+   * fuller, because a photograph of the wrong thing is worse than air. Pages
+   * with no honest image get a shorter band instead of a decorative one.
+   */
+  image?: HeroImage;
 }): React.JSX.Element {
   return (
     <section data-dark-band className="relative overflow-hidden bg-ink pt-[calc(var(--header-h)+1px)]">
@@ -39,16 +53,21 @@ export function PageHero({
         viewBox="0 0 1440 460"
         preserveAspectRatio="none"
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 hidden h-full w-full sm:block"
+        className="va-draw pointer-events-none absolute inset-0 hidden h-full w-full sm:block"
         fill="none"
       >
         <g stroke="var(--color-gold)" strokeWidth="1.5" strokeLinecap="round">
-          <path d="M0 40 H1282 Q1300 40 1300 58 V460" vectorEffect="non-scaling-stroke" opacity="0.5" />
+          <path d="M0 40 H1282 Q1300 40 1300 58 V460" pathLength="1" vectorEffect="non-scaling-stroke" opacity="0.5" />
         </g>
         <circle cx="1300" cy="58" r="4.5" fill="var(--color-ink)" stroke="var(--color-gold)" strokeWidth="1.5" />
       </svg>
 
-      <div className="va-shell relative z-10 py-14 lg:py-20">
+      <div
+        className={`va-shell relative z-10 ${
+          image ? "pt-7 pb-12 lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,0.82fr)] lg:items-center lg:gap-x-14 lg:py-16" : "pt-7 pb-12 lg:py-16"
+        }`}
+      >
+        <div>
         {trail ? <Breadcrumbs trail={trail} /> : null}
 
         {page.eyebrow ? (
@@ -57,14 +76,35 @@ export function PageHero({
           </p>
         ) : null}
 
-        <h1 className="mt-5 max-w-[19ch] font-display text-display-l leading-[1.04] font-medium tracking-[-0.015em] text-ivory-bright text-balance lg:max-w-[16ch]">
+        <h1 className="va-reveal mt-5 max-w-[19ch] font-display text-display-l leading-[1.04] font-medium tracking-[-0.015em] text-ivory-bright text-balance lg:max-w-[16ch]">
           {page.headline}
         </h1>
 
         {page.lede ? (
-          <p className="mt-7 max-w-[58ch] font-body text-body-l leading-[1.62] text-mist/80">
+          <p className="va-reveal mt-7 max-w-[58ch] font-body text-body-l leading-[1.62] text-mist/80">
             {page.lede}
           </p>
+        ) : null}
+        </div>
+
+        {image ? (
+          <figure className="va-reveal relative mt-10 aspect-4/3 w-full overflow-hidden rounded-sm border border-gold/30 bg-ink-deep lg:mt-0">
+            <Image
+              src={image.src}
+              alt={image.alt}
+              fill
+              sizes="(min-width: 1024px) 40vw, 100vw"
+              className="object-cover"
+              priority
+            />
+            {/* The band is navy and the photographs are bright clinical scenes;
+                without this the plate detaches from its ground. Two stops, both
+                from the palette, no new hue. */}
+            <span
+              aria-hidden="true"
+              className="absolute inset-0 bg-gradient-to-tr from-ink/55 via-ink/10 to-transparent"
+            />
+          </figure>
         ) : null}
       </div>
     </section>

@@ -36,7 +36,11 @@ function PlannerRoute(): React.JSX.Element {
   );
 }
 
-function PlannerNarrative({ compact }: { compact?: true }): React.JSX.Element {
+/* The id lives on the DESKTOP render only. This component is called twice —
+   once for the canvas and once for the lg:hidden stack — so an id written
+   inside it appeared twice in the document and every aria-labelledby
+   pointing at it resolved to nothing. */
+function PlannerNarrative({ compact, headingId }: { compact?: true; headingId?: string }): React.JSX.Element {
   const { name, credentials } = splitNameCredentials();
   return (
     <>
@@ -52,7 +56,7 @@ function PlannerNarrative({ compact }: { compact?: true }): React.JSX.Element {
         className={`block bg-gold ${compact ? "mt-3 h-px w-16" : "mt-[0.9cqw] h-px w-[4.7cqw]"}`}
       />
       <h2
-        id="accountable-planner-heading"
+        id={headingId}
         className={`va-reveal font-display leading-[1.14] font-medium tracking-[-0.01em] text-ink ${
           compact ? "mt-5 text-display-m text-balance" : "mt-[1.6cqw] text-[3.9cqw]"
         }`}
@@ -126,7 +130,7 @@ export function AccountablePlanner(): React.JSX.Element {
             broke the h2 mid-clause and stranded the article "A" at the end of
             line 1. At 40.5% line 1 breaks after the full stop, as drawn. */}
         <div className="absolute top-[17.5%] left-[52.7%] w-[40.5%]">
-          <PlannerNarrative />
+          <PlannerNarrative headingId="accountable-planner-heading" />
         </div>
       </div>
 

@@ -24,7 +24,7 @@ export function PageCta({ section }: { section: PageSection }): React.JSX.Elemen
         viewBox="0 0 1440 300"
         preserveAspectRatio="none"
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 hidden h-full w-full sm:block"
+        className="va-draw pointer-events-none absolute inset-0 hidden h-full w-full sm:block"
         fill="none"
       >
         {/* Resumes the hero's line where it left off — down the right margin,
@@ -32,14 +32,14 @@ export function PageCta({ section }: { section: PageSection }): React.JSX.Elemen
             keeping x at 1300: the heading runs to 24ch and the body to 56ch,
             so nothing the visitor reads is ever crossed by the motif. */}
         <g stroke="var(--color-gold)" strokeWidth="1.5" strokeLinecap="round">
-          <path d="M1300 0 V242 Q1300 260 1282 260 H0" vectorEffect="non-scaling-stroke" opacity="0.5" />
+          <path d="M1300 0 V242 Q1300 260 1282 260 H0" pathLength="1" vectorEffect="non-scaling-stroke" opacity="0.5" />
         </g>
         <circle cx="1300" cy="242" r="4.5" fill="var(--color-ink)" stroke="var(--color-gold)" strokeWidth="1.5" />
       </svg>
 
       <div className="va-shell relative z-10 py-14 lg:py-20">
         {section.heading ? (
-          <h2 className="max-w-[24ch] font-display text-display-m leading-[1.1] font-medium tracking-[-0.01em] text-ivory-bright text-balance">
+          <h2 className="va-reveal max-w-[24ch] font-display text-display-m leading-[1.1] font-medium tracking-[-0.01em] text-ivory-bright text-balance">
             {section.heading}
           </h2>
         ) : null}
@@ -56,13 +56,13 @@ export function PageCta({ section }: { section: PageSection }): React.JSX.Elemen
         <div className="mt-9 flex flex-wrap items-center gap-4">
           <Link
             href="/schedule"
-            className="inline-flex min-h-12 items-center rounded-sm bg-gold px-7 font-body text-[14px] font-semibold text-ink transition-colors duration-200 hover:bg-gold-hover focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-ink focus-visible:outline-none"
+            className="inline-flex min-h-12 items-center rounded-sm bg-gold px-7 font-body text-[14px] font-semibold text-ink transition-[background-color,transform] duration-200 hover:-translate-y-px hover:bg-gold-hover active:translate-y-0 focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-ink focus-visible:outline-none"
           >
             Schedule a strategy call
           </Link>
           <Link
             href="/our-process"
-            className="inline-flex min-h-12 items-center font-body text-[14px] text-mist/80 underline-offset-8 transition-colors duration-200 hover:text-gold hover:underline focus-visible:ring-2 focus-visible:ring-gold focus-visible:outline-none"
+            className="va-underline inline-flex min-h-12 items-center font-body text-[14px] text-mist/80 transition-colors duration-200 hover:text-gold focus-visible:ring-2 focus-visible:ring-gold focus-visible:outline-none"
           >
             See the Blueprint process
           </Link>

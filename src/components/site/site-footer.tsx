@@ -45,7 +45,7 @@ export function SiteFooter(): React.JSX.Element {
             <span className="align-super text-[0.6em]">™</span>
           </p>
           {/* Tracked uppercase at 390 stranded "Financial" on its own line. */}
-          <p className="mt-1 font-body text-[10px] font-semibold tracking-[0.28em] text-balance text-ink/70 uppercase">
+          <p className="mt-1 font-body text-[11px] font-semibold tracking-[0.28em] text-balance text-ink/70 uppercase">
             {BRAND.poweredBy}
           </p>
           <span aria-hidden="true" className="mt-5 block h-px w-12 bg-gold" />
@@ -63,7 +63,7 @@ export function SiteFooter(): React.JSX.Element {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="-my-2 inline-flex min-h-11 items-center py-2 font-body text-[13px] text-charcoal underline-offset-4 transition-colors duration-200 hover:text-ink hover:underline"
+                  className="va-underline -my-2 inline-flex min-h-11 items-center py-2 font-body text-[13px] text-charcoal transition-colors duration-200 hover:text-ink"
                 >
                   {item.label}
                 </Link>
@@ -80,7 +80,7 @@ export function SiteFooter(): React.JSX.Element {
             <li>
               <a
                 href={`mailto:${BRAND.email}`}
-                className="-my-2 inline-flex min-h-11 items-center py-2 underline-offset-4 transition-colors duration-200 hover:text-ink hover:underline"
+                className="va-underline -my-2 inline-flex min-h-11 items-center py-2 transition-colors duration-200 hover:text-ink"
               >
                 {BRAND.email}
               </a>
@@ -88,7 +88,7 @@ export function SiteFooter(): React.JSX.Element {
             <li>
               <a
                 href={telHref()}
-                className="-my-2 inline-flex min-h-11 items-center py-2 underline-offset-4 transition-colors duration-200 hover:text-ink hover:underline"
+                className="va-underline -my-2 inline-flex min-h-11 items-center py-2 transition-colors duration-200 hover:text-ink"
               >
                 {BRAND.phone}
               </a>
@@ -97,7 +97,7 @@ export function SiteFooter(): React.JSX.Element {
           </ul>
           <Link
             href="/schedule"
-            className="mt-6 inline-flex min-h-11 items-center rounded-sm bg-ink px-5 font-body text-[13px] font-semibold text-ivory transition-colors duration-200 hover:bg-ink/90"
+            className="mt-6 inline-flex min-h-11 items-center rounded-sm bg-ink px-5 font-body text-[13px] font-semibold text-ivory transition-[background-color,transform] duration-200 hover:-translate-y-px hover:bg-ink-hover active:translate-y-0"
           >
             Schedule a strategy call
           </Link>

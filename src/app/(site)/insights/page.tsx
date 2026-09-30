@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { PageCta } from "@/components/pages/page-cta";
 import { PageHero } from "@/components/pages/page-hero";
+import { heroImageFor } from "@/lib/hero-images";
 import { bodySections, ctaSection, getPage } from "@/lib/pages";
 
 const ROUTE = "/insights";
@@ -37,6 +38,7 @@ export default function InsightsPage(): React.JSX.Element {
     <main id="main">
       <PageHero
         page={page}
+        image={heroImageFor(ROUTE)}
         trail={[
           { href: "/", label: "Home" },
           { href: ROUTE, label: "Insights" },
@@ -54,9 +56,14 @@ export default function InsightsPage(): React.JSX.Element {
             links.
           </p>
 
-          <ul className="mt-8 border-t border-ink/12">
+          <ul className="va-stagger mt-8 border-t border-ink/12">
             {entries.map((entry) => (
               <li key={entry.heading ?? ""} className="border-b border-ink/12 py-6">
+                {entry.eyebrow ? (
+                  <p className="mb-1.5 font-body text-[11px] font-semibold tracking-[0.18em] text-gold-text uppercase">
+                    {entry.eyebrow}
+                  </p>
+                ) : null}
                 <h2 className="max-w-[46ch] font-display text-display-s leading-[1.22] font-medium text-ink">
                   {entry.heading}
                 </h2>

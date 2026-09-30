@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { FormBand } from "@/components/pages/form-band";
 import { PageShell } from "@/components/pages/page-shell";
-import { getPage } from "@/lib/pages";
+import { getPage, metaTitle } from "@/lib/pages";
 
 const ROUTE = "/physician-tax-retirement-guide";
 
@@ -17,9 +17,11 @@ const FINE_PRINT: readonly string[] = [
   "By submitting this form, you agree to receive educational communications from Elite Physicians Wealth Planning\u2122 and Fiscal Vision Financial. You may unsubscribe from email communications at any time. Submitting this form does not create an advisory relationship."
 ];
 
+const PAGE = getPage(ROUTE);
+
 export const metadata: Metadata = {
-  title: "Physician Tax & Retirement Planning Guide \u2014 Elite Physicians Wealth Planning\u2122",
-  description: "Request the Physician Tax & Retirement Planning Guide \u2014 a structured framework for coordinating tax, retirement, investment, and practice decisions.",
+  title: metaTitle(PAGE),
+  description: PAGE.description,
   alternates: { canonical: ROUTE },
 };
 

@@ -8,13 +8,11 @@
     "lede": "Elite Physicians Wealth Planning™ helps physicians and medical professionals coordinate tax planning, retirement planning, wealth management, practice planning, and legacy planning into one clear financial strategy.",
     "sections": [
       {
-        "eyebrow": null,
+        "eyebrow": "Coordinated strategy • Physician-focused • Ongoing review",
         "heading": null,
         "level": 2,
         "href": null,
-        "paras": [
-          "Coordinated strategy • Physician-focused • Ongoing review"
-        ],
+        "paras": [],
         "items": []
       },
       {
@@ -267,7 +265,7 @@
   },
   "/physicians": {
     "slug": "/physicians",
-    "title": "Who We Help — Elite Physicians Wealth Planning™",
+    "title": "Who We Help",
     "description": "Planning for physicians at every career stage: residents and fellows, established physicians, practice owners and partners, and those approaching retirement.",
     "eyebrow": "Who We Help",
     "headline": "Physician planning that meets you where your career is.",
@@ -329,7 +327,7 @@
   },
   "/physicians/residents-fellows": {
     "slug": "/physicians/residents-fellows",
-    "title": "Residents & Fellows — Elite Physicians Wealth Planning™",
+    "title": "Residents & Fellows",
     "description": "Build a strong financial foundation before your career and income accelerate.",
     "eyebrow": "Who We Help",
     "headline": "Build a strong financial foundation before your career and income accelerate.",
@@ -340,19 +338,26 @@
         "heading": "Planning priorities at this stage",
         "level": 2,
         "href": null,
-        "paras": [
-          "Resources"
-        ],
+        "paras": [],
         "items": [
           "Cash-flow system and emergency reserves",
           "Student-loan and repayment coordination",
           "Employment contract and benefit questions for professional review",
           "Disability and life insurance needs",
           "Retirement plan enrollment and early investing",
-          "Tax questions related to moonlighting or 1099 income",
-          "First Five Years in Practice Checklist [coming soon]",
-          "Benefits Enrollment Guide for New Physicians [coming soon]",
-          "Physician Financial Checkup [coming soon]"
+          "Tax questions related to moonlighting or 1099 income"
+        ]
+      },
+      {
+        "eyebrow": "Resources",
+        "heading": null,
+        "level": 2,
+        "href": null,
+        "paras": [],
+        "items": [
+          "First Five Years in Practice Checklist — coming soon",
+          "Benefits Enrollment Guide for New Physicians — coming soon",
+          "Physician Financial Checkup — coming soon"
         ]
       },
       {
@@ -472,7 +477,7 @@
   },
   "/physicians/established": {
     "slug": "/physicians/established",
-    "title": "Established Physicians — Elite Physicians Wealth Planning™",
+    "title": "Established Physicians",
     "description": "Turn strong earnings into a coordinated strategy for wealth, family, and freedom.",
     "eyebrow": "Who We Help",
     "headline": "Turn strong earnings into a coordinated strategy for wealth, family, and freedom.",
@@ -483,19 +488,26 @@
         "heading": "Planning priorities at this stage",
         "level": 2,
         "href": null,
-        "paras": [
-          "Resources"
-        ],
+        "paras": [],
         "items": [
           "W-2, bonus, 1099, and partnership-income coordination",
           "Tax-aware savings and investment strategy",
           "Retirement accumulation and income-gap analysis",
           "Education and family goals",
           "Asset protection and insurance review",
-          "Estate and beneficiary alignment",
-          "Mid-Career Physician Planning Checklist [coming soon]",
-          "Year-End Tax Planning Questions [coming soon]",
-          "Retirement Readiness Scorecard [coming soon]"
+          "Estate and beneficiary alignment"
+        ]
+      },
+      {
+        "eyebrow": "Resources",
+        "heading": null,
+        "level": 2,
+        "href": null,
+        "paras": [],
+        "items": [
+          "Mid-Career Physician Planning Checklist — coming soon",
+          "Year-End Tax Planning Questions — coming soon",
+          "Retirement Readiness Scorecard — coming soon"
         ]
       },
       {
@@ -615,7 +627,7 @@
   },
   "/physicians/practice-owners": {
     "slug": "/physicians/practice-owners",
-    "title": "Practice Owners & Partners — Elite Physicians Wealth Planning™",
+    "title": "Practice Owners & Partners",
     "description": "Connect the financial decisions inside your practice with the future you are building outside it.",
     "eyebrow": "Who We Help",
     "headline": "Connect the financial decisions inside your practice with the future you are building outside it.",
@@ -626,19 +638,26 @@
         "heading": "Planning priorities at this stage",
         "level": 2,
         "href": null,
-        "paras": [
-          "Resources"
-        ],
+        "paras": [],
         "items": [
           "Business and personal cash-flow coordination",
           "401(k), profit-sharing, cash balance, or defined benefit plan evaluation with qualified professionals",
           "Key-person, buy-sell, disability, and continuity planning",
           "Partner transitions and succession",
           "Practice sale or exit preparation",
-          "Personal retirement and estate strategy",
-          "Practice Owner Planning Checklist [coming soon]",
-          "Retirement Plan Design Questions [coming soon]",
-          "Succession Readiness Guide [coming soon]"
+          "Personal retirement and estate strategy"
+        ]
+      },
+      {
+        "eyebrow": "Resources",
+        "heading": null,
+        "level": 2,
+        "href": null,
+        "paras": [],
+        "items": [
+          "Practice Owner Planning Checklist — coming soon",
+          "Retirement Plan Design Questions — coming soon",
+          "Succession Readiness Guide — coming soon"
         ]
       },
       {
@@ -758,7 +777,7 @@
   },
   "/physicians/retirement": {
     "slug": "/physicians/retirement",
-    "title": "Physicians Approaching Retirement — Elite Physicians Wealth Planning™",
+    "title": "Physicians Approaching Retirement",
     "description": "Retire from medicine with a coordinated plan for income, taxes, healthcare, and legacy.",
     "eyebrow": "Who We Help",
     "headline": "Retire from medicine with a coordinated plan for income, taxes, healthcare, and legacy.",
@@ -769,19 +788,26 @@
         "heading": "Planning priorities at this stage",
         "level": 2,
         "href": null,
-        "paras": [
-          "Resources"
-        ],
+        "paras": [],
         "items": [
           "Retirement income target and cash-flow design",
           "Portfolio, pension, retirement account, and Social Security coordination",
           "Tax-bracket and distribution planning with the tax professional",
           "Medicare and healthcare-cost planning",
           "Long-term care and survivor planning",
-          "Practice transition, charitable goals, and estate coordination",
-          "Physician Retirement Readiness Scorecard [coming soon]",
-          "Five Years to Retirement Checklist [coming soon]",
-          "Legacy Conversation Guide [coming soon]"
+          "Practice transition, charitable goals, and estate coordination"
+        ]
+      },
+      {
+        "eyebrow": "Resources",
+        "heading": null,
+        "level": 2,
+        "href": null,
+        "paras": [],
+        "items": [
+          "Physician Retirement Readiness Scorecard — coming soon",
+          "Five Years to Retirement Checklist — coming soon",
+          "Legacy Conversation Guide — coming soon"
         ]
       },
       {
@@ -901,8 +927,8 @@
   },
   "/services": {
     "slug": "/services",
-    "title": "Services for Physicians — Elite Physicians Wealth Planning™",
-    "description": "Elite Physicians Wealth Planning™ is built around five planning pillars: tax strategy, retirement strategy, wealth management, practice planning, and legacy planning.",
+    "title": "Services for Physicians",
+    "description": "Elite Physicians Wealth Planning™ is built around five planning pillars: tax strategy, retirement strategy, wealth management, practice planning, and legacy…",
     "eyebrow": "Services",
     "headline": "Coordinated planning for the financial complexity physicians face.",
     "lede": "Elite Physicians Wealth Planning™ is built around five planning pillars. Each pillar can stand alone, but the real value comes from coordinating them into one strategy.",
@@ -973,7 +999,7 @@
   },
   "/services/tax-planning": {
     "slug": "/services/tax-planning",
-    "title": "Tax Planning for Physicians — Elite Physicians Wealth Planning™",
+    "title": "Tax Planning for Physicians",
     "description": "Elite Physicians Wealth Planning™ helps physicians evaluate tax planning opportunities before key decisions are made, in coordination with your CPA.",
     "eyebrow": "Tax Strategy",
     "headline": "Tax planning for physicians should be proactive, coordinated, and year-round.",
@@ -1087,8 +1113,8 @@
   },
   "/services/retirement-planning": {
     "slug": "/services/retirement-planning",
-    "title": "Retirement Planning for Physicians — Elite Physicians Wealth Planning™",
-    "description": "Turning employer plans, IRAs, brokerage accounts, practice interests, and pensions into a retirement income strategy that accounts for taxes, healthcare, and legacy goals.",
+    "title": "Retirement Planning for Physicians",
+    "description": "Turning employer plans, IRAs, brokerage accounts, practice interests, and pensions into a retirement income strategy that accounts for taxes, healthcare, and…",
     "eyebrow": "Retirement Strategy",
     "headline": "Retirement planning for physicians is more than choosing a retirement date.",
     "lede": "Physicians often accumulate wealth across employer plans, IRAs, brokerage accounts, practice interests, real estate, pensions, and insurance arrangements. The challenge is turning those assets into a retirement income strategy that accounts for taxes, healthcare, inflation, investment risk, family goals, and legacy priorities.",
@@ -1197,7 +1223,7 @@
   },
   "/services/wealth-management": {
     "slug": "/services/wealth-management",
-    "title": "Wealth Management for Physicians — Elite Physicians Wealth Planning™",
+    "title": "Wealth Management for Physicians",
     "description": "Portfolio design for physicians that reflects taxes, risk tolerance, time horizon, cash-flow needs, retirement income goals, and concentration risk.",
     "eyebrow": "Wealth Management",
     "headline": "Investment management should support your total financial strategy.",
@@ -1307,8 +1333,8 @@
   },
   "/services/practice-owner-planning": {
     "slug": "/services/practice-owner-planning",
-    "title": "Practice Owner Planning — Elite Physicians Wealth Planning™",
-    "description": "Planning for medical and dental practice owners: retirement-plan design, employee benefits, entity structure, buy-sell coordination, succession, and exit planning.",
+    "title": "Practice Owner Planning",
+    "description": "Planning for medical and dental practice owners: retirement-plan design, employee benefits, entity structure, buy-sell coordination, succession, and exit…",
     "eyebrow": "Practice & Business Planning",
     "headline": "Your practice is more than a business. It is a major part of your wealth strategy.",
     "lede": "Medical and dental practice owners face planning questions that employed physicians may never encounter. Retirement-plan design, business cash flow, employee benefits, entity structure, buy-sell agreements, succession planning, and practice exit decisions can all affect personal wealth.",
@@ -1417,8 +1443,8 @@
   },
   "/services/legacy-estate-planning": {
     "slug": "/services/legacy-estate-planning",
-    "title": "Legacy & Estate Planning Coordination — Elite Physicians Wealth Planning™",
-    "description": "Coordinating estate documents, beneficiary designations, asset titling, insurance, charitable giving, and family wealth transfer with qualified estate planning attorneys.",
+    "title": "Legacy & Estate Planning Coordination",
+    "description": "Coordinating estate documents, beneficiary designations, asset titling, insurance, charitable giving, and family wealth transfer with qualified estate…",
     "eyebrow": "Legacy Planning",
     "headline": "Legacy planning helps connect your wealth to the people and causes that matter most.",
     "lede": "A strong financial plan should address what happens during your life, during retirement, and after your lifetime. Legacy planning helps coordinate estate documents, beneficiary designations, asset titling, insurance, charitable giving, family wealth transfer, and liquidity needs.",
@@ -1606,147 +1632,135 @@
   },
   "/insights": {
     "slug": "/insights",
-    "title": "Insights — Elite Physicians Wealth Planning™",
+    "title": "Insights",
     "description": "Educational articles on physician tax strategy, career-stage planning, practice ownership, retirement, wealth, risk, and estate coordination.",
     "eyebrow": "Insights",
     "headline": "Educational writing for physicians and medical practice owners.",
     "lede": "Ideas, checklists, and frameworks — not individualized advice. Every article ends with a consultation invitation, not a product pitch.",
     "sections": [
       {
-        "eyebrow": null,
+        "eyebrow": "Career-Stage Planning",
         "heading": "The Physician Financial Checkup: Seven Areas That Should Work Together",
         "level": 2,
         "href": null,
         "paras": [
-          "Career-Stage Planning",
           "A framework for looking at cash flow, taxes, retirement, investments, protection, estate, and practice planning as one system.",
-          "Coming soon",
-          "Career-Stage Planning"
+          "Coming soon"
         ],
         "items": []
       },
       {
-        "eyebrow": null,
+        "eyebrow": "Career-Stage Planning",
         "heading": "Seven Financial Moves to Consider in the First Five Years of Practice",
         "level": 2,
         "href": null,
         "paras": [
           "Foundational decisions to consider between residency and mid-career.",
-          "Coming soon",
-          "Physician Tax Strategy"
+          "Coming soon"
         ],
         "items": []
       },
       {
-        "eyebrow": null,
+        "eyebrow": "Physician Tax Strategy",
         "heading": "W-2, 1099, and Practice Income: Questions Physicians Should Ask Before Year-End",
         "level": 2,
         "href": null,
         "paras": [
           "Compensation-source questions that shape tax and retirement planning.",
-          "Coming soon",
-          "Practice Owner Strategy"
+          "Coming soon"
         ],
         "items": []
       },
       {
-        "eyebrow": null,
+        "eyebrow": "Practice Owner Strategy",
         "heading": "Cash Balance and Defined Benefit Plans: A Decision Guide for Medical Practice Owners",
         "level": 2,
         "href": null,
         "paras": [
           "How advanced qualified plans fit into a practice owner's larger picture.",
-          "Coming soon",
-          "Career-Stage Planning"
+          "Coming soon"
         ],
         "items": []
       },
       {
-        "eyebrow": null,
+        "eyebrow": "Career-Stage Planning",
         "heading": "How Physicians Can Coordinate a CPA, Attorney, TPA, and Financial Advisor",
         "level": 2,
         "href": null,
         "paras": [
           "A practical model for keeping outside professionals aligned around one plan.",
-          "Coming soon",
-          "Retirement & Income"
+          "Coming soon"
         ],
         "items": []
       },
       {
-        "eyebrow": null,
+        "eyebrow": "Retirement & Income",
         "heading": "Five Years From Retirement: A Physician's Planning Checklist",
         "level": 2,
         "href": null,
         "paras": [
           "The conversations to have before the transition begins.",
-          "Coming soon",
-          "Wealth & Risk"
+          "Coming soon"
         ],
         "items": []
       },
       {
-        "eyebrow": null,
+        "eyebrow": "Wealth & Risk",
         "heading": "Disability Insurance Review: Questions Physicians Often Overlook",
         "level": 2,
         "href": null,
         "paras": [
           "Own-occupation, portability, and definition questions worth revisiting.",
-          "Coming soon",
-          "Physician Tax Strategy"
+          "Coming soon"
         ],
         "items": []
       },
       {
-        "eyebrow": null,
+        "eyebrow": "Physician Tax Strategy",
         "heading": "Roth Conversion Timing Before and After Retirement",
         "level": 2,
         "href": null,
         "paras": [
           "Scenarios where conversion windows may open — and close.",
-          "Coming soon",
-          "Practice Owner Strategy"
+          "Coming soon"
         ],
         "items": []
       },
       {
-        "eyebrow": null,
+        "eyebrow": "Practice Owner Strategy",
         "heading": "Preparing Financially for the Sale or Transition of a Medical Practice",
         "level": 2,
         "href": null,
         "paras": [
           "Personal-plan questions to bring alongside a valuation and legal team.",
-          "Coming soon",
-          "Estate & Family"
+          "Coming soon"
         ],
         "items": []
       },
       {
-        "eyebrow": null,
+        "eyebrow": "Estate & Family",
         "heading": "Beneficiaries, Trusts, and Account Ownership: A Physician Estate-Plan Coordination Checklist",
         "level": 2,
         "href": null,
         "paras": [
           "Where estate documents and account titling most often disconnect.",
-          "Coming soon",
-          "Physician Tax Strategy"
+          "Coming soon"
         ],
         "items": []
       },
       {
-        "eyebrow": null,
+        "eyebrow": "Physician Tax Strategy",
         "heading": "Charitable Giving Strategies for High-Income Medical Professionals",
         "level": 2,
         "href": null,
         "paras": [
           "Vehicles and timing decisions worth reviewing with a tax professional.",
-          "Coming soon",
-          "Estate & Family"
+          "Coming soon"
         ],
         "items": []
       },
       {
-        "eyebrow": null,
+        "eyebrow": "Estate & Family",
         "heading": "Long-Term Care and Survivor Planning for Physician Families",
         "level": 2,
         "href": null,
@@ -1865,7 +1879,7 @@
   "/meet-michael-epps": {
     "slug": "/meet-michael-epps",
     "title": "Meet Michael A. Epps, ChFC®, RICP®",
-    "description": "Michael A. Epps, ChFC®, RICP®, Founder & Chief Wealth Strategist of Fiscal Vision Financial, founded Elite Physicians Wealth Planning™ for physicians and medical professionals.",
+    "description": "Michael A. Epps, ChFC®, RICP®, Founder & Chief Wealth Strategist of Fiscal Vision Financial, founded Elite Physicians Wealth Planning™ for physicians and…",
     "eyebrow": "Founder",
     "headline": "Meet Michael A. Epps, ChFC®, RICP®",
     "lede": "Founder & Chief Wealth Strategist, Fiscal Vision Financial",
@@ -1964,7 +1978,7 @@
   },
   "/about/team": {
     "slug": "/about/team",
-    "title": "Meet the Team — Elite Physicians Wealth Planning™",
+    "title": "Meet the Team",
     "description": "Elite Physicians Wealth Planning™ is a coordinated team, not a single point of failure. Meet the people behind your plan.",
     "eyebrow": "Our Team",
     "headline": "The team behind your plan.",
@@ -2067,7 +2081,7 @@
   },
   "/who-we-serve": {
     "slug": "/who-we-serve",
-    "title": "Who We Serve — Elite Physicians Wealth Planning™",
+    "title": "Who We Serve",
     "description": "Elite Physicians Wealth Planning™ serves physicians, surgeons, dentists, practice owners, advanced practice providers, and healthcare executives.",
     "eyebrow": "Who We Serve",
     "headline": "Planning built for high-income medical professionals.",
@@ -2149,7 +2163,7 @@
   },
   "/who-we-serve/physicians-specialists": {
     "slug": "/who-we-serve/physicians-specialists",
-    "title": "Financial Planning for Physicians & Specialists — Elite Physicians Wealth Planning™",
+    "title": "Financial Planning for Physicians & Specialists",
     "description": "Financial strategy for physicians and specialists with complex income, limited time, and coordinated tax, retirement, investment, and protection needs.",
     "eyebrow": "Physicians & Specialists",
     "headline": "Financial strategy for physicians and specialists with complex income and limited time.",
@@ -2207,7 +2221,7 @@
   },
   "/who-we-serve/surgeons": {
     "slug": "/who-we-serve/surgeons",
-    "title": "Financial Planning for Surgeons — Elite Physicians Wealth Planning™",
+    "title": "Financial Planning for Surgeons",
     "description": "Wealth planning for surgeons with demanding schedules, high earning potential, tax exposure, risk considerations, and retirement complexity.",
     "eyebrow": "Surgeons",
     "headline": "Wealth planning for surgeons with demanding careers and complex financial lives.",
@@ -2265,8 +2279,8 @@
   },
   "/who-we-serve/dentists-dental-specialists": {
     "slug": "/who-we-serve/dentists-dental-specialists",
-    "title": "Financial Planning for Dentists — Elite Physicians Wealth Planning™",
-    "description": "Wealth strategy for dentists and dental specialists — associates building a foundation and owners managing practice cash flow, retirement plans, and exit planning.",
+    "title": "Financial Planning for Dentists",
+    "description": "Wealth strategy for dentists and dental specialists — associates building a foundation and owners managing practice cash flow, retirement plans, and exit…",
     "eyebrow": "Dentists & Dental Specialists",
     "headline": "Wealth strategy for dentists and dental specialists.",
     "lede": "Dentists and dental specialists often manage practice ownership, equipment and practice debt, staffing costs, uneven cash flow, retirement-plan decisions, and an eventual practice transition. Personal and business planning are rarely separate.",
@@ -2326,7 +2340,7 @@
   },
   "/who-we-serve/crnas-nps-pas": {
     "slug": "/who-we-serve/crnas-nps-pas",
-    "title": "Financial Planning for CRNAs, NPs & PAs — Elite Physicians Wealth Planning™",
+    "title": "Financial Planning for CRNAs, NPs & PAs",
     "description": "Financial planning for CRNAs, nurse practitioners, and physician assistants building long-term wealth with rising income and benefits decisions.",
     "eyebrow": "CRNAs, NPs & PAs",
     "headline": "Financial planning for advanced practice professionals building long-term wealth.",
@@ -2384,7 +2398,7 @@
   },
   "/who-we-serve/healthcare-executives": {
     "slug": "/who-we-serve/healthcare-executives",
-    "title": "Financial Planning for Healthcare Executives — Elite Physicians Wealth Planning™",
+    "title": "Financial Planning for Healthcare Executives",
     "description": "Wealth planning for healthcare executives with equity compensation, deferred compensation, complex benefits, and multi-year tax considerations.",
     "eyebrow": "Healthcare Executives",
     "headline": "Wealth planning for healthcare executives with complex compensation and benefits.",
@@ -2442,7 +2456,7 @@
   },
   "/resources": {
     "slug": "/resources",
-    "title": "Physician Resource Center — Elite Physicians Wealth Planning™",
+    "title": "Physician Resource Center",
     "description": "Educational guides, checklists, articles, and webinars for medical professionals on taxes, retirement, investments, practice ownership, and legacy planning.",
     "eyebrow": "Resource Center",
     "headline": "Physician Resource Center.",
@@ -2464,66 +2478,78 @@
         "level": 2,
         "href": null,
         "paras": [],
-        "items": []
+        "items": [
+          "Tax Strategy",
+          "Retirement Planning",
+          "Practice Owner Planning",
+          "Investment Strategy",
+          "Estate & Legacy Planning",
+          "Insurance & Risk",
+          "Student Loans",
+          "Career Transitions",
+          "Webinars and Events"
+        ]
       },
       {
         "eyebrow": "Latest Articles",
+        "heading": null,
+        "level": 2,
+        "href": null,
+        "paras": [],
+        "items": []
+      },
+      {
+        "eyebrow": "Career-Stage Planning",
         "heading": "The Physician Financial Checkup: Seven Areas That Should Work Together",
         "level": 3,
         "href": null,
         "paras": [
-          "Career-Stage Planning",
-          "A framework for looking at cash flow, taxes, retirement, investments, protection, estate, and practice planning as one system.",
-          "Career-Stage Planning"
+          "A framework for looking at cash flow, taxes, retirement, investments, protection, estate, and practice planning as one system."
         ],
         "items": []
       },
       {
-        "eyebrow": null,
+        "eyebrow": "Career-Stage Planning",
         "heading": "Seven Financial Moves to Consider in the First Five Years of Practice",
         "level": 3,
         "href": null,
         "paras": [
-          "Foundational decisions to consider between residency and mid-career.",
-          "Physician Tax Strategy"
+          "Foundational decisions to consider between residency and mid-career."
         ],
         "items": []
       },
       {
-        "eyebrow": null,
+        "eyebrow": "Physician Tax Strategy",
         "heading": "W-2, 1099, and Practice Income: Questions Physicians Should Ask Before Year-End",
         "level": 3,
         "href": null,
         "paras": [
-          "Compensation-source questions that shape tax and retirement planning.",
-          "Practice Owner Strategy"
+          "Compensation-source questions that shape tax and retirement planning."
         ],
         "items": []
       },
       {
-        "eyebrow": null,
+        "eyebrow": "Practice Owner Strategy",
         "heading": "Cash Balance and Defined Benefit Plans: A Decision Guide for Medical Practice Owners",
         "level": 3,
         "href": null,
         "paras": [
-          "How advanced qualified plans fit into a practice owner's larger picture.",
-          "Career-Stage Planning"
+          "How advanced qualified plans fit into a practice owner's larger picture."
         ],
         "items": []
       },
       {
-        "eyebrow": null,
+        "eyebrow": "Career-Stage Planning",
         "heading": "How Physicians Can Coordinate a CPA, Attorney, TPA, and Financial Advisor",
         "level": 3,
         "href": null,
         "paras": [
-          "A practical model for keeping outside professionals aligned around one plan.",
-          "Retirement & Income"
+          "A practical model for keeping outside professionals aligned around one plan."
         ],
         "items": []
       },
       {
-        "eyebrow": null,
+        "eyebrow": "Retirement & Income",
         "heading": "Five Years From Retirement: A Physician's Planning Checklist",
         "level": 3,
         "href": null,
@@ -2558,7 +2584,7 @@
   },
   "/physician-tax-retirement-guide": {
     "slug": "/physician-tax-retirement-guide",
-    "title": "Physician Tax & Retirement Planning Guide — Elite Physicians Wealth Planning™",
+    "title": "Physician Tax & Retirement Planning Guide",
     "description": "Request the Physician Tax & Retirement Planning Guide — a structured framework for coordinating tax, retirement, investment, and practice decisions.",
     "eyebrow": "Educational Guide",
     "headline": "Request the Physician Tax & Retirement Planning Guide.",
@@ -2606,7 +2632,7 @@
   },
   "/schedule": {
     "slug": "/schedule",
-    "title": "Schedule a Strategy Call — Elite Physicians Wealth Planning™",
+    "title": "Schedule a Strategy Call",
     "description": "Schedule your Elite Physician Strategy Call — a confidential conversation about your planning priorities, with no product presentation.",
     "eyebrow": "Strategy Call",
     "headline": "Schedule your Elite Physician Strategy Call.",
@@ -2667,7 +2693,7 @@
   },
   "/contact": {
     "slug": "/contact",
-    "title": "Contact — Elite Physicians Wealth Planning™",
+    "title": "Contact",
     "description": "Contact Elite Physicians Wealth Planning™, powered by Fiscal Vision Financial, with planning questions, referral partnerships, or speaking requests.",
     "eyebrow": "Contact",
     "headline": "Contact Elite Physicians Wealth Planning™.",
@@ -2712,7 +2738,7 @@
   },
   "/privacy-disclosures": {
     "slug": "/privacy-disclosures",
-    "title": "Privacy & Website Disclosures — Elite Physicians Wealth Planning™",
+    "title": "Privacy & Website Disclosures",
     "description": "Privacy and website disclosures for Elite Physicians Wealth Planning™, powered by Fiscal Vision Financial.",
     "eyebrow": "Disclosures",
     "headline": "Privacy & Website Disclosures.",
@@ -2783,7 +2809,7 @@
   },
   "/consultation": {
     "slug": "/consultation",
-    "title": "Request a Private Consultation — Elite Physicians Wealth Planning™",
+    "title": "Request a Private Consultation",
     "description": "Request a private, no-pressure consultation with Elite Physicians Wealth Planning™. Discovery conversation for physicians and medical practice owners.",
     "eyebrow": "Request a Private Consultation",
     "headline": "Let's start with a private conversation.",
@@ -2796,8 +2822,16 @@
         "href": null,
         "paras": [
           "Please do not include Social Security numbers, account numbers, health information, tax documents, or other sensitive data.",
-          "Disclosure: Submitting this form does not create an advisory relationship. All engagements are governed by written disclosures and agreements.",
-          "What to expect",
+          "Disclosure: Submitting this form does not create an advisory relationship. All engagements are governed by written disclosures and agreements."
+        ],
+        "items": []
+      },
+      {
+        "eyebrow": "What to expect",
+        "heading": null,
+        "level": 2,
+        "href": null,
+        "paras": [
           "Please do not send sensitive information (SSN, account numbers, health data) through this form."
         ],
         "items": [

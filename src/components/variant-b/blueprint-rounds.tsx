@@ -108,14 +108,18 @@ function Maxims({ className = "" }: { className?: string }): React.JSX.Element {
   );
 }
 
-function CopyBlock(): React.JSX.Element {
+/* The id lives on the DESKTOP render only. This component is called twice —
+   once for the canvas and once for the lg:hidden stack — so an id written
+   inside it appeared twice in the document and every aria-labelledby
+   pointing at it resolved to nothing. */
+function CopyBlock({ headingId }: { headingId?: string }): React.JSX.Element {
   return (
     <>
       {/* The frame sets this band's orientation line in serif italic, not in
           the direction's cap eyebrow. Kept as drawn. */}
       <p className="font-display text-[1.15rem] italic text-ink/85">{BLUEPRINT.orientation}</p>
       <h2
-        id="blueprint-rounds-heading"
+        id={headingId}
         className="mt-4 max-w-[13ch] text-[clamp(2rem,3.1vw,3.05rem)] leading-[1.08] font-bold tracking-[-0.02em] text-ink"
       >
         {BLUEPRINT.headline}
@@ -173,7 +177,7 @@ export default function BlueprintRounds(): React.JSX.Element {
         <TargetRosette className="absolute bottom-[6.4%] left-[1.2%] h-8 w-8" />
 
         <div className="absolute top-[13%] left-[4.5%] w-[33%]">
-          <CopyBlock />
+          <CopyBlock headingId="blueprint-rounds-heading" />
         </div>
 
         <p className="absolute top-[6%] left-[37.5%] flex items-start gap-2 font-display text-[0.95rem] leading-[1.45] italic text-ink/80">
