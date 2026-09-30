@@ -33,7 +33,11 @@ function Wordmark(): React.JSX.Element {
   return (
     <Link
       href="/"
-      className="flex shrink-0 flex-col gap-0.5 rounded-sm transition-opacity duration-200 hover:opacity-90"
+      // The "powered by" line is positioned, not stacked. In a flex-col the
+      // two-line lockup centres on the gap BETWEEN its lines, so the wordmark
+      // sat 6.5px above the nav and the CTA on every page. Taking the second
+      // line out of the flow leaves only the wordmark participating.
+      className="relative flex shrink-0 flex-col rounded-sm transition-opacity duration-200 hover:opacity-90"
     >
       {/* 22px here pushed the Menu button off the right edge of a 390 viewport:
           the wordmark cannot wrap or shrink, so 24px padding + 32 characters +
@@ -45,7 +49,7 @@ function Wordmark(): React.JSX.Element {
         {BRAND.name}
         <span className="align-[0.42em] text-[0.45em]">™</span>
       </span>
-      <span className="hidden font-body text-[11px] font-semibold tracking-[0.24em] whitespace-nowrap text-gold uppercase sm:block">
+      <span className="absolute top-full left-0 mt-0.5 hidden font-body text-[11px] font-semibold tracking-[0.24em] whitespace-nowrap text-gold uppercase sm:block">
         {BRAND.poweredBy}
       </span>
     </Link>

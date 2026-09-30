@@ -44,6 +44,16 @@ ROUTE = {
     "consultation": "/consultation", "checkup": "/checkup",
 }
 
+# The twelve article routes, read from the capture rather than typed out. They
+# belong in ROUTE even though they do not ship: SRC_PATH needs them to recognise
+# an in-content link that points at one, and BLOCKED needs them to know the
+# destination is held rather than simply unknown. Absent from ROUTE they were
+# neither, so every link to an unwritten article silently became a dead heading.
+for _entry in json.load(open(f"{CAPTURE}/_index.json")):
+    _slug = _entry["slug"]
+    if _slug.startswith("insights__"):
+        ROUTE[_slug] = "/insights/" + _slug.split("__", 1)[1]
+
 # Source PATH -> production route, for rewriting in-content links. Built from
 # ROUTE, since a source slug is its path with "/" written as "__".
 SRC_PATH = {"/" + slug.replace("__", "/"): route for slug, route in ROUTE.items()}
@@ -239,9 +249,10 @@ def main():
             continue
         sections = []
         for s in parsed["sections"]:
-            href = s["href"]
+            href, pending = s["href"], False
             if href:
                 target = SRC_PATH.get(href.split("#")[0].rstrip("/") or "/")
+                pending = bool(target) and target in BLOCKED
                 href = target if target and target not in BLOCKED else None
                 if href == route:
                     href = None  # never link a page to itself
@@ -256,7 +267,7 @@ def main():
                 eyebrow = None
             section = {
                 "eyebrow": eyebrow, "heading": heading,
-                "level": s["level"], "href": href,
+                "level": s["level"], "href": href, "pending": pending,
                 "paras": paras,
                 "items": [clean(x) for x in s["items"] if clean(x)],
             }

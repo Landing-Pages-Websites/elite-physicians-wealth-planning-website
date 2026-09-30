@@ -48,6 +48,14 @@ export type PageSection = {
    * it would link a page to itself.
    */
   readonly href: string | null;
+  /**
+   * The source linked this block at a route we deliberately do not ship (the
+   * twelve unwritten articles, the assessment). The heading is real, the
+   * destination is not — so the page says "In preparation" rather than
+   * presenting a headline that goes nowhere, which is what /insights already
+   * does and what /resources was not doing.
+   */
+  readonly pending?: boolean;
   readonly paras: readonly string[];
   readonly items: readonly string[];
   /** The source closes nearly every page with a persuasive block; rendered as a CTA band. */

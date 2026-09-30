@@ -72,7 +72,7 @@ export function PageSection({
             ))}
 
             {lead?.items.length ? (
-              <ul className={`va-stagger max-w-[68ch] ${lead.paras.length ? "mt-7" : ""}`}>
+              <ul className={`max-w-[68ch] ${lead.paras.length ? "mt-7" : ""}`}>
                 {lead.items.map((item) => (
                   <li
                     key={item}
@@ -151,7 +151,18 @@ function Subsection({ section }: { section: Section }): React.JSX.Element {
     </>
   );
 
-  if (!section.href) return <div className="py-5">{body}</div>;
+  if (!section.href) {
+    return (
+      <div className="py-5">
+        {body}
+        {section.pending ? (
+          <p className="mt-2.5 font-body text-[11px] tracking-[0.18em] text-charcoal/55 uppercase">
+            In preparation
+          </p>
+        ) : null}
+      </div>
+    );
+  }
 
   return (
     <Link

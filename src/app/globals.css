@@ -318,11 +318,11 @@ header :focus-visible,
       animation-timeline: view();
       animation-range: entry 0% entry 30%;
     }
-    .va-stagger > *:nth-child(2) { animation-range: entry 3% entry 33%; }
-    .va-stagger > *:nth-child(3) { animation-range: entry 6% entry 36%; }
-    .va-stagger > *:nth-child(4) { animation-range: entry 9% entry 39%; }
-    .va-stagger > *:nth-child(5) { animation-range: entry 12% entry 42%; }
-    .va-stagger > *:nth-child(n + 6) { animation-range: entry 15% entry 45%; }
+    .va-stagger > *:nth-child(2) { animation-range: entry 8% entry 38%; }
+    .va-stagger > *:nth-child(3) { animation-range: entry 16% entry 46%; }
+    .va-stagger > *:nth-child(4) { animation-range: entry 24% entry 54%; }
+    .va-stagger > *:nth-child(5) { animation-range: entry 32% entry 62%; }
+    .va-stagger > *:nth-child(n + 6) { animation-range: entry 40% entry 70%; }
 
     /* The coordination line draws itself as its band arrives. This is the one
        motif the manifest names as the brand's own metaphor — "a single precise
@@ -349,7 +349,7 @@ header :focus-visible,
     .va-header-shift {
       animation: va-header linear both;
       animation-timeline: scroll(root);
-      animation-range: 0 120px;
+      animation-range: 0 80px;
     }
   }
 }
@@ -366,10 +366,89 @@ header :focus-visible,
   to   { opacity: 1; transform: scale(1); }
 }
 @keyframes va-header {
-  to {
-    background-color: color-mix(in srgb, var(--color-ink) 98%, transparent);
-    box-shadow: 0 1px 0 color-mix(in srgb, var(--color-gold) 26%, transparent);
+  from {
+    background-color: transparent;
+    box-shadow: 0 1px 0 transparent;
   }
+  to {
+    background-color: var(--color-ink);
+    box-shadow: 0 1px 0 color-mix(in srgb, var(--color-gold) 30%, transparent);
+  }
+}
+
+@media print {
+  .va-reveal,
+  .va-stagger > *,
+  .va-draw path,
+  .va-draw circle,
+  .va-motif-h,
+  .va-motif-v,
+  .va-motif-node {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    stroke-dashoffset: 0 !important;
+  }
+}
+
+/* The interior motif. One geometry for all 28 routes, in real pixels: the
+   crossbar clears the fixed header, the descent runs down the frame's right
+   margin outside the 1400px shell, and the node is a circle because nothing
+   scales it. --motif-top is the only number the two arms share. */
+.va-motif {
+  --motif-top: calc(var(--header-h) + 12px);
+  --motif-right: 2.5rem;
+}
+/* Where a photograph bleeds to the right edge, the descent runs down the SEAM
+   between copy and image rather than the frame margin — at the margin it was
+   drawn underneath the photograph and never seen. On the seam the line traces
+   the join it is a metaphor for. */
+@media (min-width: 1024px) {
+  .va-motif-seam {
+    --motif-right: 46%;
+  }
+}
+.va-motif-h {
+  top: var(--motif-top);
+  right: var(--motif-right);
+  transform-origin: left center;
+}
+.va-motif-v {
+  top: var(--motif-top);
+  right: var(--motif-right);
+  bottom: 0;
+  transform-origin: top center;
+}
+.va-motif-node {
+  top: calc(var(--motif-top) - 4px);
+  right: calc(var(--motif-right) - 4px);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    /* The hero sits at the top of the document, so its `entry` phase has
+       already elapsed at scroll 0 — a view() timeline would leave it part-drawn
+       in the state every first impression sees. Time-based here; view() is kept
+       for the closing band, which genuinely enters. */
+    .va-motif-h {
+      animation: va-sweep-x 0.75s var(--ease-out) 0.1s both;
+    }
+    .va-motif-v {
+      animation: va-sweep-y 0.9s var(--ease-out) 0.55s both;
+    }
+    .va-motif-node {
+      animation: va-pop 0.35s var(--ease-out) 0.5s both;
+    }
+  }
+}
+
+@keyframes va-sweep-x {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+@keyframes va-sweep-y {
+  from { transform: scaleY(0); }
+  to   { transform: scaleY(1); }
 }
 
 /* ── Micro-interactions ─────────────────────────────────────────────────────
