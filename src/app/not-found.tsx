@@ -13,7 +13,7 @@ import { SiteHeader } from "@/components/site/site-header";
  * link and no way back into the site. This one is the site.
  */
 const WAYS_BACK = [
-  { href: "/services", label: "Five planning disciplines" },
+  { href: "/services", label: "Six planning disciplines" },
   { href: "/who-we-serve", label: "Who we serve" },
   { href: "/our-process", label: "The Blueprint process" },
   { href: "/insights", label: "Insights" },

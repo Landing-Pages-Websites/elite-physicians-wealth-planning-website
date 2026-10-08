@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import { BRAND , telHref } from "@/lib/content";
+import type { FormField } from "@/lib/pages";
 
 declare global {
   interface Window {
@@ -18,7 +19,19 @@ declare global {
  */
 export type FormTone = "ledger" | "atlas";
 
-type Status = "idle" | "invalid" | "sending" | "sent" | "failed";
+/** "delivered": the email handoff ran AND the form's file (the guide) was handed over. */
+type Status = "idle" | "invalid" | "sending" | "sent" | "delivered" | "failed";
+
+/** What a form hands the visitor once it is submitted — the guide PDF. */
+export type FormDelivery = { readonly href: string; readonly label: string };
+
+const SELECT_STYLE: React.CSSProperties = {
+  // Native chevron removed: an OS-drawn arrow is the one control that would
+  // not match the rest of the field set.
+  backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%23c8a65a' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")`,
+  backgroundRepeat: "no-repeat",
+  backgroundPosition: "right 1rem center",
+};
 
 /** Career stage drives what a first conversation is actually about. */
 const CAREER_STAGES = [
@@ -54,11 +67,12 @@ function validate(values: Fields): Partial<Record<keyof Fields, string>> {
 }
 
 /** Falls back to the practice's inbox so a message is never silently lost. */
-function mailtoHandoff(values: Fields, intent: string): string {
+function mailtoHandoff(values: Fields, intent: string, extraLines: readonly string[]): string {
   const body = [
     `Name: ${values.fullName}`,
     `Email: ${values.email}`,
     `Career stage: ${values.careerStage}`,
+    ...extraLines,
     values.notes.trim() ? `\n${values.notes.trim()}` : "",
   ].join("\n");
   return `mailto:${BRAND.email}?subject=${encodeURIComponent(
@@ -70,7 +84,12 @@ export function StrategyCallForm({
   tone,
   intent = "Strategy call request",
   submitLabel = "Request a strategy call",
+  extraFields = [],
+  delivery,
 }: {
+  /** Optional page-specific questions — the practice pages' handoff lists them. */
+  extraFields?: readonly FormField[];
+  delivery?: FormDelivery;
   tone: FormTone;
   /** The button's own words. Defaults to the homepage's. */
   submitLabel?: string;
@@ -86,6 +105,7 @@ export function StrategyCallForm({
   const isLedger = tone === "ledger";
   const formRef = useRef<HTMLFormElement>(null);
   const [values, setValues] = useState<Fields>(EMPTY);
+  const [extras, setExtras] = useState<Record<string, string>>({});
   const [errors, setErrors] = useState<Partial<Record<keyof Fields, string>>>({});
   const [status, setStatus] = useState<Status>("idle");
 
@@ -122,13 +142,26 @@ export function StrategyCallForm({
     formRef.current?.requestSubmit();
   }
 
+  /**
+   * No endpoint wired yet, so the practice's inbox is the only way a lead
+   * reaches anyone — a guide request included, since its fine print promises
+   * follow-up. Hand off to email rather than report a success that never
+   * happened; a form with a file to deliver hands that over as well.
+   */
+  function handOffByEmail(): void {
+    const answered = extraFields.filter((f) => extras[f.name]?.trim());
+    window.location.href = mailtoHandoff(
+      values,
+      intent,
+      answered.map((f) => `${f.label}: ${extras[f.name].trim()}`),
+    );
+    setStatus(delivery ? "delivered" : "failed");
+  }
+
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>): Promise<void> {
     event.preventDefault();
     if (!ENDPOINT) {
-      // No endpoint wired yet. Hand off to email rather than report a success
-      // that never happened.
-      window.location.href = mailtoHandoff(values, intent);
-      setStatus("failed");
+      handOffByEmail();
       return;
     }
     setStatus("sending");
@@ -136,34 +169,46 @@ export function StrategyCallForm({
       const response = await fetch(ENDPOINT, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(values),
+        // `intent` travels with the lead: financing and insurance requests go
+        // to a different person than a strategy call.
+        body: JSON.stringify({ ...extras, ...values, intent }),
       });
       if (!response.ok) throw new Error(`Lead endpoint returned ${response.status}`);
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({ event: "form_submission", formIntent: intent });
       setStatus("sent");
       setValues(EMPTY);
+      setExtras({});
     } catch {
       setStatus("failed");
     }
   }
 
-  if (status === "sent") {
+  if (status === "sent" || status === "delivered") {
     return (
-      <p
-        role="status"
-        aria-live="polite"
-        className={`font-body text-[15px] leading-relaxed ${
-          isLedger ? "text-ivory" : "text-ink"
-        }`}
-      >
-        Request received. {BRAND.name} will reply within one business day, usually
-        sooner. If it is urgent, call{" "}
-        <a className="underline underline-offset-4" href={telHref()}>
-          {BRAND.phone}
-        </a>
-        .
-      </p>
+      <div role="status" aria-live="polite">
+        <p
+          className={`font-body text-[15px] leading-relaxed ${
+            isLedger ? "text-ivory" : "text-ink"
+          }`}
+        >
+          {status === "delivered" ? (
+            "Your guide is ready. Your email app opened with your request: send it if you would like the practice to follow up."
+          ) : delivery ? (
+            "Request received. Your guide is ready."
+          ) : (
+            <>
+              Request received. {BRAND.name} will reply within one business day, usually
+              sooner. If it is urgent, call{" "}
+              <a className="underline underline-offset-4" href={telHref()}>
+                {BRAND.phone}
+              </a>
+              .
+            </>
+          )}
+        </p>
+        {delivery ? <DeliveryLink delivery={delivery} /> : null}
+      </div>
     );
   }
 
@@ -228,13 +273,7 @@ export function StrategyCallForm({
         <select
           id="careerStage"
           name="careerStage"
-          // Native chevron removed: an OS-drawn arrow is the one control that
-          // would not match the rest of the field set.
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%23c8a65a' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")`,
-            backgroundRepeat: "no-repeat",
-            backgroundPosition: "right 1rem center",
-          }}
+          style={SELECT_STYLE}
           className={`${field} appearance-none pr-11`}
           value={values.careerStage}
           aria-invalid={Boolean(errors.careerStage)}
@@ -255,10 +294,28 @@ export function StrategyCallForm({
         ) : null}
       </div>
 
+      {extraFields.length ? (
+        // items-end: a label that wraps to two lines must not push its field
+        // below its neighbour's. An odd last field takes the whole row.
+        <div className="grid gap-5 sm:grid-cols-2 sm:items-end sm:[&>*:last-child:nth-child(odd)]:col-span-2">
+          {extraFields.map((f) => (
+            <ExtraFieldInput
+              key={f.name}
+              field={f}
+              value={extras[f.name] ?? ""}
+              inputClass={field}
+              labelClass={label}
+              optionalClass={isLedger ? "text-ivory/60" : "text-charcoal/75"}
+              onChange={(value) => setExtras((prev) => ({ ...prev, [f.name]: value }))}
+            />
+          ))}
+        </div>
+      ) : null}
+
       <div>
         <label className={label} htmlFor="notes">
           What would you like to cover?{" "}
-          <span className={isLedger ? "text-ivory/45" : "text-charcoal/60"}>Optional</span>
+          <span className={isLedger ? "text-ivory/60" : "text-charcoal/75"}>Optional</span>
         </label>
         <textarea
           id="notes"
@@ -288,7 +345,7 @@ export function StrategyCallForm({
             isLedger ? "text-ivory/55" : "text-charcoal/70"
           }`}
         >
-          No obligation. {BRAND.hours}.
+          {delivery ? "The guide downloads as soon as you send the request." : `No obligation. ${BRAND.hours}.`}
         </p>
       </div>
 
@@ -319,5 +376,75 @@ export function StrategyCallForm({
         </p>
       ) : null}
     </form>
+  );
+}
+
+/** One optional page-specific question: a select where the source lists choices. */
+function ExtraFieldInput({
+  field,
+  value,
+  inputClass,
+  labelClass,
+  optionalClass,
+  onChange,
+}: {
+  field: FormField;
+  value: string;
+  inputClass: string;
+  labelClass: string;
+  optionalClass: string;
+  onChange: (value: string) => void;
+}): React.JSX.Element {
+  const id = `extra-${field.name}`;
+  return (
+    <div>
+      <label className={labelClass} htmlFor={id}>
+        {field.label} <span className={optionalClass}>Optional</span>
+      </label>
+      {field.options ? (
+        <select
+          id={id}
+          name={field.name}
+          style={SELECT_STYLE}
+          className={`${inputClass} appearance-none pr-11`}
+          value={value}
+          onChange={(event) => onChange(event.target.value)}
+        >
+          <option value="">Select</option>
+          {field.options.map((option) => (
+            <option key={option} value={option}>
+              {option}
+            </option>
+          ))}
+        </select>
+      ) : (
+        <input
+          id={id}
+          name={field.name}
+          type={field.type ?? "text"}
+          className={inputClass}
+          value={value}
+          autoComplete={field.type === "tel" ? "tel" : "off"}
+          onChange={(event) => onChange(event.target.value)}
+        />
+      )}
+    </div>
+  );
+}
+
+/** The guide itself. The download is the conversion the blueprint asks to track. */
+function DeliveryLink({ delivery }: { delivery: FormDelivery }): React.JSX.Element {
+  return (
+    <a
+      href={delivery.href}
+      download
+      onClick={() => {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: "guide_download", guideTitle: delivery.label });
+      }}
+      className="mt-5 inline-flex min-h-12 items-center rounded-sm bg-gold px-6 font-body text-[15px] font-semibold text-ink transition-colors duration-150 hover:bg-gold-hover focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-ink focus-visible:outline-none"
+    >
+      {delivery.label}
+    </a>
   );
 }

@@ -24,6 +24,8 @@ import { SiteMenu } from "./site-menu";
 const NAV = [
   { href: "/who-we-serve", label: "Who we serve" },
   { href: "/services", label: "Services" },
+  // The practice pages' handoff: "a prominent ... Physician Practice Solutions menu".
+  { href: "/practice-solutions", label: "Practice solutions" },
   { href: "/our-process", label: "Our process" },
   { href: "/resources", label: "Resources" },
   { href: "/about", label: "About" },
@@ -68,12 +70,15 @@ export function SiteHeader(): React.JSX.Element {
       <div className="mx-auto flex w-full max-w-[1400px] items-center justify-between gap-3 px-6 py-2 sm:gap-6 sm:px-10 lg:px-14">
         <Wordmark />
 
-        <nav aria-label="Primary" className="hidden items-center gap-7 xl:flex">
+        {/* Six items since Practice solutions joined: at 1280 the labels and the
+            CTA wrapped to two lines, so the full nav waits for 1360px and the
+            Menu popover covers everything narrower. */}
+        <nav aria-label="Primary" className="hidden items-center gap-7 min-[1360px]:flex">
           {NAV.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="va-underline font-body text-[13px] text-mist/80 transition-colors duration-200 hover:text-gold"
+              className="va-underline font-body text-[13px] whitespace-nowrap text-mist/80 transition-colors duration-200 hover:text-gold"
             >
               {item.label}
             </Link>
@@ -83,7 +88,7 @@ export function SiteHeader(): React.JSX.Element {
         <div className="flex items-center gap-3">
           <Link
             href="/schedule"
-            className="hidden min-h-11 items-center rounded-sm bg-gold px-5 font-body text-[13px] font-semibold text-ink transition-[background-color,transform] duration-200 hover:-translate-y-px hover:bg-gold-hover active:translate-y-0 sm:inline-flex"
+            className="hidden min-h-11 items-center rounded-sm bg-gold px-5 font-body text-[13px] font-semibold whitespace-nowrap text-ink transition-[background-color,transform] duration-200 hover:-translate-y-px hover:bg-gold-hover active:translate-y-0 sm:inline-flex"
           >
             Schedule a strategy call
           </Link>
@@ -96,7 +101,7 @@ export function SiteHeader(): React.JSX.Element {
           <button
             type="button"
             popoverTarget="site-menu"
-            className="flex min-h-11 min-w-11 cursor-pointer items-center justify-center rounded-sm border border-mist/45 px-3 font-body text-[12px] text-mist xl:hidden"
+            className="flex min-h-11 min-w-11 cursor-pointer items-center justify-center rounded-sm border border-mist/45 px-3 font-body text-[12px] text-mist min-[1360px]:hidden"
           >
             Menu
           </button>

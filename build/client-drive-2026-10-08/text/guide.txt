@@ -1,0 +1,871 @@
+                                                                                  Elite Physician Wealth Planning™ | 2026 Tax & Retirement Planning Guide
+
+
+
+ ELITE PHYSICIAN
+ WEALTH PLANNING™
+ Powered by M A Epps & Associates
+
+ Advanced Wealth, Tax & Retirement Strategies for Physicians
+
+
+
+
+                                               2026 CURRENT-LAW GUIDE
+
+The Physician Tax & Retirement Planning
+                 Guide
+   A practical planning framework for high-income physicians, specialists, and practice owners who want to reduce
+              unnecessary taxes, increase retirement readiness, and coordinate their financial decisions.
+
+Current-Law Standard
+This guide is based on federal tax, retirement, Medicare, payroll-tax, HSA, charitable, student-loan, and estate-planning guidance available
+as of July 7, 2026. It intentionally focuses on rules that are most relevant to physicians and medical professionals. State-specific rules,
+practice-specific entity issues, and individual tax return facts require separate review.
+
+Prepared for                                                             Elite Physician Wealth Planning™ lead magnet and client education
+                                                                         campaign
+
+Prepared by                                                              M A Epps & Associates
+
+Founder                                                                  Michael A. Epps, ChFC®, RICP® - Founder & Chief Wealth
+                                                                         Strategist
+
+Version                                                                  EPWP v3.3
+
+Status                                                                   Draft for compliance and professional review
+
+Date                                                                     2026-07-07
+
+
+
+                       Helping Physicians Keep More. Grow More. Retire Better.
+
+
+
+                                          EPWP v3.3 | Current Law Guide | Educational Use Only | Page 1
+                                                                                   Elite Physician Wealth Planning™ | 2026 Tax & Retirement Planning Guide
+
+Important Notice
+ Educational Material - Not Individual Tax, Legal, or Investment Advice
+ This guide is designed for education and planning discussion only. Tax laws, retirement rules, plan documents, state rules, employer
+ benefits, entity structures, and client facts can materially change the analysis. No reader should implement a tax, retirement, estate,
+ investment, business, student-loan, or insurance strategy solely from this guide. Coordinate with a CPA, attorney, plan administrator, and
+ qualified financial professional before acting.
+Use this guide to identify planning questions and opportunities. Use professional review to determine what applies to a specific
+physician, household, medical practice, or retirement plan.
+
+
+
+
+                                           EPWP v3.3 | Current Law Guide | Educational Use Only | Page 2
+                                                                                     Elite Physician Wealth Planning™ | 2026 Tax & Retirement Planning Guide
+
+Contents
+1. Executive Summary for Physicians
+2. 2026 Current-Law Planning Dashboard
+3. The Elite Physician Tax Strategy Map
+4. Federal Income Tax Planning for High-Income Physicians
+5. W-2 Physicians: Planning Levers That Often Get Missed
+6. Practice Owners: Entity, Payroll, QBI/SSTB, and Deduction Strategy
+7. Retirement Plan Deep Dive: 401(k), 403(b), 457(b), SEP, Profit Sharing, Cash Balance, and Defined Benefit Plans
+8. Roth Planning, Backdoor Roth, After-Tax Contributions, and Asset Location
+9. HSA, Medical Benefits, and Executive Benefit Planning
+10. Charitable Giving, SALT, AMT, and Itemized Deduction Strategy
+11. Student Loan and PSLF Planning for Physicians
+12. Retirement Income, RMDs, Social Security, Medicare, and IRMAA
+13. Estate, Gift, Asset Protection, and Legacy Planning
+14. The 90-Day Physician Planning Sprint
+15. Checklists, Data Request, and Source Notes
+ How to use this guide
+ • Read the current-law dashboard first to understand the major thresholds.
+ • Use the segment-specific sections for W-2 physicians, practice owners, and physicians nearing retirement.
+ • Use the 90-day sprint and data request checklist to turn education into a coordinated planning engagement.
+
+
+
+
+                                             EPWP v3.3 | Current Law Guide | Educational Use Only | Page 3
+                                                                                           Elite Physician Wealth Planning™ | 2026 Tax & Retirement Planning Guide
+
+1. Executive Summary for Physicians
+Physicians often earn high income, but high income alone does not create financial independence. The difference comes from
+coordinated decisions: how income is taxed, how retirement plans are designed, how cash flow is allocated, how student loans are
+handled, how risk is protected, and how wealth is eventually distributed.
+The central planning challenge is not simply finding deductions. It is building a repeatable annual process that connects tax planning,
+retirement planning, investment strategy, debt management, practice planning, and legacy planning.
+
+The physician planning gap
+      Tax planning is often reactive and happens after the year is over.
+      Retirement contributions are sometimes maximized without evaluating tax brackets, Roth opportunities, after-tax contributions, or
+       practice-owner plan design.
+      High-income W-2 physicians may miss benefit, withholding, 457(b), HSA, and backdoor Roth coordination opportunities.
+      Practice owners may miss larger opportunities in cash balance plans, defined benefit plans, profit sharing, accountable plans, entity
+       structure, and succession planning.
+      Retirement-income planning often starts too late, creating avoidable RMD, Medicare IRMAA, and legacy-tax issues.
+
+The Elite Physician Planning Objective
+    Planning Objective
+    Help physicians keep more of what they earn, build more for the future, and retire with greater confidence through a coordinated annual
+    process that converts current law into actionable planning decisions.
+
+The five areas that drive most physician tax and retirement outcomes
+                                   Planning Area                                                                   Why It Matters
+
+    1. Income character                                                           Wages, K-1s, S-corp distributions, 1099 income, rental income, capital
+                                                                                  gains, and retirement distributions are taxed differently.
+
+    2. Timing                                                                     Income timing, deduction timing, Roth conversions, charitable giving,
+                                                                                  and retirement distributions can materially affect lifetime tax cost.
+
+    3. Retirement plan design                                                     A basic 401(k) may be insufficient for a high-income practice owner;
+                                                                                  cash balance or defined benefit design may create larger deductions.
+
+    4. Tax-surface coordination                                                   Federal brackets, payroll taxes, SALT, NIIT, AMT, QBI, IRMAA, and
+                                                                                  state taxes interact.
+
+    5. Implementation discipline                                                  Tax opportunities often require documents, elections, plan amendments,
+                                                                                  payroll changes, CPA coordination, or year-end action.
+
+
+
+
+                                                   EPWP v3.3 | Current Law Guide | Educational Use Only | Page 4
+                                                                                             Elite Physician Wealth Planning™ | 2026 Tax & Retirement Planning Guide
+
+2. 2026 Current-Law Planning Dashboard
+This section summarizes federal law items most likely to affect high-income physicians, specialists, and practice owners. The
+amounts below should be confirmed before implementation because IRS guidance, forms, and state law may change.
+
+2026 tax and retirement thresholds
+                      Current-Law Item                                 2026 Amount / Rule                                             Planning Use
+
+ Standard deduction                                 Single/MFS: $16,100; MFJ: $32,200; Head of household:      Affects itemizing, charitable strategy, SALT value, and
+                                                    $24,150                                                    taxable-income planning. [S1]
+
+ Federal brackets                                   Top rate remains 37%; top bracket begins above $640,600    High-income physicians may benefit from bracket
+                                                    single and $768,700 MFJ                                    management and timing strategies. [S1]
+
+ SALT deduction cap                                 $40,400 for 2026 ($20,200 MFS), phased down above          Important for physicians in higher-tax states and for
+                                                    MAGI $505,000 ($252,500 MFS), but not below $10,000        itemizing analysis. [S4]
+                                                    ($5,000 MFS)
+
+ Estate basic exclusion                             $15,000,000 for estates of decedents dying in 2026         Creates a planning window for high-net-worth physicians
+                                                                                                               and practice owners. [S1]
+
+ 401(k)/403(b)/457(b) deferral                      $24,500                                                    Baseline salary-deferral planning. [S2]
+
+ Age 50+ catch-up                                   $8,000 for most 401(k)/403(b)/governmental 457 plans       For physicians age 50+. [S2]
+
+ Age 60-63 catch-up                                 $11,250 for most 401(k)/403(b)/governmental 457 plans      SECURE 2.0 enhanced catch-up window. [S2]
+
+ Defined contribution plan limit                    $72,000                                                    Applies to total annual additions before catch-up
+                                                                                                               contributions. [S3]
+
+ Defined benefit plan limit                         $290,000 annual benefit limit                              Relevant to cash balance and defined benefit design. [S3]
+
+ IRA limit                                          $7,500 plus $1,100 catch-up at age 50+                     Backdoor Roth and basis review. [S2]
+
+ HSA contribution limit                             Self-only: $4,400; Family: $8,750                          Tax-deductible contribution, tax-deferred growth, tax-free
+                                                                                                               qualified medical distributions. [S5]
+
+ Social Security wage base                          $184,500                                                   Payroll tax budget, S-corp compensation, and owner cash
+                                                                                                               flow planning. [S13]
+
+ Additional Medicare Tax                            0.9% over $200,000 single/HOH, $250,000 MFJ, $125,000      High-income W-2 and self-employed physicians often
+                                                    MFS                                                        trigger this tax. [S9]
+
+ Net Investment Income Tax                          3.8% on lesser of net investment income or MAGI excess     Relevant to portfolio, rental, passive income, and sale
+                                                    over $200,000 single/HOH, $250,000 MFJ, $125,000 MFS       planning. [S10]
+
+ Medicare Part B premium                            2026 standard monthly premium: $202.90; high-income        Retirement-income planning should account for two-year
+                                                    IRMAA tiers begin above MAGI $109,000 single /             lookback income. [S12]
+                                                    $218,000 MFJ
+
+ Employer educational assistance                    Up to $5,250 excluded from income in 2025 and 2026 for     May help employed physicians and practice owners design
+                                                    qualified educational assistance, including qualified      benefits. [S16]
+                                                    student loan payments
+
+ Current-law interpretation rule
+ • Use these thresholds as planning inputs, not as standalone recommendations.
+ • Verify state tax rules, plan documents, employer plan features, and client-specific facts before implementation.
+ • When a law does not apply to a physician segment, omit it from the client-facing recommendation.
+
+
+
+
+                                               EPWP v3.3 | Current Law Guide | Educational Use Only | Page 5
+                                                                                   Elite Physician Wealth Planning™ | 2026 Tax & Retirement Planning Guide
+
+3. The Elite Physician Tax Strategy Map
+The strongest physician planning engagements start by mapping the tax surface before recommending products or tactics. A doctor
+with $600,000 of W-2 income needs a different planning sequence than a surgeon with K-1 practice income, a dentist with an S
+corporation, or a physician executive approaching Medicare age.
+
+
+
+
+Core diagnostic questions
+1.   What type of income is being earned, and who controls its timing?
+2.   Which tax surfaces are triggered: ordinary income, payroll tax, NIIT, SALT, AMT, QBI/SSTB, capital gains, Medicare IRMAA, or estate
+     tax?
+3.   What planning levers exist before year-end?
+4.   Which strategies require a CPA, TPA, attorney, payroll provider, custodian, or employer approval?
+5.   What should be reviewed annually to prevent tax drift?
+
+ Advisor Positioning
+ The planning process should lead with diagnosis. The client should see the relationship among taxes, retirement savings, benefits, and
+ implementation before any investment or insurance recommendation is discussed.
+
+
+
+
+                                           EPWP v3.3 | Current Law Guide | Educational Use Only | Page 6
+                                                                                          Elite Physician Wealth Planning™ | 2026 Tax & Retirement Planning Guide
+
+4. Federal Income Tax Planning for High-Income
+Physicians
+Most physicians are affected by a compressed set of planning variables: high ordinary income, limited time, concentrated career risk,
+substantial payroll taxes, and delayed retirement planning. Federal tax planning should focus on what can be controlled before
+December 31 and what can be positioned for future years.
+
+Deep dive: bracket management
+The 2026 federal rate schedule keeps seven individual income tax brackets, with the highest marginal rate of 37% beginning at
+income above $640,600 for single filers and $768,700 for married couples filing jointly. A high-income physician often cannot avoid
+the top bracket in a high-income year, but may still manage taxable income through retirement contributions, business deductions,
+charitable giving, loss harvesting, and timing of bonuses, distributions, and Roth conversions. [S1]
+Planning moves to consider
+          Compare current-year marginal rate with projected retirement marginal rate before choosing traditional vs Roth contributions.
+          Model bunching of charitable deductions when the standard deduction would otherwise reduce the value of annual giving.
+          Use multi-year capital gain and tax-loss harvesting rather than waiting until December.
+          For practice owners, coordinate major equipment purchases, retirement plan contributions, entity distributions, and owner compensation
+           before year-end.
+          For physicians near retirement, model Roth conversions before RMDs, Social Security, and Medicare IRMAA exposure increase.
+
+Deep dive: SALT and itemized deductions
+For 2026, the overall deduction limit for state and local income, sales, and property taxes is $40,400, reduced when modified AGI
+exceeds $505,000. The deduction cannot be reduced below $10,000. Married filing separately amounts are lower. This is especially
+relevant for high-income physicians in states with higher income and property taxes. [S4]
+
+    SALT planning questions
+    • Will the physician itemize after accounting for SALT, mortgage interest, and charitable giving?
+    • Will income push the taxpayer into the SALT phase-down range?
+    • Should charitable gifts be bunched into a donor-advised fund year?
+    • Does the physician own a pass-through business that may have an entity-level state tax election? State-specific review is required.
+
+Deep dive: AMT awareness
+For 2026, the AMT exemption amount is $90,100 for unmarried individuals and $140,200 for married couples filing jointly, with
+phaseout beginning at $500,000 and $1,000,000 respectively. AMT review is especially relevant when a physician has incentive stock
+options, large state tax deductions, unusual itemized deductions, or complex K-1 income. [S1]
+
+Deep dive: payroll tax and investment surtax
+                        Tax Surface                                          Rule                                                Planning Use
+
+    OASDI Social Security                             6.2% employee and employer on wages up to              Budget owner payroll and compare reasonable
+                                                      $184,500; self-employed taxpayers generally pay both   compensation in S-corp planning. [S13]
+                                                      halves through SE tax subject to rules.
+
+    Medicare tax                                      1.45% employee and employer with no wage base          All covered wages are subject to Medicare tax. [S13]
+                                                      cap.
+
+    Additional Medicare Tax                           0.9% on wages/self-employment income above             Often triggered by attending physicians, specialists,
+                                                      thresholds.                                            and dual-income households. [S9]
+
+    NIIT                                              3.8% on net investment income or MAGI excess over      Coordinate investment income, passive rentals, capital
+                                                      thresholds.                                            gains, and business sale planning. [S10]
+
+
+
+
+                                                 EPWP v3.3 | Current Law Guide | Educational Use Only | Page 7
+                                                                                          Elite Physician Wealth Planning™ | 2026 Tax & Retirement Planning Guide
+
+5. W-2 Physicians: Planning Levers That Often Get Missed
+Many employed physicians assume they have limited planning opportunities because they receive a W-2. The planning tools are
+different from practice-owner strategies, but they are still significant. The key is to optimize employer benefits, payroll elections,
+student-loan strategy, retirement savings, and tax-efficient investing.
+
+W-2 physician opportunity checklist
+                          Area                                        What to Review                                                  When
+
+ 403(b), 401(k), or TSP                            Confirm the plan type, pre-tax/Roth options, match,       Annual open enrollment and after contract changes
+                                                   vesting, and investment lineup.
+
+ 457(b)                                            Determine governmental vs non-governmental status,        Before maximizing contributions
+                                                   distribution rules, creditor risk, and whether the plan
+                                                   stacks with 403(b)/401(k).
+
+ HSA                                               Confirm HDHP eligibility, employer contributions,         Open enrollment and family changes
+                                                   family coverage, and investment options.
+
+ Backdoor Roth IRA                                 Evaluate IRA balances, pro-rata rule, spouse IRAs,        Before contribution/conversion
+                                                   and Form 8606 tracking.
+
+ Disability insurance                              Review own-occupation coverage, group offsets,            After training, job changes, and income growth
+                                                   taxation of benefits, and specialty definitions.
+
+ Student loan strategy                             Coordinate PSLF/IDR, refinancing, filing status,          Residency, fellowship, first attending job, and nonprofit
+                                                   income certification, and employer assistance.            employment
+
+ Withholding                                       Review W-4 for dual-income households, bonuses,           Midyear and year-end
+                                                   K-1s, and investment income.
+
+
+Deep dive: governmental vs non-governmental 457(b)
+A governmental 457(b) can often be rolled to an IRA or another eligible plan after separation, while a non-governmental 457(b) may
+remain subject to the employer’s creditors and have more restrictive distribution elections. The financial value of a 457(b) contribution
+depends on tax deferral, investment options, distribution risk, and the physician’s future tax rate.
+
+Deep dive: employer student-loan assistance
+Under current IRS guidance, employer-provided educational assistance can include payments of principal or interest on a qualified
+education loan for the employee’s own education. For 2025 and 2026, the first $5,250 of qualifying educational assistance benefits
+can be excluded from income if provided under a qualifying plan. [S16]
+
+ W-2 physician action items
+ • Request a benefits summary and plan documents, not just payroll screenshots.
+ • Ask whether the employer offers 457(b), HSA, supplemental disability, legal plans, or student-loan assistance.
+ • Review whether Roth, pre-tax, or mixed salary deferrals fit the physician’s career stage and projected retirement tax bracket.
+ • Track basis and conversions carefully if using backdoor Roth strategies.
+
+
+
+
+                                               EPWP v3.3 | Current Law Guide | Educational Use Only | Page 8
+                                                                                  Elite Physician Wealth Planning™ | 2026 Tax & Retirement Planning Guide
+
+6. Practice Owners: Entity, Payroll, QBI/SSTB, and
+Deduction Strategy
+Practice owners have additional planning levers because they may influence entity structure, compensation, retirement plan design,
+employee benefits, depreciation, and succession planning. The opportunity is larger, but so is the implementation risk.
+
+Entity structure is not tax planning by itself
+A medical practice may operate as an LLC, partnership, professional corporation, S corporation, C corporation, or another
+professional entity depending on state law, ownership, licensing, and legal requirements. The entity choice affects payroll tax,
+qualified plan design, fringe benefits, basis, distributions, buy-sell agreements, and eventual sale or succession planning.
+
+Deep dive: S corporation planning
+S corporation planning should never be reduced to simply “take less salary.” A shareholder-employee must receive reasonable
+compensation for services. The right compensation level depends on specialty, clinical hours, administrative duties, practice profits,
+market compensation, retirement plan design, and payroll-tax exposure.
+
+Deep dive: QBI and medical practices
+The qualified business income deduction may allow eligible taxpayers to deduct up to 20% of QBI from certain domestic pass-through
+businesses. However, physicians are typically in health-related specified service trade or business territory, and income limits,
+wage/property limitations, and form-specific rules can materially reduce or eliminate the deduction for high-income owners. [S7]
+For 2026 planning, use current IRS forms and instructions when available. Draft 2026 QBI forms indicate that taxpayers above
+income thresholds may need Form 8995-A rather than simplified Form 8995, with threshold figures around $201,750 single and
+$403,500 married filing jointly in draft materials. Confirm final forms before relying on exact thresholds. [S8]
+
+Deep dive: equipment, depreciation, and Section 179
+Practice owners purchasing equipment should coordinate business need, financing, depreciation, state conformity, and income
+timing. The IRS has issued guidance under the Working Families Tax Cuts for permanent 100% additional first-year depreciation for
+eligible depreciable property acquired after January 19, 2025. [S18]
+IRS Publication 946 states that for tax years beginning in 2026, the maximum Section 179 expense deduction is $2,560,000 and
+begins to phase out when Section 179 property placed in service exceeds $4,090,000. Certain SUVs have a separate $32,000 limit.
+[S19]
+
+Practice owner planning checklist
+   Review entity structure annually with CPA and legal counsel.
+   Confirm reasonable compensation methodology for S-corp owners.
+   Evaluate whether retirement plan design should move beyond basic deferrals into profit sharing, new comparability, cash balance, or
+    defined benefit design.
+   Coordinate major equipment purchases with actual clinical need and tax benefit timing.
+   Review accountable plan reimbursements, business insurance, lease arrangements, buy-sell agreements, and succession planning.
+   Do not implement deductions without documentation, business purpose, and CPA review.
+
+
+
+
+                                          EPWP v3.3 | Current Law Guide | Educational Use Only | Page 9
+                                                                                              Elite Physician Wealth Planning™ | 2026 Tax & Retirement Planning Guide
+
+7. Retirement Plan Deep Dive
+Retirement planning for physicians should not begin with investment selection. It should begin with contribution capacity, employer
+plan options, tax rate analysis, plan design, and future retirement-income needs.
+
+
+
+
+2026 retirement plan limits most relevant to physicians
+                                      Plan Limit                                                                     2026 Amount
+
+    401(k), 403(b), governmental 457(b), TSP elective deferral                      $24,500
+
+    Catch-up age 50+                                                                $8,000 for most plans
+
+    Enhanced catch-up age 60-63                                                     $11,250 for most 401(k), 403(b), governmental 457(b), and TSP plans
+
+    Defined contribution annual additions limit                                     $72,000
+
+    Annual compensation limit for qualified plans                                   $360,000
+
+    SEP maximum contribution                                                        $72,000
+
+    SIMPLE IRA deferral                                                             $17,000
+
+    SIMPLE IRA catch-up age 50+                                                     $4,000; enhanced age 60-63 catch-up generally $5,250
+
+    IRA contribution limit                                                          $7,500
+
+    IRA catch-up age 50+                                                            $1,100
+
+    Defined benefit annual benefit limit                                            $290,000
+
+    Taxable wage base used in retirement-plan limit tables                          $184,500
+
+Deep dive: cash balance and defined benefit plans
+Cash balance and defined benefit plans can be valuable for physicians and dental specialists with high income, stable practice cash
+flow, and a desire for larger tax-deductible retirement contributions. These plans require actuarial design, annual funding discipline,
+employee demographics analysis, plan documents, and ongoing administration.
+Good fit characteristics
+       Owner or partner has consistently high income and wants to accelerate retirement savings.
+
+                                                    EPWP v3.3 | Current Law Guide | Educational Use Only | Page 10
+                                                                                      Elite Physician Wealth Planning™ | 2026 Tax & Retirement Planning Guide
+      Practice cash flow can support required contributions.
+      Employee demographics make the plan design cost-effective.
+      The owner can commit to multi-year funding and administrative requirements.
+      The CPA, TPA, investment advisor, and payroll provider can coordinate execution.
+Red flags
+      Highly volatile income or uncertain practice profitability.
+      No willingness to fund required contributions.
+      Employee demographics make the plan disproportionately expensive.
+      Owner wants maximum deduction without understanding funding obligations.
+      Late-year setup without enough time for plan design and documentation.
+
+    Planning Sequence
+    For practice owners, retirement-plan design should be modeled before year-end, not after tax preparation begins. A cash balance plan
+    may be a tax strategy, a retirement strategy, and an employee-benefits strategy at the same time.
+
+
+
+
+                                             EPWP v3.3 | Current Law Guide | Educational Use Only | Page 11
+                                                                                            Elite Physician Wealth Planning™ | 2026 Tax & Retirement Planning Guide
+
+8. Roth Planning, Backdoor Roth, After-Tax Contributions,
+and Asset Location
+Roth planning is less about one contribution and more about managing tax flexibility. A physician may benefit from having assets in
+three tax buckets: taxable accounts, tax-deferred accounts, and tax-free Roth accounts. This flexibility becomes valuable in retirement
+when managing RMDs, capital gains, Medicare IRMAA, and survivor taxes.
+
+Backdoor Roth IRA planning
+Many high-income physicians earn too much for direct Roth IRA contributions. A backdoor Roth strategy may still be possible, but it
+requires careful review of pre-tax IRA balances and the pro-rata rule. The IRA contribution limit for 2026 is $7,500, with a $1,100
+catch-up contribution for individuals age 50 or older. [S2]
+
+ Backdoor Roth checklist
+ • Check all traditional, SEP, and SIMPLE IRA balances before conversion.
+ • Confirm whether rollover to an employer plan can isolate basis and reduce pro-rata complications.
+ • Track nondeductible IRA basis on Form 8606.
+ • Coordinate both spouses separately.
+ • Avoid assuming the conversion is tax-free without reviewing prior IRA balances.
+
+Roth vs traditional decision framework
+                                       Situation                                                             Likely Planning Direction
+
+ Current tax rate is unusually high                                                Traditional may be more attractive if future rates are lower.
+
+ Current tax rate is temporarily low                                               Roth contribution or conversion may be attractive.
+
+ Early-career physician with rising income                                         Roth strategies may be more compelling before peak earning years.
+
+ Practice owner seeking cash-flow deduction                                        Traditional/cash balance contributions may create immediate tax leverage.
+
+ Near-retirement physician before RMDs                                             Partial Roth conversions may reduce future RMD/IRMAA pressure.
+
+ Legacy-focused physician                                                          Roth assets may provide estate and beneficiary planning flexibility.
+
+Asset location
+Asset location means coordinating which assets are held in taxable, tax-deferred, and Roth accounts. For example, tax-inefficient
+assets may be more appropriate in tax-deferred accounts, while broad-market equity strategies with favorable capital-gain treatment
+may be efficient in taxable accounts. The exact answer depends on the portfolio, tax bracket, withdrawal plan, and estate objective.
+
+
+
+
+                                                   EPWP v3.3 | Current Law Guide | Educational Use Only | Page 12
+                                                                                              Elite Physician Wealth Planning™ | 2026 Tax & Retirement Planning Guide
+
+9. HSA, Medical Benefits, and Executive Benefit Planning
+Health Savings Accounts can be particularly useful for high-income physicians because eligible contributions may be deductible,
+growth can be tax-deferred, and qualified medical distributions can be tax-free. This combination is rare in the tax code.
+
+2026 HSA current-law limits
+                                      HSA / HDHP Item                                                                2026 Amount
+
+    HSA contribution limit - self-only                                              $4,400
+
+    HSA contribution limit - family                                                 $8,750
+
+    HDHP minimum deductible - self-only                                             $1,700
+
+    HDHP minimum deductible - family                                                $3,400
+
+    HDHP out-of-pocket maximum - self-only                                          $8,500
+
+    HDHP out-of-pocket maximum - family                                             $17,000
+
+    Excepted-benefit HRA amount                                                     $2,200 for plan years beginning in 2026
+The IRS also notes that telehealth and other remote-care services can now be received before meeting a high-deductible health plan
+deductible without disqualifying HSA eligibility, and certain bronze/catastrophic plans and direct primary care arrangements are
+addressed under updated Working Families Tax Cuts guidance. Confirm plan-specific eligibility before contributing. [S20]
+
+HSA planning paths
+       Cash-flow use: contribute and reimburse current qualified medical expenses.
+       Long-term accumulation use: contribute, invest if appropriate, and save receipts for future reimbursement.
+       Pre-retirement use: build a reserve for Medicare premiums and retirement healthcare costs where eligible.
+       Family coordination: review spouse coverage, dependent eligibility, and enrollment timing.
+
+Practice owner benefits review
+Practice owners should review group health coverage, disability benefits, life insurance, long-term care planning, employee benefits,
+educational assistance programs, and retirement plan benefits together. The objective is not merely to add benefits, but to create a
+compensation structure that supports recruitment, retention, owner planning, and tax efficiency.
+
+
+
+
+                                                    EPWP v3.3 | Current Law Guide | Educational Use Only | Page 13
+                                                                                       Elite Physician Wealth Planning™ | 2026 Tax & Retirement Planning Guide
+
+10. Charitable Giving, SALT, AMT, and Itemized Deduction
+Strategy
+Many physicians are charitably inclined, but tax-efficient giving requires coordination with the standard deduction, itemized
+deductions, appreciated assets, donor-advised funds, QCDs, capital gains, and estate goals.
+
+Current law charitable giving rule for non-itemizers
+Beginning with tax year 2026, taxpayers who do not itemize may deduct up to $1,000 ($2,000 if filing jointly) of cash contributions to
+certain qualified organizations. Taxpayers who itemize generally use Schedule A subject to applicable limits and substantiation rules.
+[S6]
+
+Bunching strategy
+When annual charitable gifts do not generate an itemized deduction because the standard deduction is higher, physicians may
+consider bunching multiple years of giving into one year. A donor-advised fund may allow a larger deduction in the contribution year
+while grants to charities can occur over time. This strategy requires cash-flow review, charitable intent, and documentation.
+
+Appreciated securities
+A physician with taxable investments may consider donating appreciated securities held long-term instead of cash. The potential
+benefit is avoiding capital gain on the donated asset while receiving a charitable deduction if itemizing and otherwise eligible. This is
+especially relevant after a bull market, concentrated stock position, or practice sale liquidity event.
+
+Qualified charitable distributions
+For physicians age 70 1/2 or older, QCDs can be used to send IRA assets directly to eligible charities. QCDs may count toward
+RMDs and can reduce adjusted gross income when properly executed. Current IRS retirement guidance reflects a 2026 aggregate
+QCD exclusion limit of $111,000. [S15]
+
+ Charitable planning questions
+ • Will the client itemize in the current year?
+ • Are gifts being made in cash, appreciated securities, or retirement assets?
+ • Will a QCD reduce AGI, RMD exposure, or IRMAA pressure?
+ • Are substantiation requirements satisfied before the return is filed?
+ • Does the giving strategy align with estate and family objectives?
+
+
+
+
+                                              EPWP v3.3 | Current Law Guide | Educational Use Only | Page 14
+                                                                                         Elite Physician Wealth Planning™ | 2026 Tax & Retirement Planning Guide
+
+11. Student Loan and PSLF Planning for Physicians
+Student-loan strategy can materially affect physician cash flow, career decisions, filing status, and retirement savings capacity. The
+right approach depends on loan type, employer type, income trajectory, specialty, family status, and whether the physician is pursuing
+forgiveness.
+
+PSLF current framework
+Federal Student Aid describes Public Service Loan Forgiveness as forgiving the remaining balance on eligible Direct Loans after 120
+qualifying monthly payments under a qualifying repayment plan while working full-time for a qualifying employer. Many physicians
+employed by government hospitals, academic medical centers, and certain nonprofit hospitals may need to evaluate PSLF eligibility.
+[S14]
+
+IDR and current court-action awareness
+Federal Student Aid reports that a March 10, 2026 court order prevents the Department of Education from implementing the SAVE
+Plan and parts of other IDR plans, while eligible borrowers can apply for or recertify under IBR, ICR, and PAYE as described by
+StudentAid.gov. This area is especially fluid and should be checked before making repayment decisions. [S17]
+
+Physician student-loan decision tree
+                                    Situation                                                                    Planning Focus
+
+ Works for nonprofit/government employer                                        Evaluate PSLF, employer eligibility, Direct Loan status, repayment plan, and
+                                                                                annual certification.
+
+ Private practice or for-profit employer                                        Compare refinancing, standard repayment, aggressive payoff, and investing
+                                                                                tradeoffs.
+
+ Resident/fellow                                                                Coordinate income certification, PSLF count, interest, disability coverage, and
+                                                                                early retirement savings.
+
+ High-income attending                                                          Model after-tax cash flow before refinancing or accelerating payoff.
+
+ Dual-income household                                                          Review filing status, IDR payment effect, spouse loans, and tax cost.
+
+ Practice owner                                                                 Consider employer educational assistance plan design when recruiting or
+                                                                                retaining physicians.
+
+ Student-loan action items
+ • Download loan details from StudentAid.gov before modeling.
+ • Confirm employer eligibility using the PSLF Help Tool or official employer search.
+ • Do not refinance federal loans privately until forgiveness, IDR, deferment, and protection tradeoffs are reviewed.
+ • Coordinate student-loan payments with retirement plan contributions and emergency reserves.
+
+
+
+
+                                                EPWP v3.3 | Current Law Guide | Educational Use Only | Page 15
+                                                                                             Elite Physician Wealth Planning™ | 2026 Tax & Retirement Planning Guide
+
+12. Retirement Income, RMDs, Social Security, Medicare,
+and IRMAA
+Retirement-income planning for physicians is tax planning. Decisions around Roth conversions, taxable-account withdrawals, pension
+elections, Social Security, RMDs, charitable giving, and Medicare premiums can interact over decades.
+
+RMD rules
+IRS retirement guidance states that account owners generally must begin taking required minimum distributions from traditional IRAs,
+SEP IRAs, SIMPLE IRAs, and retirement plan accounts when they reach age 73. Roth IRAs and designated Roth accounts in 401(k)
+or 403(b) plans generally do not require lifetime RMDs for the owner, though beneficiary rules apply. [S11]
+
+Medicare and IRMAA
+For 2026, CMS reports the standard Medicare Part B monthly premium is $202.90 and the annual Part B deductible is $283. High-
+income beneficiaries pay income-related monthly adjustment amounts. In 2026, the first Part B IRMAA tier begins above MAGI of
+$109,000 for individual tax returns and $218,000 for joint returns. [S12]
+
+                      2026 Part B Full-Coverage MAGI Tier                                                   Total Monthly Part B Premium
+
+ Individual MAGI <= $109,000 / Joint <= $218,000                                   $202.90
+
+ Individual > $109,000 to $137,000 / Joint > $218,000 to $274,000                  $284.10
+
+ Individual > $137,000 to $171,000 / Joint > $274,000 to $342,000                  $405.80
+
+ Individual > $171,000 to $205,000 / Joint > $342,000 to $410,000                  $527.50
+
+ Individual > $205,000 to < $500,000 / Joint > $410,000 to < $750,000              $649.20
+
+ Individual >= $500,000 / Joint >= $750,000                                        $689.90
+
+
+Roth conversion window
+Physicians often have a conversion window after retirement but before RMDs and Social Security. During this period, partial Roth
+conversions may convert future taxable RMDs into Roth assets. The analysis should include current bracket, future RMDs, survivor
+tax filing status, IRMAA thresholds, charitable intent, and estate objectives.
+
+Social Security planning
+Social Security should be evaluated as part of a retirement-income plan, not in isolation. Physicians with long high-income careers
+often qualify for significant benefits, but timing decisions should reflect longevity, spouse benefits, survivor benefits, work plans, tax
+cost, investment withdrawals, and Medicare premiums.
+
+ Retirement-income planning sequence
+ • Project after-tax retirement spending need.
+ • Map tax-deferred, Roth, taxable, HSA, real estate, pension, and business-sale assets.
+ • Model Roth conversions before RMDs and Medicare IRMAA where appropriate.
+ • Coordinate charitable giving, QCDs, and estate goals.
+ • Review annually because income, brackets, premiums, and health needs change.
+
+
+
+
+                                                   EPWP v3.3 | Current Law Guide | Educational Use Only | Page 16
+                                                                                    Elite Physician Wealth Planning™ | 2026 Tax & Retirement Planning Guide
+
+13. Estate, Gift, Asset Protection, and Legacy Planning
+Estate planning for physicians should protect family decision-making, preserve assets, prepare for incapacity, coordinate beneficiary
+designations, and transfer wealth efficiently. The legal documents are necessary, but the ongoing coordination is where planning
+often breaks down.
+
+2026 federal estate planning context
+For estates of decedents dying in 2026, the federal basic exclusion amount is $15,000,000. High-net-worth physicians, practice
+owners, and clients with concentrated real estate, business value, or large retirement accounts should review estate planning while
+the exemption is known. [S1]
+
+Essential documents to review
+   Will and/or revocable living trust.
+   Durable financial power of attorney.
+   Health care power of attorney and advance directive.
+   HIPAA authorization.
+   Guardian provisions for minor children.
+   Beneficiary designations for retirement accounts, life insurance, annuities, and transfer-on-death accounts.
+   Buy-sell agreement for practice owners.
+   Entity documents, operating agreements, shareholder agreements, and employment agreements.
+
+Asset protection
+Physicians face professional risk, business risk, creditor exposure, cyber/privacy risk, and lifestyle-related liability. Asset protection
+planning should be done prospectively, while solvent, and with legal counsel. Core planning may include malpractice insurance,
+umbrella liability coverage, entity separation, retirement accounts, trust planning, titling review, and contractual risk management.
+
+Practice transition and exit planning
+A physician practice may represent a major component of net worth. Exit planning should address valuation, buyer readiness,
+associate agreements, succession, real estate, tax structure of sale, goodwill, restrictive covenants, retention incentives, and post-
+sale income planning.
+
+
+
+
+                                           EPWP v3.3 | Current Law Guide | Educational Use Only | Page 17
+                                                                                    Elite Physician Wealth Planning™ | 2026 Tax & Retirement Planning Guide
+
+14. The 90-Day Physician Planning Sprint
+A guide is useful only if it produces action. The 90-day sprint below turns the planning concepts into a process that can be
+implemented with an advisor, CPA, TPA, attorney, and employer benefits team.
+
+
+
+
+90-day action plan
+                    Period                                              Theme                                          Work to Complete
+
+ Days 1-15                                      Gather documents                                      Tax returns, W-2s, K-1s, 1099s, paystubs, plan
+                                                                                                      statements, student loan data, insurance, estate
+                                                                                                      documents.
+
+ Days 16-30                                     Tax snapshot                                          Bracket, SALT, AMT, payroll tax, NIIT, withholding,
+                                                                                                      estimated taxes, QBI/SSTB, deductions.
+
+ Days 31-45                                     Retirement model                                      Max deferrals, HSA, IRA/backdoor Roth, 457(b), profit
+                                                                                                      sharing, cash balance/defined benefit.
+
+ Days 46-60                                     Professional coordination                             CPA, TPA, attorney, payroll provider, custodian,
+                                                                                                      benefits department.
+
+ Days 61-75                                     Implementation                                        Adopt changes, update payroll, fund accounts,
+                                                                                                      document strategy, adjust investments.
+
+ Days 76-90                                     Review and monitoring                                 Set tax calendar, review dates, annual wealth review,
+                                                                                                      next-year planning items.
+
+ Client Call to Action
+ Schedule a Physician Tax & Retirement Strategy Call to review your current tax picture, retirement plan options, and priority next steps.
+ Insert scheduling link here after compliance approval.
+
+
+
+
+                                           EPWP v3.3 | Current Law Guide | Educational Use Only | Page 18
+                                                                                            Elite Physician Wealth Planning™ | 2026 Tax & Retirement Planning Guide
+
+15. Checklists, Data Request, and Source Notes
+Physician data request checklist
+          Most recent two years of federal and state tax returns.
+          Current-year paystubs for physician and spouse, including bonus and deferred compensation details.
+          W-2, 1099, and K-1 documents.
+          Retirement plan statements and plan summaries for 401(k), 403(b), 457(b), SEP, SIMPLE, pension, cash balance, or defined benefit
+           plans.
+          IRA, Roth IRA, HSA, brokerage, bank, and 529 statements.
+          Student-loan data from StudentAid.gov and private lenders.
+          Employer benefits guide, open-enrollment summary, and disability insurance details.
+          Life, disability, long-term care, umbrella, malpractice, and business insurance policies.
+          Estate documents, beneficiary designations, trust documents, and powers of attorney.
+          Practice financial statements, entity documents, payroll reports, retirement plan documents, and buy-sell agreements for owners.
+
+Annual planning calendar
+                                     Period                                                                               Planning Actions
+
+    January-February                                                            Gather prior-year documents; verify contribution deadlines; review 1099s and K-1
+                                                                                expectations.
+
+    March-April                                                                 Tax filing review; identify tax return lessons; update estimated taxes.
+
+    May-June                                                                    Midyear tax projection; review retirement funding pace and charitable plan.
+
+    July-August                                                                 Practice owner plan design; cash balance or profit-sharing modeling; employee-
+                                                                                benefit review.
+
+    September-October                                                           Open enrollment; student-loan recertification review; Roth conversion modeling.
+
+    November-December                                                           Finalize year-end deductions, contributions, charitable giving, withholding, and
+                                                                                implementation tasks.
+
+
+Source notes
+    Ref.                                                                        Source
+
+    S1                                                                          IRS, “IRS releases tax inflation adjustments for tax year 2026, including amendments from the One, Big,
+                                                                                Beautiful Bill,” IR-2025-103, Oct. 9, 2025. https://www.irs.gov/newsroom/irs-releases-tax-inflation-
+                                                                                adjustments-for-tax-year-2026-including-amendments-from-the-one-big-beautiful-bill
+
+    S2                                                                          IRS, “401(k) limit increases to $24,500 for 2026, IRA limit increases to $7,500,” IR-2025-111.
+                                                                                https://www.irs.gov/newsroom/401k-limit-increases-to-24500-for-2026-ira-limit-increases-to-7500
+
+    S3                                                                          IRS, “COLA increases for dollar limitations on benefits and contributions,” updated June 9, 2026.
+                                                                                https://www.irs.gov/retirement-plans/cola-increases-for-dollar-limitations-on-benefits-and-contributions
+
+    S4                                                                          IRS, “Correction to state and local income tax deduction amount in the 2026 Form 1040-ES,” updated
+                                                                                March 16, 2026. https://www.irs.gov/forms-pubs/correction-to-state-and-local-income-tax-deduction-
+                                                                                amount-in-the-2026-form-1040-es
+
+    S5                                                                          IRS, Revenue Procedure 2025-19, 2026 HSA inflation-adjusted amounts. https://www.irs.gov/pub/irs-
+                                                                                drop/rp-25-19.pdf
+
+    S6                                                                          IRS Topic No. 506, Charitable Contributions, updated 2026. https://www.irs.gov/taxtopics/tc506
+
+    S7                                                                          IRS, Qualified business income deduction. https://www.irs.gov/newsroom/qualified-business-income-
+                                                                                deduction
+
+    S8                                                                          IRS, About Form 8995-A and 2026 draft Form 8995-A materials. https://www.irs.gov/forms-pubs/about-
+                                                                                form-8995-a
+
+    S9                                                                          IRS Topic No. 560, Additional Medicare Tax, updated June 1, 2026. https://www.irs.gov/taxtopics/tc560
+
+    S10                                                                         IRS, Net Investment Income Tax, updated July 1, 2026. https://www.irs.gov/individuals/net-investment-
+                                                                                income-tax
+
+    S11                                                                         IRS, Retirement topics - Required minimum distributions (RMDs), updated 2026.
+                                                                                https://www.irs.gov/retirement-plans/plan-participant-employee/retirement-topics-required-minimum-
+                                                                                distributions-rmds
+
+    S12                                                                         CMS, “2026 Medicare Parts A & B Premiums and Deductibles,” Nov. 14, 2025.
+                                                                                https://www.cms.gov/newsroom/fact-sheets/2026-medicare-parts-b-premiums-deductibles
+
+    S13                                                                         SSA, “What is the current maximum amount of taxable earnings for Social Security?” Jan. 2, 2026.
+                                                                                https://www.ssa.gov/faqs/en/questions/KA-02387.html
+
+    S14                                                                         Federal Student Aid, Public Service Loan Forgiveness Form and Help Tool. https://studentaid.gov/pslf/
+
+    S15                                                                         IRS Notice 2025-67, 2026 Amounts Relating to Retirement Plans and IRAs, including QCD indexed limit.
+                                                                                https://www.irs.gov/pub/irs-drop/n-25-67.pdf
+
+    S16                                                                         IRS, “Updates to frequently asked questions about educational assistance programs,” FS-2026-10.
+
+
+                                                EPWP v3.3 | Current Law Guide | Educational Use Only | Page 19
+                                                  Elite Physician Wealth Planning™ | 2026 Tax & Retirement Planning Guide
+                                      https://www.irs.gov/newsroom/updates-to-frequently-asked-questions-about-educational-assistance-
+                                      programs
+
+S17                                   Federal Student Aid, IDR Plan Court Actions: Impact on Borrowers, updated July 1, 2026.
+                                      https://studentaid.gov/announcements-events/idr-court-actions
+
+S18                                   IRS, “Treasury, IRS issue guidance on the additional first year depreciation deduction amended as part of
+                                      the One Big Beautiful Bill,” IR-2026-06. https://www.irs.gov/newsroom/treasury-irs-issue-guidance-on-the-
+                                      additional-first-year-depreciation-deduction-amended-as-part-of-the-one-big-beautiful-bill
+
+S19                                   IRS Publication 946, “How To Depreciate Property,” 2025 edition with 2026 Section 179 updates.
+                                      https://www.irs.gov/publications/p946
+
+S20                                   IRS, Working Families Tax Cuts, updated July 6, 2026. https://www.irs.gov/newsroom/working-families-
+                                      tax-cuts
+
+
+
+
+      EPWP v3.3 | Current Law Guide | Educational Use Only | Page 20
+                                                                                      Elite Physician Wealth Planning™ | 2026 Tax & Retirement Planning Guide
+
+Closing Page
+Next Step
+Use this guide to begin a structured Physician Tax & Retirement Strategy Review. The next step is to gather the key documents, complete
+the planning checklist, and identify the highest-priority opportunities before the next tax deadline.
+
+
+                         Elite Physician Wealth Planning™
+                                                  Powered by M A Epps & Associates
+
+                                Michael A. Epps, ChFC®, RICP® | Founder & Chief Wealth Strategist
+
+                                       [Insert firm phone] | [Insert firm email] | [Insert scheduling link]
+
+             Educational guide. Not tax, legal, investment, or accounting advice. Review with qualified professionals before implementation.
+
+
+
+
+                                             EPWP v3.3 | Current Law Guide | Educational Use Only | Page 21
+

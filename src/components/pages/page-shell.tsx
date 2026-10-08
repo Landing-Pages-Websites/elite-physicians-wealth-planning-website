@@ -2,7 +2,8 @@ import type { ReactNode } from "react";
 import { heroImageFor } from "@/lib/hero-images";
 import { ctaSection, groupedBody, type PageContent } from "@/lib/pages";
 import { PageCta } from "./page-cta";
-import { PageHero } from "./page-hero";
+import { PageDisclosure } from "./page-disclosure";
+import { PageHero, type HeroImage } from "./page-hero";
 import { PageSection } from "./page-section";
 
 /**
@@ -18,6 +19,9 @@ export function PageShell({
   page,
   trail,
   omitHeadings,
+  image,
+  heroAction,
+  closing,
   children,
 }: {
   page: PageContent;
@@ -30,6 +34,11 @@ export function PageShell({
    * in a band with no fields. Named here, hoisted into the FormBand instead.
    */
   omitHeadings?: readonly string[];
+  /** A photograph the route owns (a team member's portrait) rather than the shared map's. */
+  image?: HeroImage;
+  heroAction?: { readonly href: string; readonly label: string };
+  /** Replaces the shared CTA band: a page that closes on its own lead form. */
+  closing?: ReactNode;
   children?: ReactNode;
 }): React.JSX.Element {
   const omit = new Set((omitHeadings ?? []).map((h) => h.toLowerCase()));
@@ -42,7 +51,12 @@ export function PageShell({
 
   return (
     <main id="main">
-      <PageHero page={page} trail={trail} image={heroImageFor(page.slug)} />
+      <PageHero
+        page={page}
+        trail={trail}
+        image={image ?? heroImageFor(page.slug)}
+        action={heroAction}
+      />
       {body.map((group, i) => (
         <PageSection
           key={`${group.lead?.heading ?? group.lead?.eyebrow ?? "peers"}-${i}`}
@@ -51,7 +65,8 @@ export function PageShell({
         />
       ))}
       {children}
-      {cta ? <PageCta section={cta} /> : null}
+      {closing ?? (cta ? <PageCta section={cta} /> : null)}
+      {page.disclosure?.length ? <PageDisclosure lines={page.disclosure} /> : null}
     </main>
   );
 }

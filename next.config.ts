@@ -9,6 +9,13 @@ const nextConfig: NextConfig = {
    * Verification sets NEXT_DIST_DIR=.next-verify so the two can never collide.
    */
   distDir: process.env.NEXT_DIST_DIR || ".next",
+  async headers() {
+    return [
+      // The guide is a gated lead magnet: the landing page should rank, the
+      // PDF behind its form should not.
+      { source: "/guides/:path*", headers: [{ key: "X-Robots-Tag", value: "noindex" }] },
+    ];
+  },
   async redirects() {
     return [
       // Review URLs already shared with the client. Direction A is now the

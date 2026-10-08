@@ -98,7 +98,7 @@ function PortraitCard(): React.JSX.Element {
           fill
           priority
           sizes="(min-width: 1024px) 336px, 320px"
-          className="object-cover object-[58%_14%]"
+          className="object-cover object-[100%_20%]"
         />
       </div>
       <PortraitCaption className="text-body-s" />

@@ -34,7 +34,7 @@ export function StrategyCall(): React.JSX.Element {
               headline and goes straight to the form. */}
           <dl className="mt-10 grid gap-4 border-t border-ivory/15 pt-8 font-body text-[13px] text-ivory/70">
             <div className="flex gap-3">
-              <dt className="w-16 shrink-0 text-ivory/45">Call</dt>
+              <dt className="w-16 shrink-0 text-ivory/60">Call</dt>
               <dd>
                 <a
                   className="-my-2 inline-flex min-h-11 items-center underline underline-offset-4 transition-colors hover:text-gold focus-visible:text-gold"
@@ -45,7 +45,7 @@ export function StrategyCall(): React.JSX.Element {
               </dd>
             </div>
             <div className="flex gap-3">
-              <dt className="w-16 shrink-0 text-ivory/45">Email</dt>
+              <dt className="w-16 shrink-0 text-ivory/60">Email</dt>
               <dd>
                 <a
                   className="-my-2 inline-flex min-h-11 items-center underline underline-offset-4 transition-colors hover:text-gold focus-visible:text-gold"
@@ -56,7 +56,7 @@ export function StrategyCall(): React.JSX.Element {
               </dd>
             </div>
             <div className="flex gap-3">
-              <dt className="w-16 shrink-0 text-ivory/45">Hours</dt>
+              <dt className="w-16 shrink-0 text-ivory/60">Hours</dt>
               <dd>{BRAND.hours}</dd>
             </div>
           </dl>

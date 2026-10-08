@@ -1,6 +1,8 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRightIcon } from "@/components/site/icons";
 import type { PageSection as Section, SectionGroup } from "@/lib/pages";
+import { teamMember } from "@/lib/team";
 
 /**
  * NEW UNAPPROVED SURFACE — the interior band.
@@ -38,7 +40,9 @@ export function PageSection({
       <div className="va-shell relative py-12 lg:py-16">
         <div className="lg:grid lg:grid-cols-[minmax(0,0.42fr)_minmax(0,1fr)] lg:gap-x-14">
           {hasRail && lead ? (
-            <div className="relative lg:pr-8">
+            // Sticky on long bands: the label stays with the copy it names
+            // instead of leaving a 2,000px empty rail beside a list.
+            <div className="relative lg:sticky lg:top-[calc(var(--header-h)+2rem)] lg:self-start lg:pr-8">
               {/* When a band's only label is its eyebrow, the eyebrow IS the
                   heading — same words, same styling, correct outline level.
                   Rendering it as a <p> left five bands headingless. */}
@@ -47,13 +51,14 @@ export function PageSection({
               ) : null}
               {lead.heading ? (
                 <h2
-                  className={`va-reveal max-w-[22ch] font-display text-display-m leading-[1.12] font-medium tracking-[-0.01em] text-ink ${
+                  className={`va-reveal max-w-[22ch] font-display text-display-m leading-[1.12] font-medium tracking-[-0.01em] text-balance text-ink ${
                     lead.eyebrow ? "mt-3" : ""
                   }`}
                 >
                   {lead.heading}
                 </h2>
               ) : null}
+              {lead.profile ? <ProfilePhoto slug={lead.profile} /> : null}
               <span
                 aria-hidden="true"
                 className="absolute top-1.5 -right-[calc(1.75rem+4px)] hidden h-2 w-2 rounded-full bg-gold lg:block"
@@ -87,6 +92,8 @@ export function PageSection({
               </ul>
             ) : null}
 
+            <AfterParas paras={lead?.after} size="l" />
+
             {subsections.length ? (
               <ul
                 className={`va-stagger max-w-[68ch] border-t border-ink/12 ${
@@ -100,10 +107,63 @@ export function PageSection({
                 ))}
               </ul>
             ) : null}
+
+            {lead?.href ? <LeadLink href={lead.href} label={lead.linkLabel ?? lead.heading ?? ""} /> : null}
           </div>
         </div>
       </div>
     </section>
+  );
+}
+
+/**
+ * The person a band introduces (Roderick on the two practice pages). Set in
+ * the label rail under their name, so the photograph belongs to the heading
+ * rather than floating in the prose.
+ */
+function ProfilePhoto({ slug }: { slug: string }): React.JSX.Element | null {
+  const person = teamMember(slug);
+  if (!person?.photo) return null;
+  return (
+    <figure className="mt-7 w-40 overflow-hidden rounded-sm bg-ivory ring-1 ring-ink/10 sm:w-48">
+      <div className="relative aspect-4/5">
+        <Image src={person.photo} alt={`${person.name}, ${person.role}`} fill sizes="192px" className="object-cover object-top" />
+      </div>
+    </figure>
+  );
+}
+
+/** Paragraphs the source sets after a list, under the same heading. */
+function AfterParas({
+  paras,
+  size,
+}: {
+  paras?: readonly string[];
+  /** "l" in a band's own column, "m" inside an h3 subsection. */
+  size: "l" | "m";
+}): React.JSX.Element | null {
+  if (!paras?.length) return null;
+  const type = size === "l" ? "text-body-l leading-[1.68]" : "text-body-m leading-[1.6]";
+  return (
+    <div className={`max-w-[68ch] ${size === "l" ? "mt-7" : "mt-3"}`}>
+      {paras.map((para) => (
+        <p key={para} className={`font-body text-charcoal not-first:mt-4 ${type}`}>
+          {para}
+        </p>
+      ))}
+    </div>
+  );
+}
+
+function LeadLink({ href, label }: { href: string; label: string }): React.JSX.Element {
+  return (
+    <Link
+      href={href}
+      className="group mt-7 inline-flex min-h-11 items-center gap-2.5 font-body text-[14px] font-semibold text-ink transition-colors duration-200 hover:text-gold-text focus-visible:ring-2 focus-visible:ring-gold focus-visible:outline-none"
+    >
+      <span className="va-underline">{label}</span>
+      <ArrowRightIcon aria-hidden="true" className="h-4 w-4 text-gold transition-transform duration-200 group-hover:translate-x-1" />
+    </Link>
   );
 }
 
@@ -148,6 +208,17 @@ function Subsection({ section }: { section: Section }): React.JSX.Element {
           {para}
         </p>
       ))}
+      {section.items.length ? (
+        <ul className="mt-3 grid gap-x-8 gap-y-1.5 sm:grid-cols-2">
+          {section.items.map((item) => (
+            <li key={item} className="flex gap-3 font-body text-body-s leading-[1.55] text-charcoal">
+              <span aria-hidden="true" className="mt-[0.7em] h-px w-3 shrink-0 bg-gold" />
+              {item}
+            </li>
+          ))}
+        </ul>
+      ) : null}
+      <AfterParas paras={section.after} size="m" />
     </>
   );
 
