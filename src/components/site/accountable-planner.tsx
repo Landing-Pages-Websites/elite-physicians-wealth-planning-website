@@ -121,7 +121,7 @@ export function AccountablePlanner(): React.JSX.Element {
               alt={PORTRAIT.alt}
               fill
               sizes="27vw"
-              className="object-cover object-[58%_12%]"
+              className="object-cover object-[100%_20%]"
             />
           </div>
         </figure>
@@ -143,7 +143,7 @@ export function AccountablePlanner(): React.JSX.Element {
               alt={PORTRAIT.alt}
               fill
               sizes="304px"
-              className="object-cover object-[58%_12%]"
+              className="object-cover object-[100%_20%]"
             />
           </div>
         </figure>

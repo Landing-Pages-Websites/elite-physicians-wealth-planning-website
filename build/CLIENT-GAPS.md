@@ -384,3 +384,112 @@ tested for a hero.
 - **Still asked for and not yet done:** rebuild the service infographics to
   emphasise holistic planning and coordinated internal resources, and expand the
   thin physician/surgeon/dentist pages further for ads and presentations.
+
+---
+
+# Client Drive delivery (2026-10-08) — reconciliation
+
+The client sent a Drive folder of bios, headshots, the compliance-approved
+website blueprint, the tax & retirement guide, and Roderick Johnson's two
+practice landing pages. The source files are in `build/client-drive-2026-10-08/`.
+`scripts/build-client-content.py` turns them into `src/lib/client-content.json`.
+Every sentence on the new pages is the client's own.
+
+## CLOSED
+
+- **1.1 Portrait provenance.** Michael's own photograph (`mike 2 pic.png`)
+  replaces `hero-founder.png` on the homepage hero, the planner section and
+  `/meet-michael-epps`. `hero-founder.png` is now unreferenced but still sits in
+  `public/`. Remove it with the 2.4 scaffolding decision.
+- **1.4 Guide file.** EPWP v3.3 is at
+  `/guides/physician-tax-retirement-planning-guide-2026.pdf` (`noindex`). A
+  visitor enters their details and the download appears. Clicks push
+  `guide_download` to the dataLayer.
+  - **Until `NEXT_PUBLIC_LEAD_ENDPOINT` is set:** the request also opens the
+    visitor's email app, addressed to the practice. That is the only way a
+    guide lead reaches anyone today.
+  - **The gate is soft:** the PDF's URL is public. The `noindex` header keeps
+    it out of search, not out of reach.
+- **§14 Team bios.** Bios and headshots are live for Roderick Johnson, La-Deidra
+  Blake, Lisa Hamilton, Michael Epps Jr., Aliaya Epps, Gabriella Gomez Sanchez
+  and Joshua Epps: a roster on `/about/team` plus one page each at
+  `/about/team/<name>`. Titles come from the new bios, not the legacy list.
+- **Roderick's practice pages.** Both are built from the handoff:
+  `/physicians/commercial-lending-sba-financing` (copy from `Physician
+  Financing.docx`, the complete version) and
+  `/physicians/business-insurance-risk-management`. Each has:
+  - the handoff's hero action;
+  - a profile band with his headshot;
+  - its own lead form with the handoff's recommended fields, all optional;
+  - its compliance disclosure;
+  - a separate `intent`, so financing and insurance leads route apart.
+
+  New hub `/practice-solutions` holds the handoff's cross-promotion copy and sits
+  in the main navigation, as the handoff asks. The same cross-links were added
+  to `/physicians/practice-owners` and `/services/practice-owner-planning`.
+- **Blueprint: Risk Protection.** The blueprint's sixth discipline is now
+  `/services/risk-protection`. It is listed on `/services` (now "six planning
+  pillars") and in every "Each pillar connects" block.
+- **Blueprint: disclosure notes.** The per-service disclosure notes are set
+  under the five existing service pages.
+
+## HELD — not published, with the reason
+
+| Item | Why it is held |
+|---|---|
+| Doug Vincent (bio + `2025 - Doug.JPG`) | The bio stops mid-sentence inside his securities disclosure: "General Securities Representative of OneAmerica Securities, which offers securities, investment". The footnote his asterisk points to is missing. His role at Elite Physicians is not stated (the bio describes Greater Washington Financial Services). A registered rep's bio needs the full broker-dealer disclosure. |
+| `doc 2.png` | The physician's badge reads "Northside Hospital … M. Johnson, MD", a real hospital's name on a fictitious doctor. The desk and whiteboard show patient charts. The blueprint rules out patient data and charts. |
+| `Doc1.png` | A generic hospital-staff group with garbled badge and wayfinding text. The blueprint asks to avoid medical clichés and hospital imagery. |
+| `pic 3.png` | A headset call-centre agent: the stock cliché that tells a visitor "outsourced support desk" on a site selling a named personal strategist. The design review rejected it on `/contact`. |
+| `team pic.jpeg` | The coordination graphic reads "WE COORDINATE ALL OF **YOU** ADVISORS" (typo baked into the image). The homepage already draws this diagram in code. |
+| Roderick's RLJ paragraph | The handoff says to omit it until the EPWP / Fiscal Vision / RLJ relationship language is confirmed. |
+| Wealth-management "approved advisory and risk disclosures" | Not supplied. Only the blueprint's sentence "Investment results are not guaranteed." is set. |
+
+## QUESTIONS FOR THE CLIENT
+
+1. **Guide status.** The PDF's cover reads "Status: Draft for compliance and
+   professional review". It is now downloadable from the site (not yet on the
+   client's domain). Is v3.3 approved for distribution, or is there a final?
+2. **Roderick's experience.** His bio says "more than four decades"; both
+   landing documents say "more than three decades". The site says three
+   throughout. Which is right?
+3. **Roderick, per the handoff's Final Publishing Review.** Confirm his current
+   insurance licenses, carrier relationships and approved title. Confirm the
+   lending and SBA wording with compliance, and any state-specific disclosures.
+4. **Lisa Hamilton.** The old site listed "Lisa Alexander, Financial
+   Strategist". Is this the same person under her current name? Please send a
+   headshot. Until then her roster row has no image (no placeholder).
+5. **Name spellings.** We used the bio spellings "Gabriella Gomez Sanchez"
+   (photo file: "Gomez-Sanchez"; old site: "Gabriela") and "Roderick" (photo
+   file: "Rodrick").
+6. **Doug Vincent.** Send the complete bio with the OneAmerica-approved
+   disclosure, and his role at Elite Physicians.
+7. **Homepage messaging vs the blueprint.**
+   - The blueprint recommends "Build Wealth With the Same Precision You Bring
+     to Medicine." and a four-step process (Identify → Design → Implement →
+     Optimize).
+   - The approved homepage uses "Helping Physicians Keep More, Grow More, and
+     Retire Better" and the six-step Wealth Blueprint™. Both were kept as
+     approved.
+   - Confirm which is current.
+8. **Homepage disciplines.** The approved homepage section still shows five
+   disciplines; the site now has six. Add Risk Protection there? That changes
+   an approved section.
+9. **Brand line.** The blueprint and guide say "Powered by M A Epps &
+   Associates"; the site and bios say Fiscal Vision Financial. Which goes in
+   the header and footer?
+10. **Still blocking launch.**
+    - The lead endpoint: every form, including guide and practice requests,
+      falls back to email or captures nothing.
+    - The GTM/GA4 container.
+    - The logo file.
+    - The DNS cutover.
+
+## NOT IMPLEMENTED (by choice)
+
+- **Homepage cross-promotion card pair.** The handoff's suggestion would add a
+  section to the approved homepage composition. Its copy runs on
+  `/practice-solutions` and the two practice-owner pages instead.
+- **Blueprint FAQ.** It has questions but no answers (including compensation).
+  **Physician Financial Checkup.** No questions or result logic. Both remain
+  client deliverables.

@@ -1,0 +1,240 @@
+ELITE PHYSICIAN WEALTH PLANNING
+Two New Website Landing Pages
+Commercial Lending & SBA Financing Business Insurance & Risk Management
+Web Developer Handoff
+Fiscal Vision Financial
+Roderick Johnson Managing Director - Commercial Lending & Business Risk Solutions
+Purpose: Website design, copy implementation, SEO setup and lead-capture development
+Developer Overview
+These two pages should be built as dedicated conversion-focused landing pages within the Elite Physician Wealth Planning section of the Fiscal Vision Financial website. The pages should look and feel consistent with the existing physician-focused brand while making the new business-owner capabilities visually distinct and easy to understand.
+Page
+Primary Topic
+Primary CTA
+Landing Page 1
+Commercial Lending & SBA Financing for Physicians
+Schedule a Physician Business Financing Consultation
+Landing Page 2
+Business Insurance & Risk Management for Physicians
+Request a Physician Practice Risk Review
+Design direction: Use physician/practice imagery, generous white space, restrained navy-and-gold accents, strong CTA buttons, and short visual sections. Avoid turning either page into a dense article.
+Landing Page 1
+Commercial Lending & SBA Financing for Physicians
+Suggested URL: /physicians/commercial-lending-sba-financing
+HERO SECTION
+Capital for Your Practice. Strategy for Your Future.
+Building a successful medical practice requires more than clinical expertise. At different stages of your career, access to the right capital can determine whether you can acquire a practice, purchase a building, add equipment, bring in another physician, refinance existing debt, or pursue your next opportunity.
+Elite Physician Wealth Planning helps physicians and medical practice owners evaluate commercial financing and SBA lending solutions while considering how those decisions affect practice cash flow, personal wealth, retirement goals, and long-term financial strategy.
+PRIMARY BUTTON: Schedule a Physician Business Financing Consultation
+Financing Designed Around the Physician and the Practice
+Physicians frequently operate in two financial worlds at the same time: the medical practice and the personal financial plan. A financing decision made inside the practice can affect liquidity, retirement contributions, investment strategy, insurance needs, and the physician's personal balance sheet.
+Our approach is designed to connect those decisions. We help evaluate the financing need first, then identify lending options that may fit the transaction and the broader financial plan.
+Commercial Financing Solutions
+Practice Acquisition Financing
+Financing to purchase an established medical, dental, or professional practice, including transactions that may involve equipment, working capital, leasehold improvements, and certain acquisition-related costs.
+SBA 7(a) Financing
+Potential financing for eligible practice acquisitions, working capital, equipment, real estate, expansion, refinancing of eligible business debt, and partner or shareholder transactions.
+SBA 504 Financing
+Long-term financing that may be suitable for eligible owner-occupied commercial real estate, major equipment, construction, renovation, and certain fixed-asset projects.
+Commercial Real Estate
+Financing for medical office buildings, professional office space, owner-occupied facilities, practice relocation, expansion properties, renovation, or construction.
+Equipment Financing
+Financing strategies for medical, dental, diagnostic, technology, office, and other specialized equipment.
+Lines of Credit & Working Capital
+Capital that may help address payroll, reimbursement delays, expansion, staffing, inventory, marketing, temporary operating needs, and cash-flow timing.
+Partner Buy-In / Buyout Financing
+Financing for physician ownership changes, buy-ins, buyouts, retiring partner transactions, and succession-related ownership restructuring.
+Debt Refinancing
+Evaluation of opportunities to restructure existing obligations, consolidate debt, improve cash flow, or better align financing terms with business assets.
+Business Expansion Financing
+Capital for additional locations, new physicians, employees, equipment, service lines, acquisitions, and growth initiatives.
+Meet Roderick Johnson
+Managing Director - Commercial Lending & Business Risk Solutions
+Roderick Johnson brings more than three decades of experience in commercial lending, business banking, small-business finance, SBA lending, and financial services. His background includes work with entrepreneurs, established businesses, nonprofit organizations, government contractors, commercial real estate transactions, and other commercial borrowers.
+Roderick has also served in a lender-relations capacity with the U.S. Small Business Administration. At Elite Physician Wealth Planning, he focuses on helping physicians and medical practice owners address the capital side of the business while coordinating those decisions with the broader Fiscal Vision Financial planning team.
+How the Physician Financing Process Works
+1. Define the Objective
+Determine what the physician is trying to accomplish: acquire a practice, purchase real estate, expand, buy equipment, improve liquidity, refinance debt, or complete an ownership transaction.
+2. Review the Financial Picture
+Assess the relevant practice financials, existing debt, cash flow, use of proceeds, ownership structure, collateral, and other lender considerations.
+3. Evaluate Financing Alternatives
+Identify conventional commercial and SBA financing alternatives that may fit the transaction.
+4. Prepare for the Lending Process
+Organize the financial information and documentation commonly requested by lenders, including tax returns, financial statements, debt schedules, projections, purchase agreements, and property information as applicable.
+5. Coordinate the Transaction
+Work with the physician, lender, CPA, attorney, practice consultant, and other professionals when appropriate.
+6. Integrate the Financing Into the Financial Plan
+After financing is placed, evaluate the effect on practice cash flow, personal liquidity, retirement funding, insurance, investments, and long-term wealth goals.
+More Than a Loan
+Your Practice and Personal Wealth Are Connected.
+A commercial financing decision can influence almost every other part of a physician's financial life. Elite Physician Wealth Planning is designed to bring the practice and the physician into one coordinated conversation.
+THE PRACTICE - Finance It
+THE PHYSICIAN - Build Wealth From It
+Commercial Lending SBA Financing Commercial Real Estate Working Capital Equipment Practice Acquisitions
+Financial Planning Investment Management Tax Strategy Coordination Retirement Planning Estate Planning Legacy Planning
+FINAL CTA
+Ready to discuss your practice financing needs?
+Whether you are preparing to acquire your first practice, purchase commercial real estate, expand an existing practice, or evaluate your current debt structure, start with a focused financing conversation.
+BUTTON: Schedule a Physician Business Financing Consultation
+Recommended Financing Lead Form
+Name
+Email
+Phone
+Medical specialty
+Practice name
+Years in practice
+What are you looking to finance?
+Approximate financing amount
+Annual practice revenue range
+Desired timing
+Preferred contact method
+Additional comments
+SEO & Developer Notes
+Item
+Recommendation
+SEO title
+Physician Practice Financing & SBA Loans | Elite Physician Wealth Planning
+Meta description
+Commercial lending and SBA financing solutions for physicians and medical practice owners, including practice acquisitions, commercial real estate, equipment, working capital and expansion financing.
+Primary keyword themes
+physician practice financing; medical practice loans; SBA loans for doctors; practice acquisition financing; medical office building financing
+Primary CTA placement
+Hero, after service grid, after Roderick section, and final section
+Suggested visual
+Physician/medical-practice owner meeting with a financial professional over building or financing plans; avoid generic bank imagery
+Compliance language for footer
+Fiscal Vision Financial is not representing itself as an SBA lender or lender of record unless specifically disclosed otherwise. Commercial lending and SBA financing services may involve brokerage, referral, packaging, or placement relationships with participating third-party lenders. Financing is subject to lender underwriting, eligibility requirements, credit approval, documentation, applicable SBA requirements, and other terms and conditions. No financing approval or specific loan terms are guaranteed.
+Landing Page 2
+Business Insurance & Risk Management for Physicians
+Suggested URL: /physicians/business-insurance-risk-management
+HERO SECTION
+Protect the Practice You've Worked So Hard to Build.
+Your medical practice represents years of education, sacrifice, investment, and professional achievement. But building wealth through a successful practice also creates risk.
+Elite Physician Wealth Planning helps physicians evaluate business insurance and risk-management strategies designed to protect the practice while coordinating those decisions with the physician's broader financial plan.
+PRIMARY BUTTON: Request a Physician Practice Risk Review
+Your Practice May Be One of Your Most Valuable Assets
+The medical practice may provide current income, retirement-plan contributions, employment for staff, equity value, real estate opportunities, future sale value, and family financial security. Protecting the practice is therefore part of protecting the physician's personal wealth.
+Business Insurance Solutions for Medical Practices
+Commercial General Liability
+Protection for certain third-party claims involving bodily injury, property damage, and other covered liabilities. Needs vary based on patient traffic, premises, contracts, staffing, and operations.
+Professional Liability
+Professional liability exposure should be evaluated based on the physician's specialty, practice structure, services, contractual obligations, and existing coverage. This coverage is distinct from general business liability.
+Commercial Property
+Coverage for buildings, office contents, medical equipment, computers, furniture, tenant improvements, inventory, and other covered property depending on the policy.
+Business Interruption / Business Income
+Coverage that may help address eligible lost income and continuing expenses when a covered event prevents the practice from operating.
+Cyber Liability & Data Breach
+Coverage designed to address certain financial exposures associated with cyber events, privacy incidents, ransomware, system interruption, and data-breach response. Insurance complements, but does not replace, cybersecurity controls.
+Employment Practices Liability - EPLI
+Coverage that may respond to certain employment-related allegations such as discrimination, harassment, retaliation, or wrongful termination, subject to policy terms.
+Workers' Compensation
+Coverage addressing employee work-related injuries or illnesses as required or applicable under state law and policy terms.
+Commercial Auto
+Coverage for vehicles owned, leased, or used in connection with business operations, depending on how the practice uses vehicles.
+Business Owner Policy - BOP
+For eligible businesses, a BOP may package core coverages such as general liability, commercial property, and business income into one policy.
+Commercial Umbrella / Excess Liability
+Additional liability limits that may sit above certain underlying commercial policies, subject to policy structure and eligibility.
+Key Person Life Insurance
+Life insurance designed to help address the financial impact that the death of an owner, physician, or other key person could have on the business.
+Buy-Sell & Business Continuity Funding
+Insurance strategies that may help fund ownership transition obligations and support continuity when a partner or owner dies or becomes disabled, depending on the arrangement.
+Why Physicians Need an Integrated Risk Review
+A medical practice may have several policies purchased at different times, from different carriers, for different reasons. The risk is not always a lack of insurance; sometimes it is a lack of coordination.
+A physician practice risk review should consider how the policies work together, where meaningful gaps may exist, whether limits reflect the current size of the practice, and how business protection connects with personal financial and succession planning.
+Meet Roderick Johnson
+Managing Director - Commercial Lending & Business Risk Solutions
+Roderick Johnson brings extensive experience in commercial finance, small-business services, and business insurance. Within Elite Physician Wealth Planning, he helps physicians and practice owners evaluate commercial risk exposures and coordinates insurance solutions with the broader financial-planning relationship.
+His role is particularly important for physician owners because decisions involving insurance, financing, practice ownership, business succession, and personal wealth are often interconnected. The objective is to help the physician see the entire financial picture rather than purchase business coverage in isolation.
+The Physician Practice Risk Review
+1. Understand the Practice
+Review ownership, specialty, locations, employees, property, vehicles, technology, contracts, revenue concentration, and business structure.
+2. Identify Major Exposures
+Consider liability, property, cyber, employment, business interruption, key-person, vehicle, and other material exposures.
+3. Review Current Coverage
+Examine existing policies, limits, deductibles, exclusions, endorsements, renewal dates, and overlapping or missing protection.
+4. Prioritize the Risks
+Separate critical exposures from lower-priority issues so recommendations remain practical and financially disciplined.
+5. Coordinate Coverage
+Where appropriate, coordinate with insurance carriers, brokers, attorneys, CPAs, lenders, and other professionals.
+6. Connect Risk Management to the Financial Plan
+Consider how insurance decisions affect practice continuity, debt obligations, retirement strategy, buy-sell planning, succession, and the physician's personal financial security.
+Common Physician Practice Risk Questions
+If the practice is forced to close temporarily, how long can it continue paying payroll and fixed expenses?
+Are cyber limits appropriate for the amount and sensitivity of patient and employee information maintained by the practice?
+Does the practice have insurance appropriate for its employees, vehicles, property, and contractual obligations?
+Would the business remain financially stable if a key physician died unexpectedly?
+Is there a funded plan for the death, disability, retirement, or departure of an owner?
+Have insurance limits kept pace with practice growth, equipment purchases, new locations, or increased payroll?
+Are the physician's personal wealth plan and practice risk-management plan coordinated?
+The Integrated Elite Physician Approach
+PROTECT THE PRACTICE
+PROTECT THE PHYSICIAN
+General Liability Property Cyber EPLI Workers' Compensation Business Interruption Commercial Auto
+Key Person Coverage Buy-Sell Funding Disability Planning Retirement Planning Wealth Management Estate Planning Succession Planning
+FINAL CTA
+How well protected is your practice today?
+Request a structured review of your current business risks and insurance program. The goal is to identify meaningful gaps, unnecessary overlap, and opportunities to better coordinate protection with the rest of your financial plan.
+BUTTON: Request a Physician Practice Risk Review
+Recommended Risk Review Lead Form
+Name
+Email
+Phone
+Medical specialty
+Practice name
+Number of locations
+Approximate number of employees
+Own or lease office space?
+Current business insurance renewal month
+Primary concern (property / liability / cyber / workers comp / EPLI / business interruption / key person / other)
+Would you like us to review existing policies?
+Preferred contact method
+Additional comments
+SEO & Developer Notes
+Item
+Recommendation
+SEO title
+Business Insurance for Physicians | Elite Physician Wealth Planning
+Meta description
+Business insurance and risk-management solutions for physicians and medical practices, including liability, property, cyber, workers compensation, EPLI, business interruption and key-person protection.
+Primary keyword themes
+business insurance for doctors; physician practice insurance; medical practice business insurance; cyber insurance for medical practices; physician key person insurance
+Primary CTA placement
+Hero, after insurance service grid, after Roderick section, and final section
+Suggested visual
+Physician practice owner reviewing protection/risk plan with an advisor; secondary images may show medical office, staff, technology, and commercial property
+Compliance language for footer
+Insurance products and availability vary by state, carrier, underwriting, eligibility, and policy terms. Coverage descriptions are general and do not amend or replace any insurance contract. Policy forms, limits, exclusions, deductibles, and endorsements should be reviewed before coverage is purchased or changed. Professional liability and certain specialized coverages may be placed or serviced through appropriately licensed insurance professionals or carrier relationships.
+Site Integration Recommendations
+Website Element
+Implementation Recommendation
+Navigation
+Add both pages beneath a prominent Business Owners or Physician Practice Solutions menu. Do not bury them under a generic Resources page.
+Cross-linking
+Each landing page should link to Roderick's executive bio, the main Elite Physician Wealth Planning page, the Business Owner page, and the Contact/Schedule page.
+Roderick profile module
+Use a professional headshot with his title and a 75-125 word summary. Link to the full executive bio. Avoid attaching RLJ enterprise certifications directly to his personal name or suggesting Fiscal Vision holds RLJ's certifications.
+Forms
+Create separate lead forms for financing and insurance so leads can be routed directly to the correct workflow and tracked separately in the CRM.
+Analytics
+Track CTA clicks, completed forms, source page, specialty, requested service, and booked consultations. Use distinct conversion events for financing and insurance.
+Mobile
+Keep the first CTA visible within the first screen on mobile. Use collapsible service sections if the page becomes long.
+Trust elements
+Use professional credentials, years of relevant experience, service categories, and process clarity. Avoid unsupported claims such as guaranteed approval, best rates, or guaranteed savings.
+Physician focus
+Images, examples, and copy should consistently depict physicians, dentists, medical practice owners, clinical offices, and professional-practice decisions rather than generic small businesses.
+Brand relationship
+Display Elite Physician Wealth Planning as the physician-focused platform and Fiscal Vision Financial as the underlying firm/agency brand according to existing compliance-approved branding.
+Suggested Homepage Cross-Promotion
+Your Practice. Your Wealth. One Coordinated Strategy.
+Add a physician-business section on the main Elite Physician Wealth Planning page featuring two cards:
+Commercial Lending & SBA Financing - Practice acquisitions, commercial real estate, working capital, equipment and expansion financing.
+Business Insurance & Risk Management - Property, liability, cyber, workers compensation, EPLI, business interruption, key-person and continuity planning.
+Roderick Bio Card - Recommended Short Version
+Roderick Johnson serves as Managing Director of Commercial Lending & Business Risk Solutions for Elite Physician Wealth Planning | Fiscal Vision Financial. With more than three decades of experience in commercial lending, business banking, SBA lending, and financial services, Roderick helps physicians and medical practice owners evaluate business financing and risk-management decisions as part of a broader financial strategy. His role connects the capital and protection needs of the practice with the physician's personal wealth, retirement, and succession objectives.
+Final Publishing Review
+Confirm Roderick's current insurance licenses, carrier relationships, and approved title before publishing.
+Confirm all lending disclosures and SBA-related descriptions with the appropriate compliance/legal reviewer.
+Confirm the exact relationship language between Elite Physician Wealth Planning, Fiscal Vision Financial, and RLJ Financial Consultants before publishing any RLJ reference.
+Confirm that contact forms route financing and insurance leads to the correct person and secure CRM workflow.
+Review all state-specific insurance and lending disclosures for the jurisdictions in which the services will be marketed.

@@ -48,9 +48,12 @@ const HERO_IMAGES: Readonly<Record<string, HeroImage>> = {
     src: "/images/design/a/04-blueprint-rounds/desk-still-life.jpg",
     alt: "A physician's desk still life: stethoscope, pen and a closed notebook",
   },
+  // The page's subject is the man himself, now that his own photograph exists.
   "/meet-michael-epps": {
-    src: "/images/design/a/07-accountable-planner/office-desk-ground.jpg",
-    alt: "A quiet office corner with a walnut desk edge in warm afternoon light",
+    src: "/images/team/michael-a-epps.jpg",
+    alt: "Michael A. Epps, ChFC®, RICP®, seated in the M. A. Epps & Associates office",
+    position: "45% 20%",
+    plate: true,
   },
 };
 

@@ -17,7 +17,7 @@ export default function Page(): React.JSX.Element {
     <FamilyIndexPage
       route={ROUTE}
       label="Services"
-      eyebrow="Five planning disciplines"
+      eyebrow="Six planning disciplines"
     />
   );
 }

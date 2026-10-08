@@ -12,10 +12,14 @@ const ROUTE = "/physician-tax-retirement-guide";
  * enter details where there were no fields. Hoisted under the form they belong to.
  */
 const FINE_PRINT: readonly string[] = [
-  "Enter your details and we will email you the guide.",
   "Please do not include sensitive personal, medical, tax, legal, or account information (Social Security numbers, account numbers, or health details) in this form.",
   "By submitting this form, you agree to receive educational communications from Elite Physicians Wealth Planning\u2122 and Fiscal Vision Financial. You may unsubscribe from email communications at any time. Submitting this form does not create an advisory relationship."
 ];
+
+const GUIDE = {
+  href: "/guides/physician-tax-retirement-planning-guide-2026.pdf",
+  label: "Download the guide (PDF)",
+} as const;
 
 const PAGE = getPage(ROUTE);
 
@@ -30,17 +34,21 @@ export default function Page(): React.JSX.Element {
     <PageShell
       page={getPage(ROUTE)}
       omitHeadings={["Request the guide"]}
+      heroAction={{ href: "#guide-form", label: "Request the guide" }}
       trail={[{ href: "/", label: "Home" }, { href: ROUTE, label: "Tax & retirement guide" }]}
     >
-      {/* hard_rules gate the guide on a client-approved delivery workflow, so
-// the page must never imply an instant download. */}
+      {/* The client supplied the final file on 2026-10-08 (EPWP v3.3), so the
+          gate now hands it over: details first, then the download. The
+          blueprint's delivery workflow is "Download a Physician Planning
+          Guide", tracked as a guide download. */}
       <FormBand
         id="guide-form"
         heading="Request the guide."
-        note="The guide is sent by the practice, not downloaded here. Send this request and the practice will follow up."
+        note="Enter your details and the download appears here straight away: the 2026 edition, as a 21-page PDF."
         submitLabel="Request the guide"
         intent="Guide request"
         fineprint={FINE_PRINT}
+        delivery={GUIDE}
       />
     </PageShell>
   );

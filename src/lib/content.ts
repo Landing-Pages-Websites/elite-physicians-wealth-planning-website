@@ -41,8 +41,8 @@ export const LINKS = {
   meetMichael: "/meet-michael-epps",
   /**
    * Contracted: "Navigate to the gated lead-capture experience; do not imply
-   * delivery before the final customer file exists." A route, not a mailto —
-   * and the page it lands on states that the guide is sent by the practice.
+   * delivery before the final customer file exists." The file arrived on
+   * 2026-10-08, so the page now hands it over after the visitor's details.
    */
   guideRequest: "/physician-tax-retirement-guide",
 
@@ -238,19 +238,24 @@ export const NEXT_DECISION = {
     summary:
       "A lower-commitment way to start organizing the questions that connect tax and retirement planning.",
     cta: "Request the guide",
-    availability:
-      "CUSTOMER INPUT REQUIRED: the final guide file and approved delivery workflow must be supplied before delivery is represented as available.",
+    /** Supplied 2026-10-08: EPWP v3.3, current law as of July 7, 2026. */
+    availability: "The 2026 edition is available now.",
     requestNote:
-      "Requests are answered personally by email once the approved guide is available — no instant download.",
+      "The 2026 edition is available now as a PDF. Enter your details and download it straight away.",
   },
   contact: BRAND.email,
   identityLine: BRAND.wordmark,
   disclaimer: HERO.disclaimer,
 } as const;
 
+/**
+ * Michael's own photograph, supplied by the client on 2026-10-08. It replaces
+ * hero-founder.png, whose provenance was never confirmed (build/CLIENT-GAPS.md
+ * 1.1) and which carried an invented desk nameplate and credential props.
+ */
 export const PORTRAIT = {
-  src: "/images/design/shared/hero-founder.png",
-  alt: "Michael A. Epps, ChFC®, RICP®, financial planner, standing in his office with arms crossed",
-  width: 485,
-  height: 640,
+  src: "/images/team/michael-a-epps.jpg",
+  alt: "Michael A. Epps, ChFC®, RICP®, seated in the M. A. Epps & Associates office",
+  width: 1122,
+  height: 1402,
 } as const;

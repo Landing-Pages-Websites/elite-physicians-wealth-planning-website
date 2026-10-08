@@ -1,0 +1,491 @@
+WEBSITE STRATEGY & CONTENT BLUEPRINT
+Elite Physicians Planning
+A build-ready plan for a high-trust physician wealth platform
+Tax Strategy  •  Retirement Planning  •  Wealth Management  •  Estate & Legacy Coordination
+Prepared for
+M A Epps & Associates
+Michael Epps Sr., ChFC, RICP Founder and Chief Wealth Strategist
+Working blueprint • Messaging and regulatory review required before publication
+
+1. Executive Direction
+Recommended position: Elite Physicians Planning should be presented as a specialized planning experience for physicians and medical professionals who want tax, retirement, investment, risk, and legacy decisions coordinated around one financial strategy.
+
+Brand promise
+Help physicians convert strong earnings into durable wealth, greater financial clarity, and a coordinated path toward retirement and legacy goals—without asking them to become their own financial planner.
+Primary audience
+	•	Established physicians and surgeons balancing high income, limited time, and complex financial decisions.
+	•	Physician practice owners and partners seeking integrated personal and business planning.
+	•	Physicians within 10 years of retirement who need income, tax, risk, and estate decisions coordinated.
+	•	Residents, fellows, and early-career physicians building the right foundation as income rises.
+	•	Select medical professionals whose planning needs align with the initiative’s scope.
+Positioning statement
+Elite Physicians Planning is a specialized financial planning initiative of M A Epps & Associates. It brings tax strategy, retirement planning, wealth management, risk protection, and estate coordination into one disciplined planning process designed for the financial realities of medical careers.
+Messaging guardrails
+	•	Lead with coordination, clarity, and physician-specific planning—not products.
+	•	Describe tax work as forward-looking tax planning coordinated with the client’s tax professional; do not imply tax-return preparation unless that service is actually provided.
+	•	Avoid guarantees, superiority claims, unverified savings claims, or language suggesting every physician needs the same strategy.
+	•	Use a calm, private, evidence-conscious tone. The site should feel like a trusted professional consultation, not a sales funnel.
+	•	Treat insurance, investment, tax, and estate topics as parts of a plan, with role disclosures and professional coordination clearly stated.
+Recommended headline system
+Primary headline: Build Wealth With the Same Precision You Bring to Medicine.
+Supporting line: Integrated tax, retirement, and wealth planning for physicians and medical professionals.
+Primary call to action: Request a Private Consultation
+Secondary call to action: Complete the Physician Financial Checkup
+Success measures
+	•	Qualified private-consultation requests by physician career stage and planning need.
+	•	Completion rate for the Physician Financial Checkup and subsequent consultation conversion.
+	•	Engagement with tax, retirement, practice-owner, and near-retirement content.
+	•	Referral traffic from CPAs, attorneys, TPAs, medical associations, and existing clients.
+	•	Compliance approval cycle, publication cadence, accessibility, speed, and mobile conversion performance.
+2. Recommended Navigation & Sitemap
+Keep the top navigation focused. The primary action should remain visible on desktop and mobile. Deeper pages can live beneath Who We Help and Services without overcrowding the main menu.
+Top navigation
+Purpose
+Recommended child pages
+Home
+Establish relevance, trust, and the next action.
+Single page
+Who We Help
+Let visitors self-identify by career stage.
+Residents & Fellows; Established Physicians; Practice Owners; Approaching Retirement
+Services
+Explain integrated planning capabilities.
+Tax Strategy; Retirement; Wealth Management; Risk Protection; Estate & Legacy; Practice Planning
+Our Process
+Make the engagement feel clear and manageable.
+Identify → Design → Implement → Optimize
+Insights
+Build authority and support search visibility.
+Articles; Guides; Physician Financial Checkup; FAQ
+About
+Present the firm, founder, credentials, and philosophy.
+Elite Physicians Planning; Michael Epps Sr.; Professional Coordination
+Request a Consultation
+Primary conversion action.
+Short, privacy-conscious intake form
+
+Utility and footer navigation
+	•	Client login or custodian portal link, only if secure and applicable.
+	•	Contact information, office/service area, business hours, and accessibility contact.
+	•	Privacy Policy, Terms of Use, Accessibility Statement, and Cookie Notice as applicable.
+	•	Regulatory disclosures, Form CRS, Form ADV, BrokerCheck/IAPD links, and insurance/licensing disclosures as applicable to the firm’s registrations and services.
+	•	Professional disclaimer: educational information only; not individualized tax, legal, or investment advice.
+Recommended URL structure
+	•	/ — Home
+	•	/physicians/ — Who We Help overview
+	•	/physicians/residents-fellows/
+	•	/physicians/established/
+	•	/physicians/practice-owners/
+	•	/physicians/retirement/
+	•	/services/tax-planning-for-physicians/
+	•	/services/retirement-planning-for-physicians/
+	•	/services/wealth-management-for-physicians/
+	•	/services/risk-protection/
+	•	/services/estate-legacy-planning/
+	•	/services/medical-practice-planning/
+	•	/process/  •  /insights/  •  /about/  •  /consultation/
+3. Homepage: Page-by-Page Messaging
+Section 1 — Hero
+Eyebrow: SPECIALIZED PLANNING FOR PHYSICIANS
+Headline: Build Wealth With the Same Precision You Bring to Medicine.
+Subhead: Your income may be strong, but your time is limited and your financial decisions are interconnected. Elite Physicians Planning coordinates tax strategy, retirement planning, wealth management, risk protection, and legacy planning around your life and career.
+Primary CTA: Request a Private Consultation   Secondary CTA: Complete the Physician Financial Checkup
+Trust line: Personalized planning • Professional coordination • Ongoing strategy
+Visual recommendation: an authentic, confident physician outside the clinical setting—reviewing a plan with a spouse or advisor. Avoid emergency-room imagery, medical clichés, and generic stock handshakes.
+Section 2 — Recognition of the physician’s reality
+Section headline: A successful medical career does not automatically create a coordinated financial life.
+Use a short introduction followed by four problem statements:
+	•	Income arrives through salary, bonus, call pay, 1099 work, partnership income, or practice distributions—and each source creates different planning questions.
+	•	Tax decisions, retirement plans, investment accounts, insurance, and estate documents are often managed separately.
+	•	Career transitions, partnership opportunities, practice ownership, and retirement can arrive before the financial plan is ready.
+	•	A physician’s family needs clarity about the plan, not a collection of disconnected accounts and policies.
+Section 3 — Who we help
+Use four audience cards with a single sentence and a learn-more link:
+	•	Residents & Fellows — Build the right foundation before income, benefits, and debt decisions accelerate.
+	•	Established Physicians — Coordinate taxes, investments, protection, and family goals around a demanding career.
+	•	Practice Owners & Partners — Align business cash flow, retirement benefits, succession, and personal wealth.
+	•	Physicians Approaching Retirement — Convert accumulated assets into a durable income, tax, healthcare, and legacy strategy.
+Section 4 — Integrated service pillars
+Recommended headline: One strategy. Six connected planning disciplines.
+	•	Tax Strategy — Identify planning opportunities and coordinate decisions with the client’s tax professional.
+	•	Retirement Planning — Define the target, evaluate resources, and build an income and transition strategy.
+	•	Wealth Management — Align investments with goals, time horizon, risk, taxes, and liquidity needs.
+	•	Risk Protection — Review disability, life, long-term care, liability, and business continuity exposures.
+	•	Estate & Legacy Coordination — Keep beneficiaries, documents, ownership, charitable goals, and family intentions aligned.
+	•	Medical Practice Planning — Connect entity, benefit, succession, and exit decisions with the owner’s personal plan.
+Section 5 — The Elite Physicians Planning process
+Use a clean four-step horizontal or vertical sequence:
+	•	Identify — Clarify priorities, career stage, cash flow, tax exposure, risk, and the decisions already in motion.
+	•	Design — Build an integrated strategy with defined actions, responsibilities, and tradeoffs.
+	•	Implement — Coordinate accounts, planning actions, and outside professionals with the client’s approval.
+	•	Optimize — Review the strategy as compensation, family, practice, markets, tax law, and retirement goals change.
+Section 6 — Physician Financial Checkup
+Headline: Where is your financial plan strong—and where is it disconnected?
+Offer a brief educational assessment covering cash flow, taxes, retirement, investments, protection, estate coordination, and practice planning. The result should identify discussion areas, not diagnose, score investment suitability, or promise an outcome.
+CTA: Start the Physician Financial Checkup
+Section 7 — Trust and expertise
+Use credential and process evidence that can be verified: founder biography, ChFC and RICP credentials, service model, professional coordination, planning scope, registrations, and relevant experience. Do not invent client counts, years of experience, assets under management, awards, ratings, or outcomes.
+Section 8 — Founder introduction
+Headline: Financial planning built around the realities of a medical career.
+Michael Epps Sr., ChFC, RICP, Founder and Chief Wealth Strategist, helps clients bring tax, retirement, investment, protection, and legacy decisions into one planning relationship. The final paragraph should describe why the physician niche matters to him, once that personal story is approved.
+CTA: Meet Michael Epps Sr.
+Section 9 — Frequently asked questions
+	•	Do I need a certain income or asset level to work with Elite Physicians Planning?
+	•	Can you coordinate with my CPA, attorney, TPA, or practice consultant?
+	•	Is tax planning the same as tax preparation?
+	•	How do you work with employed physicians versus practice owners?
+	•	What happens during the first consultation?
+	•	How are planning, investment, and insurance services compensated?
+Section 10 — Final conversion
+Headline: Your career is demanding. Your financial strategy should be coordinated.
+Body: Start with a private conversation about where you are, what has changed, and which decisions need attention first.
+CTA: Request a Private Consultation
+4. Who We Help Pages
+Each audience page should follow the same structure: stage-specific hero, top financial questions, planning priorities, relevant services, a short case scenario labeled hypothetical, resources, FAQ, and consultation CTA.
+Residents & Fellows
+Hero: Build a strong financial foundation before your career and income accelerate.
+Priority content:
+	•	Cash-flow system and emergency reserves
+	•	Student-loan and repayment coordination
+	•	Employment contract and benefit questions for professional review
+	•	Disability and life insurance needs
+	•	Retirement plan enrollment and early investing
+	•	Tax questions related to moonlighting or 1099 income
+Recommended resources: First Five Years in Practice Checklist; Benefits Enrollment Guide for New Physicians; Physician Financial Checkup.
+CTA: Request a Private Consultation
+Established Physicians
+Hero: Turn strong earnings into a coordinated strategy for wealth, family, and freedom.
+Priority content:
+	•	W-2, bonus, 1099, and partnership-income coordination
+	•	Tax-aware savings and investment strategy
+	•	Retirement accumulation and income-gap analysis
+	•	Education and family goals
+	•	Asset protection and insurance review
+	•	Estate and beneficiary alignment
+Recommended resources: Mid-Career Physician Planning Checklist; Year-End Tax Planning Questions; Retirement Readiness Scorecard.
+CTA: Request a Private Consultation
+Practice Owners & Partners
+Hero: Connect the financial decisions inside your practice with the future you are building outside it.
+Priority content:
+	•	Business and personal cash-flow coordination
+	•	401(k), profit-sharing, cash balance, or defined benefit plan evaluation with qualified professionals
+	•	Key-person, buy-sell, disability, and continuity planning
+	•	Partner transitions and succession
+	•	Practice sale or exit preparation
+	•	Personal retirement and estate strategy
+Recommended resources: Practice Owner Planning Checklist; Retirement Plan Design Questions; Succession Readiness Guide.
+CTA: Request a Private Consultation
+Physicians Approaching Retirement
+Hero: Retire from medicine with a coordinated plan for income, taxes, healthcare, and legacy.
+Priority content:
+	•	Retirement income target and cash-flow design
+	•	Portfolio, pension, retirement account, and Social Security coordination
+	•	Tax-bracket and distribution planning with the tax professional
+	•	Medicare and healthcare-cost planning
+	•	Long-term care and survivor planning
+	•	Practice transition, charitable goals, and estate coordination
+Recommended resources: Physician Retirement Readiness Scorecard; Five Years to Retirement Checklist; Legacy Conversation Guide.
+CTA: Request a Private Consultation
+5. Service Page Specifications
+Every service page should answer five questions: What problem does this solve? What decisions are included? How does the process work? How does it connect to the rest of the plan? What is the next safe action?
+Tax Strategy for Physicians
+Page headline: Make tax planning a year-round part of your financial strategy.
+Core topics:
+	•	Compensation-source mapping: salary, bonus, call pay, 1099, K-1, or practice distributions
+	•	Retirement plan contribution and plan-design opportunities
+	•	Roth conversion and retirement-distribution scenario analysis
+	•	Charitable giving and capital-gain planning conversations
+	•	Entity, payroll, estimated-tax, and deduction questions for CPA/legal review
+	•	Multi-year tax projection coordination with the client’s tax professional
+Suggested page modules: physician scenario; planning questions; how this service connects to other disciplines; process; FAQ; related guide; final CTA.
+Disclosure note: We provide forward-looking financial and tax-planning analysis; tax returns and legal opinions are provided by qualified tax and legal professionals unless separately disclosed.
+Retirement Planning for Physicians
+Page headline: Turn years of work and accumulated assets into a retirement strategy you can understand.
+Core topics:
+	•	Retirement timing and lifestyle target
+	•	Income-source and spending analysis
+	•	Pension, employer plan, IRA, brokerage, Social Security, and annuity coordination where applicable
+	•	Sequence-of-returns, inflation, longevity, and survivor scenario review
+	•	Healthcare, Medicare, and long-term care planning
+	•	Practice sale or partnership transition integration
+Suggested page modules: physician scenario; planning questions; how this service connects to other disciplines; process; FAQ; related guide; final CTA.
+Disclosure note: Retirement projections are estimates based on assumptions and should be updated as circumstances change.
+Wealth Management for Physicians
+Page headline: Give every account a defined role in your larger plan.
+Core topics:
+	•	Goals-based investment policy
+	•	Risk capacity, time horizon, and liquidity review
+	•	Tax-aware asset location and withdrawal coordination
+	•	Concentrated position and employer equity planning
+	•	Rebalancing and ongoing monitoring
+	•	Coordination across employer plans, personal accounts, and family goals
+Suggested page modules: physician scenario; planning questions; how this service connects to other disciplines; process; FAQ; related guide; final CTA.
+Disclosure note: Investment results are not guaranteed; final copy must include the firm’s approved advisory and risk disclosures.
+Risk Protection
+Page headline: Protect income, family, and practice continuity from risks that wealth alone may not solve.
+Core topics:
+	•	Own-occupation disability insurance review
+	•	Life insurance needs and existing-policy review
+	•	Long-term care planning
+	•	Personal liability and umbrella coverage coordination
+	•	Business overhead expense, key-person, and buy-sell funding review
+	•	Emergency liquidity and contingency planning
+Suggested page modules: physician scenario; planning questions; how this service connects to other disciplines; process; FAQ; related guide; final CTA.
+Disclosure note: Insurance products, availability, costs, guarantees, and compensation must be described using approved carrier and licensing disclosures.
+Estate & Legacy Coordination
+Page headline: Translate financial success into an organized plan for family, causes, and future generations.
+Core topics:
+	•	Beneficiary and account-ownership review
+	•	Estate-document implementation checklist with counsel
+	•	Trust-funding and titling coordination
+	•	Charitable and philanthropic planning
+	•	Estate liquidity and insurance coordination
+	•	Family communication and legacy organization
+Suggested page modules: physician scenario; planning questions; how this service connects to other disciplines; process; FAQ; related guide; final CTA.
+Disclosure note: Elite Physicians Planning does not draft legal documents; implementation should be coordinated with a qualified estate-planning attorney.
+Medical Practice Planning
+Page headline: Align practice decisions with the owner’s personal wealth and retirement plan.
+Core topics:
+	•	Owner cash flow and balance-sheet coordination
+	•	Qualified retirement plan and employee-benefit design with TPA, tax, and legal professionals
+	•	Key-person, buy-sell, and business-continuity planning
+	•	Partner entry, exit, and succession questions
+	•	Practice-sale readiness and proceeds planning
+	•	Personal retirement, tax, investment, and estate integration
+Suggested page modules: physician scenario; planning questions; how this service connects to other disciplines; process; FAQ; related guide; final CTA.
+Disclosure note: Business, valuation, tax, ERISA, and legal recommendations require coordination with the appropriate qualified professionals.
+6. Our Process Page
+Hero: A disciplined process for decisions that should not be made in isolation.
+The page should reduce uncertainty about engagement and show that coordination is a core part of the value.
+01  Identify
+Begin with a private discovery conversation and Physician Financial Checkup. Clarify what is working, what has changed, and which decisions carry the greatest consequence.
+Typical outputs: Priority list; document request; planning scope; roles and responsibilities
+02  Design
+Analyze the household, career, practice, tax, retirement, investment, protection, and legacy picture as one system. Present choices, assumptions, tradeoffs, and an action sequence.
+Typical outputs: Integrated strategy; scenario comparisons; implementation roadmap
+03  Implement
+Move approved actions forward and coordinate with the client’s CPA, attorney, TPA, insurance professionals, custodian, and other specialists as appropriate.
+Typical outputs: Action tracker; professional coordination; account/policy/plan implementation
+04  Optimize
+Review the plan as income, tax law, markets, family, practice ownership, and retirement timing evolve.
+Typical outputs: Periodic review; progress updates; annual planning calendar; revised priorities
+Engagement clarity to add before launch
+	•	Who is eligible and whether the relationship begins with planning, investment management, insurance, or a defined package.
+	•	Fee and compensation explanation in plain language, reviewed for accuracy and consistency with disclosures.
+	•	Expected meeting cadence, document requirements, and typical response times.
+	•	How professional coordination works and what requires separate engagement with a CPA or attorney.
+	•	How a prospect can stop, ask questions, or decide not to proceed without pressure.
+7. About & Trust Pages
+About Elite Physicians Planning
+Recommended headline: Specialized financial planning for the people medicine depends on.
+Explain why physician finances deserve a specialized process: uneven career timing, demanding schedules, multiple compensation structures, practice decisions, significant tax exposure, liability concerns, and late-career retirement complexity. Position specialization as understanding and coordination—not exclusivity or superiority.
+Founder page
+Name and title: Michael Epps Sr., ChFC, RICP — Founder and Chief Wealth Strategist
+Recommended biography structure:
+	•	Opening: whom Michael serves and the planning outcomes he helps organize.
+	•	Professional approach: tax-aware, retirement-focused, coordinated, and educational.
+	•	Credentials: explain ChFC and RICP in plain language using approved descriptions.
+	•	Experience: add verified years, registrations, affiliations, and relevant specialties only after compliance review.
+	•	Personal connection: a short, genuine reason for serving physicians; do not invent this story.
+	•	Invitation: a low-pressure private consultation.
+Professional coordination page or module
+Show how the client remains at the center while Elite Physicians Planning coordinates financial strategy with the client’s CPA, estate attorney, TPA, insurance professionals, and other specialists. Avoid suggesting that outside professionals are supervised, affiliated, or guaranteed unless that relationship is documented.
+Trust evidence to collect
+	•	Approved professional headshot and lifestyle photograph.
+	•	Verified biography, credentials, registrations, licenses, service area, and compensation model.
+	•	Approved explanation of planning and investment services.
+	•	Form CRS, Form ADV, privacy notice, and other regulatory documents as applicable.
+	•	Compliant testimonials, endorsements, ratings, or case examples only after formal review; the first launch can succeed without them.
+	•	Media, speaking, association, or publication references only if current and verifiable.
+Best first-launch choice: Use credentials, a transparent process, plain-language service descriptions, and professional coordination as the primary trust system. Add testimonials, performance content, or third-party ratings only after a dedicated compliance review.
+
+8. Calls to Action & Conversion Design
+Use one dominant action across the site. Secondary actions should help a visitor learn or self-assess without competing with the consultation request.
+Visitor stage
+Call to action
+Placement / purpose
+Ready to talk
+Request a Private Consultation
+Header, hero, service pages, final site-wide section
+Exploring
+Complete the Physician Financial Checkup
+Homepage, audience pages, Insights
+Researching
+Download a Physician Planning Guide
+Article and service page content upgrades
+Returning
+Schedule Your Planning Review
+Email or client-only path; avoid confusing prospects
+Professional referral
+Introduce a Physician Client or Colleague
+Referral-partner page; no sensitive client data in first form
+Reading content
+Talk With a Physician-Focused Planner
+End of articles and guide thank-you pages
+
+Consultation form
+Recommended fields:
+	•	Name, email, phone, and preferred contact method.
+	•	Career stage: resident/fellow, employed physician, practice owner/partner, approaching retirement, other medical professional.
+	•	Primary concern: taxes, retirement, investments, protection, estate/legacy, practice planning, comprehensive review.
+	•	Optional broad household investable-asset range or planning-complexity range only if needed for routing.
+	•	Open text limited to: ‘What would you like to accomplish?’ with a warning not to submit Social Security numbers, account numbers, health information, tax documents, or other sensitive data.
+	•	Consent language for contact and privacy-policy acknowledgment; marketing consent should be separate where required.
+Thank-you page
+	•	Confirm receipt without implying acceptance as a client or establishment of an advisory relationship.
+	•	Explain the next response step and expected business-time window once the firm defines it.
+	•	Offer a secure document-sharing path only after a relationship and secure workflow are established.
+	•	Recommend one relevant guide or article based on the form selection.
+	•	Track the conversion event without exposing submitted form content to advertising platforms.
+9. Insights & Content Recommendations
+Content pillars
+	•	Physician Tax Strategy — year-round planning questions, compensation complexity, retirement-plan coordination, and tax-law change explanations.
+	•	Career-Stage Planning — resident, new attending, established physician, owner/partner, and retirement transitions.
+	•	Practice Owner Strategy — retirement plans, succession, continuity, cash flow, and exit readiness.
+	•	Retirement & Income — readiness, distribution decisions, healthcare, survivor planning, and legacy integration.
+	•	Wealth & Risk — investment behavior, disability, life, long-term care, liability, and family protection.
+	•	Estate & Family — beneficiary reviews, professional coordination, charitable goals, and family communication.
+First 12 cornerstone articles
+	•	The Physician Financial Checkup: Seven Areas That Should Work Together
+	•	Seven Financial Moves to Consider in the First Five Years of Practice
+	•	W-2, 1099, and Practice Income: Questions Physicians Should Ask Before Year-End
+	•	Cash Balance and Defined Benefit Plans: A Decision Guide for Medical Practice Owners
+	•	How Physicians Can Coordinate a CPA, Attorney, TPA, and Financial Advisor
+	•	Five Years From Retirement: A Physician’s Planning Checklist
+	•	Disability Insurance Review: Questions Physicians Often Overlook
+	•	Roth Conversion Timing Before and After Retirement
+	•	Preparing Financially for the Sale or Transition of a Medical Practice
+	•	Beneficiaries, Trusts, and Account Ownership: A Physician Estate-Plan Coordination Checklist
+	•	Charitable Giving Strategies for High-Income Medical Professionals
+	•	Long-Term Care and Survivor Planning for Physician Families
+Lead magnets and interactive resources
+	•	Physician Financial Checkup — short assessment with educational result categories and a consultation invitation.
+	•	Year-End Physician Tax Planning Checklist — reviewed annually and dated clearly.
+	•	Practice Owner Retirement Plan Comparison Guide — educational overview with TPA/CPA review prompts.
+	•	Physician Retirement Readiness Scorecard — focuses on planning completeness, not investment suitability.
+	•	Estate & Beneficiary Coordination Checklist — prompts professional review, not legal document drafting.
+	•	Five-Year Physician Planning Calendar — annual decisions from employment through retirement.
+Editorial standards
+	•	Every article has one audience, one main question, one next action, an author/reviewer line, and a visible publication/update date.
+	•	Time-sensitive tax and retirement content is reviewed at least annually and immediately after material law or regulatory changes.
+	•	Examples are clearly hypothetical and avoid implying typical or guaranteed results.
+	•	Technical topics identify when CPA, attorney, TPA, valuation, insurance, or benefits expertise is required.
+	•	Sources favor government agencies, plan documents, regulatory materials, and recognized professional authorities.
+	•	Use descriptive internal links so articles support service and audience pages without keyword stuffing.
+Search topics to validate before development
+Use these as seed phrases—not final keyword research: financial planner for physicians; retirement planning for doctors; tax planning for physicians; financial advisor for medical practice owners; cash balance plan for physicians; physician retirement checklist; disability insurance planning for physicians; medical practice succession planning. Validate search volume, competition, local intent, and compliance before final page titles are locked.
+10. Brand, Photography & User Experience
+Recommended visual direction
+	•	Palette: deep navy, refined gold, warm white, and restrained blue-gray. Use gold for emphasis, not large text blocks.
+	•	Typography: a confident editorial serif for major headlines paired with a highly readable sans-serif for navigation and body text, subject to licensing and speed.
+	•	Layout: generous spacing, strong hierarchy, short lines, quiet motion, and clear section transitions.
+	•	Visual motif: precision, coordination, pathways, and structured decision-making. Avoid medical crosses, caduceus symbols, heartbeat lines, and overused hospital iconography.
+	•	Voice: confident, calm, private, specific, and educational. Avoid hype, urgency pressure, fear-based language, and product-first copy.
+Photography recommendations
+	•	Feature diverse physicians and physician families across career stages in natural, credible environments.
+	•	Balance clinical identity with life outside medicine: family conversation, retirement vision, practice ownership, and thoughtful planning.
+	•	Use professional founder photography: one formal portrait, one consultation image, and one approachable lifestyle image.
+	•	Confirm model releases and commercial licenses. Avoid implying that stock-photo subjects are clients.
+	•	Do not display patient data, charts, recognizable patients, or protected health information.
+Experience requirements
+	•	Responsive, mobile-first design with a persistent but unobtrusive consultation action.
+	•	Accessible color contrast, keyboard navigation, descriptive link text, alt text, visible focus states, form labels, and error guidance.
+	•	Fast pages with optimized images, limited third-party scripts, and no autoplay media.
+	•	Readable disclosures near the related claim or action, with complete legal disclosures in the footer.
+	•	Secure forms, spam protection, encryption in transit, minimum data collection, retention rules, and a documented response workflow.
+	•	No client portal or document upload should be built as a normal web form; use an approved secure platform.
+11. Technical & Measurement Recommendations
+Recommended platform capabilities
+	•	A content management system that allows approved staff to update articles, disclosures, bios, and calls to action without code changes.
+	•	Role-based permissions and a draft → compliance review → approval → publish workflow.
+	•	Version history or a separate archive of published pages and approval records.
+	•	CRM integration that captures source, career stage, planning interest, consent, and follow-up owner—without sending sensitive narrative fields to marketing systems.
+	•	Appointment scheduling that shows only approved meeting types and includes a clear non-client relationship notice.
+	•	Analytics configured around useful events instead of vanity traffic alone.
+Measurement plan
+Event
+What it indicates
+Implementation note
+Consultation request submitted
+Primary qualified conversion
+Capture page, source, career stage, and planning interest
+Financial Checkup completed
+Mid-funnel engagement
+Do not transmit sensitive answers to advertising platforms
+Guide downloaded
+Topic interest
+Track guide title and source page
+Service page → CTA
+Message effectiveness
+Compare by service and audience page
+Referral page action
+Professional/colleague interest
+Route to a defined relationship owner
+Article engagement
+Content usefulness
+Use scroll/time carefully; prioritize CTA and return visits
+
+Search and structured content
+	•	Give each page a unique title, description, H1, canonical URL, and clear audience intent.
+	•	Use Organization/FinancialService, Person, Article, FAQ, and Breadcrumb structured data only when the visible page content supports it.
+	•	Create one strong national or service-area page per real offering; avoid thin location pages or duplicated keyword pages.
+	•	Maintain XML sitemap, robots controls, redirects, broken-link monitoring, and search-console ownership.
+	•	Do not mark promotional copy as medical or financial advice content beyond what it actually provides.
+12. Compliance & Content Governance
+Launch principle: Treat website copy, lead magnets, videos, calculators, testimonials, endorsements, third-party ratings, and social promotion as regulated marketing content requiring the firm’s normal supervisory and recordkeeping process.
+
+Pre-publication review checklist
+	•	Verify firm name, registrations, service descriptions, licensing, professional titles, credentials, fee language, and service area.
+	•	Substantiate every factual claim, statistic, comparison, award, rating, outcome, and statement about experience.
+	•	Review testimonials, endorsements, and third-party ratings for eligibility, required disclosures, oversight, and written agreements where applicable.
+	•	Do not publish performance results, extracted results, hypothetical performance, tax-savings examples, or client outcomes without a dedicated review of methodology, presentation, assumptions, and disclosures.
+	•	Confirm Form CRS and regulatory-document delivery or linking requirements that apply to the firm’s registration and visitor journey.
+	•	Place tax, legal, investment, and insurance disclosures near the relevant content and maintain complete disclosures in the footer.
+	•	Archive approved copy, evidence, reviewer, date, published version, and later revisions.
+	•	Review privacy, cookie, accessibility, cybersecurity, vendor, scheduling, form, CRM, and data-retention practices.
+Recommended footer disclosure framework
+Final wording must come from the firm’s compliance team. At minimum, the footer should distinguish educational information from individualized advice; explain that tax and legal matters require qualified professionals; identify investment and insurance roles; state that investing involves risk; avoid any implied guarantee; and provide current regulatory and privacy links.
+Testimonials and proof
+The SEC’s investment adviser marketing framework permits testimonials and endorsements under specified conditions, including disclosures and oversight. Because implementation depends on the firm’s registration, compensation, promoter relationships, and exact presentation, add these elements only after formal approval. A clean first launch can rely on verified credentials, process transparency, professional coordination, and educational content instead.
+Reference links for compliance review
+SEC — Investment Adviser Marketing: Small Entity Compliance Guide
+SEC — Marketing Compliance Frequently Asked Questions
+SEC — Form CRS Relationship Summary Compliance Guide
+These references inform website governance but do not replace legal or compliance advice tailored to the firm.
+13. Development Roadmap
+Phase
+Build scope
+Exit condition
+1 — Foundation
+Brand system; navigation; Home; Who We Help overview; six service pages; Process; About; Consultation; footer/legal framework
+All core copy, claims, credentials, forms, and disclosures approved
+2 — Conversion
+Physician Financial Checkup; lead magnet; CRM routing; scheduling; thank-you pages; analytics events
+End-to-end lead flow tested without collecting unnecessary sensitive data
+3 — Authority
+First six cornerstone articles; resource library; email nurture drafts; professional-referral page
+Editorial workflow, source standards, review calendar, and owner assigned
+4 — Expansion
+Remaining career-stage pages; remaining articles; videos/webinars; calculators or comparison tools; local/service-area refinement
+Each feature has a business owner, compliance path, maintenance plan, and measurement target
+
+Content and asset checklist
+	•	Approved logo files and color/typography standards.
+	•	Founder headshots, consultation imagery, biography, credentials, registrations, and approved title.
+	•	Final service model, eligibility, fee/compensation explanation, service area, contact details, and response expectations.
+	•	Approved disclaimers, privacy policy, terms, accessibility statement, Form CRS/ADV links, and insurance disclosures as applicable.
+	•	Secure scheduling, CRM, email, archive, analytics, and client-portal decisions.
+	•	First lead magnet, six initial articles, FAQ answers, and source documentation.
+	•	Compliance reviewer, content owner, web owner, lead-routing owner, and annual review calendar.
+Launch acceptance criteria
+	•	A physician can identify within five seconds who the site serves and what action to take.
+	•	Every service and audience page has a unique purpose, relevant CTA, and approved disclosure treatment.
+	•	All claims, credentials, links, contact details, legal documents, and forms are accurate and tested.
+	•	Mobile navigation, keyboard use, color contrast, forms, error states, and page speed meet the project’s accessibility and performance standards.
+	•	Consultation requests route to the correct person and produce a documented follow-up action.
+	•	Analytics record conversions without exposing private form content.
+	•	The firm can update, approve, archive, and review content after launch.
+Recommended first build: Launch the core multi-page site with the Physician Financial Checkup as the signature secondary conversion. Publish six carefully reviewed cornerstone articles, then expand only after the inquiry workflow and content-governance process are working reliably.
+
+Final handoff summary
+This blueprint gives the future design and development team a complete starting point: brand direction, navigation, page goals, copy hierarchy, service scope, calls to action, forms, editorial plan, technical requirements, measurement, and governance. Before production begins, the firm should fill the remaining factual placeholders and approve the exact service, fee, registration, privacy, and disclosure language.

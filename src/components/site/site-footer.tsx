@@ -23,6 +23,7 @@ import { BRAND, HERO, SEPARATE_ROOMS, telHref } from "@/lib/content";
 const SECTIONS = [
   { href: "/who-we-serve", label: "Who we serve" },
   { href: "/services", label: "Services" },
+  { href: "/practice-solutions", label: "Practice solutions" },
   { href: "/our-process", label: "Our process" },
   { href: "/physicians", label: "Who we help" },
   { href: "/resources", label: "Resource center" },

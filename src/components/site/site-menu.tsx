@@ -3,7 +3,7 @@
 import Link from "next/link";
 
 /**
- * The below-xl navigation panel.
+ * The below-1360px navigation panel.
  *
  * Two things the server-rendered version got wrong, both invisible until you
  * actually tap through it:
@@ -13,7 +13,7 @@ import Link from "next/link";
  *    stayed open across it and the visitor landed on the destination with the
  *    menu still covering the top-right corner. Each link now closes its own
  *    popover on the way out, which is why this is a client component.
- * 2. Below xl the desktop <nav aria-label="Primary"> is display:none, so the
+ * 2. Below 1360px the desktop <nav aria-label="Primary"> is display:none, so the
  *    site had NO navigation landmark at all on mobile and the panel was an
  *    unlabelled <div>. The panel carries the landmark itself now.
  *

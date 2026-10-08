@@ -1,5 +1,6 @@
-import { StrategyCallForm } from "@/components/shared/strategy-call-form";
+import { StrategyCallForm, type FormDelivery } from "@/components/shared/strategy-call-form";
 import { BRAND, telHref } from "@/lib/content";
+import type { FormField } from "@/lib/pages";
 
 /**
  * The lead-capture band for /schedule, /contact, /consultation and the gated
@@ -24,6 +25,8 @@ export function FormBand({
   intent,
   submitLabel,
   fineprint,
+  extraFields,
+  delivery,
 }: {
   id: string;
   heading: string;
@@ -34,6 +37,9 @@ export function FormBand({
   submitLabel?: string;
   /** The source's own fine print for this form, hoisted from the body. */
   fineprint?: readonly string[];
+  extraFields?: readonly FormField[];
+  /** What the visitor receives on submit — the guide PDF. */
+  delivery?: FormDelivery;
 }): React.JSX.Element {
   return (
     <section data-dark-band id={id} className="bg-ink">
@@ -49,7 +55,7 @@ export function FormBand({
 
             <dl className="mt-9 border-t border-ivory/15">
               <div className="border-b border-ivory/15 py-3.5 sm:flex sm:gap-6">
-                <dt className="font-body text-[12px] tracking-[0.14em] text-mist/50 uppercase sm:w-24 sm:shrink-0">
+                <dt className="font-body text-[12px] tracking-[0.14em] text-mist/70 uppercase sm:w-24 sm:shrink-0">
                   Office
                 </dt>
                 <dd className="mt-1 font-body text-body-m text-mist/85 sm:mt-0">
@@ -62,7 +68,7 @@ export function FormBand({
                 </dd>
               </div>
               <div className="border-b border-ivory/15 py-3.5 sm:flex sm:gap-6">
-                <dt className="font-body text-[12px] tracking-[0.14em] text-mist/50 uppercase sm:w-24 sm:shrink-0">
+                <dt className="font-body text-[12px] tracking-[0.14em] text-mist/70 uppercase sm:w-24 sm:shrink-0">
                   Email
                 </dt>
                 <dd className="mt-1 font-body text-body-m break-all text-mist/85 sm:mt-0">
@@ -75,7 +81,7 @@ export function FormBand({
                 </dd>
               </div>
               <div className="border-b border-ivory/15 py-3.5 sm:flex sm:gap-6">
-                <dt className="font-body text-[12px] tracking-[0.14em] text-mist/50 uppercase sm:w-24 sm:shrink-0">
+                <dt className="font-body text-[12px] tracking-[0.14em] text-mist/70 uppercase sm:w-24 sm:shrink-0">
                   Hours
                 </dt>
                 <dd className="mt-1 font-body text-body-m text-mist/85 sm:mt-0">{BRAND.hours}</dd>
@@ -84,7 +90,13 @@ export function FormBand({
           </div>
 
           <div className="mt-10 lg:mt-0">
-            <StrategyCallForm tone="ledger" intent={intent} submitLabel={submitLabel} />
+            <StrategyCallForm
+              tone="ledger"
+              intent={intent}
+              submitLabel={submitLabel}
+              extraFields={extraFields}
+              delivery={delivery}
+            />
             {fineprint?.length ? (
               <div className="mt-6 border-t border-ivory/15 pt-5">
                 {fineprint.map((line) => (
