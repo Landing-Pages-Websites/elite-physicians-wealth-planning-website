@@ -485,11 +485,41 @@ Every sentence on the new pages is the client's own.
     - The logo file.
     - The DNS cutover.
 
+11. **Claims in the bios.** The blueprint says experience, registrations and
+    credentials go up "only after compliance review". The bios folder, unlike
+    the blueprint's, was not marked compliance-approved. Please confirm each
+    claim before launch:
+    - Lisa Hamilton: "more than 25 years… approximately 8 years", and CFEI.
+    - Michael Epps Jr.: "Licensed Insurance Professional", "3 years… 15 years".
+    - Aliaya Epps: her Master's degree.
+    - Roderick Johnson: "more than three decades", and the SBA role.
+    - The financing page's "evaluate and obtain commercial financing", given
+      that the disclosure says Fiscal Vision is not the lender.
+
+## BLUEPRINT COVERAGE (audit, 2026-10-09)
+
+Measured line by line against everything the site renders:
+
+| Blueprint chapter | On the site | Why |
+|---|---|---|
+| 4. Who We Help | All of the copy (36/45 lines; the rest are designer instructions) | The legacy capture used the blueprint verbatim |
+| 5. Service pages | Disclosures and Risk Protection only | The five existing pages carry the old site's longer copy. The blueprint's per-service headlines and "core topics" lists are not on them |
+| 6. Our Process | None (0/20) | The site keeps the six-step Wealth Blueprint™; the blueprint describes four steps with "typical outputs" |
+| 7. About | 1/22 | The legacy About copy differs |
+| 3. Homepage | 16/55 | The approved homepage was kept (question 7) |
+
+Adding the blueprint's "core topics" to the five service pages would not
+conflict with anything. Replacing headlines, the process or the About copy
+would replace other client-approved copy. That choice is the client's.
+
 ## NOT IMPLEMENTED (by choice)
 
 - **Homepage cross-promotion card pair.** The handoff's suggestion would add a
   section to the approved homepage composition. Its copy runs on
   `/practice-solutions` and the two practice-owner pages instead.
+- **The financing document's closing tagline**, "Build the Practice.
+  Finance the Opportunity. Protect Your Wealth." The page closes on its form
+  instead.
 - **Blueprint FAQ.** It has questions but no answers (including compensation).
   **Physician Financial Checkup.** No questions or result logic. Both remain
   client deliverables.
