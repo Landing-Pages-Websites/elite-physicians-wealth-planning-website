@@ -25,8 +25,10 @@ Edits to client text, all deliberate:
     an en dash. Glyphs only; no word changes.
 Labels we wrote (navigation, not claims): page titles, the hub and Risk
 Protection eyebrows, "What decisions are included", "For practice owners",
-"What's inside the 2026 edition", and the "Profile" / "Overview" eyebrows on
-intro bands the documents leave untitled.
+"What's inside the 2026 edition", the "Profile" / "Overview" eyebrows on
+intro bands the documents leave untitled, the two form buttons ("Request a
+financing consultation", "Request a practice risk review"), "Read Roderick's
+full bio", and Roderick's title set with a comma where the source has a dash.
 
 Run from the repo root:  python3 scripts/build-client-content.py
 """
@@ -461,7 +463,8 @@ def hub(handoff, roderick_summary):
         CTA,
     ]
     return page(
-        "/practice-solutions", "Practice Financing & Business Insurance for Physicians",
+        # The layout appends " | Elite Physicians Wealth Planning" (34 characters).
+        "/practice-solutions", "Practice Financing & Insurance",
         trim(lede), "Practice Solutions",
         handoff.line("Your Practice. Your Wealth. One Coordinated Strategy."), lede,
         sections, "client-drive-2026-10-08/Elite_Physician_Wealth_Planning_Landing_Pages_Web_Developer_Handoff.txt",
@@ -526,7 +529,7 @@ def revisions(blueprint, captured, risk_pillar, cross_promo, guide):
         "lede": services_lede,
         # The captured description lists the five pillars by name; the revised
         # lede states six without a list that would now be incomplete.
-        "description": services_lede,
+        "description": trim(services_lede),
         "insert": [{"after": PILLAR_ANCHOR, "sections": [dict(risk_pillar, level=2)]}],
     }
     out["/services/practice-owner-planning"].setdefault("insert", []).append({"before": "Each pillar connects to the others", "sections": cross_promo})
