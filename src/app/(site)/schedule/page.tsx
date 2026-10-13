@@ -32,9 +32,14 @@ export default function Page(): React.JSX.Element {
       omitHeadings={["Request your call"]}
       trail={[{ href: "/", label: "Home" }, { href: ROUTE, label: "Schedule a strategy call" }]}
     >
+      {/* Client, 2026-10-13: the calendar is synced to the office team's
+          calendar (Google titles it "30 min with Aliaya"), but visitors meet
+          Mike. An office agent books them on his calendar by hand because he
+          works from more than one office. The note says so, so nobody expects
+          the person named on the widget. */}
       <CalendarEmbed
         heading="Book a strategy call."
-        note="Pick a time that works. The call is a confidential conversation about your goals, current planning concerns and next steps — not a product presentation."
+        note="Pick a time that works for you. This calendar belongs to our office team: once you book, they will schedule your meeting on Michael A. Epps’s calendar and confirm the time and place with you, because he works from more than one office. The call is a confidential conversation about your goals, current planning concerns and next steps — not a product presentation."
       />
       <FormBand
         id="schedule-form"

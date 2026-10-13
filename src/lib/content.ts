@@ -8,7 +8,8 @@ export const BRAND = {
   wordmark:
     "Elite Physicians Wealth Planning™ — Powered by Fiscal Vision Financial",
   poweredBy: "Powered by Fiscal Vision Financial",
-  phone: "301-242-3929",
+  // Client correction, 2026-10-13 (the ads landing page already uses it).
+  phone: "301-259-1636",
   email: "info@fiscalvisionfinancial.com",
   hours: "Monday–Friday, 9:00 AM–5:00 PM",
 } as const;

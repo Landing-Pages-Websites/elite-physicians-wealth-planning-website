@@ -4,7 +4,9 @@
  * `customer_asks` contracts this outright — "Include direct Google Calendar
  * scheduling using the supplied embed" — and every CTA on the site routes here.
  * Until the embed was supplied at kickoff the page took a request and said so
- * rather than pretending to hold a slot; it books directly now.
+ * rather than pretending to hold a slot. The schedule belongs to the office
+ * team (Google titles it "30 min with Aliaya"); an office agent then books the
+ * visitor onto Michael's calendar by hand, so callers say that in `note`.
  *
  * The schedule ID is the client's own, supplied in the kickoff brief. It is a
  * public booking URL, not a secret, and it is kept in one place so a reissued
