@@ -44,7 +44,7 @@ const ORGANIZATION_LD = {
   name: "Elite Physicians Wealth Planning",
   url: "https://elitephysicianswealthplanning.com",
   email: "info@fiscalvisionfinancial.com",
-  telephone: "+1-301-242-3929",
+  telephone: "+1-301-259-1636",
   parentOrganization: { "@type": "Organization", name: "Fiscal Vision Financial" },
   areaServed: "US",
   description:

@@ -132,6 +132,9 @@ def clean(value):
     value = value.replace("Elite Physician Wealth Planning", "Elite Physicians Wealth Planning")
     value = value.replace("\x00B\x00", "Elite Physician Wealth Blueprint")
     value = value.replace("info@elitephysicianwealthplanning.com", "info@fiscalvisionfinancial.com")
+    # Client correction, 2026-10-13: "The correct phone number should be
+    # 301.259.1636." The legacy site prints 301-242-3929 on every page.
+    value = value.replace("301-242-3929", "301-259-1636")
     value = re.sub(r"\s*10665 Stanhaven Pl,?\s*(Suite\s*\d+)?\s*", " ", value)
     value = re.sub(r"\s*White Plains, MD 20695\s*", " ", value)
     value = re.sub(r",?\s*2026 5-Star Wealth Manager", "", value)

@@ -523,3 +523,32 @@ would replace other client-approved copy. That choice is the client's.
 - **Blueprint FAQ.** It has questions but no answers (including compensation).
   **Physician Financial Checkup.** No questions or result logic. Both remain
   client deliverables.
+
+---
+
+# Client feedback (2026-10-13) — phone, Lisa's photo, booking
+
+- **Phone: DONE.** The site now uses 301-259-1636 everywhere: header and
+  footer, every form band, `tel:` links, and the `FinancialService`
+  telephone. It is substituted at capture time, so the legacy capture cannot
+  bring the old number back. The ads landing page already used this number.
+- **Lisa Hamilton's photo: STILL NEEDED.** The client says it is in the Google
+  Drive folder under "pics". The download we received (2026-10-08) has an
+  `images` folder and no `pics` folder. Her bio is wired for a photo: drop
+  `public/images/team/lisa-hamilton.jpg` in, set `photo=True` for her in
+  `scripts/build-client-content.py`, and regenerate.
+- **Booking: DONE.**
+  - **What the client said:** the Google appointment schedule is the office
+    team's (Google titles it "30 min with Aliaya"), but visitors meet Mike. An
+    office agent books them onto his calendar by hand, because he has more
+    than one office.
+  - **What `/schedule` now says:** the calendar belongs to the office team,
+    who schedule the meeting on Michael A. Epps's calendar and confirm the time
+    and place.
+  - **Question:** "Mike" is taken to be Michael A. Epps, the planner the site
+    presents. Please confirm.
+  - **Suggestion:** rename the schedule in Google Calendar (for example,
+    "Strategy call with Elite Physicians Wealth Planning") so the widget no
+    longer reads "30 min with Aliaya". That title is set in Google, not on the
+    site.
+
