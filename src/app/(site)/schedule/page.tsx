@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { CalendarEmbed } from "@/components/pages/calendar-embed";
 import { FormBand } from "@/components/pages/form-band";
 import { PageShell } from "@/components/pages/page-shell";
+import { BRAND } from "@/lib/content";
 import { getPage, metaTitle } from "@/lib/pages";
 
 const ROUTE = "/schedule";
@@ -32,14 +33,17 @@ export default function Page(): React.JSX.Element {
       omitHeadings={["Request your call"]}
       trail={[{ href: "/", label: "Home" }, { href: ROUTE, label: "Schedule a strategy call" }]}
     >
-      {/* Client, 2026-10-13: the calendar is synced to the office team's
-          calendar (Google titles it "30 min with Aliaya"), but visitors meet
-          Mike. An office agent books them on his calendar by hand because he
-          works from more than one office. The note says so, so nobody expects
-          the person named on the widget. */}
+      {/* Client, 2026-10-19: "It should say call Gabi to schedule your
+          appointment." Gabi (Gabriella Gomez Sanchez) keeps Michael A. Epps's
+          calendar, per her bio; she books each call by hand because he works
+          from more than one office (client, 2026-10-13). The online calendar
+          stays as the second route; the client is renaming it in Google to
+          "Strategy call with Elite Physicians Wealth Planning". */}
       <CalendarEmbed
-        heading="Book a strategy call."
-        note="Pick a time that works for you. This calendar belongs to our office team: once you book, they will schedule your meeting on Michael A. Epps’s calendar and confirm the time and place with you, because he works from more than one office. The call is a confidential conversation about your goals, current planning concerns and next steps — not a product presentation."
+        heading="Call Gabi to schedule your appointment."
+        note="Gabi manages Michael A. Epps’s calendar. She will book your strategy call and confirm the time and place with you, because he works from more than one office. The call is a confidential conversation about your goals, current planning concerns and next steps — not a product presentation."
+        phone={BRAND.phone}
+        onlineNote="Pick a time below and our office will schedule your meeting on Michael A. Epps’s calendar and confirm it with you."
       />
       <FormBand
         id="schedule-form"
