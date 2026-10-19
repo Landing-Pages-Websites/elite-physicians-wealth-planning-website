@@ -552,3 +552,20 @@ would replace other client-approved copy. That choice is the client's.
     longer reads "30 min with Aliaya". That title is set in Google, not on the
     site.
 
+## Follow-up (2026-10-19)
+
+- **Lisa Hamilton's photo: DONE.** Received by email. The original is in
+  `build/client-email-2026-10-19/`. It is cropped 4:5 to head and shoulders,
+  like the other headshots, which also leaves the photographer's "Penfotos"
+  mark out of frame.
+- **Michael: CONFIRMED.** Michael A. Epps is the planner; Michael Jr. is his
+  son. Copy left as is.
+- **Calendar title:** the client is renaming the Google schedule to "Strategy
+  call with Elite Physicians Wealth Planning". Nothing changes on the site; the
+  embed shows whatever title Google holds.
+- **Booking: DONE.** `/schedule` now leads with "Call Gabi to schedule your
+  appointment." and a call button for 301-259-1636. The online calendar sits
+  below as "Or choose a time online."
+  - **Question:** does Gabi have a direct line to show instead of the office
+    number? The old site listed 240-278-5211 for her.
+

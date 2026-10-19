@@ -1,5 +1,7 @@
+import { telHref } from "@/lib/content";
+
 /**
- * The client's Google Calendar appointment schedule.
+ * The client's Google Calendar appointment schedule, behind a call-first action.
  *
  * `customer_asks` contracts this outright — "Include direct Google Calendar
  * scheduling using the supplied embed" — and every CTA on the site routes here.
@@ -28,9 +30,14 @@ const SCHEDULE_URL =
 export function CalendarEmbed({
   heading,
   note,
+  phone,
+  onlineNote,
 }: {
   heading: string;
   note: string;
+  /** Booking by phone comes first: the client's own instruction (2026-10-19). */
+  phone: string;
+  onlineNote: string;
 }): React.JSX.Element {
   return (
     <section data-dark-band id="book" className="bg-ink">
@@ -41,8 +48,21 @@ export function CalendarEmbed({
         <p className="mt-5 max-w-[56ch] font-body text-body-m leading-[1.65] text-mist/75">
           {note}
         </p>
+        <a
+          href={telHref(phone)}
+          className="mt-8 inline-flex min-h-12 items-center rounded-sm bg-gold px-7 font-body text-[15px] font-semibold text-ink transition-[background-color,transform] duration-200 hover:-translate-y-px hover:bg-gold-hover active:translate-y-0 focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-ink focus-visible:outline-none"
+        >
+          Call {phone}
+        </a>
 
-        <div className="va-reveal mt-9 overflow-hidden rounded-sm bg-white">
+        <h3 className="mt-14 font-display text-display-s leading-[1.2] font-medium text-ivory-bright">
+          Or choose a time online.
+        </h3>
+        <p className="mt-3 max-w-[56ch] font-body text-body-m leading-[1.65] text-mist/75">
+          {onlineNote}
+        </p>
+
+        <div className="va-reveal mt-7 overflow-hidden rounded-sm bg-white">
           <iframe
             src={SCHEDULE_URL}
             title="Book a strategy call with Elite Physicians Wealth Planning"

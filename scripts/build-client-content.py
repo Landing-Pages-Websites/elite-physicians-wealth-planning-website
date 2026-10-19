@@ -172,7 +172,8 @@ CTA = section(
 GENERIC_BIOS = [
     # slug, file, header lines to skip, name, role, has photo
     ("la-deidra-blake", "La-Deidra_Blake_Leadership_Profile.txt", 3, "La-Deidra Blake", "Vice President, Operations Manager", True),
-    ("lisa-hamilton", "Lisa_Hamilton_Financial_Professional_Profile.txt", 3, "Lisa Hamilton", "Financial Professional, Certified Financial Education Instructor (CFEI)", False),
+    # Lisa's headshot arrived by email on 2026-10-19 (build/client-email-2026-10-19/).
+    ("lisa-hamilton", "Lisa_Hamilton_Financial_Professional_Profile.txt", 3, "Lisa Hamilton", "Financial Professional, Certified Financial Education Instructor (CFEI)", True),
     ("michael-epps-jr", "Michael_Epps_Jr_bio_transcribed.txt", 3, "Michael Epps Jr.", "Licensed Insurance Professional", True),
     ("aliaya-epps", "Aliaya_Epps_Elite_Physician_Wealth_Planning_Bio.txt", 5, "Aliaya Epps", "Customer Service Manager, Client Experience & Operations", True),
     ("gabriella-gomez-sanchez", "Gabriella_Gomez_Sanchez_Professional_Profile.txt", 3, "Gabriella Gomez Sanchez", "Manager's Assistant, Client Support Manager", True),
