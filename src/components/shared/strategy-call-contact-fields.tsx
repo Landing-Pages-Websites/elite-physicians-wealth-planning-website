@@ -1,7 +1,9 @@
 "use client";
 
-import { formatPhone } from "@/lib/leadValidation";
+import { EMAIL_PATTERN, formatPhone } from "@/lib/leadValidation";
 import type { StrategyCallErrors, StrategyCallFields } from "@/lib/strategyCallValidation";
+
+const PHONE_PATTERN = String.raw`(?:[0-9]{10}|\([0-9]{3}\) [0-9]{3}-[0-9]{4})`;
 
 const CONTACT_FIELDS = [
   { name: "firstName", label: "First name", type: "text", autoComplete: "given-name" },
@@ -33,6 +35,7 @@ export function StrategyCallContactFields({ values, errors, fieldClass, labelCla
             value={values[name]}
             autoComplete={autoComplete}
             required
+            pattern={name === "email" ? EMAIL_PATTERN : name === "phone" ? PHONE_PATTERN : undefined}
             maxLength={type === "text" ? 200 : undefined}
             aria-invalid={Boolean(errors[name])}
             aria-describedby={errors[name] ? `${name}-error` : undefined}
