@@ -93,7 +93,7 @@ function StepGroup({ step, index }: { step: Step; index: number }): React.JSX.El
       <div className="pt-[0.2cqw]">
         {/* Cormorant Garamond defaults to oldstyle figures, so "01" set an
             x-height zero beside a serifed one and read as "OI". */}
-        <p className="font-display text-[2.05cqw] leading-none font-medium text-gold lining-nums">
+        <p className="font-display text-[2.05cqw] leading-none font-medium text-gold-text lining-nums">
           {phase.number}
         </p>
         <h3 className="mt-[0.35cqw] font-display text-[1.35cqw] leading-none font-medium text-ink">
@@ -207,7 +207,7 @@ export function BlueprintRounds(): React.JSX.Element {
                     <Icon className="h-6 w-6 text-gold" />
                   </span>
                   <div>
-                    <p className="font-display text-[1.6rem] leading-none font-medium text-gold">
+                    <p className="font-display text-[1.6rem] leading-none font-medium text-gold-text">
                       {phase.number}
                     </p>
                     <h3 className="mt-1 font-display text-xl leading-none font-medium text-ink">
