@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { listPublishedPosts, publishedDate } from "@/lib/blog";
 import { allRoutes } from "@/lib/pages";
 
 /**
@@ -21,9 +22,23 @@ function priorityFor(route: string): number {
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return allRoutes().map((route) => ({
+  const pageEntries: MetadataRoute.Sitemap = allRoutes().map((route) => ({
     url: `${BASE_URL}${route === "/" ? "" : route}`,
     changeFrequency: "monthly",
     priority: priorityFor(route),
   }));
+  const blogEntries: MetadataRoute.Sitemap = listPublishedPosts().map((post) => {
+    const published = publishedDate(post);
+    return {
+      url: `${BASE_URL}/blog/${post.slug}`,
+      ...(published ? { lastModified: published } : {}),
+      changeFrequency: "monthly",
+      priority: 0.6,
+    };
+  });
+  return [
+    ...pageEntries,
+    { url: `${BASE_URL}/blog`, changeFrequency: "weekly", priority: 0.6 },
+    ...blogEntries,
+  ];
 }

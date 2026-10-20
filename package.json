@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "next": "^15.5.4",
+    "posthog-js": "^1.438.13",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },
@@ -29,6 +30,7 @@
     "pngjs": "^7.0.0",
     "puppeteer-core": "^25.9.0",
     "tailwindcss": "^4.1.13",
+    "tsx": "^4.23.15",
     "typescript": "^5.9.2"
   }
 }

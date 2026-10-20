@@ -1,0 +1,248 @@
+{
+  "old_site_url": "https://elitephysicianwealthplanning.com",
+  "platform": "unknown",
+  "discovery_source": "post-sitemap",
+  "status": "migrated",
+  "content_dir": "content/blog",
+  "posts_found": 12,
+  "posts_migrated": 12,
+  "posts_with_item_id": 12,
+  "generated_at": "2026-10-20T17:45:08+00:00",
+  "script_version": "1.1.0",
+  "image_bytes": 0,
+  "notes": [
+    "redirects not written: next.config.ts is not a seam this tool edits. 12 entries are in pending_redirects and must be merged into that same seam by hand, per \u00a74.0. A second seam must not be created"
+  ],
+  "pending_redirects": [
+    {
+      "source": "/insights/beneficiaries-trusts-ownership-checklist",
+      "destination": "/blog/beneficiaries-trusts-ownership-checklist"
+    },
+    {
+      "source": "/insights/cash-balance-defined-benefit-decision-guide",
+      "destination": "/blog/cash-balance-defined-benefit-decision-guide"
+    },
+    {
+      "source": "/insights/charitable-giving-strategies",
+      "destination": "/blog/charitable-giving-strategies"
+    },
+    {
+      "source": "/insights/coordinating-cpa-attorney-tpa-advisor",
+      "destination": "/blog/coordinating-cpa-attorney-tpa-advisor"
+    },
+    {
+      "source": "/insights/disability-insurance-review-overlooked",
+      "destination": "/blog/disability-insurance-review-overlooked"
+    },
+    {
+      "source": "/insights/first-five-years-financial-moves",
+      "destination": "/blog/first-five-years-financial-moves"
+    },
+    {
+      "source": "/insights/five-years-from-retirement-checklist",
+      "destination": "/blog/five-years-from-retirement-checklist"
+    },
+    {
+      "source": "/insights/long-term-care-survivor-planning",
+      "destination": "/blog/long-term-care-survivor-planning"
+    },
+    {
+      "source": "/insights/physician-financial-checkup-seven-areas",
+      "destination": "/blog/physician-financial-checkup-seven-areas"
+    },
+    {
+      "source": "/insights/preparing-for-practice-sale",
+      "destination": "/blog/preparing-for-practice-sale"
+    },
+    {
+      "source": "/insights/roth-conversion-timing",
+      "destination": "/blog/roth-conversion-timing"
+    },
+    {
+      "source": "/insights/w2-1099-practice-income-questions",
+      "destination": "/blog/w2-1099-practice-income-questions"
+    }
+  ],
+  "posts": [
+    {
+      "old_url": "https://elitephysicianwealthplanning.com/insights/beneficiaries-trusts-ownership-checklist",
+      "item_id": "item_a50gf1ncxz7ah5gq6pzw4zsz8c",
+      "old_id": null,
+      "title": "Beneficiaries, Trusts, and Account Ownership: A Physician Estate-Plan Coordination Checklist",
+      "date": null,
+      "new_slug": "beneficiaries-trusts-ownership-checklist",
+      "status": "migrated",
+      "reason": null,
+      "images_migrated": 0,
+      "dropped_blocks": [],
+      "word_count": 63,
+      "redirect_destination": null,
+      "target": "/blog/beneficiaries-trusts-ownership-checklist"
+    },
+    {
+      "old_url": "https://elitephysicianwealthplanning.com/insights/cash-balance-defined-benefit-decision-guide",
+      "item_id": "item_2c0q5z7nnvmwpe3fd5me20erkr",
+      "old_id": null,
+      "title": "Cash Balance and Defined Benefit Plans: A Decision Guide for Medical Practice Owners",
+      "date": null,
+      "new_slug": "cash-balance-defined-benefit-decision-guide",
+      "status": "migrated",
+      "reason": null,
+      "images_migrated": 0,
+      "dropped_blocks": [],
+      "word_count": 65,
+      "redirect_destination": null,
+      "target": "/blog/cash-balance-defined-benefit-decision-guide"
+    },
+    {
+      "old_url": "https://elitephysicianwealthplanning.com/insights/charitable-giving-strategies",
+      "item_id": "item_pqrsdh9spnvrzncze5fcc37158",
+      "old_id": null,
+      "title": "Charitable Giving Strategies for High-Income Medical Professionals",
+      "date": null,
+      "new_slug": "charitable-giving-strategies",
+      "status": "migrated",
+      "reason": null,
+      "images_migrated": 0,
+      "dropped_blocks": [],
+      "word_count": 64,
+      "redirect_destination": null,
+      "target": "/blog/charitable-giving-strategies"
+    },
+    {
+      "old_url": "https://elitephysicianwealthplanning.com/insights/coordinating-cpa-attorney-tpa-advisor",
+      "item_id": "item_ntrk46typxs34rd1qmpkecdse8",
+      "old_id": null,
+      "title": "How Physicians Can Coordinate a CPA, Attorney, TPA, and Financial Advisor",
+      "date": null,
+      "new_slug": "coordinating-cpa-attorney-tpa-advisor",
+      "status": "migrated",
+      "reason": null,
+      "images_migrated": 0,
+      "dropped_blocks": [],
+      "word_count": 64,
+      "redirect_destination": null,
+      "target": "/blog/coordinating-cpa-attorney-tpa-advisor"
+    },
+    {
+      "old_url": "https://elitephysicianwealthplanning.com/insights/disability-insurance-review-overlooked",
+      "item_id": "item_8qhejhsveaj0rfk3ywf0nxzvb4",
+      "old_id": null,
+      "title": "Disability Insurance Review: Questions Physicians Often Overlook",
+      "date": null,
+      "new_slug": "disability-insurance-review-overlooked",
+      "status": "migrated",
+      "reason": null,
+      "images_migrated": 0,
+      "dropped_blocks": [],
+      "word_count": 61,
+      "redirect_destination": null,
+      "target": "/blog/disability-insurance-review-overlooked"
+    },
+    {
+      "old_url": "https://elitephysicianwealthplanning.com/insights/first-five-years-financial-moves",
+      "item_id": "item_vx0rs7re6b1ctypfz3vapvjccc",
+      "old_id": null,
+      "title": "Seven Financial Moves to Consider in the First Five Years of Practice",
+      "date": null,
+      "new_slug": "first-five-years-financial-moves",
+      "status": "migrated",
+      "reason": null,
+      "images_migrated": 0,
+      "dropped_blocks": [],
+      "word_count": 61,
+      "redirect_destination": null,
+      "target": "/blog/first-five-years-financial-moves"
+    },
+    {
+      "old_url": "https://elitephysicianwealthplanning.com/insights/five-years-from-retirement-checklist",
+      "item_id": "item_et9ngcnqfb4me4jv385m0g405r",
+      "old_id": null,
+      "title": "Five Years From Retirement: A Physician's Planning Checklist",
+      "date": null,
+      "new_slug": "five-years-from-retirement-checklist",
+      "status": "migrated",
+      "reason": null,
+      "images_migrated": 0,
+      "dropped_blocks": [],
+      "word_count": 62,
+      "redirect_destination": null,
+      "target": "/blog/five-years-from-retirement-checklist"
+    },
+    {
+      "old_url": "https://elitephysicianwealthplanning.com/insights/long-term-care-survivor-planning",
+      "item_id": "item_4wmmax0c3ayxvhq6yayy6sgwzm",
+      "old_id": null,
+      "title": "Long-Term Care and Survivor Planning for Physician Families",
+      "date": null,
+      "new_slug": "long-term-care-survivor-planning",
+      "status": "migrated",
+      "reason": null,
+      "images_migrated": 0,
+      "dropped_blocks": [],
+      "word_count": 64,
+      "redirect_destination": null,
+      "target": "/blog/long-term-care-survivor-planning"
+    },
+    {
+      "old_url": "https://elitephysicianwealthplanning.com/insights/physician-financial-checkup-seven-areas",
+      "item_id": "item_b52bj93tzf3pqc7f2qprmj77bg",
+      "old_id": null,
+      "title": "The Physician Financial Checkup: Seven Areas That Should Work Together",
+      "date": null,
+      "new_slug": "physician-financial-checkup-seven-areas",
+      "status": "migrated",
+      "reason": null,
+      "images_migrated": 0,
+      "dropped_blocks": [],
+      "word_count": 71,
+      "redirect_destination": null,
+      "target": "/blog/physician-financial-checkup-seven-areas"
+    },
+    {
+      "old_url": "https://elitephysicianwealthplanning.com/insights/preparing-for-practice-sale",
+      "item_id": "item_c3282vbqzmcrjsjq3vhffy5qqg",
+      "old_id": null,
+      "title": "Preparing Financially for the Sale or Transition of a Medical Practice",
+      "date": null,
+      "new_slug": "preparing-for-practice-sale",
+      "status": "migrated",
+      "reason": null,
+      "images_migrated": 0,
+      "dropped_blocks": [],
+      "word_count": 64,
+      "redirect_destination": null,
+      "target": "/blog/preparing-for-practice-sale"
+    },
+    {
+      "old_url": "https://elitephysicianwealthplanning.com/insights/roth-conversion-timing",
+      "item_id": "item_dsnm3wzg1mrm02dcaqcq00n81w",
+      "old_id": null,
+      "title": "Roth Conversion Timing Before and After Retirement",
+      "date": null,
+      "new_slug": "roth-conversion-timing",
+      "status": "migrated",
+      "reason": null,
+      "images_migrated": 0,
+      "dropped_blocks": [],
+      "word_count": 63,
+      "redirect_destination": null,
+      "target": "/blog/roth-conversion-timing"
+    },
+    {
+      "old_url": "https://elitephysicianwealthplanning.com/insights/w2-1099-practice-income-questions",
+      "item_id": "item_dmz6qb89fj0eh4whh2mkswg88w",
+      "old_id": null,
+      "title": "W-2, 1099, and Practice Income: Questions Physicians Should Ask Before Year-End",
+      "date": null,
+      "new_slug": "w2-1099-practice-income-questions",
+      "status": "migrated",
+      "reason": null,
+      "images_migrated": 0,
+      "dropped_blocks": [],
+      "word_count": 62,
+      "redirect_destination": null,
+      "target": "/blog/w2-1099-practice-income-questions"
+    }
+  ]
+}

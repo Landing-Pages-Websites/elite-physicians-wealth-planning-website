@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import "./globals.css";
+import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
+import { PostHogProvider } from "@/components/analytics/PostHogProvider";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://elitephysicianswealthplanning.com"),
@@ -66,6 +68,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <script dangerouslySetInnerHTML={{ __html: 'window.MEGA_TAG_CONFIG={siteKey:"t651hug14c8gq3du"};window.API_ENDPOINT="https://optimizer.gomega.ai";window.TRACKING_API_ENDPOINT="https://events-api.gomega.ai";' }} />
+        {/* itemProp prevents React 19 from hoisting the async script ahead of its bootstrap. */}
+        <script src="https://cdn.gomega.ai/scripts/optimizer.min.js" async itemProp="" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(ORGANIZATION_LD) }}
@@ -77,7 +82,7 @@ export default function RootLayout({
           defer
         ></script>
       </head>
-      <body>{children}</body>
+      <body>{children}<GoogleAnalytics /><PostHogProvider /></body>
     </html>
   );
 }

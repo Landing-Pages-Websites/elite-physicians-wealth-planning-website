@@ -3,6 +3,17 @@
 import { useRef, useState } from "react";
 import { BRAND , telHref } from "@/lib/content";
 import type { FormField } from "@/lib/pages";
+import CaptchaWidget, { type CaptchaHandle } from "@/components/CaptchaWidget";
+import { StrategyCallContactFields } from "./strategy-call-contact-fields";
+import { useMegaLeadForm, HONEYPOT_FIELD_NAME } from "@/hooks/useMegaLeadForm";
+import { clientVerificationRoute } from "@/lib/captcha/client-route";
+import { forwardExistingLeadEndpoint } from "@/lib/legacyLeadHandoff";
+import {
+  EMPTY_STRATEGY_CALL as EMPTY,
+  validateStrategyCall as validate,
+  type StrategyCallFields as Fields,
+  type StrategyCallErrors,
+} from "@/lib/strategyCallValidation";
 
 declare global {
   interface Window {
@@ -19,8 +30,7 @@ declare global {
  */
 export type FormTone = "ledger" | "atlas";
 
-/** "delivered": the email handoff ran AND the form's file (the guide) was handed over. */
-type Status = "idle" | "invalid" | "sending" | "sent" | "delivered" | "failed";
+type Status = "idle" | "invalid" | "sending" | "sent" | "ignored" | "failed";
 
 /** What a form hands the visitor once it is submitted — the guide PDF. */
 export type FormDelivery = { readonly href: string; readonly label: string };
@@ -42,49 +52,11 @@ const CAREER_STAGES = [
   "Approaching retirement",
 ] as const;
 
-type Fields = {
-  fullName: string;
-  email: string;
-  careerStage: string;
-  notes: string;
-};
-
-const EMPTY: Fields = { fullName: "", email: "", careerStage: "", notes: "" };
-
-/** Endpoint is injected at build time; absent in the review builds. */
-const ENDPOINT = process.env.NEXT_PUBLIC_LEAD_ENDPOINT;
-
-function validate(values: Fields): Partial<Record<keyof Fields, string>> {
-  const errors: Partial<Record<keyof Fields, string>> = {};
-  if (!values.fullName.trim()) errors.fullName = "Enter your name.";
-  if (!values.email.trim()) {
-    errors.email = "Enter an email address.";
-  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(values.email.trim())) {
-    errors.email = "That email address looks incomplete.";
-  }
-  if (!values.careerStage) errors.careerStage = "Choose a career stage.";
-  return errors;
-}
-
-/** Falls back to the practice's inbox so a message is never silently lost. */
-function mailtoHandoff(values: Fields, intent: string, extraLines: readonly string[]): string {
-  const body = [
-    `Name: ${values.fullName}`,
-    `Email: ${values.email}`,
-    `Career stage: ${values.careerStage}`,
-    ...extraLines,
-    values.notes.trim() ? `\n${values.notes.trim()}` : "",
-  ].join("\n");
-  return `mailto:${BRAND.email}?subject=${encodeURIComponent(
-    intent,
-  )}&body=${encodeURIComponent(body)}`;
-}
-
 export function StrategyCallForm({
   tone,
   intent = "Strategy call request",
   submitLabel = "Request a strategy call",
-  extraFields = [],
+  extraFields: pageFields = [],
   delivery,
 }: {
   /** Optional page-specific questions — the practice pages' handoff lists them. */
@@ -98,15 +70,22 @@ export function StrategyCallForm({
    * call, the contact page, the consultation request and the gated guide — and
    * an enquiry that reaches the practice's inbox subject-lined "Strategy call
    * request" when it was a guide request is a lead misrouted at the first step.
-   * Carried into the mailto subject and the dataLayer event.
+   * Carried into the lead payload and the dataLayer event.
    */
   intent?: string;
 }): React.JSX.Element {
   const isLedger = tone === "ledger";
+  // Some existing pages ask for optional phone. The required contact field now
+  // owns that key, so never render a second input with a conflicting value.
+  const extraFields = pageFields.filter((question) => !Object.hasOwn(EMPTY, question.name));
   const formRef = useRef<HTMLFormElement>(null);
   const [values, setValues] = useState<Fields>(EMPTY);
   const [extras, setExtras] = useState<Record<string, string>>({});
-  const [errors, setErrors] = useState<Partial<Record<keyof Fields, string>>>({});
+  const [errors, setErrors] = useState<StrategyCallErrors>({});
+  const captchaRef = useRef<CaptchaHandle>(null);
+  const inFlightRef = useRef(false);
+  const [captchaReady, setCaptchaReady] = useState(false);
+  const { submit } = useMegaLeadForm();
   const [status, setStatus] = useState<Status>("idle");
 
   const field = isLedger
@@ -125,7 +104,7 @@ export function StrategyCallForm({
   }
 
   /** Validate first, then hand the browser a real submit event. */
-  function handleRequest(): void {
+  function validateBeforeSubmit(): boolean {
     const found = validate(values);
     setErrors(found);
     if (Object.keys(found).length > 0) {
@@ -137,54 +116,57 @@ export function StrategyCallForm({
       requestAnimationFrame(() => {
         formRef.current?.querySelector<HTMLElement>(`[name="${firstKey}"]`)?.focus();
       });
-      return;
+      return false;
     }
-    formRef.current?.requestSubmit();
+    return true;
   }
 
-  /**
-   * No endpoint wired yet, so the practice's inbox is the only way a lead
-   * reaches anyone — a guide request included, since its fine print promises
-   * follow-up. Hand off to email rather than report a success that never
-   * happened; a form with a file to deliver hands that over as well.
-   */
-  function handOffByEmail(): void {
-    const answered = extraFields.filter((f) => extras[f.name]?.trim());
-    window.location.href = mailtoHandoff(
-      values,
-      intent,
-      answered.map((f) => `${f.label}: ${extras[f.name].trim()}`),
-    );
-    setStatus(delivery ? "delivered" : "failed");
+  function handleRequest(): void {
+    if (inFlightRef.current || !validateBeforeSubmit()) return;
+    formRef.current?.requestSubmit();
   }
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>): Promise<void> {
     event.preventDefault();
-    if (!ENDPOINT) {
-      handOffByEmail();
-      return;
-    }
+    if (inFlightRef.current || !validateBeforeSubmit()) return;
+    inFlightRef.current = true;
     setStatus("sending");
     try {
-      const response = await fetch(ENDPOINT, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        // `intent` travels with the lead: financing and insurance requests go
-        // to a different person than a strategy call.
-        body: JSON.stringify({ ...extras, ...values, intent }),
+      const minted = await captchaRef.current?.getToken("lead_submit");
+      const captchaToken = typeof minted === "string" && minted.length > 0
+        ? minted : clientVerificationRoute() === "recaptcha" ? "" : null;
+      if (captchaToken === null) throw new Error("Security check is not ready.");
+      const honeypot = formRef.current?.elements.namedItem(HONEYPOT_FIELD_NAME);
+      const result = await submit({
+        ...extras, ...values, intent, formKey: "contact-form", captchaToken,
+        [HONEYPOT_FIELD_NAME]: honeypot instanceof HTMLInputElement ? honeypot.value : "",
       });
-      if (!response.ok) throw new Error(`Lead endpoint returned ${response.status}`);
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({ event: "form_submission", formIntent: intent });
-      setStatus("sent");
-      setValues(EMPTY);
-      setExtras({});
-    } catch {
+      if (result.ok !== true) throw new Error("Submission not confirmed.");
+      if (result.ignored) { setStatus("ignored"); return; }
+      confirmSuccess();
+    } catch (error) {
+      console.error("Protected lead submission failed", error);
       setStatus("failed");
+      captchaRef.current?.reset();
+    } finally {
+      inFlightRef.current = false;
     }
   }
 
-  if (status === "sent" || status === "delivered") {
+  function confirmSuccess(): void {
+    void forwardExistingLeadEndpoint(values, extras, intent);
+    setStatus("sent");
+    setValues(EMPTY);
+    setExtras({});
+    try {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: "form_submission", formIntent: intent });
+    } catch {
+      console.warn("Conversion tracking failed after confirmed lead delivery");
+    }
+  }
+
+  if (status === "sent" || status === "ignored") {
     return (
       <div role="status" aria-live="polite">
         <p
@@ -192,8 +174,8 @@ export function StrategyCallForm({
             isLedger ? "text-ivory" : "text-ink"
           }`}
         >
-          {status === "delivered" ? (
-            "Your guide is ready. Your email app opened with your request: send it if you would like the practice to follow up."
+          {status === "ignored" ? (
+            "Request received."
           ) : delivery ? (
             "Request received. Your guide is ready."
           ) : (
@@ -207,64 +189,27 @@ export function StrategyCallForm({
             </>
           )}
         </p>
-        {delivery ? <DeliveryLink delivery={delivery} /> : null}
+        {delivery && status === "sent" ? <DeliveryLink delivery={delivery} /> : null}
       </div>
     );
   }
 
   return (
-    <form ref={formRef} onSubmit={handleSubmit} noValidate className="grid gap-5">
+    <form ref={formRef} method="post" action="/api/lead" onSubmit={handleSubmit} noValidate className="grid gap-5">
       {/* Spam trap. Positioned off-screen rather than display:none so bots fill it. */}
       <div aria-hidden="true" className="absolute -left-[9999px]">
         <label htmlFor="company-website">Company website</label>
-        <input id="company-website" name="companyWebsite" tabIndex={-1} autoComplete="off" />
+        <input id="company-website" name={HONEYPOT_FIELD_NAME} tabIndex={-1} autoComplete="off" />
       </div>
 
-      <div className="grid gap-5 sm:grid-cols-2">
-        <div>
-          <label className={label} htmlFor="fullName">
-            Name
-          </label>
-          <input
-            id="fullName"
-            name="fullName"
-            className={field}
-            value={values.fullName}
-            autoComplete="name"
-            aria-invalid={Boolean(errors.fullName)}
-            aria-describedby={errors.fullName ? "fullName-error" : undefined}
-            onChange={(event) => update("fullName", event.target.value)}
-          />
-          {errors.fullName ? (
-            <span id="fullName-error" className={errorText}>
-              {errors.fullName}
-            </span>
-          ) : null}
-        </div>
-
-        <div>
-          <label className={label} htmlFor="email">
-            Email
-          </label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            inputMode="email"
-            className={field}
-            value={values.email}
-            autoComplete="email"
-            aria-invalid={Boolean(errors.email)}
-            aria-describedby={errors.email ? "email-error" : undefined}
-            onChange={(event) => update("email", event.target.value)}
-          />
-          {errors.email ? (
-            <span id="email-error" className={errorText}>
-              {errors.email}
-            </span>
-          ) : null}
-        </div>
-      </div>
+      <StrategyCallContactFields
+        values={values}
+        errors={errors}
+        fieldClass={field}
+        labelClass={label}
+        errorClass={errorText}
+        onChange={update}
+      />
 
       <div>
         <label className={label} htmlFor="careerStage">
@@ -273,6 +218,7 @@ export function StrategyCallForm({
         <select
           id="careerStage"
           name="careerStage"
+          required
           style={SELECT_STYLE}
           className={`${field} appearance-none pr-11`}
           value={values.careerStage}
@@ -327,11 +273,13 @@ export function StrategyCallForm({
         />
       </div>
 
+      <CaptchaWidget ref={captchaRef} onReady={setCaptchaReady} />
+
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
         <button
           type="button"
           onClick={handleRequest}
-          disabled={status === "sending"}
+          disabled={status === "sending" || !captchaReady}
           className={`inline-flex shrink-0 items-center justify-center whitespace-nowrap rounded-sm px-6 py-3 font-body text-[15px] font-semibold transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60 ${
             isLedger
               ? "bg-gold text-ink hover:bg-gold-hover focus-visible:ring-gold focus-visible:ring-offset-ink"
@@ -363,8 +311,7 @@ export function StrategyCallForm({
             isLedger ? "text-ivory/80" : "text-charcoal"
           }`}
         >
-          This form opens your email app to send the request. If nothing opened,
-          email{" "}
+          We couldn’t send your request. Please try again, email{" "}
           <a className="underline underline-offset-4" href={`mailto:${BRAND.email}`}>
             {BRAND.email}
           </a>{" "}

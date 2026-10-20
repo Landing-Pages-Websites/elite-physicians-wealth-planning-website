@@ -1,6 +1,8 @@
 import type { NextConfig } from "next";
+import { configuredVerificationRoute } from "./src/lib/captcha/provider";
 
 const nextConfig: NextConfig = {
+  env: { NEXT_PUBLIC_CAPTCHA_ROUTE: configuredVerificationRoute().kind },
   /**
    * Verification builds MUST NOT share a build directory with `next dev`.
    * They did, and running `next build` while the dev server was live replaced
@@ -36,11 +38,23 @@ const nextConfig: NextConfig = {
       { source: "/financial-planning-for-dentists", destination: "/who-we-serve/dentists-dental-specialists", permanent: true },
       { source: "/financial-planning-for-crnas-nps-pas", destination: "/who-we-serve/crnas-nps-pas", permanent: true },
       { source: "/financial-planning-for-healthcare-executives", destination: "/who-we-serve/healthcare-executives", permanent: true },
-      // The twelve source articles and the assessment are held pending client
+      // Preserve the outgoing public article URLs on the migrated blog.
+      { source: "/insights/beneficiaries-trusts-ownership-checklist", destination: "/blog/beneficiaries-trusts-ownership-checklist", permanent: true },
+      { source: "/insights/cash-balance-defined-benefit-decision-guide", destination: "/blog/cash-balance-defined-benefit-decision-guide", permanent: true },
+      { source: "/insights/charitable-giving-strategies", destination: "/blog/charitable-giving-strategies", permanent: true },
+      { source: "/insights/coordinating-cpa-attorney-tpa-advisor", destination: "/blog/coordinating-cpa-attorney-tpa-advisor", permanent: true },
+      { source: "/insights/disability-insurance-review-overlooked", destination: "/blog/disability-insurance-review-overlooked", permanent: true },
+      { source: "/insights/first-five-years-financial-moves", destination: "/blog/first-five-years-financial-moves", permanent: true },
+      { source: "/insights/five-years-from-retirement-checklist", destination: "/blog/five-years-from-retirement-checklist", permanent: true },
+      { source: "/insights/long-term-care-survivor-planning", destination: "/blog/long-term-care-survivor-planning", permanent: true },
+      { source: "/insights/physician-financial-checkup-seven-areas", destination: "/blog/physician-financial-checkup-seven-areas", permanent: true },
+      { source: "/insights/preparing-for-practice-sale", destination: "/blog/preparing-for-practice-sale", permanent: true },
+      { source: "/insights/roth-conversion-timing", destination: "/blog/roth-conversion-timing", permanent: true },
+      { source: "/insights/w2-1099-practice-income-questions", destination: "/blog/w2-1099-practice-income-questions", permanent: true },
+      // The assessment is held pending client
       // copy (build/CLIENT-GAPS.md 11.1, 11.2) and are intended to ship at
       // these same URLs. 307, not 301 — a permanent redirect would be cached
       // against the route we mean to restore.
-      { source: "/insights/:slug", destination: "/insights", permanent: false },
       { source: "/checkup", destination: "/resources", permanent: false },
     ];
   },
