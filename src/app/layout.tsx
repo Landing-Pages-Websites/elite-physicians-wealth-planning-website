@@ -68,8 +68,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="preload" href="/fonts/CormorantGaramond-500.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
-        <link rel="preload" href="/fonts/Inter-400.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        <link rel="preload" href="/fonts/CormorantGaramond-500-latin.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        <link rel="preload" href="/fonts/Inter-400-latin.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
         <script dangerouslySetInnerHTML={{ __html: 'window.MEGA_TAG_CONFIG={siteKey:"t651hug14c8gq3du"};window.API_ENDPOINT="https://optimizer.gomega.ai";window.TRACKING_API_ENDPOINT="https://events-api.gomega.ai";' }} />
         {/* itemProp prevents React 19 from hoisting the async script ahead of its bootstrap. */}
         <script src="https://cdn.gomega.ai/scripts/optimizer.min.js" async itemProp="" />
