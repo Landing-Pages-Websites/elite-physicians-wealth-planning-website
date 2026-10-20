@@ -33,6 +33,17 @@ function browser() {
 
 afterEach(() => { Reflect.deleteProperty(globalThis, "window"); Reflect.deleteProperty(globalThis, "document"); });
 
+function browserWithoutIdleCallbacks() {
+  const env = browser();
+  Reflect.deleteProperty(env.fake, "requestIdleCallback");
+  Reflect.deleteProperty(env.fake, "cancelIdleCallback");
+  return env;
+}
+
+function assertCleanedUp(env: ReturnType<typeof browser>): void {
+  assert.equal(env.events.size + env.frames.size + env.idle.size + env.timers.size, 0);
+}
+
 test("fonts, two paint frames, then idle; all work is cleaned up", async () => {
   const env = browser(); let calls = 0;
   scheduleAnalyticsReady(() => { calls++; });
@@ -73,9 +84,65 @@ test("unmount/decline cancels timers, frames, idle and pending font continuation
 });
 
 test("browsers without idle callbacks still start after paint", async () => {
-  const env = browser(); let calls = 0;
-  Reflect.deleteProperty(env.fake, "requestIdleCallback");
-  scheduleAnalyticsReady(() => { calls++; });
-  env.resolveFonts(); await Promise.resolve(); env.frame(); env.frame(); env.advance(0);
+  const env = browserWithoutIdleCallbacks(); let calls = 0;
+  const cancel = scheduleAnalyticsReady(() => { calls++; });
+  env.resolveFonts(); await Promise.resolve(); env.frame(); env.frame();
+  assert.equal(calls, 0);
+  assert.doesNotThrow(() => env.advance(0));
+  assertCleanedUp(env);
+  assert.doesNotThrow(cancel);
+  env.advance(2500); env.frame(); env.interact(true);
   assert.equal(calls, 1);
+  assertCleanedUp(env);
+});
+
+test("without idle APIs, the deadline cleans up unresolved fonts, frames and fallback timers", async () => {
+  for (const stage of ["fonts", "frame", "timer"]) {
+    const env = browserWithoutIdleCallbacks(); let calls = 0;
+    const cancel = scheduleAnalyticsReady(() => { calls++; });
+    if (stage !== "fonts") { env.resolveFonts(); await Promise.resolve(); }
+    if (stage === "timer") { env.frame(); env.frame(); }
+    assert.doesNotThrow(() => env.advance(2500));
+    assert.equal(calls, 1);
+    assertCleanedUp(env);
+    assert.doesNotThrow(cancel);
+    env.resolveFonts(); await Promise.resolve(); env.frame(); env.frame(); env.advance(2500);
+    assert.equal(calls, 1);
+    assertCleanedUp(env);
+  }
+});
+
+test("without idle APIs, stopping cancels every fallback stage and later drains do nothing", async () => {
+  for (const stage of ["fonts", "frame", "timer"]) {
+    const env = browserWithoutIdleCallbacks(); let calls = 0;
+    const cancel = scheduleAnalyticsReady(() => { calls++; });
+    if (stage !== "fonts") { env.resolveFonts(); await Promise.resolve(); }
+    if (stage === "timer") { env.frame(); env.frame(); }
+    assert.doesNotThrow(cancel);
+    assertCleanedUp(env);
+    env.resolveFonts(); await Promise.resolve(); env.frame(); env.frame(); env.advance(2500);
+    assert.doesNotThrow(cancel);
+    assert.equal(calls, 0);
+    assertCleanedUp(env);
+  }
+});
+
+test("pending idle work tolerates unavailable cancellation on readiness, deadline and stop", async () => {
+  for (const release of ["idle", "deadline", "stop"]) {
+    const env = browser(); let calls = 0;
+    const cancel = scheduleAnalyticsReady(() => { calls++; });
+    env.resolveFonts(); await Promise.resolve(); env.frame(); env.frame();
+    Reflect.deleteProperty(env.fake, "cancelIdleCallback");
+    const drainIdle = () => {
+      const callbacks = [...env.idle.values()]; env.idle.clear();
+      callbacks.forEach((callback) => callback({ didTimeout: false, timeRemaining: () => 10 }));
+    };
+    const run = release === "idle" ? drainIdle : release === "deadline" ? () => env.advance(2500) : cancel;
+    assert.doesNotThrow(run);
+    assert.doesNotThrow(drainIdle);
+    assert.doesNotThrow(cancel);
+    env.advance(2500); env.frame(); env.interact(true);
+    assert.equal(calls, release === "stop" ? 0 : 1);
+    assertCleanedUp(env);
+  }
 });

@@ -10,7 +10,9 @@ function cancelPending(pending: Pending, interaction: EventListener): void {
   window.clearTimeout(pending.deadline);
   window.clearTimeout(pending.timer);
   if (pending.frame !== undefined) window.cancelAnimationFrame(pending.frame);
-  if (pending.idle !== undefined) window.cancelIdleCallback(pending.idle);
+  if (pending.idle !== undefined && typeof window.cancelIdleCallback === "function") {
+    window.cancelIdleCallback(pending.idle);
+  }
   window.removeEventListener("pointerdown", interaction, true);
   window.removeEventListener("keydown", interaction, true);
 }
