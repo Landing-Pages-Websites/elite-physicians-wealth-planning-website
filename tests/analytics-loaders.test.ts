@@ -125,4 +125,3 @@ test("PostHog cancels before/during import, permits reaccept, initializes once a
   env.release(); await Promise.resolve(); remount();
   assert.equal(sdk.initializations, 1);
 });
-
