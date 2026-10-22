@@ -131,7 +131,7 @@ export function CareerSignal(): React.JSX.Element {
 
       {/* Below the canvas the rule stands up as a spine. */}
       <div className="va-shell py-12 lg:hidden">
-        <h2 className="font-display text-display-m leading-[1.3] font-medium tracking-[-0.01em]">
+        <h2 className="relative font-display text-display-m leading-[1.3] font-medium tracking-[-0.01em]">
           <span className="block">
             <GoldLead text={lead} />
           </span>

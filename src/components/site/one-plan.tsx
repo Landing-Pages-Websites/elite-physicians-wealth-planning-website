@@ -90,7 +90,7 @@ function headlineLines(): readonly string[] {
  */
 function PortraitCard(): React.JSX.Element {
   return (
-    <figure className="va-reveal relative w-full max-w-[19rem] rounded-[10px] border-2 border-gold/80 bg-ivory p-3 shadow-[0_24px_60px_rgba(2,10,22,0.55)] sm:max-w-[20rem] lg:mt-[9px] lg:w-[22rem] lg:max-w-none">
+    <figure className="relative w-full max-w-[19rem] rounded-[10px] border-2 border-gold/80 bg-ivory p-3 shadow-[0_24px_60px_rgba(2,10,22,0.55)] sm:max-w-[20rem] lg:mt-[9px] lg:w-[22rem] lg:max-w-none">
       <div className="relative aspect-[485/645] overflow-hidden">
         <Image
           src={PORTRAIT.src}
@@ -136,7 +136,7 @@ export function OnePlan(): React.JSX.Element {
           <div className="max-w-2xl">
             <h1
               id="one-plan-heading"
-              className="va-reveal text-display-xl font-display leading-[1.06] font-medium tracking-[-0.02em] text-balance text-ivory-bright"
+              className="text-display-xl font-display leading-[1.06] font-medium tracking-[-0.02em] text-balance text-ivory-bright"
             >
               {/* Below lg the spans go inline so the browser balances the whole
                   string — the authored break stranded "More," on its own line
