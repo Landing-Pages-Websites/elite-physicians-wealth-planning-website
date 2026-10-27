@@ -292,7 +292,7 @@ Strategies that suited you during residency or fellowship may no longer fit as i
 
 ## Related Articles
 
-* [Elite Physicians Wealth Planning](https://elitephysicianwealthplanning.com/)
+* [Elite Physicians Wealth Planning](https://elitephysicianswealthplanning.com/)
 
 ## Frequently Asked Questions
 
