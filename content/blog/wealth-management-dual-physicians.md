@@ -284,8 +284,11 @@ An attorney can prepare or update wills, powers of attorney, and other estate do
 A financial planner who works with physicians may be familiar with the details that shape your household plan, including workplace benefits, student loans, variable income, and demanding career schedules. If one or both of you own a practice, your planning may also involve business cash flow, succession, or a future sale.
 
 When evaluating a professional, ask how they are paid, what services they provide, and how they coordinate with tax and legal experts. Look for clear explanations and recommendations that reflect both partners’ priorities. The [White Coat Investor’s advisor directory](https://www.whitecoatinvestor.com/financial-advisors/) is one resource for researching financial professionals who work with physicians. You can also review options for [physician wealth management](https://elitephysicianwealthplanning.com/wealth-management-for-physicians), [retirement planning](https://elitephysicianwealthplanning.com/retirement-planning-for-physicians), [practice-owner planning](https://elitephysicianwealthplanning.com/practice-owner-planning), and [legacy planning](https://elitephysicianwealthplanning.com/legacy-estate-planning).
+
 ## Related Articles
+
 * [Elite Physicians Wealth Planning](https://elitephysicianswealthplanning.com/)
+
 ## Frequently Asked Questions
 
 **Should dual-physician couples combine their finances?**  
