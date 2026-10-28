@@ -86,7 +86,7 @@ async function auditPage(route, vp) {
         ...document.querySelectorAll("section[id],main[id]"),
       ].map((s) => s.id);
       const bridge = document.querySelectorAll(
-        'script[src="https://app.gomega.ai/review-bridge/v7/review-bridge.js"]'
+        'script[src="https://app.gomega.ai/review-bridge/latest/review-bridge.js"]'
       ).length;
       // A closed popover must not paint. Tailwind's `flex` overrides the UA
       // rule that hides one, which shipped an always-open nav panel over the
