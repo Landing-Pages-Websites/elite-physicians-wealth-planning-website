@@ -1,14 +1,13 @@
 import type { Metadata } from "next";
 import { PageShell } from "@/components/pages/page-shell";
-import { getPage, metaTitle } from "@/lib/pages";
+import { getPage } from "@/lib/pages";
 
 const ROUTE = "/physicians/retirement";
 
-const PAGE = getPage(ROUTE);
-
 export const metadata: Metadata = {
-  title: metaTitle(PAGE),
-  description: PAGE.description,
+  title: "Physician Retirement Planning | Elite Physicians",
+  description:
+    "Prepare for physician retirement with a coordinated strategy for income, taxes, healthcare, and legacy goals.",
   alternates: { canonical: ROUTE },
 };
 
