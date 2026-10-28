@@ -78,8 +78,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(ORGANIZATION_LD) }}
         />
         <script
-          src="https://app.gomega.ai/review-bridge/v7/review-bridge.js"
-          integrity="sha384-VTUzMpjogRuXFNsE1df8N2HoJyWhNcCkGaUa7aulmDjCmXVoQ4UpQB1xMTrOp3MJ"
+          src="https://app.gomega.ai/review-bridge/latest/review-bridge.js"
           crossOrigin="anonymous"
           defer
         ></script>
