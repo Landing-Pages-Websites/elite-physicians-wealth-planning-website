@@ -1,5 +1,6 @@
 import type { NextConfig } from "next";
 import { configuredVerificationRoute } from "./src/lib/captcha/provider";
+import { withMegaPreview } from "./src/mega-preview/preview_config.mjs";
 
 const nextConfig: NextConfig = {
   env: { NEXT_PUBLIC_CAPTCHA_ROUTE: configuredVerificationRoute().kind },
@@ -60,4 +61,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+export default withMegaPreview(nextConfig);

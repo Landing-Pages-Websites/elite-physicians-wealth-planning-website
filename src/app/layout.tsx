@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import "./globals.css";
 import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 import { PostHogProvider } from "@/components/analytics/PostHogProvider";
+import { megaPreviewNavScript } from "@/mega-preview/preview_nav.mjs";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://elitephysicianswealthplanning.com"),
@@ -65,9 +66,11 @@ const ORGANIZATION_LD = {
 export default function RootLayout({
   children,
 }: Readonly<{ children: ReactNode }>): React.JSX.Element {
+  const navScript = megaPreviewNavScript();
   return (
     <html lang="en">
       <head>
+        {navScript ? <script dangerouslySetInnerHTML={{ __html: navScript }} /> : null}
         <link rel="preload" href="/fonts/CormorantGaramond-500-latin.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
         <link rel="preload" href="/fonts/Inter-400-latin.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
         <script dangerouslySetInnerHTML={{ __html: 'window.MEGA_TAG_CONFIG={siteKey:"t651hug14c8gq3du"};window.API_ENDPOINT="https://optimizer.gomega.ai";window.TRACKING_API_ENDPOINT="https://events-api.gomega.ai";' }} />

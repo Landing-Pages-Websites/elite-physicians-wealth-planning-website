@@ -10,3 +10,6 @@ next-env.d.ts
 
 # stray archives dropped into the working tree
 *.zip
+
+# MEGA preview mode: written by the preview tooling in the saved worktree
+.mega-preview-identity.json
