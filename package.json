@@ -11,7 +11,8 @@
     "verify": "node scripts/verify-pages.mjs",
     "check:contrast": "node scripts/check-text-contrast.mjs && python3 scripts/score-text-contrast.py",
     "verify:all": "NEXT_DIST_DIR=.next-verify next build && (NEXT_DIST_DIR=.next-verify next start -p 3100 & echo $! > /tmp/epwp-verify.pid) && sleep 7 && npm run check:palette && npm run verify && npm run check:contrast; kill $(cat /tmp/epwp-verify.pid) 2>/dev/null; rm -f /tmp/epwp-verify.pid",
-    "prebuild": "node scripts/guard-build.mjs"
+    "prebuild": "node scripts/guard-build.mjs",
+    "test:mega-preview": "node --test --experimental-strip-types src/mega-preview/*.test.mjs scripts/preview-wiring.test.mjs"
   },
   "dependencies": {
     "next": "^15.5.4",
