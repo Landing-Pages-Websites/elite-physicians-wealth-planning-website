@@ -97,6 +97,7 @@ function StageMarker({ x, label }: { x: number; label: string }): React.JSX.Elem
 export default function CareerSignal(): React.JSX.Element {
   return (
     <section
+      data-mega-section="career-signal"
       id="career-signal"
       aria-labelledby="career-signal-heading"
       className="relative overflow-hidden bg-white"

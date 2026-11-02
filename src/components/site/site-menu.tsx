@@ -49,6 +49,7 @@ export function SiteMenu({
           </Link>
         ))}
         <Link
+          data-mega-cta="schedule-strategy-call"
           href="/schedule"
           onClick={closeEnclosingPopover}
           className="mt-1 rounded-sm bg-gold px-3 py-3 text-center font-body text-sm font-semibold text-ink"

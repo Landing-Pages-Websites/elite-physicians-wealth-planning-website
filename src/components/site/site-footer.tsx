@@ -88,6 +88,7 @@ export function SiteFooter(): React.JSX.Element {
             </li>
             <li>
               <a
+                data-mega-cta="call-now"
                 href={telHref()}
                 className="va-underline -my-2 inline-flex min-h-11 items-center py-2 transition-colors duration-200 hover:text-ink"
               >
@@ -97,6 +98,7 @@ export function SiteFooter(): React.JSX.Element {
             <li className="text-charcoal/80">{BRAND.hours}</li>
           </ul>
           <Link
+            data-mega-cta="schedule-strategy-call"
             href="/schedule"
             className="mt-6 inline-flex min-h-11 items-center rounded-sm bg-ink px-5 font-body text-[13px] font-semibold text-ivory transition-[background-color,transform] duration-200 hover:-translate-y-px hover:bg-ink-hover active:translate-y-0"
           >

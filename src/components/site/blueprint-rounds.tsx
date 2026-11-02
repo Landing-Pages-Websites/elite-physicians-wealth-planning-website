@@ -152,6 +152,7 @@ function Intro({ compact, headingId }: { compact?: true; headingId?: string }): 
 export function BlueprintRounds(): React.JSX.Element {
   return (
     <section
+      data-mega-section="blueprint-rounds"
       id="blueprint-rounds"
       aria-labelledby="blueprint-rounds-heading"
       className="va-blueprint relative overflow-hidden"

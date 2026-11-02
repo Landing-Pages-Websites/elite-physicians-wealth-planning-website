@@ -14,7 +14,7 @@ import { TEAM, type TeamMember } from "@/lib/team";
  */
 export function TeamRoster(): React.JSX.Element {
   return (
-    <section aria-labelledby="team-roster" className="bg-white">
+    <section data-mega-section="team" aria-labelledby="team-roster" className="bg-white">
       <div className="va-shell py-12 lg:py-16">
         <h2
           id="team-roster"

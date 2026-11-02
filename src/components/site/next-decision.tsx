@@ -68,14 +68,18 @@ function NodeDivider(): React.JSX.Element {
 function GoldAction({
   href,
   label,
+  cta,
   compact,
 }: {
   href: string;
   label: string;
+  /** Stable `data-mega-cta` label; the visible label is page copy. */
+  cta: string;
   compact?: true;
 }): React.JSX.Element {
   return (
     <a
+      data-mega-cta={cta}
       href={href}
       className={`group inline-flex items-center justify-center gap-3 rounded-sm bg-gold font-semibold tracking-[0.08em] text-ink uppercase transition-colors duration-200 hover:bg-gold-hover ${
         compact ? "min-h-12 w-full px-6 text-[13px]" : "w-full px-[1.4cqw] py-[1.15cqw] text-[0.86cqw] whitespace-nowrap"
@@ -134,6 +138,7 @@ export function NextDecision(): React.JSX.Element {
   const { strategyCall, guide, headline } = NEXT_DECISION;
   return (
     <section
+      data-mega-section="next-decision"
       id="next-decision"
       aria-labelledby="next-decision-heading"
       className="va-decision relative overflow-hidden text-ivory"
@@ -174,7 +179,7 @@ export function NextDecision(): React.JSX.Element {
             {strategyCall.expectation}
           </p>
           <div className="mt-[2cqw]">
-            <GoldAction href={LINKS.scheduleOnsite} label={strategyCall.label} />
+            <GoldAction cta="schedule-strategy-call" href={LINKS.scheduleOnsite} label={strategyCall.label} />
           </div>
         </div>
 
@@ -209,7 +214,7 @@ export function NextDecision(): React.JSX.Element {
           </p>
           <div className="mt-[2cqw] flex justify-end">
             <span className="w-[63%]">
-              <GoldAction href={LINKS.guideRequest} label={guide.cta} />
+              <GoldAction cta="request-guide" href={LINKS.guideRequest} label={guide.cta} />
             </span>
           </div>
         </div>
@@ -237,7 +242,7 @@ export function NextDecision(): React.JSX.Element {
               {strategyCall.expectation}
             </p>
             <div className="mt-6">
-              <GoldAction compact href={LINKS.scheduleOnsite} label={strategyCall.label} />
+              <GoldAction compact cta="schedule-strategy-call" href={LINKS.scheduleOnsite} label={strategyCall.label} />
             </div>
           </div>
           <div>
@@ -253,7 +258,7 @@ export function NextDecision(): React.JSX.Element {
               {guide.requestNote}
             </p>
             <div className="mt-6">
-              <GoldAction compact href={LINKS.guideRequest} label={guide.cta} />
+              <GoldAction compact cta="request-guide" href={LINKS.guideRequest} label={guide.cta} />
             </div>
           </div>
         </div>

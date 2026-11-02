@@ -281,6 +281,7 @@ function CopyBlock({ compact, headingId }: { compact?: true; headingId?: string 
 export function SeparateRooms(): React.JSX.Element {
   return (
     <section
+      data-mega-section="separate-rooms"
       id="separate-rooms"
       aria-labelledby="separate-rooms-heading"
       className="va-rooms relative overflow-hidden"

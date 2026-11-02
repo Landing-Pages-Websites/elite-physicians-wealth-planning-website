@@ -57,6 +57,7 @@ function HeroActions(): React.JSX.Element {
   return (
     <div className="mt-8 flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:gap-8">
       <a
+        data-mega-cta="schedule-strategy-call"
         href={LINKS.schedule}
         className="group va-btn va-btn-navy w-full justify-center whitespace-nowrap sm:w-auto sm:justify-start"
       >
@@ -90,7 +91,7 @@ function HeroActions(): React.JSX.Element {
 
 export default function OnePlanHero(): React.JSX.Element {
   return (
-    <section id="one-plan" aria-labelledby="one-plan-heading" className="relative overflow-hidden bg-white">
+    <section data-mega-section="hero" id="one-plan" aria-labelledby="one-plan-heading" className="relative overflow-hidden bg-white">
       {/* The navy wordmark bar that sat here is now the global SiteHeader —
           lifted, not duplicated, exactly as on the Consult Ledger. The spacer
           reserves the fixed header's height so the hero keeps its rhythm. */}

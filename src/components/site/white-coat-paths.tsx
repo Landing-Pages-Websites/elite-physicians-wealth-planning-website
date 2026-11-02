@@ -161,6 +161,7 @@ function PlanningPathCta({ compact }: { compact?: true }): React.JSX.Element {
 export function WhiteCoatPaths(): React.JSX.Element {
   return (
     <section
+      data-mega-section="white-coat-paths"
       id="white-coat-paths"
       aria-labelledby="white-coat-paths-heading"
       className="va-mist relative overflow-hidden"

@@ -60,6 +60,7 @@ export function PageHero({
   const plate = image?.plate ? image : undefined;
   return (
     <section
+      data-mega-section="hero"
       data-dark-band
       className="relative overflow-hidden bg-ink pt-[calc(var(--header-h)+1px)]"
     >
@@ -132,6 +133,7 @@ export function PageHero({
 
             {action ? (
               <a
+                data-mega-cta="hero-primary"
                 href={action.href}
                 className="va-reveal mt-9 inline-flex min-h-12 max-w-full items-center rounded-sm bg-gold px-7 py-3 font-body text-[14px] leading-snug font-semibold text-ink transition-[background-color,transform] duration-200 hover:-translate-y-px hover:bg-gold-hover active:translate-y-0 focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-ink focus-visible:outline-none"
               >

@@ -88,6 +88,7 @@ export function SiteHeader(): React.JSX.Element {
         <div className="flex items-center gap-3">
           {/* At 640px the larger wordmark and Menu need the row; show the CTA from 768px. */}
           <Link
+            data-mega-cta="schedule-strategy-call"
             href="/schedule"
             className="hidden min-h-11 items-center rounded-sm bg-gold px-5 font-body text-[13px] font-semibold whitespace-nowrap text-ink transition-[background-color,transform] duration-200 hover:-translate-y-px hover:bg-gold-hover active:translate-y-0 md:inline-flex"
           >
