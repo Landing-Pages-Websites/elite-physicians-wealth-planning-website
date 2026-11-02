@@ -27,25 +27,6 @@ const BYPASS_TOKEN = "staging-bypass";
  */
 const TURNSTILE_REFRESH_TIMEOUT_MS = 6000;
 
-/**
- * How long a submission waits for a reCAPTCHA token. An abandoned image
- * challenge never resolves, and past this point the proof-of-work fallback
- * carries the lead instead (see lib/captcha/leadVerification.ts).
- */
-const RECAPTCHA_TOKEN_WAIT_MS = 10_000;
-
-/** Never resolves later than the wait cap; null means "carry on without it". */
-function withinTokenWait(
-  token: Promise<string | null>,
-): Promise<string | null> {
-  return Promise.race([
-    token,
-    new Promise<null>((resolve) =>
-      window.setTimeout(() => resolve(null), RECAPTCHA_TOKEN_WAIT_MS),
-    ),
-  ]);
-}
-
 /** reCAPTCHA readiness is not a submit precondition, so its reports are ignored. */
 function ignoreRecaptchaReadiness(): void {}
 
@@ -154,9 +135,10 @@ const CaptchaWidget = forwardRef<CaptchaHandle, CaptchaWidgetProps>(
       getToken: async (requested: CaptchaAction) => {
         if (route === "bypass") return BYPASS_TOKEN;
         if (route === "recaptcha") {
-          // execute() mints a fresh token per call, so no slot to manage.
-          const token = recaptchaRef.current?.getToken(requested);
-          return token ? withinTokenWait(token.catch(() => null)) : null;
+          // execute() mints a fresh token per call, so no slot to manage. The
+          // widget owns the only token deadline (RECAPTCHA_TOKEN_WAIT_MS), past
+          // which null hands the lead to the proof-of-work fallback.
+          return (await recaptchaRef.current?.getToken(requested)) ?? null;
         }
         if (route === "reject") return null;
         return takeTurnstileToken();
