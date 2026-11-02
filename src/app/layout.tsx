@@ -44,6 +44,7 @@ export const metadata: Metadata = {
 const ORGANIZATION_LD = {
   "@context": "https://schema.org",
   "@type": "Organization",
+  "@id": "https://elitephysicianswealthplanning.com/#organization",
   name: "Elite Physicians Wealth Planning",
   url: "https://elitephysicianswealthplanning.com",
   email: "info@fiscalvisionfinancial.com",

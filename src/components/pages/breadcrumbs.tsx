@@ -23,6 +23,7 @@ export function Breadcrumbs({
   const breadcrumbLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
+    "@id": `${SITE}${trail[trail.length - 1]?.href ?? "/"}#breadcrumb`,
     itemListElement: trail.map((crumb, i) => ({
       "@type": "ListItem",
       position: i + 1,
