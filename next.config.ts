@@ -1,7 +1,12 @@
 import type { NextConfig } from "next";
 import { configuredVerificationRoute } from "./src/lib/captcha/provider";
 import { POSTHOG_ASSETS_HOST, POSTHOG_HOST } from "./src/lib/tracking/destination";
+import { trackingBuildWarning, trackingClientEnv } from "./src/lib/tracking/client-env";
 import { withMegaPreview } from "./src/mega-preview/preview_config.mjs";
+
+// A build that ships with tracking off says so instead of silently sending nothing.
+const trackingWarning = trackingBuildWarning();
+if (trackingWarning) console.warn(trackingWarning);
 
 const nextConfig: NextConfig = {
   env: {
@@ -9,6 +14,11 @@ const nextConfig: NextConfig = {
     // Client copy of the server-only preview flag, so only a real editor
     // preview build can hide the consent banner (src/components/consent/previewHidden.ts).
     NEXT_PUBLIC_MEGA_PREVIEW_MODE: process.env.MEGA_PREVIEW_MODE === "1" ? "1" : "",
+    // The tracking gate's deployment values, derived from the VERCEL_* names
+    // Vercel always sets at build, so production tracking does not depend on
+    // the project's "expose System Environment Variables" setting
+    // (src/lib/tracking/client-env.ts).
+    ...trackingClientEnv(),
   },
   /**
    * Verification builds MUST NOT share a build directory with `next dev`.

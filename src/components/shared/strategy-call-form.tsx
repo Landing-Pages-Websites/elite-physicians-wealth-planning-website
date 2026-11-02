@@ -9,7 +9,7 @@ import { useMegaLeadForm, HONEYPOT_FIELD_NAME } from "@/hooks/useMegaLeadForm";
 import { clientVerificationRoute } from "@/lib/captcha/client-route";
 import { forwardExistingLeadEndpoint } from "@/lib/legacyLeadHandoff";
 import { pushDataLayer, trackEvent } from "@/lib/track";
-import { LEAD_SUBMITTED_EVENT } from "@/lib/tracking/contract";
+import { markFormSubmitted } from "@/lib/tracking/form-submit";
 import {
   EMPTY_STRATEGY_CALL as EMPTY,
   validateStrategyCall as validate,
@@ -146,7 +146,7 @@ export function StrategyCallForm({
       if (result.ok !== true) throw new Error("Submission not confirmed.");
       // Tells TrackingListeners this form finished, so leaving the page is not
       // reported as an abandon. A honeypot-ignored submit is finished too.
-      formRef.current?.dispatchEvent(new Event(LEAD_SUBMITTED_EVENT, { bubbles: true }));
+      markFormSubmitted(formRef.current);
       if (result.ignored) { setStatus("ignored"); return; }
       confirmSuccess();
     } catch (error) {

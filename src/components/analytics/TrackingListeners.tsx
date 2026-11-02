@@ -13,6 +13,7 @@ import {
 } from "@/lib/tracking/contract";
 import { TRACKING_ENABLED } from "@/lib/tracking/enabled";
 import { FormSession, leaveAll, type LeaveReason, type TrackCall } from "@/lib/tracking/form-session";
+import { submitCompletes } from "@/lib/tracking/form-submit";
 import { sectionVisible } from "@/lib/tracking/sections";
 
 const SECTION_SELECTOR = "section, [data-mega-section]";
@@ -159,6 +160,14 @@ function emit(calls: TrackCall[]): void {
   }
 }
 
+/** Read once the submit's dispatch is over, so every handler has had its say. */
+function nativeSubmitCompleted(e: Event, form: HTMLFormElement): boolean {
+  const defaultPrevented = e.defaultPrevented;
+  // checkValidity fires `invalid` events, so it runs only for a submit the browser performs.
+  const valid = !defaultPrevented && form.checkValidity();
+  return submitCompletes({ kind: "native", defaultPrevented, valid, dialog: form.method === "dialog" });
+}
+
 /**
  * Registered once and reading the live sessions, so leaving the page by tab
  * close, reload, or a client-side route change all find the same state.
@@ -181,11 +190,21 @@ function watchForms(sessions: FormSessions): () => void {
     const f = fieldOf(e.target);
     if (f?.form && f.name) emit(sessionFor(f.form).blur(f.name, f.value.trim() !== ""));
   };
-  // LeadForm reports its own confirmed success; any other form is done when submitted.
+  // A submit event is only an attempt. Whether it finished the form is read
+  // after the whole dispatch, so a handler anywhere (React's root listener, a
+  // window listener) that cancels it to reject or fetch is seen; such forms
+  // report success themselves (markFormSubmitted). The browser's own
+  // navigation for an uncancelled submit waits on the network, so this runs
+  // before the page can hide.
+  const pending = new Set<number>();
   const onNativeSubmit = (e: Event) => {
-    if (e.target instanceof HTMLFormElement && !e.target.hasAttribute("data-mega-lead-form")) {
-      sessionFor(e.target).submitted();
-    }
+    const form = e.target;
+    if (!(form instanceof HTMLFormElement)) return;
+    const timer = window.setTimeout(() => {
+      pending.delete(timer);
+      if (nativeSubmitCompleted(e, form)) sessionFor(form).submitted();
+    }, 0);
+    pending.add(timer);
   };
   const onLeadSubmitted = (e: Event) => {
     if (e.target instanceof HTMLFormElement) sessionFor(e.target).submitted();
@@ -204,6 +223,7 @@ function watchForms(sessions: FormSessions): () => void {
   document.addEventListener("visibilitychange", onVisibility);
   window.addEventListener("pagehide", onPageHide, { capture: true });
   return () => {
+    pending.forEach((t) => window.clearTimeout(t));
     document.removeEventListener("focusin", onFocus);
     document.removeEventListener("focusout", onBlur);
     document.removeEventListener("submit", onNativeSubmit, { capture: true });
