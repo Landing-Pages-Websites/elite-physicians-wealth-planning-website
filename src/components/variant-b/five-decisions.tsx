@@ -106,6 +106,7 @@ function Discipline({
 export default function FiveDecisions(): React.JSX.Element {
   return (
     <section
+      data-mega-section="five-decisions"
       id="five-decisions"
       aria-labelledby="five-decisions-heading"
       className="relative overflow-hidden bg-white"

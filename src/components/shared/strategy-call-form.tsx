@@ -8,18 +8,19 @@ import { StrategyCallContactFields } from "./strategy-call-contact-fields";
 import { useMegaLeadForm, HONEYPOT_FIELD_NAME } from "@/hooks/useMegaLeadForm";
 import { clientVerificationRoute } from "@/lib/captcha/client-route";
 import { forwardExistingLeadEndpoint } from "@/lib/legacyLeadHandoff";
+import { pushDataLayer, trackEvent } from "@/lib/track";
+import {
+  markFormSubmitFailed,
+  markFormSubmitted,
+  markFormSubmitting,
+} from "@/lib/tracking/form-submit";
+import { runLeadAttempt, type AttemptOutcome } from "@/lib/lead-attempt";
 import {
   EMPTY_STRATEGY_CALL as EMPTY,
   validateStrategyCall as validate,
   type StrategyCallFields as Fields,
   type StrategyCallErrors,
 } from "@/lib/strategyCallValidation";
-
-declare global {
-  interface Window {
-    dataLayer?: Record<string, unknown>[];
-  }
-}
 
 /**
  * Lead capture for both homepage directions.
@@ -31,6 +32,9 @@ declare global {
 export type FormTone = "ledger" | "atlas";
 
 type Status = "idle" | "invalid" | "sending" | "sent" | "ignored" | "failed";
+
+/** The Keystone form key; also the `data-mega-form` label and `form_key` on analytics. */
+const LEAD_FORM_KEY = "contact-form";
 
 /** What a form hands the visitor once it is submitted — the guide PDF. */
 export type FormDelivery = { readonly href: string; readonly label: string };
@@ -109,6 +113,7 @@ export function StrategyCallForm({
     setErrors(found);
     if (Object.keys(found).length > 0) {
       setStatus("invalid");
+      trackEvent("form_error", { form_key: LEAD_FORM_KEY, kind: "validation" });
       const firstKey = Object.keys(found)[0] as keyof Fields;
       // After React commits, not during the click: focusing synchronously lands
       // the reader on a field whose aria-invalid and aria-describedby have not
@@ -130,40 +135,48 @@ export function StrategyCallForm({
     event.preventDefault();
     if (inFlightRef.current || !validateBeforeSubmit()) return;
     inFlightRef.current = true;
+    // Until the server answers, leaving the page is neither abandon nor submit.
+    markFormSubmitting(formRef.current);
     setStatus("sending");
-    try {
-      const minted = await captchaRef.current?.getToken("lead_submit");
-      const captchaToken = typeof minted === "string" && minted.length > 0
-        ? minted : clientVerificationRoute() === "recaptcha" ? "" : null;
-      if (captchaToken === null) throw new Error("Security check is not ready.");
-      const honeypot = formRef.current?.elements.namedItem(HONEYPOT_FIELD_NAME);
-      const result = await submit({
-        ...extras, ...values, intent, formKey: "contact-form", captchaToken,
-        [HONEYPOT_FIELD_NAME]: honeypot instanceof HTMLInputElement ? honeypot.value : "",
-      });
-      if (result.ok !== true) throw new Error("Submission not confirmed.");
-      if (result.ignored) { setStatus("ignored"); return; }
-      confirmSuccess();
-    } catch (error) {
-      console.error("Protected lead submission failed", error);
-      setStatus("failed");
-      captchaRef.current?.reset();
-    } finally {
-      inFlightRef.current = false;
+    const honeypot = formRef.current?.elements.namedItem(HONEYPOT_FIELD_NAME);
+    await runLeadAttempt({
+      mintToken: async () => captchaRef.current?.getToken("lead_submit"),
+      // Under reCAPTCHA the proof-of-work fallback carries a missing token;
+      // under any other provider the server would reject it, so stop here.
+      missingToken: () => (clientVerificationRoute() === "recaptcha" ? "" : null),
+      send: (captchaToken) =>
+        submit({
+          ...extras, ...values, intent, formKey: LEAD_FORM_KEY, captchaToken,
+          [HONEYPOT_FIELD_NAME]: honeypot instanceof HTMLInputElement ? honeypot.value : "",
+        }),
+      settle: settleAttempt,
+      // Only a confirmed, non-ignored success forwards the lead and converts.
+      afterConfirmed: confirmSuccess,
+    });
+  }
+
+  function settleAttempt(outcome: AttemptOutcome): void {
+    inFlightRef.current = false;
+    if (outcome.kind === "confirmed") {
+      // Tells TrackingListeners this form finished, so leaving the page is not
+      // reported as an abandon. A honeypot-ignored submit is finished too.
+      markFormSubmitted(formRef.current);
+      setStatus(outcome.ignored ? "ignored" : "sent");
+      return;
     }
+    console.error("Protected lead submission failed", outcome.error);
+    trackEvent("form_error", { form_key: LEAD_FORM_KEY, kind: outcome.reason });
+    setStatus("failed");
+    captchaRef.current?.reset();
+    markFormSubmitFailed(formRef.current);
   }
 
   function confirmSuccess(): void {
     void forwardExistingLeadEndpoint(values, extras, intent);
-    setStatus("sent");
     setValues(EMPTY);
     setExtras({});
-    try {
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({ event: "form_submission", formIntent: intent });
-    } catch {
-      console.warn("Conversion tracking failed after confirmed lead delivery");
-    }
+    pushDataLayer({ event: "form_submission", formIntent: intent });
+    trackEvent("lead_form_submit", { form_key: LEAD_FORM_KEY });
   }
 
   if (status === "sent" || status === "ignored") {
@@ -195,7 +208,16 @@ export function StrategyCallForm({
   }
 
   return (
-    <form ref={formRef} method="post" action="/api/lead" onSubmit={handleSubmit} noValidate className="grid gap-5">
+    <form
+      ref={formRef}
+      method="post"
+      action="/api/lead"
+      onSubmit={handleSubmit}
+      noValidate
+      data-mega-form={LEAD_FORM_KEY}
+      data-mega-lead-form=""
+      className="grid gap-5"
+    >
       {/* Spam trap. Positioned off-screen rather than display:none so bots fill it. */}
       <div aria-hidden="true" className="absolute -left-[9999px]">
         <label htmlFor="company-website">Company website</label>
@@ -385,10 +407,7 @@ function DeliveryLink({ delivery }: { delivery: FormDelivery }): React.JSX.Eleme
     <a
       href={delivery.href}
       download
-      onClick={() => {
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({ event: "guide_download", guideTitle: delivery.label });
-      }}
+      onClick={() => pushDataLayer({ event: "guide_download", guideTitle: delivery.label })}
       className="mt-5 inline-flex min-h-12 items-center rounded-sm bg-gold px-6 font-body text-[15px] font-semibold text-ink transition-colors duration-150 hover:bg-gold-hover focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-ink focus-visible:outline-none"
     >
       {delivery.label}

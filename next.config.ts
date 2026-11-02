@@ -1,9 +1,25 @@
 import type { NextConfig } from "next";
 import { configuredVerificationRoute } from "./src/lib/captcha/provider";
+import { POSTHOG_ASSETS_HOST, POSTHOG_HOST } from "./src/lib/tracking/destination";
+import { trackingBuildWarning, trackingClientEnv } from "./src/lib/tracking/client-env";
 import { withMegaPreview } from "./src/mega-preview/preview_config.mjs";
 
+// A build that ships with tracking off says so instead of silently sending nothing.
+const trackingWarning = trackingBuildWarning();
+if (trackingWarning) console.warn(trackingWarning);
+
 const nextConfig: NextConfig = {
-  env: { NEXT_PUBLIC_CAPTCHA_ROUTE: configuredVerificationRoute().kind },
+  env: {
+    NEXT_PUBLIC_CAPTCHA_ROUTE: configuredVerificationRoute().kind,
+    // Client copy of the server-only preview flag, so only a real editor
+    // preview build can hide the consent banner (src/components/consent/previewHidden.ts).
+    NEXT_PUBLIC_MEGA_PREVIEW_MODE: process.env.MEGA_PREVIEW_MODE === "1" ? "1" : "",
+    // The tracking gate's deployment values, derived from the VERCEL_* names
+    // Vercel always sets at build, so production tracking does not depend on
+    // the project's "expose System Environment Variables" setting
+    // (src/lib/tracking/client-env.ts).
+    ...trackingClientEnv(),
+  },
   /**
    * Verification builds MUST NOT share a build directory with `next dev`.
    * They did, and running `next build` while the dev server was live replaced
@@ -12,6 +28,17 @@ const nextConfig: NextConfig = {
    * Verification sets NEXT_DIST_DIR=.next-verify so the two can never collide.
    */
   distDir: process.env.NEXT_DIST_DIR || ".next",
+  async rewrites() {
+    // Same-origin reverse proxy for PostHog (PostHog's documented Next.js
+    // pattern) so analytics requests are not blocked by ad blockers.
+    return [
+      { source: "/ingest/static/:path*", destination: `${POSTHOG_ASSETS_HOST}/static/:path*` },
+      { source: "/ingest/:path*", destination: `${POSTHOG_HOST}/:path*` },
+    ];
+  },
+  // Required for the PostHog proxy: its API calls can use trailing slashes,
+  // which Next would otherwise redirect (dropping the POST body).
+  skipTrailingSlashRedirect: true,
   async headers() {
     return [
       // The guide is a gated lead magnet: the landing page should rank, the
@@ -57,6 +84,9 @@ const nextConfig: NextConfig = {
       // these same URLs. 307, not 301 — a permanent redirect would be cached
       // against the route we mean to restore.
       { source: "/checkup", destination: "/resources", permanent: false },
+      // skipTrailingSlashRedirect (for the /ingest proxy in rewrites) turns off Next's
+      // own `/page/` -> `/page` redirect; keep it for every non-proxy path.
+      { source: "/:path((?!ingest/).+)/", destination: "/:path", permanent: true },
     ];
   },
 };

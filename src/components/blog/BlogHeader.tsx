@@ -13,7 +13,7 @@ export default function BlogHeader({
   title, description, backHref, backLabel, children,
 }: BlogHeaderProps): ReactElement {
   return (
-    <section data-dark-band className="bg-ink pt-[calc(var(--header-h)+1px)]">
+    <section data-mega-section="hero" data-dark-band className="bg-ink pt-[calc(var(--header-h)+1px)]">
       <div className="va-shell py-10 lg:py-16">
         <div className="max-w-3xl">
           <Link href={backHref} className="inline-flex min-h-11 items-center font-body text-body-s text-mist underline decoration-gold/60 underline-offset-4 transition-colors duration-200 hover:text-gold">

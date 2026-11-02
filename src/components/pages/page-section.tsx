@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRightIcon } from "@/components/site/icons";
 import type { PageSection as Section, SectionGroup } from "@/lib/pages";
+import { sectionName } from "@/lib/mega-labels";
 import { teamMember } from "@/lib/team";
 
 /**
@@ -36,7 +37,7 @@ export function PageSection({
   const hasRail = Boolean(lead && (lead.eyebrow || lead.heading));
 
   return (
-    <section className={`relative ${ground}`}>
+    <section data-mega-section={sectionName(lead?.heading, `content-${index + 1}`)} className={`relative ${ground}`}>
       <div className="va-shell relative py-12 lg:py-16">
         <div className="lg:grid lg:grid-cols-[minmax(0,0.42fr)_minmax(0,1fr)] lg:gap-x-14">
           {hasRail && lead ? (

@@ -23,3 +23,76 @@ practice's inbox via `mailto:` and says so. It never reports a success that did
 not happen. Set the variable in Vercel to capture leads directly; on success the
 form pushes `{ event: 'form_submission' }` to `window.dataLayer`.
 
+
+## Analytics tracking
+
+PostHog lazy-initializes (after paint and idle, or on first interaction)
+through the same-origin `/ingest` proxy into the shared MEGA Websites project,
+with session recording on (all inputs masked; `data-mega-private` blocks an
+element entirely, as on the booking calendar) plus heatmaps, dead clicks,
+exceptions and web vitals. The project key and host are public constants in
+`src/lib/tracking/destination.ts`, so `NEXT_PUBLIC_POSTHOG_KEY` and
+`NEXT_PUBLIC_POSTHOG_HOST` are no longer read; the only per-site value is
+`NEXT_PUBLIC_MEGA_SITE_ID`. Tracking runs only on a production deploy.
+`next.config.ts` inlines the browser's `NEXT_PUBLIC_VERCEL_ENV` (and
+`NEXT_PUBLIC_VERCEL_GIT_COMMIT_SHA`, sent as `mega_release`) from the
+`VERCEL_ENV` and `VERCEL_GIT_COMMIT_SHA` Vercel sets on every build
+(`src/lib/tracking/client-env.ts`), so it does not depend on the project's
+"Automatically expose System Environment Variables" setting, and a hand-set
+`NEXT_PUBLIC_VERCEL_ENV` is overwritten. Only the exact value `production`
+tracks; unset or anything else fails closed, and the build log prints a
+`[tracking]` warning when a build ships with tracking off without being told
+to. `NEXT_PUBLIC_MEGA_TRACKING_PREVIEW=1` allows tracking elsewhere for local
+checks and `NEXT_PUBLIC_MEGA_TRACKING_DISABLED=1` turns it off everywhere,
+winning over both. Consent is `us-default` (`src/lib/consent.ts`): the consent
+bar's Decline stops GA4 and PostHog, and events are queued or sent only while
+analytics consent is allowed. The choice is kept in session memory first, so a
+decline holds for the page life even when localStorage throws, and a choice made
+in another tab reaches every gate (including the GA4/PostHog readiness
+scheduler in `src/lib/analytics-readiness.ts`) through the `storage` event; GA4 dataLayer writes go through
+`pushDataLayer`/`trackEvent` in `src/lib/track.ts`. Query strings are stripped
+from every URL except campaign parameters. Event and property names live in
+`src/lib/tracking/contract.ts`. Mark sections with `data-mega-section`, primary
+calls to action with `data-mega-cta`, anything showing a visitor's text or file
+names with `data-mega-private`, and regions that must never produce click
+events (the consent banner) with `data-mega-ignore`.
+
+A form counts as finished (so leaving the page sends no `form_abandoned`) only
+on confirmed success, never on an attempt. A native submit that no handler
+cancelled and whose fields pass their constraints counts, because the browser
+then hands the form to its `action`. A cancelled submit (`preventDefault`, as
+every `noValidate` or fetch-based form does) proves nothing, and
+`form.submit()` fires no submit event at all, so a site form that
+handles its own submit reports its submission itself. The outcome is decided by
+the server's answer, never by a navigation the form starts itself (a redirect to
+a thank-you page, a `mailto:` handoff), so it reports three moments:
+
+```ts
+import {
+  markFormSubmitFailed,
+  markFormSubmitted,
+  markFormSubmitting,
+} from "@/lib/tracking/form-submit";
+
+// 1. validation passed and the request is about to go, before any navigation
+markFormSubmitting(formElement);
+try {
+  const res = await fetch("/api/lead", { method: "POST", body });
+  if (!res.ok) throw new Error("rejected");
+  // 2. the server accepted it
+  markFormSubmitted(formElement);
+} catch {
+  // 3. the server rejected it or the request failed
+  markFormSubmitFailed(formElement);
+}
+```
+
+While a submission is in flight, leaving the page is neither `form_abandoned`
+nor a submit. If the answer is a failure, a leave held back meanwhile is
+reported then. A submission with no answer after `FORM_IN_FLIGHT_MAX_MS`
+(60 s, `src/lib/tracking/form-session.ts`) stops holding leaves back. A form
+that never calls `markFormSubmitting` still works: it is finished only by
+`markFormSubmitted`. Once the page or route is gone, a late answer is not
+reported. `src/components/shared/strategy-call-form.tsx` (the site's only form)
+does all of this through `runLeadAttempt` (`src/lib/lead-attempt.ts`). The
+native-submit rule lives in `submitCompletes` (`src/lib/tracking/form-submit.ts`).

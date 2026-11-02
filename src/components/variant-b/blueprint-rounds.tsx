@@ -136,6 +136,7 @@ function CopyBlock({ headingId }: { headingId?: string }): React.JSX.Element {
 export default function BlueprintRounds(): React.JSX.Element {
   return (
     <section
+      data-mega-section="blueprint-rounds"
       id="blueprint-rounds"
       aria-labelledby="blueprint-rounds-heading"
       className="relative overflow-hidden bg-white"

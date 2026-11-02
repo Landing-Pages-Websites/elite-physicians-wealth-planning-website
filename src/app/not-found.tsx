@@ -25,6 +25,7 @@ export default function NotFound(): React.JSX.Element {
       <SiteHeader />
       <main id="main">
         <section
+          data-mega-section="hero"
           data-dark-band
           className="relative overflow-hidden bg-ink pt-[calc(var(--header-h)+1px)]"
         >
@@ -42,7 +43,7 @@ export default function NotFound(): React.JSX.Element {
           </div>
         </section>
 
-        <section className="bg-ivory">
+        <section data-mega-section="ways-back" className="bg-ivory">
           <div className="va-shell py-12 lg:py-16">
             <ul className="max-w-[62rem] border-t border-ink/12">
               {WAYS_BACK.map((way) => (
@@ -57,6 +58,7 @@ export default function NotFound(): React.JSX.Element {
               ))}
             </ul>
             <Link
+              data-mega-cta="schedule-strategy-call"
               href="/schedule"
               className="mt-9 inline-flex min-h-12 items-center rounded-sm bg-ink px-7 font-body text-[14px] font-semibold text-ivory transition-colors duration-200 hover:bg-ink-hover focus-visible:ring-2 focus-visible:ring-gold focus-visible:outline-none"
             >

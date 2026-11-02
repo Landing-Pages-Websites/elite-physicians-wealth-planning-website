@@ -19,7 +19,7 @@ export default function BlogIndexPage(): ReactElement {
   return (
     <main id="main">
       <BlogHeader title="Blog" description={DESCRIPTION} backHref="/" backLabel="Home" />
-      <section aria-label="Articles" className="bg-ivory">
+      <section data-mega-section="articles" aria-label="Articles" className="bg-ivory">
         <div className="va-shell py-8 lg:py-12">
           <div className="max-w-3xl">
             {posts.length ? posts.map((post) => <PostCard key={post.slug} post={post} />) : (

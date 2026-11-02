@@ -42,7 +42,7 @@ export function FormBand({
   delivery?: FormDelivery;
 }): React.JSX.Element {
   return (
-    <section data-dark-band id={id} className="bg-ink">
+    <section data-mega-section={id} data-dark-band id={id} className="bg-ink">
       <div className="va-shell py-14 lg:py-20">
         <div className="lg:grid lg:grid-cols-[minmax(0,0.78fr)_minmax(0,1fr)] lg:gap-x-16">
           <div>
@@ -60,6 +60,7 @@ export function FormBand({
                 </dt>
                 <dd className="mt-1 font-body text-body-m text-mist/85 sm:mt-0">
                   <a
+                    data-mega-cta="call-now"
                     href={telHref(BRAND.phone)}
                     className="underline-offset-4 transition-colors duration-200 hover:text-gold hover:underline"
                   >

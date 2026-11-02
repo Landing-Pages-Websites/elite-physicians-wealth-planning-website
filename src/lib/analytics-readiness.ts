@@ -1,4 +1,5 @@
-import { getConsentStatus, isAnalyticsAllowed, subscribeToConsent } from "./consent";
+import { analyticsAllowedNow, subscribeToConsent } from "./consent";
+import { interactionStartsInit } from "./tracking/init-gate";
 
 const MAX_WAIT_MS = 2500;
 const IDLE_TIMEOUT_MS = 500;
@@ -33,7 +34,11 @@ function afterFontPaint(pending: Pending, run: () => void): void {
 /** Fonts → two paint frames → idle; interaction/deadline also release stalled tabs. */
 export function scheduleAnalyticsReady(callback: () => void): Cancel {
   const pending: Pending = { stopped: false };
-  const interaction: EventListener = (event) => { if (event.isTrusted) run(); };
+  // A gesture on the consent banner ([data-mega-ignore]) never releases the
+  // loaders: a visitor about to Decline must not start GA or PostHog.
+  const interaction: EventListener = (event) => {
+    if (event.isTrusted && interactionStartsInit(event.target ?? null)) run();
+  };
   const cancel = () => cancelPending(pending, interaction);
   const run = () => {
     if (pending.stopped) return;
@@ -51,7 +56,12 @@ export function scheduleAnalyticsReady(callback: () => void): Cancel {
   return cancel;
 }
 
-/** Each consent epoch invalidates its pending gate AND any in-flight SDK import. */
+/**
+ * Each consent epoch invalidates its pending gate AND any in-flight SDK import.
+ * Every re-read goes through analyticsAllowedNow (session memory first), so a
+ * decline whose localStorage write failed, or one made in another tab, is
+ * never re-read as "unset" and rescheduled.
+ */
 export function subscribeAnalyticsReady(
   ready: (isCurrent: () => boolean) => void,
   declined: () => void,
@@ -59,9 +69,9 @@ export function subscribeAnalyticsReady(
   let cancel: Cancel = () => {};
   const sync = () => {
     cancel();
-    if (!isAnalyticsAllowed(getConsentStatus())) { declined(); return; }
+    if (!analyticsAllowedNow()) { declined(); return; }
     let active = true;
-    const isCurrent = () => active && isAnalyticsAllowed(getConsentStatus());
+    const isCurrent = () => active && analyticsAllowedNow();
     const stop = scheduleAnalyticsReady(() => {
       if (isCurrent()) ready(isCurrent);
       else declined();

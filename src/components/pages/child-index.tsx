@@ -27,7 +27,7 @@ export function ChildIndex({
   links: readonly ChildLink[];
 }): React.JSX.Element {
   return (
-    <section className="bg-white">
+    <section data-mega-section="child-pages" className="bg-white">
       <div className="va-shell py-12 lg:py-16">
         <p className="font-body text-[11px] font-semibold tracking-[0.24em] text-gold-text uppercase">
           {eyebrow}

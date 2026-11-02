@@ -91,6 +91,7 @@ function MeetAction({ compact }: { compact?: true }): React.JSX.Element {
 export default function AccountablePlanner(): React.JSX.Element {
   return (
     <section
+      data-mega-section="accountable-planner"
       id="accountable-planner"
       aria-labelledby="accountable-planner-heading"
       className="relative overflow-hidden bg-atlas-paper"

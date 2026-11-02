@@ -45,7 +45,7 @@ export default function InsightsPage(): React.JSX.Element {
         ]}
       />
 
-      <section className="bg-ivory">
+      <section data-mega-section="articles" className="bg-ivory">
         <div className="va-shell py-12 lg:py-16">
           <p className="font-body text-[11px] font-semibold tracking-[0.24em] text-gold-text uppercase">
             Planned for publication

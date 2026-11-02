@@ -8,7 +8,7 @@
  */
 export function PageDisclosure({ lines }: { lines: readonly string[] }): React.JSX.Element {
   return (
-    <section aria-labelledby="page-disclosure" className="border-t border-ink/10 bg-ivory">
+    <section data-mega-section="disclosure" aria-labelledby="page-disclosure" className="border-t border-ink/10 bg-ivory">
       <div className="va-shell py-8 lg:py-10">
         <h2
           id="page-disclosure"

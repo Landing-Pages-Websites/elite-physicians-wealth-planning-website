@@ -109,6 +109,7 @@ function PortraitCard(): React.JSX.Element {
 export function OnePlan(): React.JSX.Element {
   return (
     <section
+      data-mega-section="hero"
       id="one-plan"
       aria-labelledby="one-plan-heading"
       className="va-hero relative overflow-hidden text-ivory"
@@ -152,6 +153,7 @@ export function OnePlan(): React.JSX.Element {
             </p>
             <div className="mt-11 flex flex-wrap items-baseline gap-x-9 gap-y-4">
               <a
+                data-mega-cta="schedule-strategy-call"
                 href={LINKS.scheduleOnsite}
                 className="va-btn va-btn-gold"
               >

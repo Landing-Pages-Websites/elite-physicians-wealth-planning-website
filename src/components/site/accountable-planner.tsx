@@ -106,6 +106,7 @@ function PlannerNarrative({ compact, headingId }: { compact?: true; headingId?: 
 export function AccountablePlanner(): React.JSX.Element {
   return (
     <section
+      data-mega-section="accountable-planner"
       id="accountable-planner"
       aria-labelledby="accountable-planner-heading"
       className="va-planner relative overflow-hidden"

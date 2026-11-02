@@ -9,6 +9,7 @@ import { BRAND, telHref } from "@/lib/content";
 export function StrategyCall(): React.JSX.Element {
   return (
     <section
+      data-mega-section="strategy-call"
       id="form"
       aria-labelledby="form-heading"
       className="relative overflow-hidden bg-ink"
@@ -37,6 +38,7 @@ export function StrategyCall(): React.JSX.Element {
               <dt className="w-16 shrink-0 text-ivory/60">Call</dt>
               <dd>
                 <a
+                  data-mega-cta="call-now"
                   className="-my-2 inline-flex min-h-11 items-center underline underline-offset-4 transition-colors hover:text-gold focus-visible:text-gold"
                   href={telHref()}
                 >

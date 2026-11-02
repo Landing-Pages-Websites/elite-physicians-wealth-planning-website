@@ -140,6 +140,10 @@ const persistedId = (
 export const getVisitorId = (): string =>
   persistedId("local", STORAGE_KEYS.VISITOR_ID, "vis");
 
+/** The stored visitor id, or null when none exists yet. Never generates or writes one. */
+export const readStoredVisitorId = (): string | null =>
+  readStore("local", STORAGE_KEYS.VISITOR_ID);
+
 export const getSessionId = (): string =>
   persistedId("session", STORAGE_KEYS.SESSION_ID, "sess");
 

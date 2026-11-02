@@ -116,14 +116,18 @@ function PathCard({
 function CardAction({
   href,
   label,
+  cta,
   compact,
 }: {
   href: string;
   label: string;
+  /** Stable `data-mega-cta` label; the visible label is page copy. */
+  cta: string;
   compact?: true;
 }): React.JSX.Element {
   return (
     <a
+      data-mega-cta={cta}
       href={href}
       className={`group flex w-full items-center justify-center gap-3 rounded-[3px] bg-ink font-bold text-white transition-colors duration-200 hover:bg-ink-hover ${
         compact ? "min-h-12 px-6 text-sm" : "px-[1.6cqw] py-[1cqw] text-[1.02cqw]"
@@ -192,6 +196,7 @@ export default function NextDecision(): React.JSX.Element {
   const { strategyCall, guide, headline } = NEXT_DECISION;
   return (
     <section
+      data-mega-section="next-decision"
       id="next-decision"
       aria-labelledby="next-decision-heading"
       className="relative overflow-hidden bg-ink-deep"
@@ -222,13 +227,13 @@ export default function NextDecision(): React.JSX.Element {
           title={strategyCall.label}
           body={strategyCall.summary}
           emphasis={strategyCall.expectation}
-          action={<CardAction href={LINKS.schedule} label={strategyCall.label} />}
+          action={<CardAction cta="schedule-strategy-call" href={LINKS.schedule} label={strategyCall.label} />}
         />
         <PathCard
           className="absolute top-[35.3%] left-[55.3%] w-[33.9%]"
           title={guide.label}
           body={guide.summary}
-          action={<CardAction href={LINKS.guideRequest} label={guide.cta} />}
+          action={<CardAction cta="request-guide" href={LINKS.guideRequest} label={guide.cta} />}
         />
 
         <AnnotationStem left={26.6} top={69.5} />
@@ -281,14 +286,14 @@ export default function NextDecision(): React.JSX.Element {
             title={strategyCall.label}
             body={strategyCall.summary}
             emphasis={strategyCall.expectation}
-            action={<CardAction compact href={LINKS.schedule} label={strategyCall.label} />}
+            action={<CardAction compact cta="schedule-strategy-call" href={LINKS.schedule} label={strategyCall.label} />}
           />
           <PathCard
             compact
             className=""
             title={guide.label}
             body={guide.summary}
-            action={<CardAction compact href={LINKS.guideRequest} label={guide.cta} />}
+            action={<CardAction compact cta="request-guide" href={LINKS.guideRequest} label={guide.cta} />}
           />
           <aside className="flex items-center gap-3 rounded-[4px] border border-dashed border-gold/70 bg-white/95 px-4 py-3">
             <TargetRosette className="h-8 w-8 shrink-0 text-gold" />

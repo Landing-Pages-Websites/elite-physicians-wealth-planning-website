@@ -19,7 +19,7 @@ import type { PageSection } from "@/lib/pages";
  */
 export function PageCta({ section }: { section: PageSection }): React.JSX.Element {
   return (
-    <section data-dark-band className="relative overflow-hidden bg-ink">
+    <section data-mega-section="cta" data-dark-band className="relative overflow-hidden bg-ink">
       <svg
         viewBox="0 0 1440 300"
         preserveAspectRatio="none"
@@ -55,6 +55,7 @@ export function PageCta({ section }: { section: PageSection }): React.JSX.Elemen
 
         <div className="mt-9 flex flex-wrap items-center gap-4">
           <Link
+            data-mega-cta="schedule-strategy-call"
             href="/schedule"
             className="inline-flex min-h-12 items-center rounded-sm bg-gold px-7 font-body text-[14px] font-semibold text-ink transition-[background-color,transform] duration-200 hover:-translate-y-px hover:bg-gold-hover active:translate-y-0 focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-ink focus-visible:outline-none"
           >

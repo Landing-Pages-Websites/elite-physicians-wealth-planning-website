@@ -88,6 +88,7 @@ export function CareerSignal(): React.JSX.Element {
   const { lead, tail } = headingParts();
   return (
     <section
+      data-mega-section="career-signal"
       id="career-signal"
       aria-labelledby="career-signal-heading"
       className="va-career relative overflow-hidden"

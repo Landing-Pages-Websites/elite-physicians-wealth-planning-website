@@ -133,6 +133,7 @@ function CopyBlock({ headingId }: { headingId?: string }): React.JSX.Element {
 export default function SeparateRooms(): React.JSX.Element {
   return (
     <section
+      data-mega-section="separate-rooms"
       id="separate-rooms"
       aria-labelledby="separate-rooms-heading"
       className="relative overflow-hidden bg-atlas-paper"

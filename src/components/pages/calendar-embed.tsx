@@ -40,7 +40,7 @@ export function CalendarEmbed({
   onlineNote: string;
 }): React.JSX.Element {
   return (
-    <section data-dark-band id="book" className="bg-ink">
+    <section data-mega-section="book" data-dark-band id="book" className="bg-ink">
       <div className="va-shell py-14 lg:py-20">
         <h2 className="va-reveal max-w-[22ch] font-display text-display-m leading-[1.1] font-medium tracking-[-0.01em] text-ivory-bright">
           {heading}
@@ -49,6 +49,7 @@ export function CalendarEmbed({
           {note}
         </p>
         <a
+          data-mega-cta="call-now"
           href={telHref(phone)}
           className="mt-8 inline-flex min-h-12 items-center rounded-sm bg-gold px-7 font-body text-[15px] font-semibold text-ink transition-[background-color,transform] duration-200 hover:-translate-y-px hover:bg-gold-hover active:translate-y-0 focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-ink focus-visible:outline-none"
         >
@@ -62,7 +63,8 @@ export function CalendarEmbed({
           {onlineNote}
         </p>
 
-        <div className="va-reveal mt-7 overflow-hidden rounded-sm bg-white">
+        {/* The visitor picks a slot and types details in here: never recorded. */}
+        <div className="va-reveal mt-7 overflow-hidden rounded-sm bg-white" data-mega-private="">
           <iframe
             src={SCHEDULE_URL}
             title="Book a strategy call with Elite Physicians Wealth Planning"
