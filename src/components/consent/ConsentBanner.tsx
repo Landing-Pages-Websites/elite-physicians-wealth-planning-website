@@ -30,7 +30,7 @@ export function ConsentBanner(): ReactElement | null {
       aria-label="Cookie consent"
       data-mega-preview-hide=""
       data-mega-ignore=""
-      className="ph-no-capture fixed inset-x-0 bottom-0 z-50 border-t border-ink/10 bg-ivory p-4 font-body shadow-lg"
+      className="ph-no-capture fixed inset-x-0 bottom-0 z-[110] border-t border-ink/10 bg-ivory p-4 font-body shadow-lg"
     >
       <div className="mx-auto flex max-w-3xl flex-col items-start gap-3 sm:flex-row sm:items-center">
         <p className="text-sm text-charcoal">
