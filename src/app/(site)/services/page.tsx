@@ -32,13 +32,13 @@ const SERVICES_LD = {
       "@type": "CollectionPage",
       "@id": `${SITE}${ROUTE}`,
       url: `${SITE}${ROUTE}`,
-      name: PAGE.title,
+      name: "Services for Physicians | Elite Physicians Wealth Planning",
       description: PAGE.lede ?? PAGE.description,
       breadcrumb: { "@id": `${SITE}${ROUTE}#breadcrumb` },
       mainEntity: {
         "@type": "ItemList",
         "@id": `${SITE}${ROUTE}#planning-disciplines`,
-        name: "Six planning pillars",
+        name: "Six planning disciplines",
         numberOfItems: SERVICES.length,
         itemListElement: SERVICES.map((section, index) => {
           const name = section.heading as string;
