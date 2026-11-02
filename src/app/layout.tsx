@@ -3,6 +3,8 @@ import type { ReactNode } from "react";
 import "./globals.css";
 import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 import { PostHogProvider } from "@/components/analytics/PostHogProvider";
+import { TrackingListeners } from "@/components/analytics/TrackingListeners";
+import { ConsentBanner } from "@/components/consent/ConsentBanner";
 import { megaPreviewNavScript } from "@/mega-preview/preview_nav.mjs";
 
 export const metadata: Metadata = {
@@ -87,7 +89,13 @@ export default function RootLayout({
           defer
         ></script>
       </head>
-      <body>{children}<GoogleAnalytics /><PostHogProvider /></body>
+      <body>
+        {children}
+        <ConsentBanner />
+        <GoogleAnalytics />
+        <PostHogProvider />
+        <TrackingListeners />
+      </body>
     </html>
   );
 }

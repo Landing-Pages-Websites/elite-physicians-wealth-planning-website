@@ -4,7 +4,10 @@
  * subscriber (banner, GA, PostHog) reacts without a page reload.
  */
 
-const siteConfig: { consentMode: string } = { consentMode: "us-default" };
+import { consentGate, type ConsentMode } from "@/lib/tracking/consent-gate";
+
+/** Exported so the tracking tests can exercise both modes against the real gate. */
+export const siteConfig: { consentMode: ConsentMode } = { consentMode: "us-default" };
 
 export type ConsentStatus = "unset" | "accepted" | "declined";
 
@@ -46,8 +49,5 @@ export function subscribeToConsent(callback: () => void): () => void {
  * - "strict": allowed only after an explicit accept (opt-in).
  */
 export function isAnalyticsAllowed(status: ConsentStatus): boolean {
-  if (siteConfig.consentMode === "strict") {
-    return status === "accepted";
-  }
-  return status !== "declined";
+  return consentGate(siteConfig.consentMode, status);
 }

@@ -9,6 +9,7 @@ import {
   type ConsentStatus,
 } from "@/lib/consent";
 import { getPostHogClient } from "@/lib/posthog-client";
+import { grantConsent, revokeConsent } from "@/lib/tracking/queue";
 
 declare global {
   interface Window {
@@ -45,10 +46,22 @@ function getServerFalse(): boolean {
   return false;
 }
 
-/** Best-effort stop for analytics that already loaded (us-default opt-out). */
+/**
+ * Stop analytics that already loaded or are queued (us-default opt-out). The
+ * tracking queue is cleared and latched shut so a PostHog import that is still
+ * in flight finds consent revoked and never initialises.
+ */
 function optOutLoadedAnalytics(): void {
+  revokeConsent();
   window.gtag?.("consent", "update", { analytics_storage: "denied" });
   getPostHogClient()?.opt_out_capturing();
+}
+
+/** A later Accept after a Decline lifts the latch and re-enables a client that was opted out. */
+function optInLoadedAnalytics(): void {
+  grantConsent();
+  const client = getPostHogClient();
+  if (client?.has_opted_out_capturing()) client.opt_in_capturing();
 }
 
 /** Reactive consent state — analytics loaders gate on analyticsAllowed. */
@@ -70,7 +83,10 @@ export function useConsent(): UseConsentResult {
   return {
     status,
     analyticsAllowed: hydrated && isAnalyticsAllowed(status),
-    accept: () => setConsentStatus("accepted"),
+    accept: () => {
+      setConsentStatus("accepted");
+      optInLoadedAnalytics();
+    },
     decline: () => {
       setConsentStatus("declined");
       optOutLoadedAnalytics();

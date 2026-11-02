@@ -1,50 +1,95 @@
 "use client";
 
 import { useEffect } from "react";
-import { getPostHogClient, setPostHogClient } from "@/lib/posthog-client";
 import { subscribeAnalyticsReady } from "@/lib/analytics-readiness";
+import { getConsentStatus, isAnalyticsAllowed, subscribeToConsent } from "@/lib/consent";
+import { readStoredVisitorId } from "@/lib/megaLeadContext";
+import { getPostHogClient, setPostHogClient } from "@/lib/posthog-client";
+import { pageTypeFor, superProperties } from "@/lib/tracking/contract";
+import { POSTHOG_KEY } from "@/lib/tracking/destination";
+import { TRACKING_ENABLED } from "@/lib/tracking/enabled";
+import { buildPostHogOptions, expireStaleCookies, probePersistence } from "@/lib/tracking/posthog-options";
+import { flushQueue, grantConsent, isConsentRevoked, revokeConsent } from "@/lib/tracking/queue";
 
-type LoadPostHog = () => Promise<Pick<typeof import("posthog-js"), "default">>;
+type PostHogModule = Pick<typeof import("posthog-js"), "default">;
+type LoadPostHog = () => Promise<PostHogModule>;
+type PostHogInstance = PostHogModule["default"];
 
-async function initializePostHog(key: string, isCurrent: () => boolean, load: LoadPostHog): Promise<void> {
+/** A Decline drops queued events and latches the queue shut; allowed consent lifts it. */
+function syncConsentLatch(): void {
+  if (isAnalyticsAllowed(getConsentStatus())) grantConsent();
+  else revokeConsent();
+}
+
+function reenableOptedOut(client: PostHogInstance): void {
+  if (client.has_opted_out_capturing()) client.opt_in_capturing({ captureEventName: false });
+}
+
+/** Configure the shared MEGA Websites client and deliver what was queued before init. */
+function configurePostHog(posthog: PostHogInstance): void {
+  // Returning visitors from the cookie-based setup still hold the old cookie.
+  expireStaleCookies((cookie) => {
+    document.cookie = cookie;
+  }, POSTHOG_KEY, window.location.hostname);
+  posthog.init(POSTHOG_KEY, buildPostHogOptions(probePersistence(() => window.localStorage)));
+  posthog.register(
+    superProperties({
+      siteId: process.env.NEXT_PUBLIC_MEGA_SITE_ID,
+      release: process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_SHA,
+      vercelEnv: process.env.NEXT_PUBLIC_VERCEL_ENV,
+      pageType: pageTypeFor(window.location.pathname),
+    }),
+  );
+  const visitorId = readStoredVisitorId();
+  if (visitorId) posthog.register({ mega_visitor_id: visitorId });
+  setPostHogClient(posthog);
+  reenableOptedOut(posthog);
+  // Queued items carry their own time as an option; live ones pass nothing.
+  flushQueue((event, properties, options) => posthog.capture(event, properties, options));
+}
+
+async function initializePostHog(isCurrent: () => boolean, load: LoadPostHog): Promise<void> {
   try {
     const { default: posthog } = await load();
-    if (!isCurrent()) return;
+    // Consent can flip while the import is in flight. Re-check before anything is initialised.
+    if (!isCurrent() || isConsentRevoked()) return;
     const existing = getPostHogClient();
     if (existing) {
-      if (existing.has_opted_out_capturing()) existing.opt_in_capturing({ captureEventName: false });
+      reenableOptedOut(existing);
       return;
     }
-    posthog.init(key, {
-      api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST || "https://us.i.posthog.com",
-      capture_pageview: true,
-      capture_pageleave: true,
-      person_profiles: "identified_only",
-      disable_session_recording: true,
-    });
-    setPostHogClient(posthog);
-    if (posthog.has_opted_out_capturing()) posthog.opt_in_capturing({ captureEventName: false });
+    configurePostHog(posthog);
   } catch (error: unknown) {
     console.error("PostHog analytics could not initialize", error);
   }
 }
 
 /** No sticky started flag: a cancelled import can never prevent reacceptance. */
-export function startPostHogAnalytics(
-  key: string,
-  load: LoadPostHog = () => import("posthog-js"),
-): () => void {
-  return subscribeAnalyticsReady(
-    (isCurrent) => { void initializePostHog(key, isCurrent, load); },
-    () => { getPostHogClient()?.opt_out_capturing(); },
+export function startPostHogAnalytics(load: LoadPostHog = () => import("posthog-js")): () => void {
+  const stopLatch = subscribeToConsent(syncConsentLatch);
+  syncConsentLatch();
+  const stopReady = subscribeAnalyticsReady(
+    (isCurrent) => { void initializePostHog(isCurrent, load); },
+    () => {
+      revokeConsent();
+      getPostHogClient()?.opt_out_capturing();
+    },
   );
+  return () => {
+    stopReady();
+    stopLatch();
+  };
 }
 
-/** Standard SDK loader, mounted only on the client with a provisioned public key. */
+/**
+ * Lazy loader for the shared MEGA Websites project. Requires tracking enabled
+ * for this deploy (src/lib/tracking/enabled.ts) AND allowed consent (per
+ * consentMode in src/lib/consent.ts); then initializes after paint and idle,
+ * or on first interaction, and flushes events queued before init.
+ */
 export function PostHogProvider(): null {
   useEffect(() => {
-    const key = process.env.NEXT_PUBLIC_POSTHOG_KEY;
-    if (key) return startPostHogAnalytics(key);
+    if (TRACKING_ENABLED) return startPostHogAnalytics();
   }, []);
   return null;
 }

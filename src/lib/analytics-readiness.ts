@@ -1,4 +1,5 @@
 import { getConsentStatus, isAnalyticsAllowed, subscribeToConsent } from "./consent";
+import { interactionStartsInit } from "./tracking/init-gate";
 
 const MAX_WAIT_MS = 2500;
 const IDLE_TIMEOUT_MS = 500;
@@ -33,7 +34,11 @@ function afterFontPaint(pending: Pending, run: () => void): void {
 /** Fonts → two paint frames → idle; interaction/deadline also release stalled tabs. */
 export function scheduleAnalyticsReady(callback: () => void): Cancel {
   const pending: Pending = { stopped: false };
-  const interaction: EventListener = (event) => { if (event.isTrusted) run(); };
+  // A gesture on the consent banner ([data-mega-ignore]) never releases the
+  // loaders: a visitor about to Decline must not start GA or PostHog.
+  const interaction: EventListener = (event) => {
+    if (event.isTrusted && interactionStartsInit(event.target ?? null)) run();
+  };
   const cancel = () => cancelPending(pending, interaction);
   const run = () => {
     if (pending.stopped) return;

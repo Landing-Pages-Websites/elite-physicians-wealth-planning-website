@@ -8,18 +8,14 @@ import { StrategyCallContactFields } from "./strategy-call-contact-fields";
 import { useMegaLeadForm, HONEYPOT_FIELD_NAME } from "@/hooks/useMegaLeadForm";
 import { clientVerificationRoute } from "@/lib/captcha/client-route";
 import { forwardExistingLeadEndpoint } from "@/lib/legacyLeadHandoff";
+import { pushDataLayer, trackEvent } from "@/lib/track";
+import { LEAD_SUBMITTED_EVENT } from "@/lib/tracking/contract";
 import {
   EMPTY_STRATEGY_CALL as EMPTY,
   validateStrategyCall as validate,
   type StrategyCallFields as Fields,
   type StrategyCallErrors,
 } from "@/lib/strategyCallValidation";
-
-declare global {
-  interface Window {
-    dataLayer?: Record<string, unknown>[];
-  }
-}
 
 /**
  * Lead capture for both homepage directions.
@@ -31,6 +27,9 @@ declare global {
 export type FormTone = "ledger" | "atlas";
 
 type Status = "idle" | "invalid" | "sending" | "sent" | "ignored" | "failed";
+
+/** The Keystone form key; also the `data-mega-form` label and `form_key` on analytics. */
+const LEAD_FORM_KEY = "contact-form";
 
 /** What a form hands the visitor once it is submitted — the guide PDF. */
 export type FormDelivery = { readonly href: string; readonly label: string };
@@ -109,6 +108,7 @@ export function StrategyCallForm({
     setErrors(found);
     if (Object.keys(found).length > 0) {
       setStatus("invalid");
+      trackEvent("form_error", { form_key: LEAD_FORM_KEY, kind: "validation" });
       const firstKey = Object.keys(found)[0] as keyof Fields;
       // After React commits, not during the click: focusing synchronously lands
       // the reader on a field whose aria-invalid and aria-describedby have not
@@ -131,21 +131,27 @@ export function StrategyCallForm({
     if (inFlightRef.current || !validateBeforeSubmit()) return;
     inFlightRef.current = true;
     setStatus("sending");
+    let failure: "captcha" | "server" = "captcha";
     try {
       const minted = await captchaRef.current?.getToken("lead_submit");
       const captchaToken = typeof minted === "string" && minted.length > 0
         ? minted : clientVerificationRoute() === "recaptcha" ? "" : null;
       if (captchaToken === null) throw new Error("Security check is not ready.");
+      failure = "server";
       const honeypot = formRef.current?.elements.namedItem(HONEYPOT_FIELD_NAME);
       const result = await submit({
-        ...extras, ...values, intent, formKey: "contact-form", captchaToken,
+        ...extras, ...values, intent, formKey: LEAD_FORM_KEY, captchaToken,
         [HONEYPOT_FIELD_NAME]: honeypot instanceof HTMLInputElement ? honeypot.value : "",
       });
       if (result.ok !== true) throw new Error("Submission not confirmed.");
+      // Tells TrackingListeners this form finished, so leaving the page is not
+      // reported as an abandon. A honeypot-ignored submit is finished too.
+      formRef.current?.dispatchEvent(new Event(LEAD_SUBMITTED_EVENT, { bubbles: true }));
       if (result.ignored) { setStatus("ignored"); return; }
       confirmSuccess();
     } catch (error) {
       console.error("Protected lead submission failed", error);
+      trackEvent("form_error", { form_key: LEAD_FORM_KEY, kind: failure });
       setStatus("failed");
       captchaRef.current?.reset();
     } finally {
@@ -159,8 +165,8 @@ export function StrategyCallForm({
     setValues(EMPTY);
     setExtras({});
     try {
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({ event: "form_submission", formIntent: intent });
+      pushDataLayer({ event: "form_submission", formIntent: intent });
+      trackEvent("lead_form_submit", { form_key: LEAD_FORM_KEY });
     } catch {
       console.warn("Conversion tracking failed after confirmed lead delivery");
     }
@@ -195,7 +201,16 @@ export function StrategyCallForm({
   }
 
   return (
-    <form ref={formRef} method="post" action="/api/lead" onSubmit={handleSubmit} noValidate className="grid gap-5">
+    <form
+      ref={formRef}
+      method="post"
+      action="/api/lead"
+      onSubmit={handleSubmit}
+      noValidate
+      data-mega-form={LEAD_FORM_KEY}
+      data-mega-lead-form=""
+      className="grid gap-5"
+    >
       {/* Spam trap. Positioned off-screen rather than display:none so bots fill it. */}
       <div aria-hidden="true" className="absolute -left-[9999px]">
         <label htmlFor="company-website">Company website</label>
@@ -385,10 +400,7 @@ function DeliveryLink({ delivery }: { delivery: FormDelivery }): React.JSX.Eleme
     <a
       href={delivery.href}
       download
-      onClick={() => {
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({ event: "guide_download", guideTitle: delivery.label });
-      }}
+      onClick={() => pushDataLayer({ event: "guide_download", guideTitle: delivery.label })}
       className="mt-5 inline-flex min-h-12 items-center rounded-sm bg-gold px-6 font-body text-[15px] font-semibold text-ink transition-colors duration-150 hover:bg-gold-hover focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-ink focus-visible:outline-none"
     >
       {delivery.label}

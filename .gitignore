@@ -13,3 +13,4 @@ next-env.d.ts
 
 # MEGA preview mode: written by the preview tooling in the saved worktree
 .mega-preview-identity.json
+!.env.example
