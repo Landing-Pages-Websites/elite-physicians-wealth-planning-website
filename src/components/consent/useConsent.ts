@@ -4,22 +4,20 @@ import { useSyncExternalStore } from "react";
 import {
   getConsentStatus,
   isAnalyticsAllowed,
+  isConsentChoiceNeeded,
   setConsentStatus,
   subscribeToConsent,
   type ConsentStatus,
 } from "@/lib/consent";
-import { getPostHogClient } from "@/lib/posthog-client";
-import { grantConsent, revokeConsent } from "@/lib/tracking/queue";
-
-declare global {
-  interface Window {
-    gtag?: (...args: unknown[]) => void;
-  }
-}
-
 export interface UseConsentResult {
   /** "unset" until the visitor chooses (and always "unset" during SSR). */
   status: ConsentStatus;
+  /**
+   * Whether the banner should ask: no real choice is known ("unset", or an
+   * unrecognised stored value that still reads as declined). Always true
+   * during SSR, matching status "unset".
+   */
+  choiceNeeded: boolean;
   /**
    * Whether analytics loaders may run, per siteConfig.consentMode.
    * Always false during SSR/hydration so a previously-declined visitor
@@ -34,6 +32,10 @@ function getServerSnapshot(): ConsentStatus {
   return "unset";
 }
 
+function getServerChoiceNeeded(): boolean {
+  return true;
+}
+
 // Hydration detector via useSyncExternalStore: false during SSR/hydration
 // render, true immediately after — without an effect-driven setState.
 function subscribeNever(): () => void {
@@ -46,30 +48,17 @@ function getServerFalse(): boolean {
   return false;
 }
 
-/**
- * Stop analytics that already loaded or are queued (us-default opt-out). The
- * tracking queue is cleared and latched shut so a PostHog import that is still
- * in flight finds consent revoked and never initialises.
- */
-function optOutLoadedAnalytics(): void {
-  revokeConsent();
-  window.gtag?.("consent", "update", { analytics_storage: "denied" });
-  getPostHogClient()?.opt_out_capturing();
-}
-
-/** A later Accept after a Decline lifts the latch and re-enables a client that was opted out. */
-function optInLoadedAnalytics(): void {
-  grantConsent();
-  const client = getPostHogClient();
-  if (client?.has_opted_out_capturing()) client.opt_in_capturing();
-}
-
 /** Reactive consent state — analytics loaders gate on analyticsAllowed. */
 export function useConsent(): UseConsentResult {
   const status = useSyncExternalStore(
     subscribeToConsent,
     getConsentStatus,
     getServerSnapshot,
+  );
+  const choiceNeeded = useSyncExternalStore(
+    subscribeToConsent,
+    isConsentChoiceNeeded,
+    getServerChoiceNeeded,
   );
 
   // Analytics stay off until after hydration: in us-default mode "unset"
@@ -82,14 +71,11 @@ export function useConsent(): UseConsentResult {
 
   return {
     status,
+    choiceNeeded,
     analyticsAllowed: hydrated && isAnalyticsAllowed(status),
-    accept: () => {
-      setConsentStatus("accepted");
-      optInLoadedAnalytics();
-    },
-    decline: () => {
-      setConsentStatus("declined");
-      optOutLoadedAnalytics();
-    },
+    // setConsentStatus applies the opt-in/opt-out, the same path a choice made
+    // in another tab takes.
+    accept: () => setConsentStatus("accepted"),
+    decline: () => setConsentStatus("declined"),
   };
 }

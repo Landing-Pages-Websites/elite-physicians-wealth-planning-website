@@ -1,4 +1,4 @@
-import { getConsentStatus, isAnalyticsAllowed } from "@/lib/consent";
+import { analyticsAllowedNow } from "@/lib/consent";
 import { TRACKING_ENABLED } from "@/lib/tracking/enabled";
 import { enqueueOrCapture, type QueueCaptureOptions } from "@/lib/tracking/queue";
 
@@ -6,11 +6,6 @@ declare global {
   interface Window {
     dataLayer?: Record<string, unknown>[];
   }
-}
-
-/** Whether GA4 and PostHog may receive anything right now, per siteConfig.consentMode. */
-function analyticsAllowedNow(): boolean {
-  return isAnalyticsAllowed(getConsentStatus());
 }
 
 /**

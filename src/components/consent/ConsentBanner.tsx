@@ -10,16 +10,17 @@ import { useConsent } from "@/components/consent/useConsent";
 /**
  * Lightweight self-built cookie banner (no vendor script), the site-starter
  * template bar in this site's colour and type tokens. Renders nothing once the
- * visitor has chosen; analytics loaders react via the consent store. In
+ * visitor has made a real choice (an unrecognised stored value asks again while
+ * analytics stay off); analytics loaders react via the consent store. In
  * "us-default" mode the banner is informational (analytics already loading)
  * and the primary button reads "Got it"; in "strict" mode it's a true opt-in
  * gate and reads "Accept".
  */
 export function ConsentBanner(): ReactElement | null {
-  const { status, accept, decline } = useConsent();
+  const { choiceNeeded, accept, decline } = useConsent();
   const strict = siteConfig.consentMode === "strict";
 
-  if (status !== "unset" || consentHiddenInPreview()) {
+  if (!choiceNeeded || consentHiddenInPreview()) {
     return null;
   }
 

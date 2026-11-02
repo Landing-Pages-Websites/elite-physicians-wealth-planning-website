@@ -2,20 +2,23 @@
 
 import { useEffect } from "react";
 import { subscribeAnalyticsReady } from "@/lib/analytics-readiness";
-import { getConsentStatus, isAnalyticsAllowed, subscribeToConsent } from "@/lib/consent";
+import { analyticsAllowedNow, getConsentStatus, isAnalyticsAllowed, subscribeToConsent } from "@/lib/consent";
 import { readStoredVisitorId } from "@/lib/megaLeadContext";
 import { getPostHogClient, setPostHogClient } from "@/lib/posthog-client";
 import { pageTypeFor, superProperties } from "@/lib/tracking/contract";
 import { POSTHOG_KEY } from "@/lib/tracking/destination";
 import { TRACKING_ENABLED } from "@/lib/tracking/enabled";
 import { buildPostHogOptions, expireStaleCookies, probePersistence } from "@/lib/tracking/posthog-options";
-import { flushQueue, grantConsent, isConsentRevoked, revokeConsent } from "@/lib/tracking/queue";
+import { flushQueue, grantConsent, revokeConsent } from "@/lib/tracking/queue";
 
 type PostHogModule = Pick<typeof import("posthog-js"), "default">;
 type LoadPostHog = () => Promise<PostHogModule>;
 type PostHogInstance = PostHogModule["default"];
 
-/** A Decline drops queued events and latches the queue shut; allowed consent lifts it. */
+/**
+ * A Decline drops queued events and latches the queue shut; allowed consent lifts it.
+ * Reads the status, not analyticsAllowedNow, because that gate includes this latch.
+ */
 function syncConsentLatch(): void {
   if (isAnalyticsAllowed(getConsentStatus())) grantConsent();
   else revokeConsent();
@@ -51,8 +54,9 @@ function configurePostHog(posthog: PostHogInstance): void {
 async function initializePostHog(isCurrent: () => boolean, load: LoadPostHog): Promise<void> {
   try {
     const { default: posthog } = await load();
-    // Consent can flip while the import is in flight. Re-check before anything is initialised.
-    if (!isCurrent() || isConsentRevoked()) return;
+    // Consent can flip while the import is in flight, here or in another tab.
+    // Re-check before anything is initialised.
+    if (!isCurrent() || !analyticsAllowedNow()) return;
     const existing = getPostHogClient();
     if (existing) {
       reenableOptedOut(existing);

@@ -1,4 +1,4 @@
-import { getConsentStatus, isAnalyticsAllowed, subscribeToConsent } from "./consent";
+import { analyticsAllowedNow, subscribeToConsent } from "./consent";
 import { interactionStartsInit } from "./tracking/init-gate";
 
 const MAX_WAIT_MS = 2500;
@@ -56,7 +56,12 @@ export function scheduleAnalyticsReady(callback: () => void): Cancel {
   return cancel;
 }
 
-/** Each consent epoch invalidates its pending gate AND any in-flight SDK import. */
+/**
+ * Each consent epoch invalidates its pending gate AND any in-flight SDK import.
+ * Every re-read goes through analyticsAllowedNow (session memory first), so a
+ * decline whose localStorage write failed, or one made in another tab, is
+ * never re-read as "unset" and rescheduled.
+ */
 export function subscribeAnalyticsReady(
   ready: (isCurrent: () => boolean) => void,
   declined: () => void,
@@ -64,9 +69,9 @@ export function subscribeAnalyticsReady(
   let cancel: Cancel = () => {};
   const sync = () => {
     cancel();
-    if (!isAnalyticsAllowed(getConsentStatus())) { declined(); return; }
+    if (!analyticsAllowedNow()) { declined(); return; }
     let active = true;
-    const isCurrent = () => active && isAnalyticsAllowed(getConsentStatus());
+    const isCurrent = () => active && analyticsAllowedNow();
     const stop = scheduleAnalyticsReady(() => {
       if (isCurrent()) ready(isCurrent);
       else declined();

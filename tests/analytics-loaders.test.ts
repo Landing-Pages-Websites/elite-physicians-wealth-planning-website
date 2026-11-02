@@ -3,17 +3,25 @@ import { afterEach, test } from "node:test";
 import type { PostHog } from "posthog-js";
 import { startGoogleAnalytics } from "../src/components/analytics/GoogleAnalytics";
 import { startPostHogAnalytics } from "../src/components/analytics/PostHogProvider";
-import { setConsentStatus } from "../src/lib/consent";
+import { CONSENT_STORAGE_KEY, getConsentStatus, setConsentStatus } from "../src/lib/consent";
 import { POSTHOG_KEY } from "../src/lib/tracking/destination";
+import { setPostHogClient } from "../src/lib/posthog-client";
 import { resetQueueForTests } from "../src/lib/tracking/queue";
 
-function browser() {
+type StorageFailure = { getItem?: boolean; setItem?: boolean };
+
+function browser(fails: StorageFailure = {}) {
   let stored: string | null = null;
   let sequence = 0;
   const timers = new Map<number, () => void>();
   const target = new EventTarget();
+  const blocked = () => { throw new Error("SecurityError: storage is blocked"); };
   const fake = Object.assign(target, {
-    localStorage: { getItem: () => stored, setItem: (_key: string, value: string) => { stored = value; }, removeItem: () => {} },
+    localStorage: {
+      getItem: () => (fails.getItem ? blocked() : stored),
+      setItem: (_key: string, value: string) => { if (fails.setItem) blocked(); stored = value; },
+      removeItem: () => {},
+    },
     location: { hostname: "example.test", pathname: "/", href: "https://example.test/" },
     setTimeout: (callback: () => void) => { timers.set(++sequence, callback); return sequence; },
     clearTimeout: (id: number) => { timers.delete(id); },
@@ -21,7 +29,17 @@ function browser() {
     gtag: undefined as Window["gtag"],
   });
   Object.assign(globalThis, { window: fake, document: { cookie: "", fonts: { ready: new Promise(() => {}) } } });
-  return { fake, timers, release() { for (const callback of [...timers.values()]) callback(); } };
+  return {
+    fake, timers,
+    release() { for (const callback of [...timers.values()]) callback(); },
+    /** Another tab writes the consent key: the browser fires `storage` here only. */
+    otherTab(value: string) {
+      stored = value;
+      fake.dispatchEvent(Object.assign(new Event("storage"), {
+        key: CONSENT_STORAGE_KEY, newValue: value, storageArea: fake.localStorage,
+      }));
+    },
+  };
 }
 
 function deferred<T>() {
@@ -43,6 +61,8 @@ function posthogMock() {
     has_opted_out_capturing: () => optedOut,
     opt_out_capturing: () => { optedOut = true; },
     opt_in_capturing: (config: unknown) => { optedOut = false; optIns.push(config); },
+    startSessionRecording: () => {},
+    stopSessionRecording: () => {},
   } as unknown as PostHog;
   return { client, optIns, get initializations() { return initializations; },
     get optedOut() { return optedOut; }, get options() { return options; }, get key() { return key; } };
@@ -50,6 +70,7 @@ function posthogMock() {
 
 afterEach(() => {
   Reflect.deleteProperty(globalThis, "window"); Reflect.deleteProperty(globalThis, "document"); resetQueueForTests();
+  setPostHogClient(null as unknown as PostHog);
 });
 
 test("Google preserves early dataLayer events, configures once, and never grants after decline", () => {
@@ -128,9 +149,64 @@ test("PostHog cancels before/during import, permits reaccept, initializes once a
   assert.equal(sdk.options.persistence, "localStorage");
   setConsentStatus("declined"); assert.equal(sdk.optedOut, true);
   setConsentStatus("accepted"); env.release(); await Promise.resolve();
-  assert.equal(sdk.optedOut, false); assert.deepEqual(sdk.optIns, [{ captureEventName: false }]);
+  // The consent store opts the loaded client back in (src/lib/consent-effects.ts)
+  // before readiness runs, so the provider's own re-enable finds nothing to do.
+  assert.equal(sdk.optedOut, false); assert.deepEqual(sdk.optIns, [undefined]);
   stop();
   const remount = startPostHogAnalytics(async () => ({ default: sdk.client }));
   env.release(); await Promise.resolve(); remount();
   assert.equal(sdk.initializations, 1);
+});
+
+const configs = (env: ReturnType<typeof browser>) => env.fake.dataLayer.filter((entry) => entry[0] === "config").length;
+
+// Review 5742414960: the readiness subscriber re-reads consent on every change,
+// so a decline must survive that re-read whatever storage does, in this tab or another.
+const declineHoldsCases: { name: string; fails: StorageFailure; decline: (env: ReturnType<typeof browser>) => void }[] = [
+  { name: "setItem throws", fails: { setItem: true }, decline: () => setConsentStatus("declined") },
+  { name: "getItem throws", fails: { getItem: true }, decline: () => setConsentStatus("declined") },
+  { name: "setItem and getItem both throw", fails: { setItem: true, getItem: true }, decline: () => setConsentStatus("declined") },
+  { name: "another tab declines", fails: {}, decline: (env) => env.otherTab("declined") },
+  { name: "another tab writes an unrecognised value", fails: {}, decline: (env) => env.otherTab("denied") },
+];
+
+for (const { name, fails, decline } of declineHoldsCases) {
+  test(`readiness keeps a decline when ${name}: neither SDK starts for the page life`, () => {
+    const env = browser(fails); const readiness: boolean[] = []; let imports = 0;
+    const stopGoogle = startGoogleAnalytics("G-TEST-HOLD", (ready) => readiness.push(ready));
+    const stopPostHog = startPostHogAnalytics(() => { imports++; return new Promise(() => {}); });
+    decline(env);
+    assert.equal(getConsentStatus(), "declined");
+    env.release();
+    // A later unrelated consent broadcast makes every subscriber re-read.
+    window.dispatchEvent(new Event("site-consent-change")); env.release();
+    assert.equal(getConsentStatus(), "declined");
+    assert.equal(imports, 0); assert.equal(configs(env), 0);
+    assert.ok(readiness.length > 0 && readiness.every((ready) => ready === false), JSON.stringify(readiness));
+    stopGoogle(); stopPostHog();
+  });
+}
+
+test("a decline in another tab opts out an initialised PostHog client in this tab", async () => {
+  const env = browser(); const sdk = posthogMock();
+  const stop = startPostHogAnalytics(async () => ({ default: sdk.client }));
+  env.release(); await Promise.resolve(); await Promise.resolve();
+  assert.equal(sdk.initializations, 1);
+  env.otherTab("declined");
+  assert.equal(sdk.optedOut, true);
+  env.release(); await Promise.resolve();
+  assert.equal(sdk.optedOut, true);
+  stop();
+});
+
+test("removal of the stored value by another tab never reopens a decline", () => {
+  const env = browser(); let imports = 0;
+  const stop = startPostHogAnalytics(() => { imports++; return new Promise(() => {}); });
+  setConsentStatus("declined");
+  env.fake.dispatchEvent(Object.assign(new Event("storage"), {
+    key: CONSENT_STORAGE_KEY, newValue: null, storageArea: env.fake.localStorage,
+  }));
+  env.release();
+  assert.equal(getConsentStatus(), "declined"); assert.equal(imports, 0);
+  stop();
 });
