@@ -1,4 +1,5 @@
 import type { PostHogConfig } from "posthog-js";
+import { analyticsAllowedNow } from "@/lib/consent";
 import { POSTHOG_UI_HOST } from "./destination";
 import { maskNetworkRequest, scrubCapture } from "./scrub";
 
@@ -188,7 +189,16 @@ export function expireStaleCookies(write: (cookie: string) => void, token: strin
  * and event triggers) is project-controlled by design and is the one thing the
  * shared project's settings may change.
  */
-export function buildPostHogOptions(persistence: PersistenceKind = "localStorage"): Partial<PostHogConfig> {
+/**
+ * consentAllowsNow is read on every event, so posthog-js never sends anything
+ * our consent store (memory first) does not allow at that moment. posthog-js's
+ * own opt-out flag is only a second line: it persists to localStorage, and when
+ * every write throws it is silently lost and its capture keeps running.
+ */
+export function buildPostHogOptions(
+  persistence: PersistenceKind = "localStorage",
+  consentAllowsNow: () => boolean = analyticsAllowedNow,
+): Partial<PostHogConfig> {
   return {
     // Same-origin reverse proxy (rewrites in next.config.ts) so requests are
     // not blocked by ad blockers.
@@ -201,6 +211,9 @@ export function buildPostHogOptions(persistence: PersistenceKind = "localStorage
     // on every same-origin request and to every subdomain.
     persistence,
     disable_persistence: false,
+    // posthog-js offers only localStorage or a cookie here, no memory. Keep
+    // localStorage even when the probe fails: a cookie would ride every
+    // same-origin request, and before_send already refuses on our own store.
     opt_out_capturing_persistence_type: "localStorage",
 
     // Capture we use.
@@ -220,7 +233,9 @@ export function buildPostHogOptions(persistence: PersistenceKind = "localStorage
     disable_capture_url_hashes: true,
     mask_personal_data_properties: true,
     custom_personal_data_properties: PERSONAL_DATA_PARAMS,
-    before_send: (capture) => scrubCapture(capture),
+    // Every event, $snapshot recordings included, passes through here (posthog-js
+    // capture() drops a null). Consent is checked before anything is scrubbed.
+    before_send: (capture) => (consentAllowsNow() ? scrubCapture(capture) : null),
 
     // Recording. What is recorded is pinned here. The sample rate and triggers
     // decide how much, and are project-controlled by design.

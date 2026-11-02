@@ -63,14 +63,36 @@ cancelled and whose fields pass their constraints counts, because the browser
 then hands the form to its `action`. A cancelled submit (`preventDefault`, as
 every `noValidate` or fetch-based form does) proves nothing, and
 `form.submit()` fires no submit event at all, so a site form that
-handles its own submit must report success after the server accepts it:
+handles its own submit reports its submission itself. The outcome is decided by
+the server's answer, never by a navigation the form starts itself (a redirect to
+a thank-you page, a `mailto:` handoff), so it reports three moments:
 
 ```ts
-import { markFormSubmitted } from "@/lib/tracking/form-submit";
+import {
+  markFormSubmitFailed,
+  markFormSubmitted,
+  markFormSubmitting,
+} from "@/lib/tracking/form-submit";
 
-// after the response is confirmed, never before validation passes
-markFormSubmitted(formElement);
+// 1. validation passed and the request is about to go, before any navigation
+markFormSubmitting(formElement);
+try {
+  const res = await fetch("/api/lead", { method: "POST", body });
+  if (!res.ok) throw new Error("rejected");
+  // 2. the server accepted it
+  markFormSubmitted(formElement);
+} catch {
+  // 3. the server rejected it or the request failed
+  markFormSubmitFailed(formElement);
+}
 ```
 
-`src/components/shared/strategy-call-form.tsx` (the site's only form) already
-does this. The rule lives in `submitCompletes` (`src/lib/tracking/form-submit.ts`).
+While a submission is in flight, leaving the page is neither `form_abandoned`
+nor a submit. If the answer is a failure, a leave held back meanwhile is
+reported then. A submission with no answer after `FORM_IN_FLIGHT_MAX_MS`
+(60 s, `src/lib/tracking/form-session.ts`) stops holding leaves back. A form
+that never calls `markFormSubmitting` still works: it is finished only by
+`markFormSubmitted`. Once the page or route is gone, a late answer is not
+reported. `src/components/shared/strategy-call-form.tsx` (the site's only form)
+does all of this through `runLeadAttempt` (`src/lib/lead-attempt.ts`). The
+native-submit rule lives in `submitCompletes` (`src/lib/tracking/form-submit.ts`).

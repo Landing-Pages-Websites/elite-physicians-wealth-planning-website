@@ -13,7 +13,11 @@ import {
 } from "@/lib/tracking/contract";
 import { TRACKING_ENABLED } from "@/lib/tracking/enabled";
 import { FormSession, leaveAll, type LeaveReason, type TrackCall } from "@/lib/tracking/form-session";
-import { submitCompletes } from "@/lib/tracking/form-submit";
+import {
+  FORM_SUBMIT_FAILED_EVENT,
+  FORM_SUBMITTING_EVENT,
+  submitCompletes,
+} from "@/lib/tracking/form-submit";
 import { sectionVisible } from "@/lib/tracking/sections";
 
 const SECTION_SELECTOR = "section, [data-mega-section]";
@@ -209,6 +213,12 @@ function watchForms(sessions: FormSessions): () => void {
   const onLeadSubmitted = (e: Event) => {
     if (e.target instanceof HTMLFormElement) sessionFor(e.target).submitted();
   };
+  const onSubmitting = (e: Event) => {
+    if (e.target instanceof HTMLFormElement) sessionFor(e.target).submitting();
+  };
+  const onSubmitFailed = (e: Event) => {
+    if (e.target instanceof HTMLFormElement) emit(sessionFor(e.target).submitFailed());
+  };
   const leave = (reason: LeaveReason) => emit(leaveAll(sessions.values(), reason));
   // Hiding the tab reports the abandon once, because the page may never come
   // back (notably on mobile). Returning does not take it back.
@@ -220,6 +230,8 @@ function watchForms(sessions: FormSessions): () => void {
   document.addEventListener("focusout", onBlur);
   document.addEventListener("submit", onNativeSubmit, { capture: true });
   document.addEventListener(LEAD_SUBMITTED_EVENT, onLeadSubmitted);
+  document.addEventListener(FORM_SUBMITTING_EVENT, onSubmitting);
+  document.addEventListener(FORM_SUBMIT_FAILED_EVENT, onSubmitFailed);
   document.addEventListener("visibilitychange", onVisibility);
   window.addEventListener("pagehide", onPageHide, { capture: true });
   return () => {
@@ -228,6 +240,8 @@ function watchForms(sessions: FormSessions): () => void {
     document.removeEventListener("focusout", onBlur);
     document.removeEventListener("submit", onNativeSubmit, { capture: true });
     document.removeEventListener(LEAD_SUBMITTED_EVENT, onLeadSubmitted);
+    document.removeEventListener(FORM_SUBMITTING_EVENT, onSubmitting);
+    document.removeEventListener(FORM_SUBMIT_FAILED_EVENT, onSubmitFailed);
     document.removeEventListener("visibilitychange", onVisibility);
     window.removeEventListener("pagehide", onPageHide, { capture: true });
   };

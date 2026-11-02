@@ -147,6 +147,21 @@ test("every event goes through the scrubber", () => {
   assert.equal(out.properties.$current_url, "https://x.com/?utm_source=x");
 });
 
+// Every event family posthog-js sends through capture(), recordings included.
+const EVENT_TYPES = ["$autocapture", "$pageview", "$pageleave", "$rageclick", "$$heatmap", "$dead_click", "$web_vitals", "$exception", "$snapshot", "cta_click"];
+
+test("before_send drops every event type unless consent allows it at that moment", () => {
+  let allowed = true;
+  const before = buildPostHogOptions("memory", () => allowed).before_send as (c: unknown) => unknown;
+  for (const event of EVENT_TYPES) {
+    const capture = { uuid: "u", event, properties: { $current_url: "https://x.com/" } };
+    allowed = true;
+    assert.notEqual(before(capture), null, `${event}: sent while allowed`);
+    allowed = false;
+    assert.equal(before(capture), null, `${event}: dropped once not allowed`);
+  }
+});
+
 test("expiring stale cookies never throws, even where document.cookie is unwritable", () => {
   const written: string[] = [];
   assert.equal(expireStaleCookies((c) => written.push(c), "phc_abc", "www.acme.com"), written.length);

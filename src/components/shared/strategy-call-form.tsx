@@ -9,7 +9,12 @@ import { useMegaLeadForm, HONEYPOT_FIELD_NAME } from "@/hooks/useMegaLeadForm";
 import { clientVerificationRoute } from "@/lib/captcha/client-route";
 import { forwardExistingLeadEndpoint } from "@/lib/legacyLeadHandoff";
 import { pushDataLayer, trackEvent } from "@/lib/track";
-import { markFormSubmitted } from "@/lib/tracking/form-submit";
+import {
+  markFormSubmitFailed,
+  markFormSubmitted,
+  markFormSubmitting,
+} from "@/lib/tracking/form-submit";
+import { runLeadAttempt, type AttemptOutcome } from "@/lib/lead-attempt";
 import {
   EMPTY_STRATEGY_CALL as EMPTY,
   validateStrategyCall as validate,
@@ -130,46 +135,48 @@ export function StrategyCallForm({
     event.preventDefault();
     if (inFlightRef.current || !validateBeforeSubmit()) return;
     inFlightRef.current = true;
+    // Until the server answers, leaving the page is neither abandon nor submit.
+    markFormSubmitting(formRef.current);
     setStatus("sending");
-    let failure: "captcha" | "server" = "captcha";
-    try {
-      const minted = await captchaRef.current?.getToken("lead_submit");
-      const captchaToken = typeof minted === "string" && minted.length > 0
-        ? minted : clientVerificationRoute() === "recaptcha" ? "" : null;
-      if (captchaToken === null) throw new Error("Security check is not ready.");
-      failure = "server";
-      const honeypot = formRef.current?.elements.namedItem(HONEYPOT_FIELD_NAME);
-      const result = await submit({
-        ...extras, ...values, intent, formKey: LEAD_FORM_KEY, captchaToken,
-        [HONEYPOT_FIELD_NAME]: honeypot instanceof HTMLInputElement ? honeypot.value : "",
-      });
-      if (result.ok !== true) throw new Error("Submission not confirmed.");
+    const honeypot = formRef.current?.elements.namedItem(HONEYPOT_FIELD_NAME);
+    await runLeadAttempt({
+      mintToken: async () => captchaRef.current?.getToken("lead_submit"),
+      // Under reCAPTCHA the proof-of-work fallback carries a missing token;
+      // under any other provider the server would reject it, so stop here.
+      missingToken: () => (clientVerificationRoute() === "recaptcha" ? "" : null),
+      send: (captchaToken) =>
+        submit({
+          ...extras, ...values, intent, formKey: LEAD_FORM_KEY, captchaToken,
+          [HONEYPOT_FIELD_NAME]: honeypot instanceof HTMLInputElement ? honeypot.value : "",
+        }),
+      settle: settleAttempt,
+      // Only a confirmed, non-ignored success forwards the lead and converts.
+      afterConfirmed: confirmSuccess,
+    });
+  }
+
+  function settleAttempt(outcome: AttemptOutcome): void {
+    inFlightRef.current = false;
+    if (outcome.kind === "confirmed") {
       // Tells TrackingListeners this form finished, so leaving the page is not
       // reported as an abandon. A honeypot-ignored submit is finished too.
       markFormSubmitted(formRef.current);
-      if (result.ignored) { setStatus("ignored"); return; }
-      confirmSuccess();
-    } catch (error) {
-      console.error("Protected lead submission failed", error);
-      trackEvent("form_error", { form_key: LEAD_FORM_KEY, kind: failure });
-      setStatus("failed");
-      captchaRef.current?.reset();
-    } finally {
-      inFlightRef.current = false;
+      setStatus(outcome.ignored ? "ignored" : "sent");
+      return;
     }
+    console.error("Protected lead submission failed", outcome.error);
+    trackEvent("form_error", { form_key: LEAD_FORM_KEY, kind: outcome.reason });
+    setStatus("failed");
+    captchaRef.current?.reset();
+    markFormSubmitFailed(formRef.current);
   }
 
   function confirmSuccess(): void {
     void forwardExistingLeadEndpoint(values, extras, intent);
-    setStatus("sent");
     setValues(EMPTY);
     setExtras({});
-    try {
-      pushDataLayer({ event: "form_submission", formIntent: intent });
-      trackEvent("lead_form_submit", { form_key: LEAD_FORM_KEY });
-    } catch {
-      console.warn("Conversion tracking failed after confirmed lead delivery");
-    }
+    pushDataLayer({ event: "form_submission", formIntent: intent });
+    trackEvent("lead_form_submit", { form_key: LEAD_FORM_KEY });
   }
 
   if (status === "sent" || status === "ignored") {

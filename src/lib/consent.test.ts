@@ -12,6 +12,7 @@ import {
   type ConsentStatus,
 } from "@/lib/consent";
 import { setPostHogClient } from "@/lib/posthog-client";
+import { buildPostHogOptions } from "@/lib/tracking/posthog-options";
 import { pushDataLayer } from "@/lib/track";
 import { enqueueOrCapture, flushQueue, isConsentRevoked, resetQueueForTests } from "@/lib/tracking/queue";
 
@@ -325,4 +326,51 @@ test("the latest choice across tabs wins in either order", () => {
   h.remote(CONSENT_STORAGE_KEY, "accepted");
   h.remote(CONSENT_STORAGE_KEY, "declined");
   assertGates("declined", false, "remote after remote");
+});
+
+// posthog-js's own opt-out flag lives in localStorage and silently fails to
+// persist when every write throws, so its capture keeps running. Our
+// before_send must refuse on our in-memory-first store alone.
+const POSTHOG_EVENTS = ["$autocapture", "$pageview", "$rageclick", "$$heatmap", "$web_vitals", "$snapshot"];
+
+function posthogSends(event: string): boolean {
+  const beforeSend = buildPostHogOptions("memory").before_send as (c: unknown) => unknown;
+  return beforeSend({ uuid: "u", event, properties: { $current_url: "https://x.test/" } }) !== null;
+}
+
+test("storage throwing for every key, then decline: posthog-js sends nothing, of any type", () => {
+  for (const mode of MODES) {
+    const h = installHarness(mode);
+    h.breakGet();
+    h.breakSet();
+    setConsentStatus("accepted");
+    for (const event of POSTHOG_EVENTS) assert.equal(posthogSends(event), true, `${mode}/${event}: control, sent after accept`);
+    setConsentStatus("declined");
+    for (const event of POSTHOG_EVENTS) assert.equal(posthogSends(event), false, `${mode}/${event}: dropped after decline`);
+    assert.ok(h.calls.includes("opt_out") && h.calls.includes("stop_recording"), `${mode}: opt-out and recording stop still run`);
+  }
+});
+
+test("posthog-js sends nothing for a stored decline, an unrecognised value, or strict before accept", () => {
+  const cases: [string, Mode, string | undefined, (h: Harness) => void][] = [
+    ["stored decline", "us-default", "declined", () => {}],
+    ["unrecognised stored value", "us-default", "denied", () => {}],
+    ["strict, unset", "strict", undefined, () => {}],
+    ["remote decline", "us-default", "accepted", (h) => h.remote(CONSENT_STORAGE_KEY, "declined")],
+    ["decline whose write failed", "us-default", undefined, (h) => { h.breakSet(); setConsentStatus("declined"); }],
+  ];
+  for (const [label, mode, initial, setup] of cases) {
+    const h = installHarness(mode, initial);
+    setup(h);
+    for (const event of POSTHOG_EVENTS) assert.equal(posthogSends(event), false, `${label}/${event}`);
+  }
+});
+
+test("a later accept lets posthog-js send again, with storage throwing for every key", () => {
+  const h = installHarness("us-default");
+  h.breakGet();
+  h.breakSet();
+  setConsentStatus("declined");
+  setConsentStatus("accepted");
+  for (const event of POSTHOG_EVENTS) assert.equal(posthogSends(event), true, event);
 });
