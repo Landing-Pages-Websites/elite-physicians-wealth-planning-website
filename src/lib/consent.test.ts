@@ -12,6 +12,7 @@ import {
   type ConsentStatus,
 } from "@/lib/consent";
 import { setPostHogClient } from "@/lib/posthog-client";
+import { configureGaOnce } from "@/lib/tracking/ga";
 import { buildPostHogOptions } from "@/lib/tracking/posthog-options";
 import { pushDataLayer } from "@/lib/track";
 import { enqueueOrCapture, flushQueue, isConsentRevoked, resetQueueForTests } from "@/lib/tracking/queue";
@@ -263,7 +264,8 @@ test("an accept in another tab runs the same opt-in as a local accept", () => {
   h.remote(CONSENT_STORAGE_KEY, "accepted");
   assertGates("accepted", true, "remote accept");
   assert.equal(isConsentRevoked(), false);
-  assert.deepEqual(h.calls, ["opt_in", "start_recording"]);
+  assert.deepEqual(h.calls.filter((c) => !c.startsWith("gtag")), ["opt_in", "start_recording"]);
+  assert.ok(h.calls.some((c) => c.startsWith("gtag") && c.includes("granted")), "gtag analytics storage granted again");
 });
 
 test("an unrecognised value written by another tab is a decline that asks the visitor again", () => {
@@ -373,4 +375,72 @@ test("a later accept lets posthog-js send again, with storage throwing for every
   setConsentStatus("declined");
   setConsentStatus("accepted");
   for (const event of POSTHOG_EVENTS) assert.equal(posthogSends(event), true, event);
+});
+
+test("every decline path disables GA4 in this tab, even with storage throwing", () => {
+  process.env.NEXT_PUBLIC_GA4_ID = "G-TEST1";
+  const paths: [string, (h: Harness) => void][] = [
+    ["local decline", () => setConsentStatus("declined")],
+    ["decline in another tab", (h) => h.remote(CONSENT_STORAGE_KEY, "declined")],
+    ["decline with every write throwing", (h) => { h.breakGet(); h.breakSet(); setConsentStatus("declined"); }],
+    ["unrecognised value from another tab", (h) => h.remote(CONSENT_STORAGE_KEY, "denied")],
+  ];
+  for (const [label, decline] of paths) {
+    const h = installHarness("us-default");
+    setConsentStatus("accepted");
+    const win = (globalThis as { window: Record<string, unknown> }).window;
+    assert.equal(win["ga-disable-G-TEST1"], false, `${label}: enabled after accept`);
+    decline(h);
+    assert.equal(win["ga-disable-G-TEST1"], true, `${label}: disabled`);
+    assert.ok(h.calls.some((c) => c.startsWith("gtag") && c.includes("ad_storage") && c.includes("denied")), `${label}: all consent types denied`);
+  }
+  delete process.env.NEXT_PUBLIC_GA4_ID;
+});
+
+/** The page's dataLayer as an ordered list of gtag commands; plain objects are "object". */
+function gtagOrder(): { order: string[]; firstDefault?: Record<string, string> } {
+  const dl = ((globalThis as { window: { dataLayer?: unknown[] } }).window.dataLayer ?? []);
+  let firstDefault: Record<string, string> | undefined;
+  const order = dl.map((entry) => {
+    if (Object.prototype.toString.call(entry) !== "[object Arguments]") return "object";
+    const [command, kind, value] = Array.from(entry as ArrayLike<unknown>);
+    if (command === "consent" && kind === "default" && !firstDefault) firstDefault = value as Record<string, string>;
+    return command === "consent" ? `consent ${String(kind)}` : String(command);
+  });
+  return { order, firstDefault };
+}
+
+test("GA consent default is sent before anything else, for every mode and consent state", () => {
+  process.env.NEXT_PUBLIC_GA4_ID = "G-TEST1";
+  const cases: [string, Mode, string | undefined, (h: Harness) => void, "granted" | "denied"][] = [
+    ["us-default unset", "us-default", undefined, () => {}, "granted"],
+    ["us-default accepted", "us-default", "accepted", () => {}, "granted"],
+    ["us-default declined", "us-default", "declined", () => {}, "denied"],
+    ["us-default unrecognised", "us-default", "denied", () => {}, "denied"],
+    ["us-default storage failing", "us-default", "declined", (h) => { h.breakGet(); h.breakSet(); }, "granted"],
+    ["strict unset", "strict", undefined, () => {}, "denied"],
+    ["strict accepted", "strict", "accepted", () => {}, "granted"],
+    ["strict declined", "strict", "declined", () => {}, "denied"],
+    ["strict unrecognised", "strict", "denied", () => {}, "denied"],
+    ["strict storage failing", "strict", "accepted", (h) => { h.breakGet(); h.breakSet(); }, "denied"],
+  ];
+  for (const [label, mode, initial, setup, analytics] of cases) {
+    const h = installHarness(mode, initial);
+    setup(h);
+    const win = (globalThis as { window: Record<string, unknown> }).window;
+    delete win.gtag; // the real gtag, defined by ga.ts, pushing Arguments onto the dataLayer
+    pushDataLayer({ event: "section_viewed" });
+    configureGaOnce(win, "G-TEST1", analyticsAllowedNow);
+    const { order, firstDefault } = gtagOrder();
+    assert.equal(order[0], "consent default", `${label}: default first (${order.join(", ")})`);
+    assert.deepEqual(firstDefault, { analytics_storage: analytics, ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied" }, `${label}: default values`);
+    assert.equal(order.includes("config"), analytics === "granted", `${label}: config only when allowed`);
+    assert.equal(order.includes("object"), analytics === "granted", `${label}: dataLayer event only when allowed, after the default`);
+    // A later choice is an update, after the default.
+    setConsentStatus(analytics === "granted" ? "declined" : "accepted");
+    const after = gtagOrder().order;
+    assert.ok(after.lastIndexOf("consent update") > 0, `${label}: update after default`);
+    assert.equal(after.filter((c) => c === "consent default").length, 1, `${label}: one default`);
+  }
+  delete process.env.NEXT_PUBLIC_GA4_ID;
 });

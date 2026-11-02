@@ -1,11 +1,12 @@
 import assert from "node:assert/strict";
 import { afterEach, test } from "node:test";
 import type { PostHog } from "posthog-js";
-import { startGoogleAnalytics } from "../src/components/analytics/GoogleAnalytics";
+import { onGtagReady, startGoogleAnalytics } from "../src/components/analytics/GoogleAnalytics";
 import { startPostHogAnalytics } from "../src/components/analytics/PostHogProvider";
 import { CONSENT_STORAGE_KEY, getConsentStatus, setConsentStatus } from "../src/lib/consent";
 import { POSTHOG_KEY } from "../src/lib/tracking/destination";
 import { setPostHogClient } from "../src/lib/posthog-client";
+import { GA_DENIED } from "../src/lib/tracking/ga";
 import { resetQueueForTests } from "../src/lib/tracking/queue";
 
 type StorageFailure = { getItem?: boolean; setItem?: boolean };
@@ -85,9 +86,15 @@ test("Google preserves early dataLayer events, configures once, and never grants
   env.release(); setConsentStatus("declined"); env.release();
   assert.equal(readiness.at(-1), false);
   assert.deepEqual(Array.from(env.fake.dataLayer.at(-1) as unknown as ArrayLike<unknown>),
-    ["consent", "update", { analytics_storage: "denied" }]);
-  setConsentStatus("accepted"); env.release(); stop();
-  const remount = startGoogleAnalytics("G-TEST-ONCE", () => {}); env.release(); remount();
+    ["consent", "update", GA_DENIED]);
+  assert.equal((env.fake as unknown as Record<string, unknown>)["ga-disable-G-TEST-ONCE"], true);
+  // gtag.js finishing its load after the decline configures nothing.
+  onGtagReady("G-TEST-ONCE");
+  assert.equal(env.fake.dataLayer.filter((entry) => entry[0] === "config").length, 0);
+  setConsentStatus("accepted"); env.release(); onGtagReady("G-TEST-ONCE"); stop();
+  const remount = startGoogleAnalytics("G-TEST-ONCE", () => {}); env.release(); onGtagReady("G-TEST-ONCE"); remount();
+  // The Consent Mode default is the first entry, ahead of the early lead.
+  assert.deepEqual(Array.from(env.fake.dataLayer[0] as unknown as ArrayLike<unknown>).slice(0, 2), ["consent", "default"]);
   assert.equal(env.fake.dataLayer.filter((entry) => entry[0] === "config").length, 1);
   assert.equal(env.fake.dataLayer.filter((entry) => entry[0] === "js").length, 1);
   assert.equal(env.fake.dataLayer.filter((entry) => entry === earlyLead).length, 1);

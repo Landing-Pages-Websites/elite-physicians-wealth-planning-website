@@ -1,5 +1,6 @@
 import { analyticsAllowedNow } from "@/lib/consent";
 import { TRACKING_ENABLED } from "@/lib/tracking/enabled";
+import { ensureGaConsentDefault, ga4Id } from "@/lib/tracking/ga";
 import { enqueueOrCapture, type QueueCaptureOptions } from "@/lib/tracking/queue";
 
 declare global {
@@ -17,6 +18,8 @@ export function pushDataLayer(entry: Record<string, unknown>): void {
   if (typeof window === "undefined" || !analyticsAllowedNow()) {
     return;
   }
+  // GA4 Consent Mode: the consent default must precede anything gtag.js reads.
+  ensureGaConsentDefault(window, ga4Id(), analyticsAllowedNow);
   window.dataLayer = window.dataLayer || [];
   window.dataLayer.push(entry);
 }

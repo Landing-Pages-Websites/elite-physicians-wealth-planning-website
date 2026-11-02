@@ -3,40 +3,31 @@
 import Script from "next/script";
 import { useEffect, useState, type ReactElement } from "react";
 import { subscribeAnalyticsReady } from "@/lib/analytics-readiness";
+import { analyticsAllowedNow } from "@/lib/consent";
+import { applyGaConsent, configureGaOnce, ga4Id } from "@/lib/tracking/ga";
 
-const GA4_ID = process.env.NEXT_PUBLIC_GA4_ID;
-const configured = new Set<string>();
+const GA4_ID = ga4Id();
 
-// This queue exists before SDK readiness so successful early leads remain queued.
-const QUEUE_BOOTSTRAP = `window.dataLayer = window.dataLayer || [];
-window.gtag = window.gtag || function gtag(){window.dataLayer.push(arguments);};`;
-
-function prepareQueue(): void {
-  window.dataLayer = window.dataLayer || [];
-  window.gtag = window.gtag || function gtag() {
-    // gtag uses Arguments objects, alongside the site's plain-object form events.
-    // eslint-disable-next-line prefer-rest-params -- Google requires its standard Arguments queue format.
-    window.dataLayer!.push(arguments as unknown as Record<string, unknown>);
-  };
-}
-
+/**
+ * Readiness only decides when gtag.js may load. Nothing is configured here:
+ * configuration waits for gtag.js itself (onGtagReady), so a decline that
+ * lands while it is loading never configures GA. Every time the consent store
+ * does not allow analytics, the property is disabled, because unmounting the
+ * Script does not stop a gtag.js that already loaded.
+ */
 export function startGoogleAnalytics(id: string, setReady: (ready: boolean) => void): () => void {
-  prepareQueue();
-  return subscribeAnalyticsReady(() => {
-    window.gtag?.("consent", "update", { analytics_storage: "granted" });
-    if (!configured.has(id)) {
-      configured.add(id);
-      window.gtag?.("js", new Date());
-      window.gtag?.("config", id);
-    }
-    setReady(true);
-  }, () => {
-    window.gtag?.("consent", "update", { analytics_storage: "denied" });
+  return subscribeAnalyticsReady(() => setReady(true), () => {
+    applyGaConsent(window, id, false);
     setReady(false);
   });
 }
 
-/** Keep the standard gtag URL/ID and bootstrap; defer only SDK execution. */
+/** next/script onReady: once per page, and only if consent still allows it then. */
+export function onGtagReady(id: string): void {
+  configureGaOnce(window, id, analyticsAllowedNow);
+}
+
+/** Keep the standard gtag URL/ID; defer only SDK execution. */
 export function GoogleAnalytics(): ReactElement | null {
   const [ready, setReady] = useState(false);
   useEffect(() => {
@@ -44,9 +35,10 @@ export function GoogleAnalytics(): ReactElement | null {
   }, []);
   if (!GA4_ID || !ready) return null;
   return (
-    <>
-      <Script id="ga4-init" strategy="afterInteractive">{QUEUE_BOOTSTRAP}</Script>
-      <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`} strategy="afterInteractive" />
-    </>
+    <Script
+      src={`https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`}
+      strategy="afterInteractive"
+      onReady={() => onGtagReady(GA4_ID)}
+    />
   );
 }
