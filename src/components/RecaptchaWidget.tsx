@@ -1,5 +1,6 @@
 "use client";
 
+import { executeWithDeadline } from "@/lib/captcha/recaptchaExecute";
 import { reportCaptchaUnavailable } from "@/lib/captcha/telemetry";
 import {
   forwardRef,
@@ -11,7 +12,6 @@ import {
 
 const SCRIPT_SRC =
   "https://www.google.com/recaptcha/enterprise.js?render=explicit";
-const EXECUTE_TIMEOUT_MS = 30_000;
 
 interface RecaptchaApi {
   ready: (cb: () => void) => void;
@@ -113,24 +113,19 @@ const RecaptchaWidget = forwardRef<RecaptchaHandle, RecaptchaWidgetProps>(
           reportCaptchaUnavailable("execute_failed", "recaptcha");
           return null;
         }
-        try {
-          // A fresh token per call. `reset` first so a retry after a failed
-          // submission does not re-present a token the server already consumed:
-          // a second assessment of the same token returns invalidReason DUPE.
+        // A fresh token per call. `reset` first so a retry after a failed
+        // submission does not re-present a token the server already consumed:
+        // a second assessment of the same token returns invalidReason DUPE.
+        const outcome = await executeWithDeadline(() => {
           api.reset(id);
-          return await Promise.race([
-            api.execute(id, { action }),
-            new Promise<null>((resolve) =>
-              setTimeout(() => {
-                reportCaptchaUnavailable("execute_timeout", "recaptcha");
-                resolve(null);
-              }, EXECUTE_TIMEOUT_MS),
-            ),
-          ]);
-        } catch {
-          reportCaptchaUnavailable("execute_failed", "recaptcha");
-          return null;
+          return api.execute(id, { action });
+        });
+        // Reported here, from the settled outcome, and nowhere else: a token
+        // that was issued must never also count as one that was not.
+        if (outcome.token === null) {
+          reportCaptchaUnavailable(outcome.reason, "recaptcha");
         }
+        return outcome.token;
       },
       reset: () => {
         const id = widgetIdRef.current;
@@ -181,9 +176,8 @@ const RecaptchaWidget = forwardRef<RecaptchaHandle, RecaptchaWidgetProps>(
         .catch(() => {
           // The dominant real-world case: an ad blocker, DNS sinkhole or
           // corporate firewall kept Google's script from loading at all. The
-          // visitor sees "could not complete the security check" and their
-          // lead never leaves the browser, so this counter is the only place
-          // that loss is visible.
+          // proof-of-work fallback still delivers the lead, labelled as not
+          // reCAPTCHA-verified, so this counts unverified sends, not losses.
           reportCaptchaUnavailable("script_blocked", "recaptcha");
           if (!cancelled) onReadyRef.current(false);
         });
