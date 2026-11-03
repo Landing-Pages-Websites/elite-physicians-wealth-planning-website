@@ -1,3 +1,5 @@
+import { installGaHitScrubber, reassertGaHitScrubber } from "./ga-transport";
+
 interface GtagTarget {
   gtag?: (...args: unknown[]) => void;
 }
@@ -42,8 +44,9 @@ const defaulted = new WeakSet<object>();
  * Makes `consent default` the first gtag command this page ever holds, and is
  * the only place `gtag` is defined. Every path that writes to GA4 (our
  * dataLayer writer, configuration, consent updates) calls it first, so no
- * config, event or update can precede the default. If another script wrote to
- * the dataLayer before gtag.js loaded, the default goes in front of it; once
+ * config, event or update can precede the default. Until gtag.js has loaded
+ * the default goes in front of whatever is queued, including entries from a
+ * gtag stub another script defined (gtag.js reads the queue in order). Once
  * gtag.js has loaded (it replaces dataLayer.push) it goes through gtag.
  */
 export function ensureGaConsentDefault(page: GtagPage, id: string | undefined, allowedNow: () => boolean): void {
@@ -52,7 +55,7 @@ export function ensureGaConsentDefault(page: GtagPage, id: string | undefined, a
   const dataLayer = (page.dataLayer ??= []);
   const command = gtagCommand("consent", "default", gaConsentDefault(allowedNow()));
   const gtagJsLoaded = dataLayer.push !== Array.prototype.push;
-  if (!gtagJsLoaded && !page.gtag) dataLayer.unshift(command);
+  if (!gtagJsLoaded) dataLayer.unshift(command);
   else if (page.gtag) page.gtag(...Array.from(command));
   else dataLayer.push(command);
   page.gtag ??= function gtag() {
@@ -91,15 +94,22 @@ const configured = new WeakSet<object>();
  * consent store allows analytics at that moment. Configuring at render would
  * run even when a decline landed while gtag.js was still loading. A later
  * remount (after a re-accept) configures a page that was never configured.
+ * In the browser the hit scrubber is installed first, so no GA4 hit (its
+ * own page_view and every enhanced measurement event) carries a URL that has
+ * not been through scrubUrl.
  */
 export function configureGaOnce(page: GtagPage, id: string | undefined, allowedNow: () => boolean): void {
   const property = id?.trim();
+  const browserPage = typeof window !== "undefined" && page === window;
+  // Every configure re-asserts the transports, in case a library restored an original it captured.
+  if (browserPage) reassertGaHitScrubber(window);
   if (!property || configured.has(page)) return;
   ensureGaConsentDefault(page, property, allowedNow);
   if (!allowedNow()) {
     applyGaConsent(page, property, false);
     return;
   }
+  if (browserPage) installGaHitScrubber(window);
   page.gtag?.("js", new Date());
   page.gtag?.("config", property);
   configured.add(page);

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useLayoutEffect, useRef, type ReactElement } from "react";
 import { createPortal } from "react-dom";
 import { BRAND } from "@/lib/content";
-import { siteConfig } from "@/lib/consent";
+import { siteConfig } from "@/site.config";
 import { consentHiddenInPreview } from "@/components/consent/previewHidden";
 import { raiseToTopLayer, shouldReraiseAfter } from "@/components/consent/topLayer";
 import { useConsent } from "@/components/consent/useConsent";
@@ -65,7 +65,7 @@ export function ConsentBanner(): ReactElement | null {
       aria-label="Cookie consent"
       data-mega-preview-hide=""
       data-mega-ignore=""
-      className="ph-no-capture fixed inset-x-0 top-auto bottom-0 z-[2147483000] m-0 h-auto w-full max-w-none overflow-visible border-0 border-t border-ink/10 bg-ivory p-4 font-body text-inherit shadow-lg"
+      className="ph-no-capture visible fixed inset-x-0 top-auto bottom-0 z-[2147483000] m-0 h-auto w-full max-w-none overflow-visible border-0 border-t border-ink/10 bg-ivory p-4 font-body text-inherit shadow-lg"
     >
       <div className="mx-auto flex max-w-3xl flex-col items-start gap-3 sm:flex-row sm:items-center">
         <p className="text-sm text-charcoal">

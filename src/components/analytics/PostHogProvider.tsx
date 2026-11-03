@@ -5,6 +5,7 @@ import { subscribeAnalyticsReady } from "@/lib/analytics-readiness";
 import { analyticsAllowedNow, getConsentStatus, isAnalyticsAllowed, subscribeToConsent } from "@/lib/consent";
 import { readStoredVisitorId } from "@/lib/megaLeadContext";
 import { getPostHogClient, setPostHogClient } from "@/lib/posthog-client";
+import { startAnswerTextMarking } from "@/lib/tracking/answer-text";
 import { pageTypeFor, superProperties } from "@/lib/tracking/contract";
 import { POSTHOG_KEY } from "@/lib/tracking/destination";
 import { TRACKING_ENABLED } from "@/lib/tracking/enabled";
@@ -34,6 +35,8 @@ function configurePostHog(posthog: PostHogInstance): void {
   expireStaleCookies((cookie) => {
     document.cookie = cookie;
   }, POSTHOG_KEY, window.location.hostname);
+  // Before init, so the recorder's first snapshot already blocks choice labels.
+  startAnswerTextMarking(document);
   posthog.init(POSTHOG_KEY, buildPostHogOptions(probePersistence(() => window.localStorage)));
   posthog.register(
     superProperties({
@@ -88,7 +91,7 @@ export function startPostHogAnalytics(load: LoadPostHog = () => import("posthog-
 /**
  * Lazy loader for the shared MEGA Websites project. Requires tracking enabled
  * for this deploy (src/lib/tracking/enabled.ts) AND allowed consent (per
- * consentMode in src/lib/consent.ts); then initializes after paint and idle,
+ * consentMode in src/site.config.ts); then initializes after paint and idle,
  * or on first interaction, and flushes events queued before init.
  */
 export function PostHogProvider(): null {

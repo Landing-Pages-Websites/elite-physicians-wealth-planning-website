@@ -8,6 +8,7 @@ class FakeDialog implements DialogLike {
   modal = false;
   connected = true;
   constructor(readonly name: string, readonly modalSupported = true) {}
+  get isConnected(): boolean { return this.connected; }
   hasAttribute(attr: string): boolean { return attr === "open" && this.open; }
   matches(selector: string): boolean {
     assert.equal(selector, ":modal");

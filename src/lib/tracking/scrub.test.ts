@@ -157,10 +157,11 @@ test("URL-named keys are anchored: security and during are left alone, url-ish k
   });
   assert.ok(out);
   const p = out.properties;
-  assert.equal(p.security, "a?b#c");
-  assert.equal(p.during, "x?y");
-  assert.equal(p.curious, "p?q");
-  assert.equal(p.hirefoo, "m?n");
+  // Not URL keys: the text rule strips the tail but keeps the token as written; a URL key would make it "/a".
+  assert.equal(p.security, "a");
+  assert.equal(p.during, "x");
+  assert.equal(p.curious, "p");
+  assert.equal(p.hirefoo, "m");
   assert.equal(p.$current_url, "/a");
   assert.equal(p.referrer, "/r");
   assert.equal(p.page_url, "/p");

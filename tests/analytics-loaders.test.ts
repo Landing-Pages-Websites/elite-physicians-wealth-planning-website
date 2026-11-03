@@ -1,41 +1,44 @@
 import assert from "node:assert/strict";
 import { afterEach, test } from "node:test";
 import type { PostHog } from "posthog-js";
-import { onGtagReady, startGoogleAnalytics } from "../src/components/analytics/GoogleAnalytics";
+import { startGoogleAnalytics } from "../src/components/analytics/DeferredGoogleAnalytics";
 import { startPostHogAnalytics } from "../src/components/analytics/PostHogProvider";
-import { CONSENT_STORAGE_KEY, getConsentStatus, setConsentStatus } from "../src/lib/consent";
+import { analyticsAllowedNow, CONSENT_STORAGE_KEY, getConsentStatus, setConsentStatus } from "../src/lib/consent";
 import { POSTHOG_KEY } from "../src/lib/tracking/destination";
 import { setPostHogClient } from "../src/lib/posthog-client";
-import { GA_DENIED } from "../src/lib/tracking/ga";
+import { configureGaOnce, GA_DENIED } from "../src/lib/tracking/ga";
 import { resetQueueForTests } from "../src/lib/tracking/queue";
+import { storageDouble } from "../src/lib/__fixtures__/storage-double";
+
+/** What the template GoogleAnalytics runs in the gtag.js Script onReady. */
+function onGtagReady(id: string): void {
+  configureGaOnce(window, id, analyticsAllowedNow);
+}
 
 type StorageFailure = { getItem?: boolean; setItem?: boolean };
 
 function browser(fails: StorageFailure = {}) {
-  let stored: string | null = null;
   let sequence = 0;
   const timers = new Map<number, () => void>();
   const target = new EventTarget();
-  const blocked = () => { throw new Error("SecurityError: storage is blocked"); };
   const fake = Object.assign(target, {
-    localStorage: {
-      getItem: () => (fails.getItem ? blocked() : stored),
-      setItem: (_key: string, value: string) => { if (fails.setItem) blocked(); stored = value; },
-      removeItem: () => {},
-    },
+    localStorage: storageDouble(null, { getThrows: fails.getItem, setThrows: fails.setItem }),
     location: { hostname: "example.test", pathname: "/", href: "https://example.test/" },
     setTimeout: (callback: () => void) => { timers.set(++sequence, callback); return sequence; },
     clearTimeout: (id: number) => { timers.delete(id); },
     dataLayer: [] as Record<string, unknown>[],
     gtag: undefined as Window["gtag"],
   });
-  Object.assign(globalThis, { window: fake, document: { cookie: "", fonts: { ready: new Promise(() => {}) } } });
+  // The document is just enough for PostHog's pre-init answer-text marking (no choice controls).
+  const document = { cookie: "", fonts: { ready: new Promise(() => {}) }, documentElement: {}, querySelectorAll: () => [] };
+  class MutationObserver { observe(): void {} disconnect(): void {} }
+  Object.assign(globalThis, { window: fake, document, MutationObserver });
   return {
     fake, timers,
     release() { for (const callback of [...timers.values()]) callback(); },
     /** Another tab writes the consent key: the browser fires `storage` here only. */
     otherTab(value: string) {
-      stored = value;
+      fake.localStorage.setItem(CONSENT_STORAGE_KEY, value);
       fake.dispatchEvent(Object.assign(new Event("storage"), {
         key: CONSENT_STORAGE_KEY, newValue: value, storageArea: fake.localStorage,
       }));
@@ -70,7 +73,7 @@ function posthogMock() {
 }
 
 afterEach(() => {
-  Reflect.deleteProperty(globalThis, "window"); Reflect.deleteProperty(globalThis, "document"); resetQueueForTests();
+  Reflect.deleteProperty(globalThis, "window"); Reflect.deleteProperty(globalThis, "document"); Reflect.deleteProperty(globalThis, "MutationObserver"); resetQueueForTests();
   setPostHogClient(null as unknown as PostHog);
 });
 

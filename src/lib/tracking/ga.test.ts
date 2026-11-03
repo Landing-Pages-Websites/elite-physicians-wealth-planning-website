@@ -15,7 +15,9 @@ test("a decline disables the GA4 property and denies every consent type", () => 
   const { win, calls } = target();
   applyGaConsent(win, "G-TEST1", false);
   assert.equal(win["ga-disable-G-TEST1"], true);
-  assert.deepEqual(calls, [["consent", "default", gaConsentDefault(false)], ["consent", "update", GA_DENIED]]);
+  // gtag.js has not loaded, so the default is queued at the front, then the update goes through gtag.
+  assert.deepEqual(Array.from((win.dataLayer as ArrayLike<unknown>[])[0]), ["consent", "default", gaConsentDefault(false)]);
+  assert.deepEqual(calls, [["consent", "update", GA_DENIED]]);
   assert.deepEqual(GA_DENIED, { analytics_storage: "denied", ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied" });
 });
 
@@ -162,4 +164,36 @@ test("a gtag the site runs itself, without our GA id, gets the update only", () 
   applyGaConsent(win, undefined, false);
   assert.deepEqual(calls, [["consent", "update", GA_DENIED]]);
   assert.deepEqual(Object.keys(win), ["gtag"]);
+});
+
+test("entries another script queued before gtag.js loads never precede the default", () => {
+  const stubCommand = (...args: unknown[]) => args;
+  const foreign: [string, (page: GtagPage) => void][] = [
+    ["a widget's object push", (page) => { page.dataLayer = [{ event: "widget_ready" }]; }],
+    ["a site snippet's own gtag stub with config", (page) => {
+      const layer: unknown[] = (page.dataLayer = []);
+      page.gtag = function () {
+        // eslint-disable-next-line prefer-rest-params
+        layer.push(arguments);
+      };
+      page.gtag("js", new Date());
+      page.gtag("config", "G-OTHER");
+    }],
+    ["an array-shaped command", (page) => { page.dataLayer = [stubCommand("event", "early")]; }],
+    ["nothing queued yet", () => undefined],
+  ];
+  for (const [label, queue] of foreign) {
+    for (const allowed of [true, false]) {
+      const page: GtagPage = {};
+      queue(page);
+      const queued = page.dataLayer?.length ?? 0;
+      // What GoogleAnalytics does while rendering, before its <Script> can preload gtag.js.
+      ensureGaConsentDefault(page, "G-TEST1", () => allowed);
+      const name = `${label}, allowed=${allowed}`;
+      assert.equal(page.dataLayer?.length, queued + 1, `${name}: foreign entries kept`);
+      assert.deepEqual(Array.from(page.dataLayer?.[0] as ArrayLike<unknown>), ["consent", "default", gaConsentDefault(allowed)], `${name}: default is entry 0 when gtag.js reads the queue`);
+      configureGaOnce(page, "G-TEST1", () => allowed);
+      assertDefaultFirst(page, name);
+    }
+  }
 });

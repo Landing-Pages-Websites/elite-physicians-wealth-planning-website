@@ -1,44 +1,52 @@
 "use client";
 
 import Script from "next/script";
-import { useEffect, useState, type ReactElement } from "react";
-import { subscribeAnalyticsReady } from "@/lib/analytics-readiness";
+import { useEffect, type ReactElement } from "react";
+import { useConsent } from "@/components/consent/useConsent";
 import { analyticsAllowedNow } from "@/lib/consent";
-import { applyGaConsent, configureGaOnce, ga4Id } from "@/lib/tracking/ga";
+import { TRACKING_ENABLED } from "@/lib/tracking/enabled";
+import { applyGaConsent, configureGaOnce, ensureGaConsentDefault, ga4Id } from "@/lib/tracking/ga";
+import { GA_HIT_DROPPED_EVENT, setGaDropReporter } from "@/lib/tracking/ga-transport";
+import { enqueueOrCapture } from "@/lib/tracking/queue";
 
 const GA4_ID = ga4Id();
 
+// A GA4 hit the scrubber could not read is not sent; PostHog hears about it once per page (reason only, consent-gated).
+setGaDropReporter((reason) => {
+  if (TRACKING_ENABLED && analyticsAllowedNow()) enqueueOrCapture(GA_HIT_DROPPED_EVENT, { reason });
+});
+
 /**
- * Readiness only decides when gtag.js may load. Nothing is configured here:
- * configuration waits for gtag.js itself (onGtagReady), so a decline that
- * lands while it is loading never configures GA. Every time the consent store
- * does not allow analytics, the property is disabled, because unmounting the
- * Script does not stop a gtag.js that already loaded.
+ * GA4 gtag loader. Renders nothing until NEXT_PUBLIC_GA4_ID is set (by the
+ * provisioning bot) AND consent allows analytics. The consent default is
+ * queued before the Script renders. gtag.js is configured in
+ * onReady, once per page, only if consent still allows it then: a decline that
+ * lands while gtag.js is loading never configures GA.
  */
-export function startGoogleAnalytics(id: string, setReady: (ready: boolean) => void): () => void {
-  return subscribeAnalyticsReady(() => setReady(true), () => {
-    applyGaConsent(window, id, false);
-    setReady(false);
-  });
-}
-
-/** next/script onReady: once per page, and only if consent still allows it then. */
-export function onGtagReady(id: string): void {
-  configureGaOnce(window, id, analyticsAllowedNow);
-}
-
-/** Keep the standard gtag URL/ID; defer only SDK execution. */
 export function GoogleAnalytics(): ReactElement | null {
-  const [ready, setReady] = useState(false);
+  const { analyticsAllowed } = useConsent();
+
+  // Unmounting the Script does not stop a gtag.js that already loaded, so the
+  // property is disabled whenever the consent store does not allow it now.
+  // analyticsAllowed is also false during hydration, so it is not used here.
   useEffect(() => {
-    if (GA4_ID) return startGoogleAnalytics(GA4_ID, setReady);
-  }, []);
-  if (!GA4_ID || !ready) return null;
+    if (GA4_ID && !analyticsAllowedNow()) applyGaConsent(window, GA4_ID, false);
+  }, [analyticsAllowed]);
+
+  if (!GA4_ID || !analyticsAllowed) {
+    return null;
+  }
+
+  // In the app router <Script> preloads gtag.js while it renders, so the
+  // consent default goes into the dataLayer here, before the Script below can
+  // render, ahead of anything another script queued. Idempotent per page.
+  if (typeof window !== "undefined") ensureGaConsentDefault(window, GA4_ID, analyticsAllowedNow);
+
   return (
     <Script
       src={`https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`}
       strategy="afterInteractive"
-      onReady={() => onGtagReady(GA4_ID)}
+      onReady={() => configureGaOnce(window, GA4_ID, analyticsAllowedNow)}
     />
   );
 }

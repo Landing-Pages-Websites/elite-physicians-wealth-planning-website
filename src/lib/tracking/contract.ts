@@ -7,6 +7,18 @@ export type TrackingEvent =
   | "contact_click" | "cta_click" | "section_viewed" | "form_started" | "form_field_completed"
   | "form_abandoned" | "form_error" | "lead_form_submit" | "outbound_click" | "file_download";
 
+/**
+ * Sent to PostHog only, at most once per page, when a GA4 hit could not be
+ * scrubbed and was therefore not sent (src/lib/tracking/ga-transport.ts).
+ * Its one property is `reason`; no URL or hit parameter is ever attached.
+ */
+export const GA_HIT_DROPPED_EVENT = "mega_ga_hit_dropped";
+/** transport_missing: a transport the scrubber must wrap was not found on its target or prototype chain. */
+export type GaDropReason = "site_search" | "unreadable_body" | "request_object" | "scrub_error" | "transport_missing";
+export interface GaHitDroppedProperties {
+  reason: Exclude<GaDropReason, "site_search">;
+}
+
 export type Placement = "header" | "footer" | "nav" | "section" | "inline";
 
 export interface ClickInput {

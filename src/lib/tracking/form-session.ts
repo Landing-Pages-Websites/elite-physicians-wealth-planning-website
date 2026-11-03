@@ -1,4 +1,5 @@
 import type { TrackingEvent } from "./contract";
+import type { FieldLabel } from "./field-privacy";
 
 export type LeaveReason = "hidden" | "left";
 
@@ -14,8 +15,16 @@ export interface TrackCall {
  */
 export const FORM_IN_FLIGHT_MAX_MS = 60_000;
 
+/** Who a field is, inside the page only: compared, never sent. */
+export type FieldKey = object | string;
+
+
 /**
- * State for one form on one page. Holds field names only, never values.
+ * State for one form on one page. Holds no values and sends no field names:
+ * a field is reported only by the label the caller derived for it
+ * (classifyField), and answer controls (checkboxes, radios, selects) are
+ * never reported individually, so neither "last field" nor "completed" can
+ * reveal a choice.
  *
  * The outcome of a submission the form handles itself is decided by the
  * server's answer, never by a navigation the form started: while one is in
@@ -29,25 +38,45 @@ export class FormSession {
   private inFlight = 0;
   private inFlightUntil = 0;
   private heldLeave: LeaveReason | null = null;
-  private lastField = "";
-  private readonly completed = new Set<string>();
+  private lastLabel: FieldLabel = null;
+  private readonly completed = new Set<FieldKey>();
 
   constructor(
     private readonly formKey: string,
     private readonly formPath = "",
   ) {}
 
-  focus(field: string): TrackCall[] {
-    this.lastField = field;
-    if (this.started) return [];
-    this.started = true;
-    return [{ event: "form_started", properties: { form_key: this.formKey, field } }];
+  /**
+   * A text-like field took focus. A field with no label (private, or one the
+   * caller could not classify) contributes nothing: no start, no last field.
+   */
+  focus(label: FieldLabel): TrackCall[] {
+    if (label === null) return [];
+    this.lastLabel = label;
+    return this.start(label);
   }
 
-  blur(field: string, hasValue: boolean): TrackCall[] {
-    if (!hasValue || this.completed.has(field)) return [];
-    this.completed.add(field);
-    return [{ event: "form_field_completed", properties: { form_key: this.formKey, field } }];
+  /**
+   * An answer control took focus. It starts the form and changes nothing
+   * else: the last field stays the last text field.
+   */
+  touchAnswer(): TrackCall[] {
+    return this.start(null);
+  }
+
+  /** A field with no label is never completed, so it never reaches fields_completed either. */
+  blur(key: FieldKey, label: FieldLabel, hasValue: boolean): TrackCall[] {
+    if (label === null || !hasValue || this.completed.has(key)) return [];
+    this.completed.add(key);
+    return [{ event: "form_field_completed", properties: { form_key: this.formKey, field: label } }];
+  }
+
+  private start(label: FieldLabel): TrackCall[] {
+    if (this.started) return [];
+    this.started = true;
+    const properties: Record<string, string> = { form_key: this.formKey };
+    if (label !== null) properties.field = label;
+    return [{ event: "form_started", properties }];
   }
 
   submitted(): void {
@@ -83,7 +112,12 @@ export class FormSession {
       return [];
     }
     this.abandonSent = true;
-    const properties: Record<string, string> = { form_key: this.formKey, last_field: this.lastField, reason };
+    const properties: Record<string, string> = {
+      form_key: this.formKey,
+      reason,
+      fields_completed: String(this.completed.size),
+    };
+    if (this.lastLabel !== null) properties.last_field = this.lastLabel;
     // A client-side route change sends this after the URL already moved on.
     if (this.formPath) properties.form_path = this.formPath;
     return [{ event: "form_abandoned", properties }];
