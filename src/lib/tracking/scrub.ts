@@ -10,23 +10,40 @@ const PLACEHOLDER_ORIGIN = "https://relative.invalid";
 const HAS_SCHEME = /^[a-z][a-z0-9+.-]*:/i;
 const WEB_URL = /^https?:\/\//i;
 
+const NO_EXTRA: ReadonlySet<string> = new Set();
+
 /**
- * Origin, path and allowlisted query only; the fragment is dropped. A relative
- * URL stays relative. Anything that cannot be parsed, or has no host, yields
- * an empty string rather than a partial value that might carry a query.
+ * The allowlisted campaign params of a query string (without its "?"), plus a
+ * destination's own extra keys (lower-case), lower-cased, as "?a=b" or "".
  */
-export function scrubUrl(raw: string): string {
+function keptQuery(search: string, extra: ReadonlySet<string> = NO_EXTRA): string {
+  const kept = new URLSearchParams();
+  for (const [key, value] of new URLSearchParams(search)) {
+    const name = key.toLowerCase();
+    if (KEPT_PARAMS.has(name) || extra.has(name)) kept.append(name, value);
+  }
+  const query = kept.toString();
+  return query ? `?${query}` : "";
+}
+
+/**
+ * Scheme, host, path and allowlisted query only; the fragment is dropped. A
+ * relative URL stays relative. Any scheme with a host (wss:, ftp:) keeps its
+ * scheme and host. Anything that cannot be parsed, or is absolute without a
+ * host (mailto:, tel:, javascript:), yields an empty string rather than a
+ * partial value that might carry a query. extraKept adds a destination's own
+ * keys (lower-case) to the allowlist; the default (every destination but one
+ * that says otherwise) keeps utm_* only.
+ */
+export function scrubUrl(raw: string, extraKept: ReadonlySet<string> = NO_EXTRA): string {
   if (!raw) return "";
   try {
     const url = new URL(raw, PLACEHOLDER_ORIGIN);
     const absolute = HAS_SCHEME.test(raw) || raw.startsWith("//");
-    if (absolute && !(url.protocol === "http:" || url.protocol === "https:")) return "";
-    const kept = new URLSearchParams();
-    for (const [key, value] of url.searchParams) {
-      if (KEPT_PARAMS.has(key.toLowerCase())) kept.append(key.toLowerCase(), value);
-    }
-    const query = kept.toString();
-    return (absolute ? url.origin : "") + url.pathname + (query ? `?${query}` : "");
+    const web = url.protocol === "http:" || url.protocol === "https:";
+    if (absolute && !web && !url.host) return "";
+    const prefix = !absolute ? "" : web ? url.origin : `${url.protocol}//${url.host}`;
+    return prefix + url.pathname + keptQuery(url.search, extraKept);
   } catch {
     return "";
   }
@@ -48,17 +65,62 @@ const TRUNCATED = "[truncated]";
 const URL_KEY = /(^|[_$-])(url|href|referrer|uri)$/i;
 const CAMEL_URL_KEY = /[a-z](Url|URL|Href|HREF|Referrer|Uri|URI)$/;
 const isUrlKey = (key: string): boolean => URL_KEY.test(key) || CAMEL_URL_KEY.test(key);
-const URL_IN_TEXT = /https?:\/\/[^\s"'<>)\]]+/gi;
+const URL_IN_TEXT = /\b[a-z][a-z0-9+.-]*:\/\/[^\s"'<>)\]]+/gi;
+/**
+ * A query or fragment attached to any token: scheme-less (www.x.test/?a=1),
+ * relative without a slash (thanks?a=1, thanks?a@b.co), or after closing
+ * punctuation ((https://x.test/a)?a=1), and a "?" followed by a space and a
+ * key=value (x.test/a? email=a@b.co). Fails toward stripping. Group 1 is the
+ * character before the tail, kept (no lookbehind: Safari before 16.4 cannot
+ * parse one, which would break every chunk importing this file).
+ */
+const QUERY_TAIL = /(^|[^\s?#])([?#][^\s"'<>]+|\?\s+[^\s"'<>]*=[^\s"'<>]*)/g;
+const PERCENT_ESCAPE = /%[0-9a-f]{2}/i;
+const MAX_DECODES = 3;
 
-/** Embedded absolute URLs are scrubbed wherever they sit in a string. A URL-named key also covers relative values. */
-function scrubString(value: string, key: string): string {
+function scrubTail(_match: string, before: string, tail: string): string {
+  return before + (tail.startsWith("#") ? "" : keptQuery(tail.slice(1).trim().split("#")[0]));
+}
+
+function scrubPlainText(value: string): string {
+  return value.replace(URL_IN_TEXT, (match) => scrubUrl(match)).replace(QUERY_TAIL, scrubTail);
+}
+
+/** A percent-encoded (or double-encoded) URL is judged decoded; if scrubbing changes it, the scrubbed decoded text replaces it. */
+function scrubEncoded(value: string): string {
+  let decoded = value;
+  for (let i = 0; i < MAX_DECODES && PERCENT_ESCAPE.test(decoded); i++) {
+    try {
+      decoded = decodeURIComponent(decoded.replace(/\+/g, " "));
+    } catch {
+      break;
+    }
+    const scrubbed = scrubPlainText(decoded);
+    if (scrubbed !== decoded) return scrubbed;
+  }
+  return value;
+}
+
+/**
+ * Embedded URLs (any scheme), query tails on any token and percent-encoded
+ * URLs are scrubbed wherever they sit in a string. A URL-named key also
+ * covers relative values.
+ */
+export function scrubText(value: string, key: string): string {
   if (isUrlKey(key) && (/[?#]/.test(value) || WEB_URL.test(value))) return scrubUrl(value);
-  return value.replace(URL_IN_TEXT, (match) => scrubUrl(match));
+  // Each pass can uncover another layer (a decoded URL holding an encoded one); a value still changing after the cap is dropped.
+  let current = value;
+  for (let pass = 0; pass <= MAX_DECODES; pass++) {
+    const next = scrubEncoded(scrubPlainText(current));
+    if (next === current) return current;
+    current = next;
+  }
+  return TRUNCATED;
 }
 
 /** Containers nested deeper than the cap are dropped rather than left unscrubbed. */
 function scrubValue(value: unknown, key: string, depth: number): unknown {
-  if (typeof value === "string") return scrubString(value, key);
+  if (typeof value === "string") return scrubText(value, key);
   if (typeof value !== "object" || value === null) return value;
   if (depth >= MAX_DEPTH) return TRUNCATED;
   // PerformanceEntry, Date and friends serialise through toJSON; scrub what would be sent.
@@ -93,7 +155,8 @@ function scrubSnapshots(events: unknown[]): unknown[] {
   });
 }
 
-function scrubProps(props: Record<string, unknown>): Record<string, unknown> {
+/** Every URL-shaped value in a property bag, scrubbed by shape (PostHog captures and GA4 dataLayer entries alike). */
+export function scrubProps(props: Record<string, unknown>): Record<string, unknown> {
   const out: Record<string, unknown> = {};
   for (const [key, value] of Object.entries(props)) {
     if (key === "$heatmap_data" && isRecord(value)) out[key] = scrubHeatmap(value);

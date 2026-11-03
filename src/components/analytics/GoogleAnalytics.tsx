@@ -1,52 +1,52 @@
 "use client";
 
 import Script from "next/script";
-import { useEffect, useState, type ReactElement } from "react";
-import { subscribeAnalyticsReady } from "@/lib/analytics-readiness";
+import { useEffect, type ReactElement } from "react";
+import { useConsent } from "@/components/consent/useConsent";
+import { analyticsAllowedNow } from "@/lib/consent";
+import { TRACKING_ENABLED } from "@/lib/tracking/enabled";
+import { applyGaConsent, configureGaOnce, ensureGaConsentDefault, ga4Id } from "@/lib/tracking/ga";
+import { GA_HIT_DROPPED_EVENT, setGaDropReporter } from "@/lib/tracking/ga-transport";
+import { enqueueOrCapture } from "@/lib/tracking/queue";
 
-const GA4_ID = process.env.NEXT_PUBLIC_GA4_ID;
-const configured = new Set<string>();
+const GA4_ID = ga4Id();
 
-// This queue exists before SDK readiness so successful early leads remain queued.
-const QUEUE_BOOTSTRAP = `window.dataLayer = window.dataLayer || [];
-window.gtag = window.gtag || function gtag(){window.dataLayer.push(arguments);};`;
+// A GA4 hit the scrubber could not read is not sent; PostHog hears about it once per page (reason only, consent-gated).
+setGaDropReporter((reason) => {
+  if (TRACKING_ENABLED && analyticsAllowedNow()) enqueueOrCapture(GA_HIT_DROPPED_EVENT, { reason });
+});
 
-function prepareQueue(): void {
-  window.dataLayer = window.dataLayer || [];
-  window.gtag = window.gtag || function gtag() {
-    // gtag uses Arguments objects, alongside the site's plain-object form events.
-    // eslint-disable-next-line prefer-rest-params -- Google requires its standard Arguments queue format.
-    window.dataLayer!.push(arguments as unknown as Record<string, unknown>);
-  };
-}
-
-export function startGoogleAnalytics(id: string, setReady: (ready: boolean) => void): () => void {
-  prepareQueue();
-  return subscribeAnalyticsReady(() => {
-    window.gtag?.("consent", "update", { analytics_storage: "granted" });
-    if (!configured.has(id)) {
-      configured.add(id);
-      window.gtag?.("js", new Date());
-      window.gtag?.("config", id);
-    }
-    setReady(true);
-  }, () => {
-    window.gtag?.("consent", "update", { analytics_storage: "denied" });
-    setReady(false);
-  });
-}
-
-/** Keep the standard gtag URL/ID and bootstrap; defer only SDK execution. */
+/**
+ * GA4 gtag loader. Renders nothing until NEXT_PUBLIC_GA4_ID is set (by the
+ * provisioning bot) AND consent allows analytics. The consent default is
+ * queued before the Script renders. gtag.js is configured in
+ * onReady, once per page, only if consent still allows it then: a decline that
+ * lands while gtag.js is loading never configures GA.
+ */
 export function GoogleAnalytics(): ReactElement | null {
-  const [ready, setReady] = useState(false);
+  const { analyticsAllowed } = useConsent();
+
+  // Unmounting the Script does not stop a gtag.js that already loaded, so the
+  // property is disabled whenever the consent store does not allow it now.
+  // analyticsAllowed is also false during hydration, so it is not used here.
   useEffect(() => {
-    if (GA4_ID) return startGoogleAnalytics(GA4_ID, setReady);
-  }, []);
-  if (!GA4_ID || !ready) return null;
+    if (GA4_ID && !analyticsAllowedNow()) applyGaConsent(window, GA4_ID, false);
+  }, [analyticsAllowed]);
+
+  if (!GA4_ID || !analyticsAllowed) {
+    return null;
+  }
+
+  // In the app router <Script> preloads gtag.js while it renders, so the
+  // consent default goes into the dataLayer here, before the Script below can
+  // render, ahead of anything another script queued. Idempotent per page.
+  if (typeof window !== "undefined") ensureGaConsentDefault(window, GA4_ID, analyticsAllowedNow);
+
   return (
-    <>
-      <Script id="ga4-init" strategy="afterInteractive">{QUEUE_BOOTSTRAP}</Script>
-      <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`} strategy="afterInteractive" />
-    </>
+    <Script
+      src={`https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`}
+      strategy="afterInteractive"
+      onReady={() => configureGaOnce(window, GA4_ID, analyticsAllowedNow)}
+    />
   );
 }

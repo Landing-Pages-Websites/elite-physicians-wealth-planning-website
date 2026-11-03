@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
+import { RECORDING_BLOCK_SELECTORS, UNCAPTURED_SELECTORS } from "./field-privacy.ts";
 import { buildPostHogOptions, expiredPostHogCookies, expireStaleCookies, probePersistence, REVIEWED_DEFAULTS } from "./posthog-options.ts";
 
 const TYPES_FILE = new URL("../../../node_modules/@posthog/types/dist/posthog-config.d.ts", import.meta.url);
@@ -109,7 +110,7 @@ test("features we do not use are pinned off and the ones we use are pinned on", 
   assert.deepEqual(o.error_tracking, { captureExtensionExceptions: false });
   assert.equal(o.opt_out_capturing_persistence_type, "localStorage");
   assert.equal(o.capture_heatmaps, true);
-  assert.equal(o.capture_dead_clicks, true);
+  assert.ok(o.capture_dead_clicks);
   assert.equal(o.capture_exceptions, true);
   assert.equal(o.disable_session_recording, false);
   assert.equal(o.disable_external_dependency_loading, false); // the recorder and exception bundles load from /ingest/static
@@ -118,11 +119,15 @@ test("features we do not use are pinned off and the ones we use are pinned on", 
   assert.equal(o.api_host, "/ingest");
 });
 
-test("recording masks inputs, blocks private elements and records no headers, bodies or canvas", () => {
+test("recording masks inputs, blocks choice controls, their labels and private elements, and records no headers, bodies or canvas", () => {
   const r = buildPostHogOptions().session_recording;
   assert.ok(r);
   assert.equal(r.maskAllInputs, true);
-  assert.equal(r.blockSelector, "[data-mega-private]");
+  assert.equal(r.blockSelector, RECORDING_BLOCK_SELECTORS.join(", "));
+  const blocked = r.blockSelector?.split(", ") ?? [];
+  for (const s of ["[data-mega-private]", "[data-mega-answer-text]", "[role~=checkbox i]", "[role~=switch i]", "[aria-checked]", "select", "option"]) assert.ok(blocked.includes(s), s);
+  // Form friction stays watchable: forms, text fields, textareas, labels and buttons are not blocked.
+  for (const s of ["form", "fieldset", "label", "input", "textarea", "button"]) assert.ok(!blocked.includes(s), s);
   assert.equal(r.recordHeaders, false);
   assert.equal(r.recordBody, false);
   assert.equal(r.streamNetworkBody, false);
@@ -140,8 +145,32 @@ test("performance capture is web vitals only, and PostHog logs are dropped clien
   assert.equal(o.logs?.captureConsoleLogs, false);
 });
 
+test("autocapture and dead clicks ignore every uncaptured region and keep posthog's own opt-outs", () => {
+  const o = buildPostHogOptions();
+  const auto = o.autocapture as { css_selector_ignorelist: string[] };
+  const dead = o.capture_dead_clicks as { css_selector_ignorelist: string[] };
+  assert.deepEqual(auto.css_selector_ignorelist, [".ph-no-autocapture", "[data-ph-no-autocapture]", ...UNCAPTURED_SELECTORS]);
+  assert.deepEqual(dead.css_selector_ignorelist, [".ph-no-deadclick", ".ph-no-capture", ...UNCAPTURED_SELECTORS]);
+  assert.notEqual(buildPostHogOptions().capture_dead_clicks, o.capture_dead_clicks, "posthog-js mutates this object, so each build gets its own");
+});
+
+const ELEMENT_EVENTS = ["$autocapture", "$rageclick", "$dead_click", "$copy_autocapture", "some_future_event"];
+
+test("before_send drops any element-describing event inside a form or answer control, by shape not by name", () => {
+  const before = buildPostHogOptions("memory", () => true).before_send as (c: unknown) => unknown;
+  for (const event of ELEMENT_EVENTS) {
+    const inForm = { uuid: "u", event, properties: { $elements_chain: 'label:text="I cannot work";form:nth-child="1"' } };
+    const checkbox = { uuid: "u", event, properties: { $elements: [{ tag_name: "input", attr__name: "hasDenial" }] } };
+    const link = { uuid: "u", event, properties: { $elements_chain: 'a:attr__href="/about"' } };
+    assert.equal(before(inForm), null, `${event}: form`);
+    assert.equal(before(checkbox), null, `${event}: checkbox`);
+    assert.notEqual(before(link), null, `${event}: link kept`);
+  }
+});
+
 test("every event goes through the scrubber", () => {
-  const before = buildPostHogOptions().before_send;
+  // Consent is passed explicitly so the scrubber is tested in every consentMode.
+  const before = buildPostHogOptions("localStorage", () => true).before_send;
   assert.equal(typeof before, "function");
   const out = (before as (c: unknown) => { properties: Record<string, string> })({ uuid: "u", event: "e", properties: { $current_url: "https://x.com/?email=a@b.co&utm_source=x" } });
   assert.equal(out.properties.$current_url, "https://x.com/?utm_source=x");

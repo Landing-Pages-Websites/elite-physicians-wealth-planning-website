@@ -1,3 +1,4 @@
+import { megaTagEvent } from "@/lib/megaTag";
 import { trackEvent } from "@/lib/track";
 
 /** Captcha-only telemetry adapter for this legacy site's existing trackers. */
@@ -10,12 +11,6 @@ export type CaptchaUnavailableReason =
   | "execute_timeout"
   | "execute_failed";
 
-interface CaptchaTrackers {
-  MegaTag?: {
-    trackEvent?: (name: string, properties: Record<string, unknown>) => void;
-  };
-}
-
 /** Best-effort and PII-free. Does not install or initialize any analytics. */
 export function reportCaptchaUnavailable(
   reason: CaptchaUnavailableReason,
@@ -23,8 +18,7 @@ export function reportCaptchaUnavailable(
 ): void {
   if (typeof window === "undefined") return;
   try {
-    const trackers = window as Window & CaptchaTrackers;
-    trackers.MegaTag?.trackEvent?.("captcha_unavailable", { reason, provider });
+    megaTagEvent("captcha_unavailable", { reason, provider });
     // GA4 and PostHog only through the consent-gated path.
     trackEvent("captcha_unavailable", { reason, provider });
   } catch {

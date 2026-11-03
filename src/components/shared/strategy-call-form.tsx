@@ -298,8 +298,10 @@ export function StrategyCallForm({
       <CaptchaWidget ref={captchaRef} onReady={setCaptchaReady} />
 
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+        {/* Inside a form only an explicit data-mega-cta reports a click. */}
         <button
           type="button"
+          data-mega-cta={submitLabel}
           onClick={handleRequest}
           disabled={status === "sending" || !captchaReady}
           className={`inline-flex shrink-0 items-center justify-center whitespace-nowrap rounded-sm px-6 py-3 font-body text-[15px] font-semibold transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60 ${

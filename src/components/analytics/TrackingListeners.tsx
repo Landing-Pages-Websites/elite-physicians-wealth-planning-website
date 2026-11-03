@@ -12,7 +12,15 @@ import {
   placementFrom,
 } from "@/lib/tracking/contract";
 import { TRACKING_ENABLED } from "@/lib/tracking/enabled";
+import { ANSWER_SELECTOR, classifyField, type FieldClass } from "@/lib/tracking/field-privacy";
 import { FormSession, leaveAll, type LeaveReason, type TrackCall } from "@/lib/tracking/form-session";
+import {
+  clickReportable,
+  isPrivate,
+  publicText,
+  sectionHeading,
+  sectionReportable,
+} from "@/lib/tracking/private-scope";
 import {
   FORM_SUBMIT_FAILED_EVENT,
   FORM_SUBMITTING_EVENT,
@@ -21,7 +29,6 @@ import {
 import { sectionVisible } from "@/lib/tracking/sections";
 
 const SECTION_SELECTOR = "section, [data-mega-section]";
-const HEADING_SELECTOR = "h1,h2,h3";
 const SECTION_THRESHOLDS = [0, 0.25, 0.5];
 const SECTION_DWELL_MS = 1000;
 // An abandon is often the last thing the page does, so it must not wait for a batch.
@@ -42,7 +49,7 @@ function sectionLabel(section: Element) {
   return labelFor({
     label: section.getAttribute("data-mega-section"),
     id: section.id || null,
-    heading: section.querySelector(HEADING_SELECTOR)?.textContent ?? null,
+    heading: sectionHeading(section),
     text: null,
   });
 }
@@ -50,27 +57,30 @@ function sectionLabel(section: Element) {
 function onClick(e: MouseEvent): void {
   const target = e.target instanceof Element ? e.target : null;
   const el = target?.closest("a, button, [data-mega-cta]");
-  if (!el || el.closest("[data-mega-ignore]")) return;
+  if (!target || !el || el.closest("[data-mega-ignore]")) return;
   const ctaScope = el.closest("[data-mega-cta]");
+  if (!clickReportable(target, el, ctaScope)) return;
   const button = el.closest("button");
+  // Never textContent: a private or answer descendant must not reach a label.
+  const text = publicText(el);
   const cta = ctaFor({
     ctaAttr: ctaScope?.getAttribute("data-mega-cta") ?? null,
     insideCta: ctaScope !== null,
     isButton: button !== null,
     toggle: button !== null && TOGGLE_ATTRIBUTES.some((a) => button.hasAttribute(a)),
     ignored: false,
-    text: el.textContent ?? "",
+    text,
   });
   const result = classifyClick({
     href: el.closest("a")?.getAttribute("href") ?? null,
     pageHost: window.location.host,
     ctaLabel: cta?.label ?? null,
-    text: el.textContent ?? "",
+    text,
     placement: placementFrom(ancestorTags(el)),
   });
   if (!result) return;
   const section = el.closest(SECTION_SELECTOR);
-  const label = section ? sectionLabel(section) : null;
+  const label = section && sectionReportable(section) ? sectionLabel(section) : null;
   trackEvent(result.event, {
     ...result.properties,
     ...(label ? { section: label.label } : {}),
@@ -79,6 +89,7 @@ function onClick(e: MouseEvent): void {
 }
 
 function reportSection(el: Element): void {
+  if (!sectionReportable(el)) return;
   const label = sectionLabel(el);
   if (!label) return;
   const index = Array.from(document.querySelectorAll(SECTION_SELECTOR)).indexOf(el);
@@ -158,6 +169,17 @@ function fieldOf(t: EventTarget | null): FormField | null {
     : null;
 }
 
+/** The field's name and value stay here; only its class leaves. */
+function classOf(f: FormField): FieldClass {
+  return classifyField({
+    answer: f.closest(ANSWER_SELECTOR) !== null,
+    private: isPrivate(f),
+    type: f.type,
+    name: f.name,
+    autocomplete: f.getAttribute("autocomplete") ?? "",
+  });
+}
+
 function emit(calls: TrackCall[]): void {
   for (const c of calls) {
     trackEvent(c.event, c.properties, c.event === "form_abandoned" ? ABANDON_OPTIONS : undefined);
@@ -185,14 +207,23 @@ function watchForms(sessions: FormSessions): () => void {
     }
     return s;
   };
-  // Field values are read only to learn whether the field is empty.
+  // A text field's value is read only to learn whether it is empty; an
+  // answer control's state is never read.
   const onFocus = (e: FocusEvent) => {
     const f = fieldOf(e.target);
-    if (f?.form && f.name) emit(sessionFor(f.form).focus(f.name));
+    if (!f?.form) return;
+    const c = classOf(f);
+    // A private field contributes nothing at all: no start, no count, no name.
+    if (c.kind === "private") return;
+    const session = sessionFor(f.form);
+    emit(c.kind === "answer" ? session.touchAnswer() : session.focus(c.label));
   };
   const onBlur = (e: FocusEvent) => {
     const f = fieldOf(e.target);
-    if (f?.form && f.name) emit(sessionFor(f.form).blur(f.name, f.value.trim() !== ""));
+    if (!f?.form) return;
+    const c = classOf(f);
+    if (c.kind !== "text") return;
+    emit(sessionFor(f.form).blur(f, c.label, f.value.trim() !== ""));
   };
   // A submit event is only an attempt. Whether it finished the form is read
   // after the whole dispatch, so a handler anywhere (React's root listener, a
@@ -250,7 +281,8 @@ function watchForms(sessions: FormSessions): () => void {
 /**
  * Site-wide tracking listeners. They exist only while tracking is enabled for
  * this deploy and analytics consent is allowed; values typed into forms are
- * never read beyond "is it empty".
+ * never read beyond "is it empty", and no event names a field, an option or
+ * an answer (src/lib/tracking/field-privacy.ts).
  */
 export function TrackingListeners(): null {
   const pathname = usePathname();

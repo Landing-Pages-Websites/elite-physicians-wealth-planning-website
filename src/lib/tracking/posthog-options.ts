@@ -1,6 +1,7 @@
 import type { PostHogConfig } from "posthog-js";
 import { analyticsAllowedNow } from "@/lib/consent";
 import { POSTHOG_UI_HOST } from "./destination";
+import { describesAnswerRegion, RECORDING_BLOCK_SELECTORS, UNCAPTURED_SELECTORS } from "./field-privacy";
 import { maskNetworkRequest, scrubCapture } from "./scrub";
 
 // Personal-data query keys PostHog should mask in its own copy of the URL;
@@ -93,8 +94,8 @@ export const REVIEWED_DEFAULTS: Record<string, Record<string, string>> = {
     upgrade: "legacy migration flag",
     detect_google_search_app: "default behaviour",
     session_idle_timeout_seconds: "default session idle timeout",
-    mask_all_element_attributes: "page text is public marketing copy, inputs are masked and private regions are data-mega-private",
-    mask_all_text: "page text is public marketing copy, inputs are masked and private regions are data-mega-private",
+    mask_all_element_attributes: "page text is public marketing copy; forms, fields, answer controls and data-mega-private regions are never described (UNCAPTURED_SELECTORS)",
+    mask_all_text: "page text is public marketing copy; forms, fields, answer controls and data-mega-private regions are never described (UNCAPTURED_SELECTORS)",
     scroll_root_selector: "default scroll root",
     process_person: "person_profiles is pinned",
     cookieless_mode: "cookieless mode needs a spike first (spec part 2)",
@@ -195,6 +196,23 @@ export function expireStaleCookies(write: (cookie: string) => void, token: strin
  * own opt-out flag is only a second line: it persists to localStorage, and when
  * every write throws it is silently lost and its capture keeps running.
  */
+/**
+ * posthog-js replaces its default ignore lists with a custom one, so the
+ * defaults are kept explicitly.
+ */
+const AUTOCAPTURE_DEFAULT_IGNORES = [".ph-no-autocapture", "[data-ph-no-autocapture]"];
+const DEAD_CLICK_DEFAULT_IGNORES = [".ph-no-deadclick", ".ph-no-capture"];
+
+/**
+ * The last line for events that describe an element: whatever an ignore list
+ * missed (dead clicks, a selector a browser could not match), an event whose
+ * element sits in a form, a field or a private region is dropped.
+ */
+function withoutAnswerRegions<T extends { properties?: Record<string, unknown> }>(capture: T | null): T | null {
+  if (!capture?.properties) return capture;
+  return describesAnswerRegion(capture.properties) ? null : capture;
+}
+
 export function buildPostHogOptions(
   persistence: PersistenceKind = "localStorage",
   consentAllowsNow: () => boolean = analyticsAllowedNow,
@@ -217,12 +235,15 @@ export function buildPostHogOptions(
     opt_out_capturing_persistence_type: "localStorage",
 
     // Capture we use.
-    autocapture: true,
+    // Clicks and changes inside forms, fields, answer controls and private
+    // regions are never autocaptured: their name, id and label text can be
+    // the visitor's answer. The site's own form events cover the funnel.
+    autocapture: { css_selector_ignorelist: [...AUTOCAPTURE_DEFAULT_IGNORES, ...UNCAPTURED_SELECTORS] },
     rageclick: true,
     capture_pageview: "history_change",
     capture_pageleave: "if_capture_pageview",
     capture_heatmaps: true,
-    capture_dead_clicks: true,
+    capture_dead_clicks: { css_selector_ignorelist: [...DEAD_CLICK_DEFAULT_IGNORES, ...UNCAPTURED_SELECTORS] },
     capture_exceptions: true,
     error_tracking: { captureExtensionExceptions: false },
     disableDeviceModel: true, // skips an experimental client-hints call
@@ -235,15 +256,19 @@ export function buildPostHogOptions(
     custom_personal_data_properties: PERSONAL_DATA_PARAMS,
     // Every event, $snapshot recordings included, passes through here (posthog-js
     // capture() drops a null). Consent is checked before anything is scrubbed.
-    before_send: (capture) => (consentAllowsNow() ? scrubCapture(capture) : null),
+    before_send: (capture) => (consentAllowsNow() ? scrubCapture(withoutAnswerRegions(capture)) : null),
 
     // Recording. What is recorded is pinned here. The sample rate and triggers
     // decide how much, and are project-controlled by design.
     disable_session_recording: false,
     enable_recording_console_log: false,
     session_recording: {
+      // maskAllInputs masks typed values but not a checkbox's or radio's
+      // checked state, a custom control's aria-checked, or option text, so
+      // every choice control and the text naming it is blocked. Text fields
+      // and layout stay visible to show form friction.
       maskAllInputs: true,
-      blockSelector: "[data-mega-private]",
+      blockSelector: RECORDING_BLOCK_SELECTORS.join(", "),
       // Headers and bodies can hold tokens and typed form data; never record them.
       recordHeaders: false,
       recordBody: false,

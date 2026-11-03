@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import "./globals.css";
-import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
+import { DeferredGoogleAnalytics } from "@/components/analytics/DeferredGoogleAnalytics";
 import { PostHogProvider } from "@/components/analytics/PostHogProvider";
 import { TrackingListeners } from "@/components/analytics/TrackingListeners";
 import { ConsentBanner } from "@/components/consent/ConsentBanner";
@@ -92,7 +92,7 @@ export default function RootLayout({
       <body>
         {children}
         <ConsentBanner />
-        <GoogleAnalytics />
+        <DeferredGoogleAnalytics />
         <PostHogProvider />
         <TrackingListeners />
       </body>
