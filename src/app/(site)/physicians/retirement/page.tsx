@@ -7,9 +7,9 @@ const ROUTE = "/physicians/retirement";
 const PAGE = getPage(ROUTE);
 
 export const metadata: Metadata = {
-  title: { absolute: "Physicians Approaching Retirement: Income and Tax Planning" },
+  title: { absolute: "Physician Retirement Planning | Elite Physicians" },
   description:
-    "Physicians approaching retirement can align income, taxes, Medicare, healthcare costs, and legacy goals in one coordinated plan. Schedule a strategy call.",
+    "Prepare for physician retirement with a coordinated strategy for income, taxes, healthcare, and legacy goals.",
   alternates: { canonical: ROUTE },
 };
 
