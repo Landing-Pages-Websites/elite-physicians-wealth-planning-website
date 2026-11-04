@@ -5,7 +5,7 @@ import { getPage } from "@/lib/pages";
 const ROUTE = "/physicians/practice-owners";
 
 export const metadata: Metadata = {
-  title: "Physician Practice Owner Planning | Elite Physicians",
+  title: { absolute: "Physician Practice Owner Planning | Elite Physicians" },
   description:
     "Connect practice cash flow, taxes, benefits, succession, and personal wealth with a coordinated plan for physician practice owners.",
   alternates: { canonical: ROUTE },

@@ -5,7 +5,7 @@ import { getPage } from "@/lib/pages";
 const ROUTE = "/physicians/residents-fellows";
 
 export const metadata: Metadata = {
-  title: "Resident & Fellow Financial Planning | Elite Physicians",
+  title: { absolute: "Resident & Fellow Financial Planning | Elite Physicians" },
   description:
     "Build a strong financial foundation for residency and fellowship with guidance on debt, benefits, taxes, protection, and long-term goals.",
   alternates: { canonical: ROUTE },
