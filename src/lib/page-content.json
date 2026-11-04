@@ -810,29 +810,64 @@
       },
       {
         "eyebrow": null,
-        "heading": "How is planning at this stage different from general financial advice?",
+        "heading": "How can I prepare financially for a practice valuation?",
         "level": 3,
         "href": null,
         "pending": false,
-        "paras": [],
+        "paras": [
+          "Start by organizing the financial statements, tax returns, compensation and owner-distribution records, major contracts, debt, equipment, and other operating information your valuation professional requests. Separately, map how a potential sale could affect your personal cash flow, taxes, retirement savings, insurance, and estate plan. A valuation is an input to planning, not a guarantee of a sale price or outcome.",
+          "For a starting framework, read Preparing Financially for the Sale or Transition of a Medical Practice."
+        ],
+        "items": [],
+        "inlineLinks": [
+          {
+            "label": "Preparing Financially for the Sale or Transition of a Medical Practice",
+            "href": "/blog/preparing-for-practice-sale"
+          }
+        ]
+      },
+      {
+        "eyebrow": null,
+        "heading": "How should I coordinate taxes when considering a practice sale?",
+        "level": 3,
+        "href": null,
+        "pending": false,
+        "paras": [
+          "Tax treatment can depend on the transaction structure, entity, asset allocation, residency, timing, and other facts. Work with your CPA or tax professional before signing an agreement to model potential tax effects and coordinate estimated payments, charitable or gifting decisions, retirement contributions, and the transition from practice income to personal income. Financial planning can help connect those scenarios to your broader goals, but it does not replace individualized tax or legal advice."
+        ],
         "items": []
       },
       {
         "eyebrow": null,
-        "heading": "Do you work only with physicians?",
+        "heading": "How do I plan retirement income after a practice sale?",
         "level": 3,
         "href": null,
         "pending": false,
-        "paras": [],
+        "paras": [
+          "Begin with a realistic post-sale spending and cash-flow estimate that includes healthcare, insurance, taxes, debt, family support, and any continuing work. Then compare potential income sources, investable assets, the timing of distributions, and the timing of Social Security or other benefits. The right approach depends on your assets, obligations, risk tolerance, and timeline; no investment or income result is guaranteed."
+        ],
         "items": []
       },
       {
         "eyebrow": null,
-        "heading": "How is the first conversation structured?",
+        "heading": "Who should be involved in a practice sale or transition?",
         "level": 3,
         "href": null,
         "pending": false,
-        "paras": [],
+        "paras": [
+          "A practice sale may require coordinated input from a valuation professional, attorney, CPA or other tax professional, and financial planner, along with other specialists as needed. Each professional has a distinct role: valuation supports an estimate of business value, legal counsel reviews documents and terms, tax professionals analyze tax consequences, and financial planning connects the transaction to personal cash flow, retirement, risk, and legacy goals. Coordination supports informed decisions, but each professional’s advice should be evaluated for your situation."
+        ],
+        "items": []
+      },
+      {
+        "eyebrow": null,
+        "heading": "Educational information",
+        "level": 3,
+        "href": null,
+        "pending": false,
+        "paras": [
+          "Educational information only. This FAQ is not individualized tax, legal, investment, valuation, or financial advice, and it does not promise any result. Consult qualified legal, tax, valuation, and financial professionals before acting on a practice sale or transition."
+        ],
         "items": []
       },
       {
