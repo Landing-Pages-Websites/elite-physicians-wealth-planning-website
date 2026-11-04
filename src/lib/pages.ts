@@ -59,6 +59,8 @@ export type PageSection = {
   readonly pending?: boolean;
   readonly paras: readonly string[];
   readonly items: readonly string[];
+  /** Inline links embedded in paragraph or list-item copy for this section. */
+  readonly inlineLinks?: readonly { readonly label: string; readonly href: string }[];
   /** Paragraphs that follow the list. The client's bios close a list and keep talking. */
   readonly after?: readonly string[];
   /** The words of the link to `href`, where the heading alone would make a poor anchor. */

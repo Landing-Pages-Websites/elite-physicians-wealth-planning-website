@@ -870,8 +870,14 @@
           "Portfolio, pension, retirement account, and Social Security coordination",
           "Tax-bracket and distribution planning with the tax professional",
           "Medicare and healthcare-cost planning",
-          "Long-term care and survivor planning",
+          "Long-term care and survivor planning for physician families",
           "Practice transition, charitable goals, and estate coordination"
+        ],
+        "inlineLinks": [
+          {
+            "label": "Long-term care and survivor planning for physician families",
+            "href": "/blog/long-term-care-survivor-planning"
+          }
         ]
       },
       {
@@ -883,8 +889,14 @@
         "paras": [],
         "items": [
           "Physician Retirement Readiness Scorecard — coming soon",
-          "Five Years to Retirement Checklist — coming soon",
+          "Five Years From Retirement: A Physician's Planning Checklist",
           "Legacy Conversation Guide — coming soon"
+        ],
+        "inlineLinks": [
+          {
+            "label": "Five Years From Retirement: A Physician's Planning Checklist",
+            "href": "/blog/five-years-from-retirement-checklist"
+          }
         ]
       },
       {
@@ -1242,7 +1254,13 @@
         "href": null,
         "pending": false,
         "paras": [
-          "The order in which assets are used can affect taxes, Medicare premiums, portfolio longevity, and the amount ultimately transferred to family or charity."
+          "The order in which assets are used can affect taxes, Medicare premiums, portfolio longevity, and the amount ultimately transferred to family or charity. For a deeper look, read our guide to tax-efficient retirement income strategy for physicians."
+        ],
+        "inlineLinks": [
+          {
+            "label": "tax-efficient retirement income strategy for physicians",
+            "href": "/blog/tax-efficient-retirement-physicians"
+          }
         ],
         "items": []
       },

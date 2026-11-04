@@ -73,7 +73,7 @@ export function PageSection({
                 key={para}
                 className="max-w-[68ch] font-body text-body-l leading-[1.68] text-charcoal not-first:mt-4"
               >
-                {para}
+                {renderInlineLinks(para, lead?.inlineLinks)}
               </p>
             ))}
 
@@ -86,7 +86,7 @@ export function PageSection({
                   >
                     <span aria-hidden="true" className="mt-2.5 h-px w-5 shrink-0 bg-gold" />
                     <span className="font-body text-body-m leading-[1.6] text-charcoal">
-                      {item}
+                      {renderInlineLinks(item, lead.inlineLinks)}
                     </span>
                   </li>
                 ))}
@@ -156,6 +156,30 @@ function AfterParas({
   );
 }
 
+function renderInlineLinks(
+  text: string,
+  links?: readonly { readonly label: string; readonly href: string }[],
+): React.ReactNode {
+  if (!links?.length) return text;
+
+  const matching = links.find(({ label }) => text.includes(label));
+  if (!matching) return text;
+
+  const [before, after] = text.split(matching.label);
+  return (
+    <>
+      {before}
+      <Link
+        href={matching.href}
+        className="underline decoration-gold/60 underline-offset-4 transition-colors hover:text-gold-text focus-visible:ring-2 focus-visible:ring-gold focus-visible:outline-none"
+      >
+        {matching.label}
+      </Link>
+      {after}
+    </>
+  );
+}
+
 function LeadLink({ href, label }: { href: string; label: string }): React.JSX.Element {
   return (
     <Link
@@ -206,7 +230,7 @@ function Subsection({ section }: { section: Section }): React.JSX.Element {
           key={para}
           className="mt-2 font-body text-body-m leading-[1.6] text-charcoal not-first:mt-2"
         >
-          {para}
+          {renderInlineLinks(para, section.inlineLinks)}
         </p>
       ))}
       {section.items.length ? (
@@ -214,7 +238,7 @@ function Subsection({ section }: { section: Section }): React.JSX.Element {
           {section.items.map((item) => (
             <li key={item} className="flex gap-3 font-body text-body-s leading-[1.55] text-charcoal">
               <span aria-hidden="true" className="mt-[0.7em] h-px w-3 shrink-0 bg-gold" />
-              {item}
+              {renderInlineLinks(item, section.inlineLinks)}
             </li>
           ))}
         </ul>
