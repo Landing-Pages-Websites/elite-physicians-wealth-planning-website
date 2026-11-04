@@ -1,14 +1,13 @@
 import type { Metadata } from "next";
 import { PageShell } from "@/components/pages/page-shell";
-import { getPage, metaTitle } from "@/lib/pages";
+import { getPage } from "@/lib/pages";
 
 const ROUTE = "/physicians/established";
 
-const PAGE = getPage(ROUTE);
-
 export const metadata: Metadata = {
-  title: metaTitle(PAGE),
-  description: PAGE.description,
+  title: "Established Physician Financial Planning | Elite",
+  description:
+    "Coordinate taxes, investments, protection, family goals, and retirement strategy as an established physician.",
   alternates: { canonical: ROUTE },
 };
 
