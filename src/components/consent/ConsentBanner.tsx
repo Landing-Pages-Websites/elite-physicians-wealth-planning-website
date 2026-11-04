@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useLayoutEffect, useRef, type ReactElement } from "react";
 import { createPortal } from "react-dom";
 import { BRAND } from "@/lib/content";
-import { siteConfig } from "@/site.config";
 import { consentHiddenInPreview } from "@/components/consent/previewHidden";
 import { raiseToTopLayer, shouldReraiseAfter } from "@/components/consent/topLayer";
 import { useConsent } from "@/components/consent/useConsent";
@@ -15,9 +14,10 @@ import { useOpenModalDialog } from "@/components/consent/useOpenModalDialog";
  * template bar in this site's colour and type tokens. Renders nothing once the
  * visitor has made a real choice (an unrecognised stored value asks again while
  * analytics stay off); analytics loaders react via the consent store. In
- * "us-default" mode the banner is informational (analytics already loading)
- * and the primary button reads "Got it"; in "strict" mode it's a true opt-in
- * gate and reads "Accept".
+ * "us-default" mode analytics already load before a choice; in "strict" mode
+ * nothing loads until Accept. In both modes the copy names analytics AND
+ * advertising, because an explicit Accept also grants Google ad consent;
+ * Decline turns both off.
  *
  * A visitor can always reach it, whatever overlay is open (see topLayer.ts):
  * it is a top-layer popover above every z-index (the Menu popover and its
@@ -27,7 +27,6 @@ import { useOpenModalDialog } from "@/components/consent/useOpenModalDialog";
  */
 export function ConsentBanner(): ReactElement | null {
   const { choiceNeeded, accept, decline } = useConsent();
-  const strict = siteConfig.consentMode === "strict";
   const modal = useOpenModalDialog();
   const barRef = useRef<HTMLDivElement>(null);
   const visible = choiceNeeded && !consentHiddenInPreview();
@@ -69,7 +68,7 @@ export function ConsentBanner(): ReactElement | null {
     >
       <div className="mx-auto flex max-w-3xl flex-col items-start gap-3 sm:flex-row sm:items-center">
         <p className="text-sm text-charcoal">
-          {BRAND.name} uses cookies for analytics to improve this site. See our{" "}
+          {BRAND.name} uses cookies for analytics and advertising, to improve this site and measure our ads. See our{" "}
           <Link href="/privacy-disclosures" className="underline underline-offset-4">
             privacy disclosures
           </Link>
@@ -79,15 +78,15 @@ export function ConsentBanner(): ReactElement | null {
           <button
             type="button"
             onClick={accept}
-            aria-label="Accept analytics cookies"
+            aria-label="Accept analytics and advertising cookies"
             className="rounded-sm bg-ink px-4 py-2 text-sm font-medium text-ivory hover:bg-ink-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-2 focus-visible:ring-offset-ivory"
           >
-            {strict ? "Accept" : "Got it"}
+            Accept cookies
           </button>
           <button
             type="button"
             onClick={decline}
-            aria-label="Decline analytics cookies"
+            aria-label="Decline analytics and advertising cookies"
             className="rounded-sm border border-ink/25 px-4 py-2 text-sm font-medium text-ink hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-2 focus-visible:ring-offset-ivory"
           >
             Decline
