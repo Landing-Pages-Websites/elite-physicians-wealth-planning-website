@@ -8,7 +8,7 @@ import type { ConsentMode } from "@/lib/tracking/consent-gate";
  *
  * Cookie-consent behavior.
  * - "us-default": analytics load immediately; the banner is informational
- *   ("Got it" / "Decline") and Decline is an opt-out.
+ *   ("Accept cookies" / "Decline") and Decline is an opt-out.
  * - "strict": nothing loads until the visitor clicks Accept.
  */
 export const siteConfig: { consentMode: ConsentMode } = { consentMode: "us-default" };
