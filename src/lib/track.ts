@@ -1,4 +1,4 @@
-import { analyticsAllowedNow } from "@/lib/consent";
+import { analyticsAllowedNow, gaConsentLevelNow } from "@/lib/consent";
 import { TRACKING_ENABLED } from "@/lib/tracking/enabled";
 import { ensureGaConsentDefault, ga4Id } from "@/lib/tracking/ga";
 import { reassertGaHitScrubber } from "@/lib/tracking/ga-transport";
@@ -22,7 +22,7 @@ export function pushDataLayer(entry: Record<string, unknown>): void {
     return;
   }
   // GA4 Consent Mode: the consent default must precede anything gtag.js reads.
-  ensureGaConsentDefault(window, ga4Id(), analyticsAllowedNow);
+  ensureGaConsentDefault(window, ga4Id(), gaConsentLevelNow);
   reassertGaHitScrubber(window);
   window.dataLayer = window.dataLayer || [];
   window.dataLayer.push(scrubProps(entry));

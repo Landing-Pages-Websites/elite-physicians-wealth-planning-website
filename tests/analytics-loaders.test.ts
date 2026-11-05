@@ -3,7 +3,7 @@ import { afterEach, test } from "node:test";
 import type { PostHog } from "posthog-js";
 import { startGoogleAnalytics } from "../src/components/analytics/DeferredGoogleAnalytics";
 import { startPostHogAnalytics } from "../src/components/analytics/PostHogProvider";
-import { analyticsAllowedNow, CONSENT_STORAGE_KEY, getConsentStatus, setConsentStatus } from "../src/lib/consent";
+import { CONSENT_STORAGE_KEY, gaConsentLevelNow, getConsentStatus, setConsentStatus } from "../src/lib/consent";
 import { POSTHOG_KEY } from "../src/lib/tracking/destination";
 import { setPostHogClient } from "../src/lib/posthog-client";
 import { configureGaOnce, GA_DENIED } from "../src/lib/tracking/ga";
@@ -12,7 +12,7 @@ import { storageDouble } from "../src/lib/__fixtures__/storage-double";
 
 /** What the template GoogleAnalytics runs in the gtag.js Script onReady. */
 function onGtagReady(id: string): void {
-  configureGaOnce(window, id, analyticsAllowedNow);
+  configureGaOnce(window, id, gaConsentLevelNow);
 }
 
 type StorageFailure = { getItem?: boolean; setItem?: boolean };

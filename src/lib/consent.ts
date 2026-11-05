@@ -47,7 +47,7 @@ import {
   type StoreSnapshot,
   type StoredChoice,
 } from "@/lib/consent-stores";
-import { consentGate } from "@/lib/tracking/consent-gate";
+import { consentGate, gaConsentLevel, type GaConsentLevel } from "@/lib/tracking/consent-gate";
 import { isConsentRevoked } from "@/lib/tracking/queue";
 import { siteConfig } from "@/site.config";
 
@@ -225,4 +225,13 @@ export function isAnalyticsAllowed(status: ConsentStatus): boolean {
 /** The gate every analytics write and the PostHog init re-check read at the moment they run. */
 export function analyticsAllowedNow(): boolean {
   return !isConsentRevoked() && isAnalyticsAllowed(getConsentStatus());
+}
+
+/**
+ * The Google consent level every Consent Mode default reads at the moment it
+ * is sent: "all" only for an explicit Accept this page can trust (the
+ * store's "accepted"), never while the decline latch is shut.
+ */
+export function gaConsentLevelNow(): GaConsentLevel {
+  return isConsentRevoked() ? "none" : gaConsentLevel(siteConfig.consentMode, getConsentStatus());
 }
