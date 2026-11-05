@@ -17,7 +17,7 @@ const GA4_ID = ga4Id();
  */
 export function startGoogleAnalytics(id: string, setReady: (ready: boolean) => void): () => void {
   return subscribeAnalyticsReady(() => setReady(true), () => {
-    applyGaConsent(window, id, false);
+    applyGaConsent(window, id, "none");
     setReady(false);
   });
 }

@@ -1,6 +1,8 @@
 import { getPostHogClient } from "@/lib/posthog-client";
+import { gaConsentLevel } from "@/lib/tracking/consent-gate";
 import { applyGaConsent, ga4Id } from "@/lib/tracking/ga";
 import { grantConsent, revokeConsent } from "@/lib/tracking/queue";
+import { siteConfig } from "@/site.config";
 
 declare global {
   interface Window {
@@ -15,16 +17,20 @@ declare global {
  */
 function optOutLoadedAnalytics(): void {
   revokeConsent();
-  applyGaConsent(window, ga4Id(), false);
+  applyGaConsent(window, ga4Id(), gaConsentLevel(siteConfig.consentMode, "declined"));
   const client = getPostHogClient();
   client?.opt_out_capturing();
   client?.stopSessionRecording();
 }
 
-/** A later Accept after a Decline lifts the latch and re-enables a client that was opted out. */
+/**
+ * An explicit Accept: grants Google every consent type, ads included, and a
+ * later Accept after a Decline lifts the latch and re-enables a client that
+ * was opted out.
+ */
 function optInLoadedAnalytics(): void {
   grantConsent();
-  applyGaConsent(window, ga4Id(), true);
+  applyGaConsent(window, ga4Id(), gaConsentLevel(siteConfig.consentMode, "accepted"));
   const client = getPostHogClient();
   if (!client?.has_opted_out_capturing()) return;
   client.opt_in_capturing();
