@@ -3,7 +3,7 @@
 import Script from "next/script";
 import { useEffect, type ReactElement } from "react";
 import { useConsent } from "@/components/consent/useConsent";
-import { analyticsAllowedNow } from "@/lib/consent";
+import { analyticsAllowedNow, gaConsentLevelNow } from "@/lib/consent";
 import { TRACKING_ENABLED } from "@/lib/tracking/enabled";
 import { applyGaConsent, configureGaOnce, ensureGaConsentDefault, ga4Id } from "@/lib/tracking/ga";
 import { GA_HIT_DROPPED_EVENT, setGaDropReporter } from "@/lib/tracking/ga-transport";
@@ -30,7 +30,7 @@ export function GoogleAnalytics(): ReactElement | null {
   // property is disabled whenever the consent store does not allow it now.
   // analyticsAllowed is also false during hydration, so it is not used here.
   useEffect(() => {
-    if (GA4_ID && !analyticsAllowedNow()) applyGaConsent(window, GA4_ID, false);
+    if (GA4_ID && !analyticsAllowedNow()) applyGaConsent(window, GA4_ID, "none");
   }, [analyticsAllowed]);
 
   if (!GA4_ID || !analyticsAllowed) {
@@ -40,13 +40,13 @@ export function GoogleAnalytics(): ReactElement | null {
   // In the app router <Script> preloads gtag.js while it renders, so the
   // consent default goes into the dataLayer here, before the Script below can
   // render, ahead of anything another script queued. Idempotent per page.
-  if (typeof window !== "undefined") ensureGaConsentDefault(window, GA4_ID, analyticsAllowedNow);
+  if (typeof window !== "undefined") ensureGaConsentDefault(window, GA4_ID, gaConsentLevelNow);
 
   return (
     <Script
       src={`https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`}
       strategy="afterInteractive"
-      onReady={() => configureGaOnce(window, GA4_ID, analyticsAllowedNow)}
+      onReady={() => configureGaOnce(window, GA4_ID, gaConsentLevelNow)}
     />
   );
 }
