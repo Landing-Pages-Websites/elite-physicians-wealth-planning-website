@@ -271,7 +271,7 @@ Review policies together, including any coverage through your employer. Check th
 
 Your plan may look different as you move from training to employment, take on practice ownership, change specialties, or approach retirement. Household needs can also shift with marriage, children, caregiving responsibilities, or a move. Schedule regular reviews to update your goals, savings targets, debt approach, and reserve levels.
 
-Use each review to check whether your financial choices still reflect your priorities. A compensation change may affect retirement contributions and tax estimates, while a practice purchase may alter your available cash or timeline for buying a home. Updating your plan as these decisions arise can help keep them connected. [Practice and business planning](https://elitephysicianwealthplanning.com/practice-owner-planning) can help physician owners weigh business decisions alongside household goals and long-term plans.
+Use each review to check whether your financial choices still reflect your priorities. A compensation change may affect retirement contributions and tax estimates, while a practice purchase may alter your available cash or timeline for buying a home. Updating your plan as these decisions arise can help keep them connected. [Practice and business planning](https://elitephysicianwealthplanning.com/practice-owner-planning) can help physician owners weigh business decisions alongside household goals and long-term plans. For physicians coordinating high earnings, practice decisions, and family goals, [financial planning for established physicians](https://elitephysicianswealthplanning.com/physicians/established) can help frame those priorities in one conversation.
 
 ## Coordinate and Review the Full Financial Plan
 

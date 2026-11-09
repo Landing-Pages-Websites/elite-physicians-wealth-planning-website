@@ -175,7 +175,7 @@ The taxable amount adds to your income for the year, which may already include p
 
 The pro-rata calculation generally includes traditional, SEP, and SIMPLE IRAs, but not assets held directly in employer-sponsored plans such as 401(k) or 403(b) accounts. This distinction may be useful if you have pre-tax IRA funds and your current employer’s plan accepts eligible rollovers. Moving eligible funds into a workplace plan may reduce the IRA balance considered in the calculation, depending on the timing and details of the transaction.
 
-Before taking action, confirm that the plan accepts incoming rollovers and ask which funds qualify. Review the plan’s fees, investment options, and procedures as well. Physicians with both employment and practice income may have several retirement plan options, so consider how a rollover fits into your broader [wealth management strategy](https://elitephysicianwealthplanning.com/wealth-management-for-physicians).
+Before taking action, confirm that the plan accepts incoming rollovers and ask which funds qualify. Review the plan’s fees, investment options, and procedures as well. Physicians with both employment and practice income may have several retirement plan options, so consider how a rollover fits into your broader [wealth management strategy](https://elitephysicianwealthplanning.com/wealth-management-for-physicians). If you are an established physician balancing retirement accounts with family and practice priorities, [financial planning for established physicians](https://elitephysicianswealthplanning.com/physicians/established) offers a broader way to connect this decision with the rest of your plan.
 
 ### Consider eligible rollovers to an employer plan before converting
 
