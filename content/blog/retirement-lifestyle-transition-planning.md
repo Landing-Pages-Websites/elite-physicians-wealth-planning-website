@@ -165,7 +165,7 @@ Retirement changes more than your work schedule. For many physicians, clinical p
 
 Give this personal transition the same attention you give financial decisions. Consider what you want your days to include, which parts of medicine you’ll miss, and where you might find purpose and connection. Thinking through these questions early can help you build a routine before your final day at work.
 
-Talk about your plans with people close to you. Your spouse or partner may have different expectations for how you’ll spend your time, while colleagues may help you explore ways to reduce your workload gradually. A physician-focused [retirement strategy](https://elitephysicianwealthplanning.com/retirement-planning-for-physicians) can connect your lifestyle priorities with decisions about retirement timing, income, and practice responsibilities.
+Talk about your plans with people close to you. Your spouse or partner may have different expectations for how you’ll spend your time, while colleagues may help you explore ways to reduce your workload gradually. A physician-focused [retirement strategy](https://elitephysicianwealthplanning.com/retirement-planning-for-physicians) can connect your lifestyle priorities with decisions about retirement timing, income, and practice responsibilities. Established physicians can also explore [financial planning for established physicians](https://elitephysicianswealthplanning.com/physicians/established) to connect those retirement decisions with taxes, investments, protection, and family goals.
 
 ### Anticipate Changes in Identity, Purpose, and Daily Structure
 
