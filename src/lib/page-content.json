@@ -291,6 +291,176 @@
     ],
     "sourceUrl": "https://elitephysicianwealthplanning.com/"
   },
+
+  "/physicians/white-plains-md": {
+    "slug": "/physicians/white-plains-md",
+    "title": "White Plains Physician Financial Planning | Elite Physicians",
+    "description": "Physician financial planning for White Plains, Maryland and the Mid-Atlantic, with coordinated tax, wealth, retirement, practice, and legacy guidance.",
+    "eyebrow": null,
+    "headline": "Physician Financial Planning for White Plains and the Mid-Atlantic",
+    "lede": "For physicians in White Plains, Maryland and across the Mid-Atlantic, financial decisions rarely stay in one lane. A tax choice can shape investments, retirement income, practice decisions, and the legacy you are building. Elite Physicians Wealth Planning helps connect those decisions through the Elite Physician Wealth Blueprint™.",
+    "sections": [
+      {
+        "eyebrow": null,
+        "heading": "A coordinated strategy for the decisions around your practice and life",
+        "level": 2,
+        "href": null,
+        "pending": false,
+        "paras": [
+          "Your career stage, practice structure, family priorities, and long-term goals all affect the financial choices in front of you. The goal is not to add another disconnected task to your calendar. It is to create a clear strategy for the questions that deserve to be considered together."
+        ],
+        "items": []
+      },
+      {
+        "eyebrow": null,
+        "heading": "Five planning areas, connected",
+        "level": 2,
+        "href": "/services",
+        "linkLabel": "Explore all services",
+        "pending": false,
+        "paras": [],
+        "items": []
+      },
+      {
+        "eyebrow": null,
+        "heading": "Tax Strategy",
+        "level": 3,
+        "href": "/services/tax-planning",
+        "pending": false,
+        "paras": [
+          "Identify tax-planning questions that may affect retirement contributions, income timing, investments, charitable giving, or practice decisions, then coordinate those conversations with your qualified tax professionals."
+        ],
+        "items": []
+      },
+      {
+        "eyebrow": null,
+        "heading": "Retirement Strategy",
+        "level": 3,
+        "href": "/services/retirement-planning",
+        "pending": false,
+        "paras": [
+          "Connect savings, retirement income, taxes, healthcare costs, investment risk, and legacy priorities into a strategy that reflects the life you want after or alongside your medical career."
+        ],
+        "items": []
+      },
+      {
+        "eyebrow": null,
+        "heading": "Wealth Management",
+        "level": 3,
+        "href": "/services/wealth-management",
+        "pending": false,
+        "paras": [
+          "Design and monitor an investment approach around your goals, risk tolerance, cash-flow needs, time horizon, and tax situation."
+        ],
+        "items": []
+      },
+      {
+        "eyebrow": null,
+        "heading": "Practice & Business Planning",
+        "level": 3,
+        "href": "/services/practice-owner-planning",
+        "pending": false,
+        "paras": [
+          "For practice owners and future owners, connect business cash flow, retirement plans, employee benefits, succession questions, compensation structure, and personal wealth decisions."
+        ],
+        "items": []
+      },
+      {
+        "eyebrow": null,
+        "heading": "Legacy Planning",
+        "level": 3,
+        "href": "/services/legacy-estate-planning",
+        "pending": false,
+        "paras": [
+          "Coordinate estate-planning conversations with qualified legal advisors and review beneficiary designations, family wealth-transfer goals, charitable giving, and risk-management considerations."
+        ],
+        "items": []
+      },
+      {
+        "eyebrow": null,
+        "heading": "Support at every career stage",
+        "level": 2,
+        "href": null,
+        "pending": false,
+        "paras": [
+          "The right starting point depends on where you are in medicine. Explore the physician planning paths for residents and fellows, established physicians, practice owners and partners, and physicians approaching retirement."
+        ],
+        "items": []
+      },
+      {
+        "eyebrow": null,
+        "heading": "Residents & Fellows",
+        "level": 3,
+        "href": "/physicians/residents-fellows",
+        "pending": false,
+        "paras": [],
+        "items": []
+      },
+      {
+        "eyebrow": null,
+        "heading": "Established Physicians",
+        "level": 3,
+        "href": "/physicians/established",
+        "pending": false,
+        "paras": [],
+        "items": []
+      },
+      {
+        "eyebrow": null,
+        "heading": "Practice Owners & Partners",
+        "level": 3,
+        "href": "/physicians/practice-owners",
+        "pending": false,
+        "paras": [],
+        "items": []
+      },
+      {
+        "eyebrow": null,
+        "heading": "Physicians Approaching Retirement",
+        "level": 3,
+        "href": "/physicians/retirement",
+        "pending": false,
+        "paras": [],
+        "items": []
+      },
+      {
+        "eyebrow": null,
+        "heading": "White Plains focus with virtual flexibility",
+        "level": 2,
+        "href": null,
+        "pending": false,
+        "paras": [
+          "Local context matters, but your planning relationship should not be limited by a particular office location. Elite Physicians Wealth Planning offers physician-focused guidance virtually, making it possible to continue the conversation as your practice, career, or family circumstances change across White Plains, Maryland and the surrounding Mid-Atlantic market."
+        ],
+        "items": []
+      },
+      {
+        "eyebrow": null,
+        "heading": "A clear place to start",
+        "level": 2,
+        "href": null,
+        "pending": false,
+        "paras": [
+          "Begin with a private conversation about your goals, current planning concerns, and whether Elite Physicians Wealth Planning may be a fit for your needs. Learn about the Elite Physician Wealth Blueprint™ process, then request a private consultation."
+        ],
+        "items": [],
+        "inlineLinks": [
+          {
+            "label": "Elite Physician Wealth Blueprint™ process",
+            "href": "/our-process"
+          },
+          {
+            "label": "request a private consultation",
+            "href": "/consultation"
+          }
+        ]
+      }
+    ],
+    "sourceUrl": "https://elitephysicianswealthplanning.com/physicians/white-plains-md",
+    "disclosure": [
+      "Educational information only. This page is not individualized tax, legal, or investment advice. Consult qualified professionals about your circumstances."
+    ]
+  },
   "/physicians": {
     "slug": "/physicians",
     "title": "Who We Help",
