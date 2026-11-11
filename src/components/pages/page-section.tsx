@@ -162,22 +162,38 @@ function renderInlineLinks(
 ): React.ReactNode {
   if (!links?.length) return text;
 
-  const matching = links.find(({ label }) => text.includes(label));
-  if (!matching) return text;
+  const parts: React.ReactNode[] = [];
+  let cursor = 0;
+  let partIndex = 0;
 
-  const [before, after] = text.split(matching.label);
-  return (
-    <>
-      {before}
+  while (cursor < text.length) {
+    let matching: { label: string; href: string } | undefined;
+    let matchStart = text.length;
+    for (const link of links) {
+      const start = text.indexOf(link.label, cursor);
+      if (start >= 0 && start < matchStart) {
+        matching = link;
+        matchStart = start;
+      }
+    }
+
+    if (!matching) break;
+    if (matchStart > cursor) parts.push(text.slice(cursor, matchStart));
+    parts.push(
       <Link
+        key={`${matching.href}-${partIndex++}`}
         href={matching.href}
         className="underline decoration-gold/60 underline-offset-4 transition-colors hover:text-gold-text focus-visible:ring-2 focus-visible:ring-gold focus-visible:outline-none"
       >
         {matching.label}
-      </Link>
-      {after}
-    </>
-  );
+      </Link>,
+    );
+    cursor = matchStart + matching.label.length;
+  }
+
+  if (!parts.length) return text;
+  if (cursor < text.length) parts.push(text.slice(cursor));
+  return <>{parts}</>;
 }
 
 function LeadLink({ href, label }: { href: string; label: string }): React.JSX.Element {
