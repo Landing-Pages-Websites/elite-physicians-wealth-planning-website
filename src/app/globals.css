@@ -369,7 +369,11 @@ header :focus-visible,
   @supports (animation-timeline: view()) {
     /* Entry: content rises as its band comes into view. */
     .va-reveal {
-      animation: va-rise 0.7s var(--ease-out) both;
+      /* Keep content visible before its view timeline enters the range. A
+         backwards fill would apply va-rise's opacity:0 to the whole page
+         until the visitor manually scrolled each section into view, which
+         made full-page captures and non-scrolling visitors see blank bands. */
+      animation: va-rise 0.7s var(--ease-out) none;
       animation-timeline: view();
       animation-range: entry 0% entry 38%;
     }
@@ -378,7 +382,7 @@ header :focus-visible,
        as a shifted range, not animation-delay: a time delay against a scroll
        timeline stalls the whole sequence if the reader scrolls fast. */
     .va-stagger > * {
-      animation: va-rise 0.55s var(--ease-out) both;
+      animation: va-rise 0.55s var(--ease-out) none;
       animation-timeline: view();
       animation-range: entry 0% entry 30%;
     }
