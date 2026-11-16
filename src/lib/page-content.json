@@ -520,9 +520,15 @@
         "href": null,
         "pending": false,
         "paras": [
-          "Schedule a confidential introductory call to discuss your goals, current planning concerns, and whether Elite Physicians Wealth Planning™ may be a fit for your needs."
+          "Schedule a confidential introductory call to discuss your goals, current planning concerns, and whether Elite Physicians Wealth Planning™ may be a fit for your needs. If you are looking for physician financial planning in White Plains, explore our local and Mid-Atlantic planning approach."
         ],
         "items": [],
+        "inlineLinks": [
+          {
+            "label": "physician financial planning in White Plains",
+            "href": "/physicians/white-plains-md"
+          }
+        ],
         "isCta": true
       }
     ],
