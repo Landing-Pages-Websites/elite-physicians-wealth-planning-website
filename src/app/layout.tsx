@@ -66,6 +66,24 @@ const ORGANIZATION_LD = {
   },
 } as const;
 
+const SERVICE_LD = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": "https://elitephysicianswealthplanning.com/#physician-focused-planning",
+  name: "Physician-focused planning",
+  description:
+    "Elite Physicians Wealth Planning helps physicians and medical professionals coordinate tax planning, retirement planning, wealth management, practice planning, and legacy planning into one clear financial strategy.",
+  serviceType: "Financial planning",
+  provider: {
+    "@id": "https://elitephysicianswealthplanning.com/#organization",
+  },
+  audience: {
+    "@type": "Audience",
+    audienceType: "physicians and medical professionals",
+  },
+  url: "https://elitephysicianswealthplanning.com/",
+} as const;
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: ReactNode }>): React.JSX.Element {
@@ -82,6 +100,10 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(ORGANIZATION_LD) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(SERVICE_LD) }}
         />
         <script
           src="https://app.gomega.ai/review-bridge/latest/review-bridge.js"
