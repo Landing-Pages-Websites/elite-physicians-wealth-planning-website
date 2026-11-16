@@ -1,6 +1,7 @@
 import { PageCta } from "./page-cta";
 import { PageHero } from "./page-hero";
 import { ChildIndex, type ChildLink } from "./child-index";
+import { PhysicianAdvisorSection } from "./physician-advisor-section";
 import { heroImageFor } from "@/lib/hero-images";
 import { bodySections, ctaSection, getPage } from "@/lib/pages";
 
@@ -51,6 +52,7 @@ export function FamilyIndexPage({
         ]}
       />
       <ChildIndex eyebrow={eyebrow} links={links} />
+      {route === "/physicians" ? <PhysicianAdvisorSection /> : null}
       {cta ? <PageCta section={cta} /> : null}
     </main>
   );
