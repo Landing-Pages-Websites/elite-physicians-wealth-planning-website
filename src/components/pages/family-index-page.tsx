@@ -25,10 +25,14 @@ export function FamilyIndexPage({
   route,
   label,
   eyebrow,
+  headingHierarchy = false,
+  ctaActionLabel,
 }: {
   route: string;
   label: string;
   eyebrow: string;
+  headingHierarchy?: boolean;
+  ctaActionLabel?: string;
 }): React.JSX.Element {
   const page = getPage(route);
   const cta = ctaSection(page);
@@ -51,9 +55,13 @@ export function FamilyIndexPage({
           { href: route, label },
         ]}
       />
-      <ChildIndex eyebrow={eyebrow} links={links} />
+      <ChildIndex
+        eyebrow={eyebrow}
+        links={links}
+        headingHierarchy={headingHierarchy}
+      />
       {route === "/physicians" ? <PhysicianAdvisorSection /> : null}
-      {cta ? <PageCta section={cta} /> : null}
+      {cta ? <PageCta section={cta} actionLabel={ctaActionLabel} /> : null}
     </main>
   );
 }

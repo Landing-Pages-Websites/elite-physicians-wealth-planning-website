@@ -82,7 +82,9 @@ export default function Page(): React.JSX.Element {
       <FamilyIndexPage
         route={ROUTE}
         label="Services"
-        eyebrow="Six planning disciplines"
+        eyebrow="Six planning disciplines for physicians"
+        headingHierarchy
+        ctaActionLabel="Schedule Your Complimentary 30-Minute Strategy Call"
       />
     </>
   );

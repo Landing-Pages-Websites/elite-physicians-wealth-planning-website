@@ -22,16 +22,24 @@ export type ChildLink = {
 export function ChildIndex({
   eyebrow,
   links,
+  headingHierarchy = false,
 }: {
   eyebrow: string;
   links: readonly ChildLink[];
+  headingHierarchy?: boolean;
 }): React.JSX.Element {
   return (
     <section data-mega-section="child-pages" className="bg-white">
       <div className="va-shell py-12 lg:py-16">
-        <p className="font-body text-[11px] font-semibold tracking-[0.24em] text-gold-text uppercase">
-          {eyebrow}
-        </p>
+        {headingHierarchy ? (
+          <h2 className="font-body text-[11px] font-semibold tracking-[0.24em] text-gold-text uppercase">
+            {eyebrow}
+          </h2>
+        ) : (
+          <p className="font-body text-[11px] font-semibold tracking-[0.24em] text-gold-text uppercase">
+            {eyebrow}
+          </p>
+        )}
         {/* Capped so the arrow stays related to its own row: at full shell width
             the affordance sat ~700px from the text it belonged to. */}
         <ul className="va-stagger mt-7 max-w-[62rem] border-t border-ink/12">
@@ -41,14 +49,20 @@ export function ChildIndex({
                 href={child.href}
                 className="va-row group flex items-start gap-6 py-6 pl-4 hover:bg-ivory focus-visible:ring-2 focus-visible:ring-gold focus-visible:outline-none lg:gap-10"
               >
-                <span className="min-w-0 flex-1">
-                  <span className="block font-display text-display-s leading-[1.2] font-medium text-ink transition-colors duration-200 group-hover:text-gold-text">
-                    {child.label}
-                  </span>
+                <div className="min-w-0 flex-1">
+                  {headingHierarchy ? (
+                    <h3 className="block font-display text-display-s leading-[1.2] font-medium text-ink transition-colors duration-200 group-hover:text-gold-text">
+                      {child.label}
+                    </h3>
+                  ) : (
+                    <span className="block font-display text-display-s leading-[1.2] font-medium text-ink transition-colors duration-200 group-hover:text-gold-text">
+                      {child.label}
+                    </span>
+                  )}
                   <span className="mt-2 block max-w-[62ch] font-body text-body-m leading-[1.6] text-charcoal">
                     {child.note}
                   </span>
-                </span>
+                </div>
                 <ArrowRightIcon aria-hidden="true" className="mt-2 h-4 w-4 shrink-0 text-gold transition-transform duration-200 group-hover:translate-x-1" />
               </Link>
             </li>
