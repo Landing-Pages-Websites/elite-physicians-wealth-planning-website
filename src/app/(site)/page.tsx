@@ -42,6 +42,13 @@ export default function HomePage(): React.JSX.Element {
       <AccountablePlanner />
       <NextDecision />
       <StrategyCall />
+      <section data-mega-probe="20261118-8a7790">
+        <h2>MEGA capability check 20261118-8a7790</h2>
+        <p>
+          <a href="https://www.elitephysicianswealthplanning.com/?mega-probe-link=20261118-8a7790">MEGA probe internal link</a>{" "}
+          <a href="https://www.elitephysicianswealthplanning.com/?mega-probe-cta=20261118-8a7790">MEGA probe call to action</a>
+        </p>
+      </section>
     </main>
   );
 }

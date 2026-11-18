@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/mega-capability-check-20261118-8a7790-redirect",
+      "destination": "/?mega-probe-redirect=20261118-8a7790",
+      "permanent": false
+    }
+  ]
+}
