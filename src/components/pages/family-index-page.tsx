@@ -2,6 +2,7 @@ import { PageCta } from "./page-cta";
 import { PageHero } from "./page-hero";
 import { ChildIndex, type ChildLink } from "./child-index";
 import { PhysicianAdvisorSection } from "./physician-advisor-section";
+import { PhysicianBuyerQuestions } from "./physician-buyer-questions";
 import { heroImageFor } from "@/lib/hero-images";
 import { bodySections, ctaSection, getPage } from "@/lib/pages";
 
@@ -61,6 +62,7 @@ export function FamilyIndexPage({
         headingHierarchy={headingHierarchy}
       />
       {route === "/physicians" ? <PhysicianAdvisorSection /> : null}
+      {route === "/physicians" ? <PhysicianBuyerQuestions /> : null}
       {cta ? <PageCta section={cta} actionLabel={ctaActionLabel} /> : null}
     </main>
   );
