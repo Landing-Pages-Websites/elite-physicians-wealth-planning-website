@@ -2088,6 +2088,44 @@
     "/services/retirement-planning": {
       "insert": [
         {
+          "before": "A structured look at what retirement will require",
+          "sections": [
+            {
+              "eyebrow": "Financial Advice for Retirement Planning",
+              "heading": "Coordinate the two phases of physician retirement planning",
+              "level": 2,
+              "href": null,
+              "pending": false,
+              "paras": [
+                "Retirement planning is more than choosing a date. Financial advice for retirement planning should connect the work of preparing assets with the decisions that turn those assets into income. For physicians, that means reviewing savings, investments, practice interests, taxes, healthcare, and legacy goals as one connected strategy."
+              ],
+              "items": []
+            },
+            {
+              "eyebrow": null,
+              "heading": "1. Prepare your assets for retirement",
+              "level": 3,
+              "href": null,
+              "pending": false,
+              "paras": [
+                "We help organize the decisions that shape readiness: how much to save, which employer and individual accounts to use, how practice or partnership interests fit into the plan, and how investment risk and tax strategy should evolve as retirement approaches."
+              ],
+              "items": []
+            },
+            {
+              "eyebrow": null,
+              "heading": "2. Turn assets into coordinated retirement income",
+              "level": 3,
+              "href": null,
+              "pending": false,
+              "paras": [
+                "Before and during retirement, we help evaluate withdrawal sequencing, income timing, taxes, healthcare costs, and portfolio longevity. The goal is a flexible income strategy that supports your life after medicine while leaving room for family, charitable, and legacy priorities."
+              ],
+              "items": []
+            }
+          ]
+        },
+        {
           "after": "Wealth Management",
           "sections": [
             {
