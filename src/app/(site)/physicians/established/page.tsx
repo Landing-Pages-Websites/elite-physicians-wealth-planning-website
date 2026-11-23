@@ -5,9 +5,9 @@ import { getPage } from "@/lib/pages";
 const ROUTE = "/physicians/established";
 
 export const metadata: Metadata = {
-  title: { absolute: "Established Physician Financial Planning | Elite" },
+  title: { absolute: "Physician Compensation Planning | Elite Physicians" },
   description:
-    "Coordinate taxes, investments, protection, family goals, and retirement strategy as an established physician.",
+    "Coordinate physician compensation with tax strategy, investments, protection, family goals, and retirement planning with Elite Physicians.",
   alternates: { canonical: ROUTE },
 };
 
