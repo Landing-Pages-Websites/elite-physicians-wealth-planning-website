@@ -17,6 +17,32 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
 
+const LOCAL_BUSINESS_LD = {
+  "@context": "https://schema.org",
+  "@type": ["LocalBusiness", "FinancialService"],
+  "@id": "https://elitephysicianswealthplanning.com/#local-business",
+  name: "Elite Physicians Wealth Planning",
+  url: "https://elitephysicianswealthplanning.com",
+  email: "info@fiscalvisionfinancial.com",
+  telephone: "+1-301-259-1636",
+  description:
+    "Financial planning for physicians and medical practice owners, coordinating tax, retirement, wealth, practice, and legacy decisions into one strategy.",
+  areaServed: [
+    { "@type": "City", name: "White Plains" },
+    { "@type": "State", name: "Maryland" },
+  ],
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "White Plains",
+    addressRegion: "MD",
+    postalCode: "20695",
+    addressCountry: "US",
+  },
+  parentOrganization: {
+    "@id": "https://elitephysicianswealthplanning.com/#organization",
+  },
+} as const;
+
 /**
  * The approved homepage. Direction A, "The Consult Ledger", promoted to the
  * root on the operator's instruction at the Stage-2 checkpoint — the approval
@@ -32,16 +58,22 @@ export const metadata: Metadata = {
  */
 export default function HomePage(): React.JSX.Element {
   return (
-    <main id="main">
-      <OnePlan />
-      <CareerSignal />
-      <SeparateRooms />
-      <BlueprintRounds />
-      <FiveDecisions />
-      <WhiteCoatPaths />
-      <AccountablePlanner />
-      <NextDecision />
-      <StrategyCall />
-    </main>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(LOCAL_BUSINESS_LD) }}
+      />
+      <main id="main">
+        <OnePlan />
+        <CareerSignal />
+        <SeparateRooms />
+        <BlueprintRounds />
+        <FiveDecisions />
+        <WhiteCoatPaths />
+        <AccountablePlanner />
+        <NextDecision />
+        <StrategyCall />
+      </main>
+    </>
   );
 }
