@@ -106,7 +106,7 @@ function renderBlock(block: Block, key: number): ReactElement {
         // Wide tables scroll inside their own container so the page body
         // never scrolls sideways on a phone.
         <div key={key} role="region" aria-label="Article table" tabIndex={0} className="mt-6 overflow-x-auto">
-          <table className="w-full border-collapse text-left text-sm">
+          <table className="min-w-[42rem] border-collapse text-left text-sm">
             <thead>
               <tr>
                 {block.header.map((cell, index) => (
