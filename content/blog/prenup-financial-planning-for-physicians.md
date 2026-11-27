@@ -2,7 +2,7 @@
 id: "item_eaa6v5eh250vh2c5vwv8mk24gc"
 date: "2026-11-25"
 slug: "prenup-financial-planning-for-physicians"
-image: "https://zleague-public-prod.s3.us-east-2.amazonaws.com/article_images/2443cdd5-f9c8-44a5-9201-e46bafde1dfe/prenup-financial-planning-for-physicians-what-to-align-190208.webp"
+image: "/blog/prenup-financial-planning-for-physicians-what-to-align.webp"
 title: "Prenup Financial Planning for Physicians: What to Align"
 imageAlt: "Physician couple reviewing financial papers together at home"
 metaTitle: "Prenup Financial Planning for Physicians: What to Align"
